@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: test-assessment-db
+    image: postgres:14
+    env_file: ./.db.env
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER']
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    ports:
+      - ${DB_PORT:-5432}:5432
+
+  cms:
+    container_name: test-assessment-cms
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: ./apps/cms/.env
+    environment:
+      - PORT=${CMS_PORT:-1337}
+    build:
+      context: ./apps/cms
+      target: dev
+    volumes:
+      - ./apps/cms/:/usr/src/app
+      - /usr/src/app/node_modules
+    command: yarn dev
+    ports:
+      - ${CMS_PORT:-1337}:${CMS_PORT:-1337}
+
+  web:
+    container_name: test-assessment-web
+    env_file: ./apps/web/.env
+    environment:
+      - PORT=${WEB_PORT:-3000}
+    build:
+      context: ./apps/web
+      target: dev
+    volumes:
+      - ./apps/web:/usr/src/app
+      - /usr/src/app/node_modules
+    command: yarn dev
+    ports:
+      - ${WEB_PORT:-3000}:${WEB_PORT:-3000}

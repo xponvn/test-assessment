@@ -15,3 +15,44 @@ Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
+
+<br />
+
+## Run with docker
+
+Create `.env` from `.env.example`
+
+```bash
+cp ./apps/cms/.env.example ./apps/cms/.env
+```
+
+```bash
+cp ./apps/web/.env.example ./apps/web/.env
+```
+
+```bash
+cp ./.db.env.example ./.db.env
+```
+
+Note In `.db.env`
+
+```bash
+POSTGRES_DB=test-assessment # same as DATABASE_NAME in ./apps/cms.env
+POSTGRES_USER=test-assessment # same as DATABASE_USERNAME in ./apps/cms.env
+POSTGRES_PASSWORD=test-assessment # same as DATABASE_PASSWORD in ./apps/cms.env
+```
+
+Run docker compose
+
+```bash
+docker compose up
+```
+
+or if you want to custom the port for `database` or `cms` or `web` (default DB_PORT=5432, CMS_PORT=1337, WEB_PORT=3000)
+
+```bash
+DB_PORT=6543 CMS_PORT=1338 WEB_PORT=1339 docker compose up
+```
+
+CMS: `http://localhost:{{CMS_PORT}}`<br />
+Web: `http://localhost:{{WEB_PORT}}`
