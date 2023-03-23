@@ -1,22 +1,12 @@
 version: '3.8'
 
 services:
-  db:
-    container_name: test-assessment-db
-    image: postgres:14
-    env_file: ./.db.env
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER']
-      interval: 1s
-      timeout: 5s
-      retries: 10
-    ports:
-      - ${DB_PORT:-5432}:5432
-
-  cms:
-    container_name: test-assessment-cms
+  cms-api:
+    container_name: cms-api
     depends_on:
-      db:
+      cms-db:
+        condition: service_healthy
+      cms-cache:
         condition: service_healthy
     env_file: ./apps/cms/.env
     environment:
@@ -31,17 +21,53 @@ services:
     ports:
       - ${CMS_PORT:-1337}:${CMS_PORT:-1337}
 
-  web:
-    container_name: test-assessment-web
-    env_file: ./apps/web/.env
+  frontend-web:
+    container_name: frontend-web
+    env_file: ./apps/frontend-web/.env
     environment:
-      - PORT=${WEB_PORT:-3000}
+      - PORT=${FE_WEB_PORT:-3000}
     build:
-      context: ./apps/web
+      context: ./apps/frontend-web
       target: dev
     volumes:
-      - ./apps/web:/usr/src/app
+      - ./apps/frontend-web:/usr/src/app
       - /usr/src/app/node_modules
     command: yarn dev
     ports:
       - ${WEB_PORT:-3000}:${WEB_PORT:-3000}
+
+  cms-db:
+    container_name: test-assessment-db
+    image: postgres:14
+    env_file: ./.db.env
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -d $$POSTGRES_DB -U $$POSTGRES_USER'
+        ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    ports:
+      - ${DB_PORT:-5432}:5432
+  
+  adminer:
+    image: adminer
+    ports:
+      - ${ADMINER_PORT:-5433}:8080
+
+  cms-cache:
+    image: redis
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli ping | grep PONG" ]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+    ports:
+      - ${REDIS_PORT:-6379}:6379
+  
+  redisinsight:
+    image: redislabs/redisinsight
+    ports:
+    - ${REDIS_INSIGHT_PORT:-6380}:8001

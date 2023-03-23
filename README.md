@@ -27,7 +27,7 @@ cp ./apps/cms/.env.example ./apps/cms/.env
 ```
 
 ```bash
-cp ./apps/web/.env.example ./apps/web/.env
+cp ./apps/frontend-web/.env.example ./apps/frontend-web/.env
 ```
 
 ```bash
@@ -36,7 +36,7 @@ cp ./.db.env.example ./.db.env
 
 Note In `.db.env`
 
-```bash
+```
 POSTGRES_DB=test-assessment # same as DATABASE_NAME in ./apps/cms.env
 POSTGRES_USER=test-assessment # same as DATABASE_USERNAME in ./apps/cms.env
 POSTGRES_PASSWORD=test-assessment # same as DATABASE_PASSWORD in ./apps/cms.env
@@ -48,11 +48,23 @@ Run docker compose
 docker compose up
 ```
 
-or if you want to custom the port for `database` or `cms` or `web` (default DB_PORT=5432, CMS_PORT=1337, WEB_PORT=3000)
+Using the environments if you want to custom the ports: DB_PORT,ADMINER_PORT, REDIS_PORT, REDIS_INSIGHT_PORT, CMS_PORT, FE_WEB_PORT.eg:
 
 ```bash
-DB_PORT=6543 CMS_PORT=1338 WEB_PORT=1339 docker compose up
+DB_PORT=6543 CMS_PORT=1338 FE_WEB_PORT=1339 docker compose up
 ```
 
+Adminer: `http://localhost:{{ADMINER_PORT}}`<br />
+Redis insight: `http://localhost:{{REDIS_INSIGHT_PORT}}`<br />
 CMS: `http://localhost:{{CMS_PORT}}`<br />
-Web: `http://localhost:{{WEB_PORT}}`
+Web: `http://localhost:{{WEB_PORT}}`<br />
+
+Default web ports
+```
+DB_PORT=5432
+ADMINER_PORT=5433
+REDIS_PORT=6379
+REDIS_INSIGHT_PORT=6380
+CMS_PORT=1337
+FE_WEB_PORT=3000
+```
