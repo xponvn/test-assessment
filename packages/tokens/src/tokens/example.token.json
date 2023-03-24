@@ -1,0 +1,17 @@
+{
+  "screens": {
+    "sm": "448px",
+    "md": "768px",
+    "lg": "1080px",
+    "xl": "2160px"
+  },
+  "colors": {
+    "black": "#000000",
+    "white": "#ffffff",
+    "red": "#ff00000",
+    "green": "#00ff00",
+    "blue": "#0000ff"
+  },
+  "fonts": {},
+  "spacing": {}
+}
