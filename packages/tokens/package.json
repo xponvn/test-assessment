@@ -1,6 +1,7 @@
 {
   "name": "@test-assessment/design-token",
   "version": "0.0.1",
+  "type": "commonjs",
   "description": "generator tailwindcss theme config for figma config data",
   "dependencies": {},
   "devDependencies": {}
