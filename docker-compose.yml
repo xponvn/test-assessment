@@ -17,6 +17,8 @@ services:
     volumes:
       - ./apps/cms/:/usr/src/app
       - /usr/src/app/node_modules
+      - /usr/src/app/dist
+      - /usr/src/app/.cache
     command: yarn dev
     ports:
       - ${CMS_PORT:-1337}:${CMS_PORT:-1337}
