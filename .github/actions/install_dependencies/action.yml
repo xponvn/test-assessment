@@ -4,7 +4,7 @@ description: 'Install Node dependencies'
 inputs:
   npm-token:
     description: NPM Install token
-    required: true
+    required: false
 
 runs:
   using: 'composite'

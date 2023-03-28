@@ -44,7 +44,7 @@ jobs:
       - name: Install Dependencies
         uses: ./.github/actions/install_dependencies
         with:
-          npm-token: ${{ secret.BOT_TOKEN }}
+          npm-token: ${{ secrets.BOT_TOKEN }}
 
       - name: Execute
         uses: e-square-io/nx-distributed-task@v2
