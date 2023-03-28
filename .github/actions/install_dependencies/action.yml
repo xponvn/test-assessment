@@ -1,0 +1,34 @@
+name: Install Dependencies
+description: 'Install Node dependencies'
+
+inputs:
+  npm-token:
+    description: NPM Install token
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: volta-cli/action@v1
+
+    - name: Cache node modules
+      id: cache-node-modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: |
+          node_modules
+          **/node_modules
+        key: ${{ steps.cache-key.outputs.cacheKey }}
+
+    - name: Install dependencies if needed.
+      if: steps.cache-node-modules.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        echo //npm.pkg.github.com/:_authToken=${{ inputs.npm-token }} >> ~/.npmrc
+        yarn install --ignore-platform --frozen-lockfile
+
+    - name: Post Install
+      shell: bash
+      run: yarn postinstall
