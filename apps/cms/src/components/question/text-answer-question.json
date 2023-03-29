@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_question_text_answer_questions",
+  "info": {
+    "displayName": "Text Answer Question"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_question_choice_questions",
+  "info": {
+    "displayName": "Choice Question",
+    "description": "Use for both single choice & multiple choice questions"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "answers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "answer.choice-answer",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "required": true
+    }
+  }
+}
