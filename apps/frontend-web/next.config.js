@@ -1,23 +1,17 @@
-const nextBuildId = require('next-build-id')
+//@ts-check
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { withNx } = require('@nrwl/next/plugins/with-nx');
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.log("next config ", reason, promise)
-});
-process.on('rejectionHandled', (promise) => {
-  console.log("next config ", promise)
-});
-
-/** @type {import('next').NextConfig} */
+/**
+ * @type {import('@nrwl/next/plugins/with-nx').WithNxOptions}
+ **/
 const nextConfig = {
-  experimental: {
-    appDir: true,
+  nx: {
+    // Set this to true if you would like to use SVGR
+    // See: https://github.com/gregberge/svgr
+    svgr: false,
   },
-  generateBuildId: () => nextBuildId(),
 };
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-});
-
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withNx(nextConfig);

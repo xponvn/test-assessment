@@ -18,6 +18,22 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 <br />
 
+## Generate Libraries
+
+```bash
+nx g @nrwl/next:lib my-new-lib
+```
+
+Read more at: [https://nx.dev/packages/next#generating-libraries](https://nx.dev/packages/next#generating-libraries)
+
+## Run Next application with nx
+
+```bash
+nx serve frontend-web
+```
+
+Read more at: [https://nx.dev/packages/next#serving-next.js-applications](https://nx.dev/packages/next#serving-next.js-applications)
+
 ## Run with docker
 
 Create `.env` from `.env.example`
