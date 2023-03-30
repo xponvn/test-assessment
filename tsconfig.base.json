@@ -16,8 +16,7 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@test-assessment/design-tokens": ["packages/design-tokens/src/index.ts"],
-      "@test-assessment/ui-exmaple-component": [
+      "@test-assessment/ui-example-component": [
         "packages/ui-example-component/src/index.ts"
       ],
       "@test-assessment/ui-theme": ["packages/ui-theme/src/index.ts"]

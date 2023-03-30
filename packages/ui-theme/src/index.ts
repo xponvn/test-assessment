@@ -1,1 +1,1 @@
-export * as tokens from '@test-assessment/design-tokens';
+export * as tokens from './token';
