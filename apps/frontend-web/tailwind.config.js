@@ -1,1 +1,1 @@
-module.exports = require('@test-assessment/ui-theme');
+module.exports = require('@test-assessment/ui-theme/tailwind.config');

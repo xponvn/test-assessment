@@ -1,4 +1,4 @@
-const tokens = require('./src/tokens/example.token.json');
+import * as tokens from './tokens/example.token.json';
 
 module.exports = {
   darkMode: 'class',
