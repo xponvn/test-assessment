@@ -14,7 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@test-assessment/design-tokens": ["packages/design-tokens/src/index.ts"],
+      "@test-assessment/ui-exmaple-component": [
+        "packages/ui-example-component/src/index.ts"
+      ],
+      "@test-assessment/ui-theme": ["packages/ui-theme/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
