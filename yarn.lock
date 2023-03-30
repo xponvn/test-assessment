@@ -3160,7 +3160,7 @@
   resolved "https://registry.yarnpkg.com/@nx-extend/core/-/core-1.4.0.tgz#ca6c6a5fe41151eb266c2d66186087b9ecfced48"
   integrity sha512-dGW0lFzRvREoBr7IZIhVaYVt7rlWhW6tlEtGKdhnsYQp/zOcTVl28Ob1VWhXfc1mQ0dRsyoU/ESykVODM0Xyhg==
 
-"@nx-extend/strapi@3.5.0":
+"@nx-extend/strapi@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@nx-extend/strapi/-/strapi-3.5.0.tgz#a1cdc1e24c8ae17b1259828b48fbfa2812935900"
   integrity sha512-GxQ/CvzDqLCL7Jn3cxNUrFbcBUqqbc1Dl/tYhQsTtXyJozrPXFjWg2EKztC08C44QVqJdPa+ZCyAlBPs8MmFjQ==
