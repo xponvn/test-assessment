@@ -1,42 +1,42 @@
 version: '3.8'
 
 services:
-  cms-api:
-    container_name: cms-api
-    depends_on:
-      cms-db:
-        condition: service_healthy
-      cms-cache:
-        condition: service_healthy
-    env_file: ./apps/cms/.env
-    environment:
-      - PORT=${CMS_PORT:-1337}
-    build:
-      context: ./apps/cms
-      target: dev
-    volumes:
-      - ./apps/cms/:/usr/src/app
-      - /usr/src/app/node_modules
-      - /usr/src/app/dist
-      - /usr/src/app/.cache
-    command: yarn dev
-    ports:
-      - ${CMS_PORT:-1337}:${CMS_PORT:-1337}
+  # cms-api:
+  #   container_name: cms-api
+  #   depends_on:
+  #     cms-db:
+  #       condition: service_healthy
+  #     cms-cache:
+  #       condition: service_healthy
+  #   env_file: ./apps/cms/.env
+  #   environment:
+  #     - PORT=${CMS_PORT:-1337}
+  #   build:
+  #     context: ./apps/cms
+  #     target: dev
+  #   volumes:
+  #     - ./apps/cms/:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #     - /usr/src/app/dist
+  #     - /usr/src/app/.cache
+  #   command: yarn dev
+  #   ports:
+  #     - ${CMS_PORT:-1337}:${CMS_PORT:-1337}
 
-  frontend-web:
-    container_name: frontend-web
-    env_file: ./apps/frontend-web/.env
-    environment:
-      - PORT=${FE_WEB_PORT:-3000}
-    build:
-      context: ./apps/frontend-web
-      target: dev
-    volumes:
-      - ./apps/frontend-web:/usr/src/app
-      - /usr/src/app/node_modules
-    command: yarn dev
-    ports:
-      - ${WEB_PORT:-3000}:${WEB_PORT:-3000}
+  # frontend-web:
+  #   container_name: frontend-web
+  #   env_file: ./apps/frontend-web/.env
+  #   environment:
+  #     - PORT=${FE_WEB_PORT:-3000}
+  #   build:
+  #     context: ./apps/frontend-web
+  #     target: dev
+  #   volumes:
+  #     - ./apps/frontend-web:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   command: yarn dev
+  #   ports:
+  #     - ${WEB_PORT:-3000}:${WEB_PORT:-3000}
 
   cms-db:
     container_name: test-assessment-db
