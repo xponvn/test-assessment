@@ -1,0 +1,11 @@
+query getI18NLocales {
+  i18NLocales {
+    data {
+      id
+      attributes {
+        name
+        code
+      }
+    }
+  }
+}
