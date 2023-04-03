@@ -12,6 +12,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  publicRuntimeConfig: {
+    graphqlApiUrl: process.env.GRAPHQL_API_URL
+  },
 };
 
 module.exports = withNx(nextConfig);

@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 
-import {UiExampleComponent} from '@test-assessment/ui-example-component'
+import { UiExampleComponent } from '@test-assessment/ui-example-component';
 
 export function Index() {
   /*

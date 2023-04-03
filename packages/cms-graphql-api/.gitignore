@@ -18,7 +18,7 @@ node_modules
 *.sublime-workspace
 
 # IDE - VSCode
-*/**/.vscode
+.vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -39,6 +39,4 @@ testem.log
 Thumbs.db
 
 # Next.js
-.next
-.db.env
-apps/frontend-web/.env
+.env
