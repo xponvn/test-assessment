@@ -36,4 +36,14 @@ export default {
       },
     },
   },
+  //  Configure graphql plugin
+  graphql: {
+    enable: true,
+    config: {
+      playgroundAlways: true,
+      apolloServer: {
+        introspection: true,
+      },
+    },
+  },
 };
