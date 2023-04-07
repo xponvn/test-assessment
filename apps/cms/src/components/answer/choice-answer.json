@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_answer_choice_answers",
+  "info": {
+    "displayName": "Choice Answer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "isCorrect": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
