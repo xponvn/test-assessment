@@ -28,7 +28,7 @@ npx nx serve frontend-web
 (if you installed nx globally [https://nx.dev/more-concepts/global-nx#installing-nx-globally](https://nx.dev/more-concepts/global-nx#installing-nx-globally))
 
 ```bash
-npx nx serve frontend-web
+nx serve frontend-web
 ```
 Read more at: [https://nx.dev/packages/next#serving-next.js-applications](https://nx.dev/packages/next#serving-next.js-applications)
 
