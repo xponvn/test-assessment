@@ -3,6 +3,8 @@ import { UIConfig } from '.';
 
 export const getStyle = (uiConfig: UIConfig) => {
   const fontSize = uiConfig.fontSize;
+  const lineHeight = uiConfig.lineHeight;
+
   let configStyle: any = {
     // --- COLOR ---
     // Primary Color
@@ -58,67 +60,35 @@ export const getStyle = (uiConfig: UIConfig) => {
   if (fontSize) {
     configStyle = {
       ...configStyle,
-      '--heading-48': [
-        fontSize.heading48.size,
-        { lineHeight: fontSize.heading48.lineHeight },
-      ],
-      '--heading-40': [
-        fontSize.heading40.size,
-        { lineHeight: fontSize.heading40.lineHeight },
-      ],
-      '--heading-36': [
-        fontSize.heading36.size,
-        { lineHeight: fontSize.heading36.lineHeight },
-      ],
-      '--heading-32': [
-        fontSize.heading32.size,
-        { lineHeight: fontSize.heading32.lineHeight },
-      ],
-      '--heading-28': [
-        fontSize.heading28.size,
-        { lineHeight: fontSize.heading28.lineHeight },
-      ],
-      '--title-24': [
-        fontSize.title24.size,
-        { lineHeight: fontSize.title24.lineHeight },
-      ],
-      '--title-20': [
-        fontSize.title20.size,
-        { lineHeight: fontSize.title20.lineHeight },
-      ],
-      '--title-18': [
-        fontSize.title18.size,
-        { lineHeight: fontSize.title18.lineHeight },
-      ],
-      '--subtitle-15': [
-        fontSize.subtitle15.size,
-        { lineHeight: fontSize.subtitle15.lineHeight },
-      ],
-      '--subtitle-13': [
-        fontSize.subtitle13.size,
-        { lineHeight: fontSize.subtitle13.lineHeight },
-      ],
-      '--body-15': [
-        fontSize.body15.size,
-        { lineHeight: fontSize.body15.lineHeight },
-      ],
-      '--body-13': [
-        fontSize.body13.size,
-        { lineHeight: fontSize.body13.lineHeight },
-      ],
-      '--cation-12': [
-        fontSize.cation12.size,
-        { lineHeight: fontSize.cation12.lineHeight },
-      ],
-      '--cation-10': [
-        fontSize.cation10.size,
-        { lineHeight: fontSize.cation10.lineHeight },
-      ],
-      '--cation-8': [
-        fontSize.cation8.size,
-        { lineHeight: fontSize.cation8.lineHeight },
-      ],
+      '--size-48': fontSize._48,
+      '--size-40': fontSize._40,
+      '--size-36': fontSize._36,
+      '--size-32': fontSize._32,
+      '--size-28': fontSize._28,
+      '--size-24': fontSize._24,
+      '--size-20': fontSize._20,
+      '--size-18': fontSize._18,
+      '--size-15': fontSize._15,
+      '--size-13': fontSize._13,
+      '--size-12': fontSize._12,
+      '--size-10': fontSize._10,
+      '--size-8': fontSize._8,
     };
+  }
+
+  if(lineHeight) {
+    configStyle = {
+      ...configStyle,
+      '--lineHeigh-64': lineHeight._64,
+      '--lineHeigh-56': lineHeight._56,
+      '--lineHeigh-48': lineHeight._48,
+      '--lineHeigh-40': lineHeight._40,
+      '--lineHeigh-32': lineHeight._32,
+      '--lineHeigh-24': lineHeight._24,
+      '--lineHeigh-20': lineHeight._20,
+      '--lineHeigh-16': lineHeight._16,
+      '--lineHeigh-12': lineHeight._12,
+    }
   }
 
   return configStyle;

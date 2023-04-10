@@ -3,34 +3,38 @@ export type UIConfig = {
   font: {
     primary: string;
   };
-  fontSize?: FontSizePalette;
+  fontSize?: FontSizeConfig;
+  lineHeight?: LineHeightConfig;
   stylesheets?: string[];
 };
 
-export type FontSizePalette = {
-  heading48: FontSizeConfig;
-  heading40: FontSizeConfig;
-  heading36: FontSizeConfig;
-  heading32: FontSizeConfig;
-  heading28: FontSizeConfig;
-  title24: FontSizeConfig;
-  title20: FontSizeConfig;
-  title18: FontSizeConfig;
-  subtitle15: FontSizeConfig;
-  subtitle13: FontSizeConfig;
-  body15: FontSizeConfig;
-  body13: FontSizeConfig;
-  cation12: FontSizeConfig;
-  cation10: FontSizeConfig;
-  cation8: FontSizeConfig;
-}
-
-export type FontSizeConfig = {
-  size: string;
-  lineHeight: string;
-  letterSpacing?: string
+export type LineHeightConfig = {
+  _64: string;
+  _56: string;
+  _48: string;
+  _40: string;
+  _32: string;
+  _24: string;
+  _20: string;
+  _16: string;
+  _12: string;
 };
 
+export type FontSizeConfig = {
+  _48: string;
+  _40: string;
+  _36: string;
+  _32: string;
+  _28: string;
+  _24: string;
+  _20: string;
+  _18: string;
+  _15: string;
+  _13: string;
+  _12: string;
+  _10: string;
+  _8: string;
+};
 
 export type ColorPalette = {
   primary: ColorPaletteConfig;
