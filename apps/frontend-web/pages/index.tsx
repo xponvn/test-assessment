@@ -1,6 +1,6 @@
 import styles from './index.module.css';
 
-import { UiExampleComponent } from '@test-assessment/ui-example-component';
+// import { UiExampleComponent } from '@test-assessment/ui-example-component';
 
 export function Index() {
   /*
@@ -13,7 +13,7 @@ export function Index() {
       <div className="wrapper">
         <div className="container">
           <div>
-            <UiExampleComponent />
+            {/* <UiExampleComponent /> */}
           </div>
           <div id="welcome">
             <h1>

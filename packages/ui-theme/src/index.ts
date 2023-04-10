@@ -1,1 +1,1 @@
-export * as tokens from './token';
+export * from './config';
