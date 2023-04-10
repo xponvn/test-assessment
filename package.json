@@ -2,9 +2,13 @@
   "name": "test-assessment",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build-storybook": "npx nx build-storybook frontend-web",
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+  },
   "private": true,
   "dependencies": {
+    "@nrwl/nx-darwin-arm64": "^15.9.2",
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
