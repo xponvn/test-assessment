@@ -38,6 +38,7 @@ jobs:
       - name: Comment on pull request
         uses: octokit/request-action@v2.x
         with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           route: POST /repos/${{ github.repository }}/issues/${{ steps.pr.outputs.number }}/comments
           headers: |
             Authorization: token ${{ secrets.ACCESS_TOKEN }}
