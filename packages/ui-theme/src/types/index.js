@@ -1,0 +1,12 @@
+const { getBreakpoints } = require('./getBreakpoints.js');
+module.exports.getBreakpoints = getBreakpoints;
+const { getColors } = require('./getColors.js');
+module.exports.getColors = getColors;
+const { getRadius } = require('./getRadius.js');
+module.exports.getRadius = getRadius;
+const { getShadows } = require('./getShadows.js');
+module.exports.getShadows = getShadows;
+const { getSpacing } = require('./getSpacing.js');
+module.exports.getSpacing = getSpacing;
+const { getTypography } = require('./getTypography.js');
+module.exports.getTypography = getTypography;
