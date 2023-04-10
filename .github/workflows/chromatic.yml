@@ -31,8 +31,10 @@ jobs:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
-      - name: Write result
-        uses: mshick/add-pr-comment@v2
+      - name: Post Chromatic URL as comment on PR
+        uses: unsplash/comment-on-pr@v1.1.0 # This posts a comment on your PR
         with:
           message: |
-            "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |"
+            Storybook deployed to Chromatic! View it here: ${{ steps.chromatic.outputs.storybookUrl }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
