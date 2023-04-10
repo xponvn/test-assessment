@@ -40,4 +40,4 @@ jobs:
             Authorization: token ${{ secrets.ACCESS_TOKEN }}
             Accept: application/vnd.github.v3+json
           body: |
-            The deployed Storybook is available on Chromatic: ${{ steps.chromatic.outputs.storybookUrl }}
+            `The deployed Storybook is available on Chromatic: ${{ steps.chromatic.outputs.storybookUrl }}`
