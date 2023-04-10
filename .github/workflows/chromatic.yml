@@ -31,15 +31,11 @@ jobs:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 
-      - name: Get pull request number
-        id: pr
-        run: echo "::set-output name=number::$(echo $GITHUB_REF | sed 's|.*/||')"
-
       - name: Comment on pull request
         uses: octokit/request-action@v2.x
         with:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          route: POST /repos/${{ github.repository }}/issues/${{ steps.pr.outputs.number }}/comments
+          route: POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments
           headers: |
             Authorization: token ${{ secrets.ACCESS_TOKEN }}
             Accept: application/vnd.github.v3+json
