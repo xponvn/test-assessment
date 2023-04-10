@@ -1,7 +1,4 @@
-const path = require('path')
-
-exports.createTWConfig = (config) => {
-  const content = config?.content || []
+const createTWConfig = ({ content = [] } = {}) => {
   return {
     darkMode: 'class',
     content: [...content],
@@ -13,25 +10,25 @@ exports.createTWConfig = (config) => {
         current: 'currentColor',
         white: '#ffffff',
         black: '#000000',
-  
+
         // theme
         primary: {
           DEFAULT: 'var(--color-primary)',
-          'background': 'var(--color-primary-bg)',
-          'hover': 'var(--color-primary-hover)',
-          'base': 'var(--color-primary-base)',
-          'clicked': 'var(--color-primary-clicked)',
+          background: 'var(--color-primary-bg)',
+          hover: 'var(--color-primary-hover)',
+          base: 'var(--color-primary-base)',
+          clicked: 'var(--color-primary-clicked)',
         },
         secondary: {
           DEFAULT: 'var(--color-secondary)',
-          'background': 'var(--color-secondary-bg)',
-          'hover': 'var(--color-secondary-hover)',
-          'base': 'var(--color-secondary-base)',
-          'clicked': 'var(--color-secondary-clicked)',
+          background: 'var(--color-secondary-bg)',
+          hover: 'var(--color-secondary-hover)',
+          base: 'var(--color-secondary-base)',
+          clicked: 'var(--color-secondary-clicked)',
         },
         neutral: {
           DEFAULT: 'var(--color-neutral)',
-          'white': 'var(--color-neutral-white)',
+          white: 'var(--color-neutral-white)',
           'table-header': 'var(--color-neutral-table-header)',
           'table-bg': 'var(--color-neutral-table-bg)',
           'table-divider': 'var(--color-neutral-table-divider)',
@@ -44,21 +41,21 @@ exports.createTWConfig = (config) => {
         },
         pending: {
           DEFAULT: 'var(--color-pending)',
-          'bg': 'var(--color-pending-bg)',
-          'base': 'var(--color-pending-base)',
-          'border': 'var(--color-pending-border)',
+          bg: 'var(--color-pending-bg)',
+          base: 'var(--color-pending-base)',
+          border: 'var(--color-pending-border)',
         },
         error: {
           DEFAULT: 'var(--color-error)',
-          'bg': 'var(--color-error-bg)',
-          'base': 'var(--color-error-base)',
-          'border': 'var(--color-error-border)',
+          bg: 'var(--color-error-bg)',
+          base: 'var(--color-error-base)',
+          border: 'var(--color-error-border)',
         },
         success: {
           DEFAULT: 'var(--color-success)',
-          'bg': 'var(--color-success-bg)',
-          'base': 'var(--color-success-base)',
-          'border': 'var(--color-success-border)',
+          bg: 'var(--color-success-bg)',
+          base: 'var(--color-success-base)',
+          border: 'var(--color-success-border)',
         },
       },
       // fontSize: {
@@ -79,16 +76,21 @@ exports.createTWConfig = (config) => {
       //   'cation8': 'var(--cation-8)',
       // },
       fontFamily: {
-        primary: 'var(--font-primary)'
+        primary: 'var(--font-primary)',
       },
     },
     plugins: [],
-  }
-}
+  };
+};
 
-exports.getToken = () => {
-  console.log("path:", path)
-  return {
-    ...path
-  }
+const createPostCssConfig = ({ tailwindcss }) => ({
+  plugins: {
+    tailwindcss,
+    autoprefixer: {},
+  },
+});
+
+module.exports = {
+  createTWConfig,
+  createPostCssConfig,
 };

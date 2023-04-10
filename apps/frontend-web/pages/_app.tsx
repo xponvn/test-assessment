@@ -1,14 +1,15 @@
+import '../styles/index.css';
+
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
 import { ApiClientProvider } from '@test-assessment/cms-graphql-api';
 import getConfig from 'next/config';
 import { UIProvider } from '@test-assessment/ui-theme';
-import * as themeToken from '../theme-token/token.json'
+import themeToken from '../theme-token/token.json';
 
 const { publicRuntimeConfig } = getConfig();
 
-function CustomApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <ApiClientProvider apiUrl={publicRuntimeConfig.graphqlApiUrl}>
       <UIProvider config={themeToken.variants}>
@@ -21,4 +22,4 @@ function CustomApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default CustomApp;
+export default App;

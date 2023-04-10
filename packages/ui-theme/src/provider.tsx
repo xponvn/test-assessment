@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useState } from 'react';
-import { UIConfig } from '..';
+import { UIConfig } from '.';
 
 export const getStyle = (uiConfig: UIConfig) => {
   const fontSize = uiConfig.fontSize;
@@ -51,28 +51,73 @@ export const getStyle = (uiConfig: UIConfig) => {
     '--color-success-border': uiConfig.colors.success._800,
 
     // --- FONT ---
-    '--font-primary': uiConfig.font.primary
+    '--font-primary': uiConfig.font.primary,
   };
 
   // --- FONT SIZE ---
   if (fontSize) {
     configStyle = {
       ...configStyle,
-      '--heading-48': [fontSize.heading48.size, { lineHeight: fontSize.heading48.lineHeight }],
-      '--heading-40': [fontSize.heading40.size, { lineHeight: fontSize.heading40.lineHeight }],
-      '--heading-36': [fontSize.heading36.size, { lineHeight: fontSize.heading36.lineHeight }],
-      '--heading-32': [fontSize.heading32.size, { lineHeight: fontSize.heading32.lineHeight }],
-      '--heading-28': [fontSize.heading28.size, { lineHeight: fontSize.heading28.lineHeight }],
-      '--title-24': [fontSize.title24.size, { lineHeight: fontSize.title24.lineHeight }],
-      '--title-20': [fontSize.title20.size, { lineHeight: fontSize.title20.lineHeight }],
-      '--title-18': [fontSize.title18.size, { lineHeight: fontSize.title18.lineHeight }],
-      '--subtitle-15': [fontSize.subtitle15.size, { lineHeight: fontSize.subtitle15.lineHeight }],
-      '--subtitle-13': [fontSize.subtitle13.size, { lineHeight: fontSize.subtitle13.lineHeight }],
-      '--body-15': [fontSize.body15.size, { lineHeight: fontSize.body15.lineHeight }],
-      '--body-13': [fontSize.body13.size, { lineHeight: fontSize.body13.lineHeight }],
-      '--cation-12': [fontSize.cation12.size, { lineHeight: fontSize.cation12.lineHeight }],
-      '--cation-10': [fontSize.cation10.size, { lineHeight: fontSize.cation10.lineHeight }],
-      '--cation-8': [fontSize.cation8.size, { lineHeight: fontSize.cation8.lineHeight }],
+      '--heading-48': [
+        fontSize.heading48.size,
+        { lineHeight: fontSize.heading48.lineHeight },
+      ],
+      '--heading-40': [
+        fontSize.heading40.size,
+        { lineHeight: fontSize.heading40.lineHeight },
+      ],
+      '--heading-36': [
+        fontSize.heading36.size,
+        { lineHeight: fontSize.heading36.lineHeight },
+      ],
+      '--heading-32': [
+        fontSize.heading32.size,
+        { lineHeight: fontSize.heading32.lineHeight },
+      ],
+      '--heading-28': [
+        fontSize.heading28.size,
+        { lineHeight: fontSize.heading28.lineHeight },
+      ],
+      '--title-24': [
+        fontSize.title24.size,
+        { lineHeight: fontSize.title24.lineHeight },
+      ],
+      '--title-20': [
+        fontSize.title20.size,
+        { lineHeight: fontSize.title20.lineHeight },
+      ],
+      '--title-18': [
+        fontSize.title18.size,
+        { lineHeight: fontSize.title18.lineHeight },
+      ],
+      '--subtitle-15': [
+        fontSize.subtitle15.size,
+        { lineHeight: fontSize.subtitle15.lineHeight },
+      ],
+      '--subtitle-13': [
+        fontSize.subtitle13.size,
+        { lineHeight: fontSize.subtitle13.lineHeight },
+      ],
+      '--body-15': [
+        fontSize.body15.size,
+        { lineHeight: fontSize.body15.lineHeight },
+      ],
+      '--body-13': [
+        fontSize.body13.size,
+        { lineHeight: fontSize.body13.lineHeight },
+      ],
+      '--cation-12': [
+        fontSize.cation12.size,
+        { lineHeight: fontSize.cation12.lineHeight },
+      ],
+      '--cation-10': [
+        fontSize.cation10.size,
+        { lineHeight: fontSize.cation10.lineHeight },
+      ],
+      '--cation-8': [
+        fontSize.cation8.size,
+        { lineHeight: fontSize.cation8.lineHeight },
+      ],
     };
   }
 
@@ -88,26 +133,26 @@ const initState: UIContextType = {
   theme: {
     colors: {
       primary: {
-        default: ''
+        default: '',
       },
       secondary: {
-        default: ''
+        default: '',
       },
       neutral: {
-        default: ''
+        default: '',
       },
       pending: {
-        default: ''
+        default: '',
       },
       error: {
-        default: ''
+        default: '',
       },
       success: {
-        default: ''
-      }
+        default: '',
+      },
     },
     font: {
-      primary: 'sans-serif, serif, monospace, cursive'
+      primary: 'sans-serif, serif, monospace, cursive',
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -126,7 +171,6 @@ export function UIProvider(props: ThemeProviderProps) {
   const setTheme = useCallback((newTheme: Partial<UIConfig>) => {
     setThemeState((theme) => ({ ...theme, ...newTheme }));
   }, []);
-
 
   return (
     <UIContext.Provider value={{ theme, setTheme }}>
