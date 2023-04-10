@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: nrwl/nx-set-shas@v3
-      - run: yarn install
+      - run: yarn install --frozen-lockfile
 
       - run: npx nx format:check
         continue-on-error: true
