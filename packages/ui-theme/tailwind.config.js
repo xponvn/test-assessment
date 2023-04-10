@@ -1,6 +1,7 @@
 const tokens = require('./src/tokens/example.token.json');
 
 module.exports = {
+  mode: 'jit',
   darkMode: 'class',
   theme: {
     extend: {

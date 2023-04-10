@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   core: { builder: 'webpack5' },
-  stories: ['../../../packages/ui-*/src/*.stories.tsx'],
+  stories: ['../../../packages/ui-*/src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-essentials',
     '@nrwl/react/plugins/storybook',
