@@ -5,8 +5,7 @@ const { join } = require('path');
 
 module.exports = createTWConfig({
   content: [
-    join(__dirname, './pages/*.{jsx,tsx}'),
-    join(__dirname, './pages/**/*.{jsx,tsx}'),
+    join(__dirname, './app/**/*.{jsx,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
 });

@@ -1,3 +1,4 @@
+"use client"
 import React, { createContext, useCallback, useState } from 'react';
 import { UIConfig } from '.';
 

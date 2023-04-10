@@ -15,6 +15,9 @@ const nextConfig = {
   publicRuntimeConfig: {
     graphqlApiUrl: process.env.GRAPHQL_API_URL
   },
+  experimental: {
+    appDir: true,
+  },
 };
 
 module.exports = withNx(nextConfig);
