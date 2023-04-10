@@ -1,18 +1,29 @@
 # .github/workflows/chromatic.yml
 
 # Other configuration required
+name: Publish to Chromatic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Publish to Chromatic
+        id: chromatic
         uses: chromaui/action@v1
-        # Options required to the GitHub Chromatic Action
+        # Chromatic GitHub Action options
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - name: Publish Summary
+        run: echo -e "| Results |  |\n| --- | --- |\n| Build Results | ${{steps.chromatic.outputs.buildUrl}} |\n| Storybook Preview | ${{steps.chromatic.outputs.storybookUrl}} |\n| Component Count | ${{steps.chromatic.outputs.componentCount}} |" >> $GITHUB_STEP_SUMMARY
