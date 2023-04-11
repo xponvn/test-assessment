@@ -42,6 +42,43 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type ComponentAnswerChoiceAnswer = {
+  __typename?: 'ComponentAnswerChoiceAnswer';
+  content: Scalars['String'];
+  id: Scalars['ID'];
+  isCorrect?: Maybe<Scalars['Boolean']>;
+};
+
+export type ComponentAnswerChoiceAnswerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentAnswerChoiceAnswerFiltersInput>>>;
+  content?: InputMaybe<StringFilterInput>;
+  isCorrect?: InputMaybe<BooleanFilterInput>;
+  not?: InputMaybe<ComponentAnswerChoiceAnswerFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentAnswerChoiceAnswerFiltersInput>>>;
+};
+
+export type ComponentQuestionChoiceQuestion = {
+  __typename?: 'ComponentQuestionChoiceQuestion';
+  answers: Array<Maybe<ComponentAnswerChoiceAnswer>>;
+  content: Scalars['String'];
+  id: Scalars['ID'];
+  level: Enum_Componentquestionchoicequestion_Level;
+};
+
+
+export type ComponentQuestionChoiceQuestionAnswersArgs = {
+  filters?: InputMaybe<ComponentAnswerChoiceAnswerFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentQuestionTextAnswerQuestion = {
+  __typename?: 'ComponentQuestionTextAnswerQuestion';
+  content: Scalars['String'];
+  id: Scalars['ID'];
+  level?: Maybe<Enum_Componentquestiontextanswerquestion_Level>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -65,6 +102,18 @@ export type DateTimeFilterInput = {
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
+
+export enum Enum_Componentquestionchoicequestion_Level {
+  Easy = 'easy',
+  Hard = 'hard',
+  Medium = 'medium'
+}
+
+export enum Enum_Componentquestiontextanswerquestion_Level {
+  Easy = 'easy',
+  Hard = 'hard',
+  Medium = 'medium'
+}
 
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
@@ -96,7 +145,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
