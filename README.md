@@ -20,16 +20,18 @@ Folder structures:
 
 ## Local development
 
-### Start the frontend: 
+### Start the frontend:
 
 ```bash
 npx nx serve frontend-web
 ```
+
 (if you installed nx globally [https://nx.dev/more-concepts/global-nx#installing-nx-globally](https://nx.dev/more-concepts/global-nx#installing-nx-globally))
 
 ```bash
 nx serve frontend-web
 ```
+
 Read more at: [https://nx.dev/packages/next#serving-next.js-applications](https://nx.dev/packages/next#serving-next.js-applications)
 
 ### Start the cms:
@@ -78,6 +80,7 @@ CMS: `http://localhost:{{CMS_PORT}}`<br />
 Web: `http://localhost:{{WEB_PORT}}`<br />
 
 Default web ports
+
 ```
 DB_PORT=5432
 ADMINER_PORT=5433
@@ -86,7 +89,6 @@ REDIS_INSIGHT_PORT=6380
 CMS_PORT=1337
 FE_WEB_PORT=3000
 ```
-
 
 ## Graphical view of workspace
 
@@ -97,6 +99,7 @@ Run `nx graph` to see a diagram of the dependencies of the projects.
 ```bash
 nx g @nrwl/next:lib my-new-lib
 ```
+
 Read more at: [https://nx.dev/packages/next#generating-libraries](https://nx.dev/packages/next#generating-libraries)
 
 ## Run multiple services/package testing
@@ -104,10 +107,15 @@ Read more at: [https://nx.dev/packages/next#generating-libraries](https://nx.dev
 ```bash
 nx run-many --target=test
 ```
+
 Read more at: [https://nx.dev/packages/nx/documents/run-many#run-many](https://nx.dev/packages/nx/documents/run-many#run-many)
 
+## Storybook
 
-## Troubleshot: 
+Link: https://www.chromatic.com/start?inviteToken=1d18a11603d24be795d8862015f232b2&appId=64337ab552933871acec5f96
+
+Preview Url:[https://64337ab552933871acec5f96-qvbkxgytzi.chromatic.com/](https://64337ab552933871acec5f96-qvbkxgytzi.chromatic.com/).
+
+## Troubleshot:
 
 - Wiki - [Troubleshot](https://github.com/xponvn/test-assessment/wiki/Troubleshot)
-
