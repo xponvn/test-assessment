@@ -2,7 +2,10 @@
   "name": "test-assessment",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build-storybook": "npx nx build-storybook frontend-web",
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+  },
   "private": true,
   "dependencies": {
     "next": "13.1.1",
