@@ -4,11 +4,11 @@
 name: Publish to Chromatic
 
 on:
-  pull_request:
+  push:
     branches: [main]
     paths:
-      - 'apps/frontend-web/*'
-      - 'apps/frontend-web/**/*'
+      - apps/frontend-web/**
+      - packages/ui-*/**
 
 jobs:
   chromatic-deployment:
@@ -31,14 +31,3 @@ jobs:
         with:
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-
-      - name: Comment on pull request
-        uses: octokit/request-action@v2.x
-        with:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          route: POST /repos/${{ github.repository }}/issues/${{ github.event.number }}/comments
-          headers: |
-            Authorization: token ${{ secrets.ACCESS_TOKEN }}
-            Accept: application/vnd.github.v3+json
-          body: |
-            "The deployed Storybook is available on Chromatic: ${{ steps.chromatic.outputs.storybookUrl }}"
