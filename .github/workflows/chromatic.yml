@@ -8,7 +8,7 @@ on:
     branches: [main]
     paths:
       - 'apps/frontend-web/*'
-      - 'apps/frontend-web/**'
+      - 'apps/frontend-web/**/*'
 
 jobs:
   chromatic-deployment:
