@@ -1,7 +1,7 @@
 "use client"
 import { UIProvider } from '@test-assessment/ui-theme';
 import '../styles/index.css';
-import themeToken from '../theme-token/token.json';
+import themeToken from '@test-assessment/ui-theme/theme-token/frontend-web.json';
 import RootHeader from './header';
 import { ApiClientProvider } from '@test-assessment/cms-graphql-api';
 import getConfig from 'next/config';
