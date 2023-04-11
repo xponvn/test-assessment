@@ -5,11 +5,10 @@ name: Publish to Chromatic
 
 on:
   push:
-    branches: [bugfix/XDLD-196-setup-chromatic]
+    branches: [main]
     paths:
       - 'apps/frontend-web/**'
       - 'packages/ui-*/**'
-      - '.github/**'
 
 jobs:
   chromatic-deployment:
