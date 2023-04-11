@@ -4,10 +4,10 @@
 name: Publish to Chromatic
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
+    paths:
+      - packages/ui-*/**
 
 jobs:
   chromatic-deployment:
