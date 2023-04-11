@@ -57,9 +57,7 @@ const validateRegisterBody = async (params: RegisterInput, settings: any) => {
     });
 
   if (conflictingUserCount > 0) {
-    throw new ApplicationError(
-      'Username|Email taken - please enter another username|email'
-    );
+    throw new ApplicationError('Email taken - please enter another email');
   }
 
   if (settings.unique_email) {
@@ -70,9 +68,7 @@ const validateRegisterBody = async (params: RegisterInput, settings: any) => {
       });
 
     if (conflictingUserCount > 0) {
-      throw new ApplicationError(
-        'Username|Email taken - please enter another username|email'
-      );
+      throw new ApplicationError('Email taken - please enter another email');
     }
   }
   const role = await strapi
