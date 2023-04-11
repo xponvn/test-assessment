@@ -5,10 +5,11 @@ name: Publish to Chromatic
 
 on:
   push:
-    branches: [main]
+    branches: [bugfix/XDLD-196-setup-chromatic]
     paths:
       - 'apps/frontend-web/**'
       - 'packages/ui-*/**'
+      - '.github/**'
 
 jobs:
   chromatic-deployment:
@@ -43,8 +44,6 @@ jobs:
           EOF
       - name: Commit changes
         run: |
-          git config user.name "fallingforest"
-          git config user.email "lam.vu@xpon.ai"
           git add README.md
           git commit -m "Update Chromatic Url after built"
           git push
