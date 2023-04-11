@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function RootHead() {
-  return (
-    <title>Test Assessment</title>
-  )
+  return <title>Test Assessment !!</title>;
 }
