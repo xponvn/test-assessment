@@ -43,3 +43,4 @@ Thumbs.db
 .next
 .db.env
 apps/frontend-web/.env
+apps/frontend-web/coverage

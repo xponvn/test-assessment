@@ -7,6 +7,9 @@
     "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
   },
   "private": true,
+  "pre-commit": [
+    "yarn"
+  ],
   "dependencies": {
     "next": "13.1.1",
     "react": "18.2.0",

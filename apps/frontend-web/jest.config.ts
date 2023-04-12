@@ -6,6 +6,9 @@ export default {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/next/babel'] }],
   },
+
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/frontend-web',
+  coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
+  collectCoverage: true,
+  coverageReporters: ['clover', 'json', 'lcov', 'text'],
 };
