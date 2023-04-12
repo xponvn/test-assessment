@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "build-storybook": "npx nx build-storybook frontend-web",
-    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
+    "run-yarn": "yarn"
   },
   "private": true,
   "pre-commit": [
-    "yarn"
+    "run-yarn"
   ],
   "dependencies": {
     "next": "13.1.1",
@@ -72,6 +73,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "nx": "15.8.7",
     "postcss": "8.4.21",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
     "storybook-addon-next": "^1.6.6",
