@@ -32,6 +32,8 @@ npx nx serve frontend-web
 nx serve frontend-web
 ```
 
+** Note: You have to run the cms first to make graphql connections works
+
 Read more at: [https://nx.dev/packages/next#serving-next.js-applications](https://nx.dev/packages/next#serving-next.js-applications)
 
 ### Start the cms:
