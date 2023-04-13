@@ -1892,7 +1892,7 @@
     "@graphql-codegen/plugin-helpers" "^4.1.0"
     tslib "~2.5.0"
 
-"@graphql-codegen/cli@^3.2.2":
+"@graphql-codegen/cli@^3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-3.3.0.tgz#12755b6b20b5a24eca7514a6fa00507b61406bef"
   integrity sha512-KRQoAG0stor/ztMsBxHqxnwQzcM1DEZigwzah1LFej8bh6TT1WpUt37zt6PH0EdlMpelmeN3keY4Pq6GMd4ADw==
@@ -12735,6 +12735,16 @@ graphql-playground-middleware-koa@^1.6.21:
   integrity sha512-soVUM76ecq5GHk12H69Ce7afzbYuWWc73oKMOcEkmtAn/G9NUdsNvLjLdCnHQX1V0cOUeSbmcYcrebyBOIYGMQ==
   dependencies:
     graphql-playground-html "^1.6.30"
+
+graphql-request@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-5.1.0.tgz#dbc8feee27d21b993cd5da2d3af67821827b240a"
+  integrity sha512-0OeRVYigVwIiXhNmqnPDt+JhMzsjinxHE7TVy3Lm6jUzav0guVcL0lfSbi6jVTRAxcbwgyr6yrZioSHxf9gHzw==
+  dependencies:
+    "@graphql-typed-document-node/core" "^3.1.1"
+    cross-fetch "^3.1.5"
+    extract-files "^9.0.0"
+    form-data "^3.0.0"
 
 graphql-request@^5.0.0:
   version "5.2.0"
