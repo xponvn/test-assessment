@@ -1,7 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./src",
     "jsx": "react-jsx",
     "allowJs": false,
     "esModuleInterop": false,
@@ -9,5 +7,14 @@
     "strict": true
   },
   "files": [],
-  "include": []
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "extends": "../../tsconfig.base.json"
 }

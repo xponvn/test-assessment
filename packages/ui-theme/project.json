@@ -2,55 +2,5 @@
   "name": "ui-theme",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/ui-theme/src",
-  "projectType": "library",
-  "tags": [],
-  "targets": {
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/ui-theme/**/*.{ts,tsx,js,jsx}"]
-      }
-    },
-    "build": {
-      "executor": "@nrwl/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/ui-theme",
-        "tsConfig": "packages/ui-theme/tsconfig.lib.json",
-        "project": "packages/ui-theme/package.json",
-        "entryFile": "packages/ui-theme/src/index.ts",
-        "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
-        "compiler": "swc",
-        "assets": [
-          {
-            "glob": "packages/ui-theme/README.md",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
-    },
-    "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "packages/ui-theme/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    },
-    "generate": {
-      "executor": "nx:run-script",
-      "options": {
-        "script": "npx tailwindcss -i ./src/input.css -o ./src/output.css "
-      }
-    }
-  }
+  "projectType": "library"
 }

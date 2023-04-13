@@ -1,0 +1,51 @@
+# .github/workflows/chromatic.yml
+
+# Other configuration required
+name: Publish to Chromatic
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/frontend-web/**'
+      - 'packages/ui-*/**'
+
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
+      - name: Install dependencies
+        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+        run: yarn
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      - name: Update README
+        run: |
+          node <<EOF
+          const fs = require('fs');
+          let readme = fs.readFileSync('README.md', 'utf8');
+          readme = readme.replace(/(?<=Preview Url:)(.*)(?=.)/g, '[${{ steps.chromatic.outputs.storybookUrl }}](${{ steps.chromatic.outputs.storybookUrl }})');
+          fs.writeFileSync('README.md', readme);
+          EOF
+      - name: Commit changes
+        run: |
+          git config user.name "fallingforest"
+          git config user.email "lam.vu@xpon.ai"
+          git add README.md
+          git commit -m "Update Chromatic Url after built"
+          git push
+

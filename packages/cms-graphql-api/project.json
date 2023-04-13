@@ -2,5 +2,15 @@
   "name": "cms-graphql-api",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/cms-graphql-api/src",
-  "projectType": "library"
+  "projectType": "library",
+  "targets": {
+    "gen": {
+      "executor": "nx:run-script",
+      "options": {
+        "color": true,
+        "script": "graphql-codegen --require dotenv/config --config codegen.ts",
+        "parallel": false
+      }
+    }
+  }
 }

@@ -1,11 +1,9 @@
-
-import * as styles from '@test-assessment/ui-theme'
 /* eslint-disable-next-line */
 export interface UiExampleComponentProps {}
 
 export function UiExampleComponent(props: UiExampleComponentProps) {
   return (
-    <div >
+    <div>
       <h1>Welcome to UiExampleComponent!</h1>
     </div>
   );
