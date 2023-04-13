@@ -16,7 +16,7 @@ export default {
    */
   register({ strapi }) {
     const extensionService = strapi.service('plugin::graphql.extension');
-    extensionService.use(({ strapi }) => ({
+    extensionService.use(() => ({
       typeDefs: typeDefs,
       resolvers: {
         Mutation: {
@@ -35,5 +35,6 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   bootstrap(/*{ strapi }*/) {},
 };
