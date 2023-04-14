@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render button successfully 1`] = `
+<body>
+  <div>
+    <button
+      class=" undefined"
+    >
+      button
+    </button>
+  </div>
+</body>
+`;
+
+exports[`Button should render link successfully 1`] = `
+<body>
+  <div>
+    <a
+      class=" undefined"
+      href="https://github.com/"
+      target="_blank"
+      title="Github"
+    >
+      link
+    </a>
+  </div>
+</body>
+`;
