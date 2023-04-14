@@ -4,7 +4,7 @@ exports[`Button should render button successfully 1`] = `
 <body>
   <div>
     <button
-      class=" undefined"
+      class=" "
     >
       button
     </button>
@@ -16,7 +16,7 @@ exports[`Button should render link successfully 1`] = `
 <body>
   <div>
     <a
-      class=" undefined"
+      class=" "
       href="https://github.com/"
       target="_blank"
       title="Github"

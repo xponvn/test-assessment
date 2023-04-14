@@ -32,7 +32,7 @@ const buttonClassName: Record<BaseButtonProps['type'], string> = {
 };
 
 export const Button = React.forwardRef((props: ButtonProps, ref) => {
-  const { children, type, className, LeftIcon, RightIcon } = props;
+  const { children, type, className = '', LeftIcon, RightIcon } = props;
 
   if (type === 'link') {
     return (
