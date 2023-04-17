@@ -20,7 +20,7 @@ export default function TestInfo({
     passingScore: yup.string().required(),
   }).required();
 
-  const { control } = useForm({
+  const { control, register } = useForm({
     defaultValues: {
       testName: '',
       position: '',
@@ -33,23 +33,21 @@ export default function TestInfo({
   return (
     <div className="border border-solid border-secondary-base px-6 py-4 w-full">
       <Input
-        name="testName"
-        control={control}
         label="Test name"
         required
+        {...register("testName")}
       />
       <div className="flex items-center mt-2 gap-4">
         <Select
           name="position"
-          control={control}
+          {...register("position")}
           options={options}
           label='Position'
           placeholder=''
           required
         />
         <Input
-          name="levelPosition"
-          control={control}
+          {...register("levelPosition", )}
           label="Level position"
           required
         />
@@ -57,14 +55,12 @@ export default function TestInfo({
 
       <div className="flex items-center mt-2 gap-4">
         <Input
-          name="timeLimit"
-          control={control}
+          {...register("timeLimit")}
           label="Set time limit (mins)"
           required
         />
         <Select
-          name="passingScore"
-          control={control}
+          {...register("passingScore")}
           options={options}
           placeholder=''
           label='Passing score (Percentage %)'

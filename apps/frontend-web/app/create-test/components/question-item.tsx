@@ -1,24 +1,25 @@
 "use client"
-import React, { useState } from 'react'
-import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import Input from './input';
-import RadioButtonGroup, { RadioButtonGroupOption } from './radio-button-group';
+import * as yup from "yup";
 import { RenderIcon } from '../icons';
-import RadioButton from './radio-button';
 import Checkbox from './checkbox';
+import Input from './input';
+import RadioButton from './radio-button';
+import RadioButtonGroup from './radio-button-group';
 
 export default function QuestionItem() {
+  const [answerType, setAnswerType] = useState<string>('SingleChoice')
   const answersSchema = {
-    answer: yup.string().required(),
-    isCorrect: yup.boolean().required()
+    content: yup.string().required("Required field."),
   };
 
   const schema = yup.object({
     name: yup.string().required(),
     difficulty: yup.string().required(),
     type: yup.string().required(),
+    correctAnswer: answerType === "SingleChoice" ? yup.string().required("Required field.") : yup.array().typeError("Required field.").of(yup.string()).required("Required field.").min(1),
     answers: yup
       .array()
       .of(yup.object().shape(answersSchema))
@@ -26,12 +27,13 @@ export default function QuestionItem() {
       .min(1, "Minimum of 1 field")
   }).required();
 
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, watch, register, setValue, getValues, formState: { errors }, } = useForm({
     defaultValues: {
       name: '',
       difficulty: 'Easy',
-      type: 'MultipleChoice',
-      answers: [{ answer: '', isCorrect: true }]
+      type: 'SingleChoice',
+      answers: [{ content: '' }],
+      correctAnswer: answerType === "SingleChoice" ? "" : []
     },
     resolver: yupResolver(schema),
     mode: "onChange"
@@ -49,9 +51,9 @@ export default function QuestionItem() {
 
   const optionsDifficulty = [{ label: "Easy", value: "Easy" }, { label: "Medium", value: "Medium" }, { label: "Hard", value: "Hard" },];
   const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
-  const [answerType, setAnswerType] = useState<string>('MultipleChoice')
   const onChangeTypeOfAnswer = (value: string) => {
-    setAnswerType(value)
+    setAnswerType(value);
+    setValue("correctAnswer", value === "SingleChoice" ? "" : [])
   };
 
   return (
@@ -63,27 +65,27 @@ export default function QuestionItem() {
           <div className="px-6 py-4">
             <p className="text-13 leading-20 font-bold">Question 1<span className="text-neutral-placeholder text-13 leading-20 font-normal">({1} point)</span></p>
             <Input
-              name="name"
-              control={control}
               className="mt-2"
+              {...register("name")}
+              error={errors?.name?.message}
             />
 
             <RadioButtonGroup
               label="Difficulty"
-              name="difficulty"
-              control={control}
               options={optionsDifficulty}
               className="mt-4"
+              {...register("difficulty")}
+              error={errors.difficulty?.message}
             />
           </div>
 
           <div className="px-6 py-4 bg-white border-t border-solid border-neutral-divider">
             <RadioButtonGroup
               label="Type of answer"
-              name="type"
-              control={control}
               options={optionsTypeAnswer}
-              onChange={onChangeTypeOfAnswer}
+              onClick={(value) => onChangeTypeOfAnswer(value)}
+              {...register("type")}
+              error={errors.type?.message}
             />
 
             {answerType !== "FreeText" && <>
@@ -95,22 +97,21 @@ export default function QuestionItem() {
                       <div className="flex">
                         <div className="w-[427px] mr-4">
                           <Input
-                            name={`answers.${index}.answer`}
-                            control={control}
+                            {...register(`answers.${index}.content`)}
+                            error={errors?.['answers']?.[index]?.['content']?.['message']}
                           />
                         </div>
                         <div className="flex items-center">
                           {answerType === "SingleChoice" ? <RadioButton
-                            name={`answers.${index}.isCorrect`}
-                            groupName="answer-group-123"
-                            control={control}
-                            item={{ label: "Correct", value: "false" }}
-                          /> : <Checkbox
-                            name={`answers.${index}.isCorrect`}
-                            groupName="answer-group"
-                            control={control}
-                            item={{ label: "Correct", value: "true" }}
-                          />}
+                            item={{ label: 'Correct', value: `answer-${index}` }}
+                            {...register("correctAnswer")}
+                            error={errors.correctAnswer?.message}
+                          /> :
+                            <Checkbox
+                              item={{ label: 'Correct', value: `answer-${index}` }}
+                              {...register("correctAnswer")}
+                              error={errors.correctAnswer?.message}
+                            />}
                           <button className="ml-2" type="button" onClick={() => remove(index)}>
                             <RenderIcon name="delete" className="!w-4 !h-4 text-error-base" />
                           </button>
@@ -124,20 +125,18 @@ export default function QuestionItem() {
               <button
                 type="button"
                 className="flex items-center text-14 leading-[22px] text-primary-clicked cursor-pointer mt-6"
-                onClick={() => append({ answer: '', isCorrect: false })}
+                onClick={() => append({ content: '' })}
               >
                 <RenderIcon name="plus" /> Add Answer
               </button>
             </>}
           </div>
 
-
           <div className='px-6 py-4 border-t border-solid border-neutral-divider flex items-center justify-end gap-4'>
             <button type="button" className="outline-none text-13 leading-24 text-error-base font-medium py-2 px-4">Delete</button>
             <button type="submit" className="outline-none bg-primary-base border border-solid border-primary-base text-neutral-text-primary text-13 leading-24 font-medium py-2 px-4">Save</button>
           </div>
         </div>
-
       </form>
     </div>
   )
