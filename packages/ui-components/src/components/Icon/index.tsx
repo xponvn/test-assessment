@@ -1,5 +1,16 @@
 import { paths } from './paths';
 
+export const getIconNames = (type?: 'stroke' | 'fill') => {
+  if (!type) {
+    return Object.keys(paths).filter((name) => {
+      return paths[name].isColor;
+    });
+  }
+  return Object.keys(paths).filter((name) => {
+    return paths[name].type === type && !paths[name].isColor;
+  });
+};
+
 interface Props {
   name: string;
   width: number;
@@ -11,16 +22,14 @@ interface Props {
 
 export const Icon = ({
   name,
-  width,
-  height,
+  width = 24,
+  height = 24,
   viewBox = '0 0 24 24',
-  color,
+  color = 'currentColor',
   onClick,
 }: Props) => {
   const svgStyle =
-    paths[name].type === 'stroke'
-      ? { stroke: 'currentColor', fill: 'none' }
-      : { fill: 'currentColor' };
+    paths[name].type === 'stroke' ? { fill: 'none' } : { fill: 'currentColor' };
 
   return (
     <div className={`inline-block ${color}`} onClick={onClick}>
