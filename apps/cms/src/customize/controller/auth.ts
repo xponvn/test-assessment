@@ -1,5 +1,4 @@
 import { getService } from '@strapi/plugin-users-permissions/server/utils';
-import * as Strapi from '@strapi/strapi';
 import utils from '@strapi/utils';
 import { omit, pick } from 'lodash';
 
