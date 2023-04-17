@@ -39,8 +39,9 @@
     },
     "position": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::position.position"
+      "relation": "manyToOne",
+      "target": "api::position.position",
+      "inversedBy": "tests"
     }
   }
 }
