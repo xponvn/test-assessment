@@ -11,3 +11,20 @@
 .radio-input:checked ~ .radio-input-temp .radio-input-circle {
   opacity: 1;
 }
+
+.checkbox-input-term {
+  background: var(--color-neutral-white);
+}
+
+.checkbox-input:checked ~ .checkbox-input-term {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.checkbox-input-icon {
+  opacity: 0;
+}
+
+.checkbox-input:checked ~ .checkbox-input-term  .checkbox-input-icon {
+  opacity: 1;
+}

@@ -2,6 +2,7 @@ import { CSSProperties, FC } from 'react';
 import QA from './qa';
 import Delete from './delete';
 import Plus from './plus';
+import Check from './check';
 
 export type IconProps = {
   className?: string;
@@ -16,6 +17,7 @@ export type IconName =
   | 'qa'
   | 'delete'
   | 'plus'
+  | 'check'
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -28,6 +30,9 @@ export const Icons: IconsType = {
   },
   plus: (props: IconProps) => {
     return <Plus {...props} />;
+  },
+  check: (props: IconProps) => {
+    return <Check {...props} />;
   },
 };
 

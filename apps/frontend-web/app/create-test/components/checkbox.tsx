@@ -2,20 +2,21 @@
 import clsx from 'clsx';
 import React from 'react'
 import { Controller } from 'react-hook-form';
+import { RenderIcon } from '../icons';
 
-export type RadioButtonOption = { label: string, value: string }
-export type RadioButtonProps = {
+export type CheckboxOption = { label: string, value: string }
+export type CheckboxProps = {
   required?: boolean;
   label?: string;
   name: string;
   groupName?: string;
-  item: RadioButtonOption
+  item: CheckboxOption
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: any;
   className?: string;
 }
 
-export default function RadioButton({
+export default function Checkbox({
   name,
   groupName,
   required,
@@ -23,7 +24,7 @@ export default function RadioButton({
   control,
   item,
   className
-}: RadioButtonProps) {
+}: CheckboxProps) {
   return (
     <div className={clsx("flex flex-col w-full", className)}>
       {label && <p
@@ -37,12 +38,12 @@ export default function RadioButton({
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const errorField: any = errors;
           const errorMss = errorField[`${name}`]?.message;
-          console.log("field?.value:", field?.value)
+          
           return (<>
             <div className="flex items-center">
-              <input hidden checked={String(field?.value) === String(item.value)} className="radio-input cursor-pointer" {...field} type="radio" id={name} name={groupName} value={item.value} />
-              <label htmlFor={name} className="radio-input-temp border border-solid border-neutral-border w-4 h-4 rounded-full flex items-center justify-center">
-                <div className="radio-input-circle w-2 h-2 rounded-full"></div>
+              <input hidden checked={String(field?.value) === String(item.value)} className="checkbox-input cursor-pointer" {...field} type="checkbox" id={name} name={groupName} value={item.value} />
+              <label htmlFor={name} className="checkbox-input-term border border-solid border-neutral-border w-4 h-4 flex items-center justify-center bg-success rounded-[2px]">
+                <RenderIcon name="check" className="checkbox-input-icon text-white" />
               </label>
               <label className="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2" htmlFor={name}>{item.label}</label>
             </div>

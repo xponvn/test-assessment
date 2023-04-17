@@ -1,12 +1,13 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useFieldArray, useForm } from 'react-hook-form';
 import Input from './input';
-import RadioButtonGroup from './radio-button-group';
+import RadioButtonGroup, { RadioButtonGroupOption } from './radio-button-group';
 import { RenderIcon } from '../icons';
 import RadioButton from './radio-button';
+import Checkbox from './checkbox';
 
 export default function QuestionItem() {
   const answersSchema = {
@@ -28,11 +29,12 @@ export default function QuestionItem() {
   const { handleSubmit, control } = useForm({
     defaultValues: {
       name: '',
-      difficulty: '',
-      type: '',
-      answers: [{ answer: '', isCorrect: false }]
+      difficulty: 'Easy',
+      type: 'MultipleChoice',
+      answers: [{ answer: '', isCorrect: true }]
     },
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    mode: "onChange"
   });
 
   const { fields, remove, append } = useFieldArray({
@@ -47,6 +49,10 @@ export default function QuestionItem() {
 
   const optionsDifficulty = [{ label: "Easy", value: "Easy" }, { label: "Medium", value: "Medium" }, { label: "Hard", value: "Hard" },];
   const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
+  const [answerType, setAnswerType] = useState<string>('MultipleChoice')
+  const onChangeTypeOfAnswer = (value: string) => {
+    setAnswerType(value)
+  };
 
   return (
     <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
@@ -77,43 +83,52 @@ export default function QuestionItem() {
               name="type"
               control={control}
               options={optionsTypeAnswer}
+              onChange={onChangeTypeOfAnswer}
             />
 
-            <div className="mt-6 grid grid-cols-1 gap-2">
-              {fields.map((item, index) => {
-                return (
-                  <div key={item.id}>
-                    <p className="text-neutral-text-primary text-13 leading-20 mb-2">Answer</p>
-                    <div className="flex">
-                      <div className="w-[427px] mr-4">
-                        <Input
-                          name={`answers.${index}.answer`}
-                          control={control}
-                        />
-                      </div>
-                      <div className="flex items-center">
-                        <RadioButton
-                          name={`answers.${index}.isCorrect`}
-                          control={control}
-                          item={{ label: "Correct", value: "false" }}
-                        />
-                        <button className="ml-2" type="button" onClick={() => remove(index)}>
-                          <RenderIcon name="delete" className="!w-4 !h-4 text-error-base" />
-                        </button>
+            {answerType !== "FreeText" && <>
+              <div className="mt-6 grid grid-cols-1 gap-2">
+                {fields.map((item, index) => {
+                  return (
+                    <div key={item.id}>
+                      <p className="text-neutral-text-primary text-13 leading-20 mb-2">Answer {index + 1}</p>
+                      <div className="flex">
+                        <div className="w-[427px] mr-4">
+                          <Input
+                            name={`answers.${index}.answer`}
+                            control={control}
+                          />
+                        </div>
+                        <div className="flex items-center">
+                          {answerType === "SingleChoice" ? <RadioButton
+                            name={`answers.${index}.isCorrect`}
+                            groupName="answer-group-123"
+                            control={control}
+                            item={{ label: "Correct", value: "false" }}
+                          /> : <Checkbox
+                            name={`answers.${index}.isCorrect`}
+                            groupName="answer-group"
+                            control={control}
+                            item={{ label: "Correct", value: "true" }}
+                          />}
+                          <button className="ml-2" type="button" onClick={() => remove(index)}>
+                            <RenderIcon name="delete" className="!w-4 !h-4 text-error-base" />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
 
-            </div>
-            <button
-              type="button"
-              className="flex items-center text-14 leading-[22px] text-primary-clicked cursor-pointer mt-6"
-              onClick={() => append({ answer: '', isCorrect: false })}
-            >
-              <RenderIcon name="plus" /> Add Answer
-            </button>
+              <button
+                type="button"
+                className="flex items-center text-14 leading-[22px] text-primary-clicked cursor-pointer mt-6"
+                onClick={() => append({ answer: '', isCorrect: false })}
+              >
+                <RenderIcon name="plus" /> Add Answer
+              </button>
+            </>}
           </div>
 
 

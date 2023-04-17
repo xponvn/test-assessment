@@ -12,6 +12,7 @@ export type RadioButtonGroupProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   control: any;
   className?: string;
+  onChange?: (value: string) => void;
 }
 
 export default function RadioButtonGroup({
@@ -20,9 +21,10 @@ export default function RadioButtonGroup({
   label,
   control,
   options,
-  className
+  className,
+  onChange
 }: RadioButtonGroupProps) {
-  console.log("control:", control)
+  
   return (
     <div className={clsx("flex flex-col w-full", className)}>
       <p
@@ -42,7 +44,7 @@ export default function RadioButtonGroup({
               const errorMss = errorField[`${name}`]?.message;
               return (<>
                 <div key={index} className="flex items-center">
-                  <input hidden checked={field?.value === item.value} className="radio-input cursor-pointer" {...field} type="radio" id={`${name}_${index}`} value={item.value} />
+                  <input onClick={() => onChange && onChange(item.value)} hidden checked={field?.value === item.value} className="radio-input cursor-pointer" {...field} type="radio" id={`${name}_${index}`} value={item.value} />
                   <label htmlFor={`${name}_${index}`} className="radio-input-temp border border-solid border-neutral-border w-4 h-4 rounded-full flex items-center justify-center">
                     <div className="radio-input-circle w-2 h-2 rounded-full"></div>
                   </label>
