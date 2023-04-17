@@ -44,6 +44,12 @@
       "required": true,
       "min": 1,
       "default": 1
+    },
+    "candidates": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::candidate.candidate",
+      "mappedBy": "tests"
     }
   }
 }
