@@ -17,7 +17,7 @@
     "@strapi/plugin-i18n": "^4.8.2",
     "@strapi/plugin-users-permissions": "^4.8.2",
     "@strapi/strapi": "^4.8.2",
-    "@strapi/provider-email-sendgrid": "^3.3.4",
+    "@strapi/provider-email-sendgrid": "^4.9.1",
     "pg": "^8.10.0",
     "strapi-plugin-redis": "^1.0.1",
     "strapi-plugin-rest-cache": "^4.2.7",
