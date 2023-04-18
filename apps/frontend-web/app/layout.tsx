@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { UIProvider } from '@test-assessment/ui-theme';
 import '../styles/index.css';
 import themeToken from '@test-assessment/ui-theme/theme-token/frontend-web.json';
@@ -9,7 +9,7 @@ import getConfig from 'next/config';
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   const { publicRuntimeConfig } = getConfig();
 
@@ -22,5 +22,5 @@ export default function RootLayout({
         </UIProvider>
       </ApiClientProvider>
     </html>
-  )
+  );
 }
