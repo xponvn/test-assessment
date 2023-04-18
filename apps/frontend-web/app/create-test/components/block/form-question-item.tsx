@@ -1,22 +1,30 @@
 "use client"
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as yup from "yup";
-import { RenderIcon } from '../icons';
-import Checkbox from './checkbox';
-import Input from './input';
-import RadioButton from './radio-button';
-import RadioButtonGroup from './radio-button-group';
+import { RenderIcon } from '../../icons';
+import Checkbox from '../form-base/checkbox';
+import Input from '../form-base/input';
+import RadioButton from '../form-base/radio-button';
+import RadioButtonGroup from '../form-base/radio-button-group';
+import { QuestionDifficulty, QuestionItemType, QuestionType } from '../../utils/type';
+import { getPoint } from '../../utils/helper';
 
-export default function QuestionItem() {
+export type QuestionItemProps = {
+  onSaveQuestion: (data: QuestionItemType) => void;
+  isReset: boolean;
+  questionIndex: number
+};
+
+export default function FormQuestionItem({ onSaveQuestion, isReset, questionIndex }: QuestionItemProps) {
   const [answerType, setAnswerType] = useState<string>('SingleChoice')
   const answersSchema = {
     content: yup.string().required("Required field."),
   };
 
   const schema = yup.object({
-    name: yup.string().required(),
+    content: yup.string().required(),
     difficulty: yup.string().required(),
     type: yup.string().required(),
     correctAnswer: answerType === "SingleChoice" ? yup.string().required("Required field.") : yup.array().typeError("Required field.").of(yup.string()).required("Required field.").min(1),
@@ -27,47 +35,53 @@ export default function QuestionItem() {
       .min(1, "Minimum of 1 field")
   }).required();
 
-  const { handleSubmit, control, watch, register, setValue, getValues, formState: { errors }, } = useForm({
+  const schemaFreeText = yup.object({
+    content: yup.string().required(),
+    difficulty: yup.string().required(),
+    type: yup.string().required()
+  }).required();
+
+  const { handleSubmit, control, register, setValue, formState: { errors }, reset, getValues } = useForm<QuestionItemType>({
     defaultValues: {
-      name: '',
-      difficulty: 'Easy',
-      type: 'SingleChoice',
+      content: '',
+      difficulty: QuestionDifficulty.Easy,
+      type: QuestionType.SingleChoice,
       answers: [{ content: '' }],
       correctAnswer: answerType === "SingleChoice" ? "" : []
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(answerType === QuestionType.FreeText ? schemaFreeText : schema),
     mode: "onChange"
   });
 
   const { fields, remove, append } = useFieldArray({
-    control, // control props comes from useForm (optional: if you are using FormContext)
-    name: "answers", // unique name for your Field Array
+    control,
+    name: "answers",
   });
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => {
-    console.log("data:", data)
-  };
 
   const optionsDifficulty = [{ label: "Easy", value: "Easy" }, { label: "Medium", value: "Medium" }, { label: "Hard", value: "Hard" },];
   const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
   const onChangeTypeOfAnswer = (value: string) => {
     setAnswerType(value);
-    setValue("correctAnswer", value === "SingleChoice" ? "" : [])
+    setValue("correctAnswer", value === "SingleChoice" ? "" : []);
   };
+
+  useEffect(() => {
+    console.log("isReset:", isReset)
+    reset()
+  }, [isReset]);
 
   return (
     <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+      <form onSubmit={handleSubmit(onSaveQuestion)} className="w-full">
         <div
           style={{ filter: "drop-shadow(5px 5px 0px #983795)" }}
           className="bg-neutral-table-header border border-solid border-neutral-divider mt-4">
           <div className="px-6 py-4">
-            <p className="text-13 leading-20 font-bold">Question 1<span className="text-neutral-placeholder text-13 leading-20 font-normal">({1} point)</span></p>
+            <p className="text-13 leading-20 font-bold">Question {questionIndex}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(getValues("difficulty"))} point)</span></p>
             <Input
               className="mt-2"
-              {...register("name")}
-              error={errors?.name?.message}
+              {...register("content")}
+              error={errors?.content?.message}
             />
 
             <RadioButtonGroup

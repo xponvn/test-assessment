@@ -3,6 +3,7 @@ import QA from './qa';
 import Delete from './delete';
 import Plus from './plus';
 import Check from './check';
+import Edit from './edit';
 
 export type IconProps = {
   className?: string;
@@ -18,6 +19,7 @@ export type IconName =
   | 'delete'
   | 'plus'
   | 'check'
+  | 'edit'
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -33,6 +35,9 @@ export const Icons: IconsType = {
   },
   check: (props: IconProps) => {
     return <Check {...props} />;
+  },
+  edit: (props: IconProps) => {
+    return <Edit {...props} />;
   },
 };
 

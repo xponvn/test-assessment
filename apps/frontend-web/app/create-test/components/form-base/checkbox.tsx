@@ -1,6 +1,6 @@
 "use client"
 import clsx from 'clsx';
-import { RenderIcon } from '../icons';
+import { RenderIcon } from '../../icons';
 import { LegacyRef } from 'react';
 import React from 'react';
 
@@ -21,7 +21,6 @@ export type CheckboxProps = React.DetailedHTMLProps<
 const Checkbox = React.forwardRef((props: CheckboxProps, ref: LegacyRef<HTMLInputElement>) => {
   const { label, required, item, className, checked, error, ...reset } = props;
 
-  console.log("checked:", checked)
   return (
     <div className={clsx("flex flex-col w-full", className)}>
       {label && <p

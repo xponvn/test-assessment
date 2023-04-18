@@ -1,5 +1,5 @@
-import Input from './input';
-import Select, { SelectOption } from './select';
+import Input from '../form-base/input';
+import Select, { SelectOption } from '../form-base/select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
@@ -20,7 +20,7 @@ export default function TestInfo({
     passingScore: yup.string().required(),
   }).required();
 
-  const { control, register } = useForm({
+  const { register } = useForm({
     defaultValues: {
       testName: '',
       position: '',
