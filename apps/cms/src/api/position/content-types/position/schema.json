@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "positions",
+  "info": {
+    "singularName": "position",
+    "pluralName": "positions",
+    "displayName": "Position"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::test.test",
+      "mappedBy": "position"
+    }
+  }
+}
