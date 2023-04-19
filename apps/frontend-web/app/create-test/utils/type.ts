@@ -1,9 +1,12 @@
-export type TestItem = {
+export type TestInfoType = {
   name: string;
   position: string;
   levelPosition: string;
   timeLimit: string;
   passingScore: string;
+}
+
+export interface TestItem extends TestInfoType  {
   questions: QuestionItemType[]
 }
 

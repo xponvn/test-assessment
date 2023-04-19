@@ -3,16 +3,16 @@
 import React, { createContext, useCallback, useState } from "react";
 import { QuestionDifficulty, QuestionItemType, QuestionType, TestItem } from "./type";
 
-export type CreateTestContext = {
+export type QuestionContext = {
   test: TestItem;
-  questions: QuestionItemType[];
-  isSaveQuestion: boolean;
-  saveQuestion: (_question: Partial<QuestionItemType>) => void;
   setTest: (_test: Partial<TestItem>) => void;
-  setIsSaveQuestion: (value: boolean) => void;
+
+  questions: QuestionItemType[];
+  addQuestion: (_question: Partial<QuestionItemType>, _isEdit?: boolean, _index?: number) => void;
+  deleteQuestion: (_index: number) => void;
 };
 
-const initState: CreateTestContext = {
+const initState: QuestionContext = {
   test: {
     name: '',
     position: '',
@@ -21,21 +21,9 @@ const initState: CreateTestContext = {
     passingScore: '',
     questions: []
   },
-  isSaveQuestion: false,
-  questions: [],
-  saveQuestion: (_question: Partial<QuestionItemType>) => { },
   setTest: (_test: Partial<TestItem>) => { },
-  setIsSaveQuestion: (_value: boolean) => { }
-}
 
-const CreateContext = createContext<CreateTestContext>(initState);
-
-export type CreateTestProps = {
-  children: JSX.Element | React.ReactNode;
-};
-
-export function CreateTestProvider(props: CreateTestProps) {
-  const [questions, setQuestionsState] = useState<QuestionItemType[]>([{
+  questions: [{
     content: "Bells lean sandwich intersection decisions close meaningful ui and lot?",
     correctAnswer: "answer-0",
     difficulty: QuestionDifficulty.Easy,
@@ -46,30 +34,53 @@ export function CreateTestProvider(props: CreateTestProps) {
       { content: "Our join domains optimize roll we've teeth container." },
       { content: "Hands territories we then later looking buy-in alpha sandwich." },
     ]
-  }]);
-  const [isSaveQuestion, setIsSaveQuestionSate] = useState<boolean>(false);
-  const [test, setTestState] = useState<TestItem>(initState.test);
+  }],
+  addQuestion: (_question: Partial<QuestionItemType>, _isEdit?: boolean, _index?: number,) => { },
+  deleteQuestion: (_index: number) => { }
+}
 
-  const saveQuestion = useCallback((newQuestion: QuestionItemType) => {
+const CreateContext = createContext<QuestionContext>(initState);
+
+export type QuestionProps = {
+  children: JSX.Element | React.ReactNode;
+};
+
+export function QuestionProvider(props: QuestionProps) {
+  const [test, setTestState] = useState<TestItem>(initState.test);
+  const [questions, setQuestionsState] = useState<QuestionItemType[]>([]);
+
+  const addQuestion = useCallback((newQuestion: QuestionItemType, isEdit?: boolean, index?: number) => {
     const newQuestions = [...questions];
-    newQuestions.push(newQuestion);
+    if (!isEdit) newQuestions.push(newQuestion);
+    // update question at location index
+    if (index !== undefined && isEdit) {
+      newQuestions.splice(index, 1, newQuestion)
+    }
     setQuestionsState(newQuestions);
-    setIsSaveQuestionSate(true)
-  }, []);
+  }, [questions]);
+
+  const deleteQuestion = useCallback((index: number) => {
+    const newQuestions = [...questions];
+    newQuestions.splice(index, 1);
+    setQuestionsState(newQuestions);
+  }, [questions]);
 
   const setTest = useCallback((newTest: Partial<TestItem>) => {
-    setTestState((test) => ({ ...test, newTest }));
+    setTestState((test) => ({ ...test, ...newTest }));
   }, []);
 
-  const setIsSaveQuestion = (value: boolean) => {
-    setIsSaveQuestionSate(value)
-  }
-
   return (
-    <CreateContext.Provider value={{ questions, test, saveQuestion, setTest, isSaveQuestion, setIsSaveQuestion }}>
+    <CreateContext.Provider value={{
+      test,
+      setTest,
+
+      questions,
+      addQuestion,
+      deleteQuestion
+    }}>
       {props.children}
     </CreateContext.Provider>
   );
 }
 
-export const useCreateTest = () => React.useContext(CreateContext);
+export const useQuestion = () => React.useContext(CreateContext);
