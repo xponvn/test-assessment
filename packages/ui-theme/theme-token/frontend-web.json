@@ -71,7 +71,22 @@
       "_13": "13px",
       "_12": "12px",
       "_10": "10px",
-      "_8": "8px"
+      "_8": "8px",
+      "h1": ["48px", "64px"],
+      "h2": ["40px", "56px"],
+      "h3": ["36px", "56px"],
+      "h4": ["32px", "48px"],
+      "h5": ["28px", "40px"],
+      "title1": ["24px", "32px"],
+      "title2": ["20px", "24px"],
+      "title3": ["18px", "24px"],
+      "subhead1": ["20px", "24px"],
+      "subhead2": ["13px", "24px"],
+      "body1": ["15px", "24px"],
+      "body2": ["13px", "24px"],
+      "caption1": ["12px", "16px"],
+      "caption2": ["10px", "16px"],
+      "caption3": ["8px", "12px"]
     },
     "font": {
       "primary": "'Roboto', sans-serif"
@@ -80,7 +95,5 @@
       "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     ]
   },
-  "twConfig": {
-
-  }
+  "twConfig": {}
 }

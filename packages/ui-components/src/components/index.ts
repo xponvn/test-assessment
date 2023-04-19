@@ -1,2 +1,3 @@
 export * from './button/button';
-export * from './Icon';
+export * from './icon';
+export * from './table';

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Icon } from './Icon';
+import { Icon } from '.';
 import { UIProvider } from '@test-assessment/ui-theme';
 import themeToken from '@test-assessment/ui-theme/theme-token/frontend-web.json';
 
