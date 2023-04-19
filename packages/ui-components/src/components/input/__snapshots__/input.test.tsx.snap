@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render input successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="space-y-2"
+    >
+      <div
+        class="relative w-fit	border-[1px] p-3 pr-3 text-15 leading-6 font-normal font-primary border-neutral-border placeholder-neutral-border"
+      >
+        <input
+          aria-invalid="false"
+          class="focus:outline-none"
+          style="width: 300px;"
+          type="text"
+          value="this is value"
+        />
+      </div>
+      <div
+        class="opacity-0"
+      />
+    </div>
+  </div>
+</body>
+`;
