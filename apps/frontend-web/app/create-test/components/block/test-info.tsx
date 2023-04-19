@@ -1,18 +1,20 @@
-import Input from '../form-base/input';
-import Select, { SelectOption } from '../form-base/select';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
-import { TestInfoType, useQuestion } from '../../utils';
+import { TestInfoType } from '../../utils';
+import Input from '../form-base/input';
+import Select, { SelectOption } from '../form-base/select';
 
+const passingOptions = [{ label: "80%", value: "80" }, { label: "70%", value: "70" }, { label: "60%", value: "60" }, { label: "50%", value: "50" },];
 export type TestInfoProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  options: SelectOption[]
+  otpPositions: SelectOption[];
+  onSaveAsDraft: (data: TestInfoType) => void;
 }
 export default function TestInfo({
-  options
+  otpPositions,
+  onSaveAsDraft
 }: TestInfoProps) {
-  const { setTest, questions } = useQuestion();
   const schema = yup.object({
     name: yup.string().required("Required field."),
     position: yup.string().required("Required field."),
@@ -26,16 +28,11 @@ export default function TestInfo({
       name: '',
       position: '',
       levelPosition: '',
-      timeLimit: '',
-      passingScore: '',
+      timeLimit: 0,
+      passingScore: "80",
     },
     resolver: yupResolver(schema)
   });
-
-  const onSaveForm = (data: TestInfoType) => {
-    if(!questions || questions.length <= 0) return alert('Question must be greater than or equal to 1.')
-    setTest({...data, questions: questions })
-  }
 
   return (
     <form className="border border-solid border-secondary-base px-6 py-4 w-full">
@@ -49,7 +46,7 @@ export default function TestInfo({
         <Select
           name="position"
           {...register("position")}
-          options={options}
+          options={otpPositions}
           label='Position'
           placeholder=''
           required
@@ -72,14 +69,14 @@ export default function TestInfo({
         />
         <Select
           {...register("passingScore")}
-          options={options}
+          options={passingOptions}
           placeholder=''
           label='Passing score (Percentage %)'
           required
           error={errors?.passingScore?.message}
         />
       </div>
-      <button hidden id="btn-test-info" onClick={handleSubmit(onSaveForm)} type="submit">Submit</button>
+      <button hidden id="btn-test-info" onClick={handleSubmit(onSaveAsDraft)} type="submit">Submit</button>
     </form>
   )
 }

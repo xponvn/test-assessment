@@ -1,4 +1,3 @@
-"use client"
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
@@ -11,7 +10,7 @@ import RadioButtonGroup from '../form-base/radio-button-group';
 import { QuestionDifficulty, QuestionItemType, QuestionType, getPoint } from '../../utils';
 
 // INPUT OPTION
-const optionsDifficulty = [{ label: "Easy", value: "Easy" }, { label: "Medium", value: "Medium" }, { label: "Hard", value: "Hard" },];
+const optionsDifficulty = [{ label: "Easy", value: QuestionDifficulty.Easy }, { label: "Medium", value: QuestionDifficulty.Medium }, { label: "Hard", value: QuestionDifficulty.Hard },];
 const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
 
 export type QuestionItemProps = {
@@ -96,7 +95,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
           style={{ filter: "drop-shadow(5px 5px 0px #983795)" }}
           className="bg-neutral-table-header border border-solid border-neutral-divider mt-4">
           <div className="px-6 py-4">
-            <p className="text-13 leading-20 font-bold">Question {questionIndex + 1}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(questionDif)} point)</span></p>
+            <p className="text-13 leading-20 font-bold">Question {questionIndex ? (questionIndex + 1) : 1}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(questionDif)} point)</span></p>
             <Input
               className="mt-2"
               {...register("content")}

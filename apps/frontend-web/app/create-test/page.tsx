@@ -5,23 +5,43 @@ import QuestionItem from './components/block/question-item';
 import TestInfo from './components/block/test-info';
 import { RenderIcon } from './icons';
 import './styles/style.css';
-import { useQuestion } from './utils';
+import { TestInfoType, transformQuestion, useQuestion } from './utils';
 import clsx from 'clsx';
+import { TestInput } from '@test-assessment/cms-graphql-api';
 
 export default function CreateTest() {
-  const options = [{ label: "Intern", value: "Intern" }, { label: "Fresher", value: "Fresher" }, { label: "Junior", value: "Junior" }, { label: "Mid", value: "Mid" }, { label: "Senior", value: "Senior" }]
+  const otpPositions = [{ label: "Intern", value: "Intern" }, { label: "Fresher", value: "Fresher" }, { label: "Junior", value: "Junior" }, { label: "Mid", value: "Mid" }, { label: "Senior", value: "Senior" }]
   const {
+    setTest,
     questions,
     addQuestion,
     deleteQuestion
   } = useQuestion();
   const [indexQuestionEdit, setIndexQuestionEdit] = useState<number>();
   
+  const onSaveAsDraft = (data: TestInfoType) => {
+    if(!questions || questions.length <= 0) return alert('Question must be greater than or equal to 1.')
+    setTest({...data, questions: questions });
+    const newData = transformData(data);
+  }
+  
+  const transformData = (data: TestInfoType): TestInput => {
+    const questionsTransform = transformQuestion(questions);
+    return {
+      passingScore: Number(data.passingScore),
+      position: data.position,
+      timeLimit: Number(data.timeLimit),
+      title: data.name,
+      questions: questionsTransform
+    }
+  }
+  
   return (
     <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
       {/** TEST INFO */}
       <TestInfo
-        options={options}
+        otpPositions={otpPositions}
+        onSaveAsDraft={onSaveAsDraft}
       />
 
       {/** QUESTION */}

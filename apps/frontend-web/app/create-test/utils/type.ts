@@ -2,7 +2,7 @@ export type TestInfoType = {
   name: string;
   position: string;
   levelPosition: string;
-  timeLimit: string;
+  timeLimit: number;
   passingScore: string;
 }
 
@@ -21,9 +21,9 @@ export type QuestionItemType = {
 }
 
 export enum QuestionDifficulty {
-  Easy = 'Easy',
-  Medium = 'Medium',
-  Hard = 'Hard',
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
 }
 
 export enum QuestionType {
