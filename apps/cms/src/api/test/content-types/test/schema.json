@@ -32,14 +32,14 @@
     "questions": {
       "type": "dynamiczone",
       "components": [
-        "question.question",
-        "question.choice-question"
+        "question.choice-question",
+        "question.text-answer-question"
       ],
       "required": true
     },
-    "position": {
+    "positions": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::position.position",
       "inversedBy": "tests"
     }

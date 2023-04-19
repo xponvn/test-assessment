@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { UIProvider } from '@test-assessment/ui-theme';
 import '../styles/index.css';
 import themeToken from '@test-assessment/ui-theme/theme-token/frontend-web.json';
@@ -10,13 +10,17 @@ const { publicRuntimeConfig } = getConfig() || {};
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-
   return (
     <html lang="en">
       <body>
-        <ApiClientProvider apiUrl={publicRuntimeConfig?.graphqlApiUrl}>
+        <ApiClientProvider
+          apiUrl={
+            publicRuntimeConfig?.graphqlApiUrl ??
+            process.env.NEXT_PUBLIC_GRAPHQL_API_URL
+          }
+        >
           <UIProvider config={themeToken.variants}>
             <RootHeader />
             {children}
@@ -24,5 +28,5 @@ export default function RootLayout({
         </ApiClientProvider>
       </body>
     </html>
-  )
+  );
 }

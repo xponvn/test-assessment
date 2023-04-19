@@ -4,7 +4,8 @@
   "info": {
     "singularName": "position",
     "pluralName": "positions",
-    "displayName": "Position"
+    "displayName": "Position",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,9 +19,9 @@
     },
     "tests": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::test.test",
-      "mappedBy": "position"
+      "mappedBy": "positions"
     }
   }
 }
