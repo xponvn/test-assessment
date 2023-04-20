@@ -12,6 +12,12 @@ export const Button = () => (
   <ButtonComponent {...mockButtonProps['button']}>button</ButtonComponent>
 );
 
+export const FullWidthButton = () => (
+  <ButtonComponent {...mockButtonProps['button']} block>
+    button
+  </ButtonComponent>
+);
+
 export const Link = () => (
   <ButtonComponent {...mockButtonProps['link']}>link</ButtonComponent>
 );

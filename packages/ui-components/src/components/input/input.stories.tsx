@@ -30,3 +30,7 @@ export const Error = () => (
     label="Error"
   />
 );
+
+export const FullWidthInput = () => (
+  <InputComponent placeholder="Type something" label="Text" block />
+);

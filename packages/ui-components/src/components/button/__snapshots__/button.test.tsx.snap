@@ -4,7 +4,7 @@ exports[`Button should render button successfully 1`] = `
 <body>
   <div>
     <button
-      class="px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 "
+      class="px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 text-center  inline-block"
     >
       button
     </button>
