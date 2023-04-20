@@ -12,7 +12,7 @@ export interface TestItem extends TestInfoType  {
 
 export type QuestionItemType = {
   content: string;
-  difficulty: QuestionDifficulty;
+  level: QuestionLevel;
   type: QuestionType;
   correctAnswer: string | string[];
   answers: {
@@ -20,7 +20,7 @@ export type QuestionItemType = {
   }[]
 }
 
-export enum QuestionDifficulty {
+export enum QuestionLevel {
   Easy = 'easy',
   Medium = 'medium',
   Hard = 'hard',

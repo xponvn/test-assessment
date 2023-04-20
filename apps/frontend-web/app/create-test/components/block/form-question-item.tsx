@@ -7,10 +7,10 @@ import Checkbox from '../form-base/checkbox';
 import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
-import { QuestionDifficulty, QuestionItemType, QuestionType, getPoint } from '../../utils';
+import { QuestionLevel, QuestionItemType, QuestionType, getPoint } from '../../utils';
 
 // INPUT OPTION
-const optionsDifficulty = [{ label: "Easy", value: QuestionDifficulty.Easy }, { label: "Medium", value: QuestionDifficulty.Medium }, { label: "Hard", value: QuestionDifficulty.Hard },];
+const optionsDifficulty = [{ label: "Easy", value: QuestionLevel.Easy }, { label: "Medium", value: QuestionLevel.Medium }, { label: "Hard", value: QuestionLevel.Hard },];
 const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
 
 export type QuestionItemProps = {
@@ -22,7 +22,7 @@ export type QuestionItemProps = {
 
 export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionIndex, data }: QuestionItemProps) {
   const [questionType, setQuestionType] = useState<QuestionType>(QuestionType.SingleChoice);
-  const [questionDif, setQuestionDif] = useState<QuestionDifficulty>(QuestionDifficulty.Easy);
+  const [questionDif, setQuestionDif] = useState<QuestionLevel>(QuestionLevel.Easy);
 
   // Form schema
   const answersSchema = {
@@ -31,7 +31,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
 
   const schema = yup.object({
     content: yup.string().required(),
-    difficulty: yup.string().required(),
+    level: yup.string().required(),
     type: yup.string().required(),
     correctAnswer: questionType === "SingleChoice" ? yup.string().required("Required field.") : yup.array().typeError("Required field.").of(yup.string()).required("Required field.").min(1),
     answers: yup
@@ -43,7 +43,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
 
   const schemaFreeText = yup.object({
     content: yup.string().required(),
-    difficulty: yup.string().required(),
+    level: yup.string().required(),
     type: yup.string().required()
   }).required();
 
@@ -51,7 +51,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
   const { handleSubmit, control, register, setValue, formState: { errors }, reset } = useForm<QuestionItemType>({
     defaultValues: {
       content: '',
-      difficulty: QuestionDifficulty.Easy,
+      level: QuestionLevel.Easy,
       type: QuestionType.SingleChoice,
       answers: [{ content: '' }, { content: '' }],
       correctAnswer: questionType === "SingleChoice" ? "" : [],
@@ -72,8 +72,8 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
     setValue("correctAnswer", value === "SingleChoice" ? "" : []);
   };
 
-  const onChangeQuestionDifficulty = (value: string) => {
-    setQuestionDif(value as QuestionDifficulty)
+  const onChangeQuestionLevel = (value: string) => {
+    setQuestionDif(value as QuestionLevel)
   }
 
   useEffect(() => {
@@ -84,7 +84,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
   useEffect(() => {
     if(data) {
       setQuestionType(data.type);
-      setQuestionDif(data.difficulty)
+      setQuestionDif(data.level)
     }
   }, [data]);
 
@@ -106,9 +106,9 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
               label="Difficulty"
               options={optionsDifficulty}
               className="mt-4"
-              {...register("difficulty")}
-              error={errors.difficulty?.message}
-              onClick={(value) => onChangeQuestionDifficulty(value)}
+              {...register("level")}
+              error={errors.level?.message}
+              onClick={(value) => onChangeQuestionLevel(value)}
             />
           </div>
 

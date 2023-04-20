@@ -1,8 +1,8 @@
-import { QuestionDifficulty, QuestionItemType, QuestionType } from './type';
+import { QuestionLevel, QuestionItemType, QuestionType } from './type';
 
-export const getPoint = (difficulty: QuestionDifficulty) => {
-  if (difficulty === QuestionDifficulty.Easy) return 1;
-  if (difficulty === QuestionDifficulty.Medium) return 2;
+export const getPoint = (level: QuestionLevel) => {
+  if (level === QuestionLevel.Easy) return 1;
+  if (level === QuestionLevel.Medium) return 2;
   return 3;
 };
 
@@ -23,15 +23,23 @@ export const getAnswerCorrect = (
   return (correctAnswer as string[]).map((item) => Number(item.split('-')[1]));
 };
 
+export const getTotalPoint = (questions: QuestionItemType[]) => {
+  let total = 0;
+  questions.map(item => {
+    total += getPoint(item.level)
+  });
+  return total;
+};
+
 export const transformQuestion = (items: QuestionItemType[]) => {
   
   return items.map(item => {
-    if(item.type === QuestionType.FreeText) return { level: item.difficulty };
+    if(item.type === QuestionType.FreeText) return { content: item.content, level: item.level };
     const answers = transformAnswers(item.answers, item.correctAnswer, item.type);
-    console.log("answers:", answers)
+
     return {
       content: item.content,
-      level: item.difficulty,
+      level: item.level,
       answers: answers
     }
   })

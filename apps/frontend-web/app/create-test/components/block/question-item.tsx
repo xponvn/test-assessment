@@ -13,7 +13,7 @@ export type QuestionItemProps = {
   onDelete?: (index: number) => void;
 }
 export default function QuestionItem({ data, index, className, onEdit, onDelete }: QuestionItemProps) {
-  const { difficulty, content, answers, type, correctAnswer } = data;
+  const { level, content, answers, type, correctAnswer } = data;
 
   return (
     <div className={clsx("border border-solid border-neutral-divider w-full", className)}>
@@ -22,8 +22,8 @@ export default function QuestionItem({ data, index, className, onEdit, onDelete 
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <p className="text-neutral-text-primary text-13 font-medium leading-24">Question {index + 1}</p>
-            <span className="text-neutral-placeholder text-13 leading-20 mx-1">({getPoint(difficulty)} point)</span>
-            <DifficultyTag difficulty={difficulty} />
+            <span className="text-neutral-placeholder text-13 leading-20 mx-1">({getPoint(level)} point)</span>
+            <DifficultyTag difficulty={level} />
           </div>
           <div className="flex items-center">
             <span
