@@ -6,6 +6,7 @@ export const getStyle = (uiConfig: UIConfig) => {
   const fontSize = uiConfig.fontSize;
   const lineHeight = uiConfig.lineHeight;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let configStyle: any = {
     // --- COLOR ---
     // Primary Color

@@ -1,15 +1,18 @@
-export type TestItem = {
+export type TestInfoType = {
   name: string;
   position: string;
   levelPosition: string;
-  timeLimit: string;
+  timeLimit: number;
   passingScore: string;
+}
+
+export interface TestItem extends TestInfoType  {
   questions: QuestionItemType[]
 }
 
 export type QuestionItemType = {
   content: string;
-  difficulty: QuestionDifficulty;
+  level: QuestionLevel;
   type: QuestionType;
   correctAnswer: string | string[];
   answers: {
@@ -17,10 +20,10 @@ export type QuestionItemType = {
   }[]
 }
 
-export enum QuestionDifficulty {
-  Easy = 'Easy',
-  Medium = 'Medium',
-  Hard = 'Hard',
+export enum QuestionLevel {
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
 }
 
 export enum QuestionType {

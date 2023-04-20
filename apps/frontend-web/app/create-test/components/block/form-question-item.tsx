@@ -1,4 +1,3 @@
-"use client"
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
@@ -8,26 +7,33 @@ import Checkbox from '../form-base/checkbox';
 import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
-import { QuestionDifficulty, QuestionItemType, QuestionType } from '../../utils/type';
-import { getPoint } from '../../utils/helper';
+import { QuestionLevel, QuestionItemType, QuestionType, getPoint } from '../../utils';
+
+// INPUT OPTION
+const optionsDifficulty = [{ label: "Easy", value: QuestionLevel.Easy }, { label: "Medium", value: QuestionLevel.Medium }, { label: "Hard", value: QuestionLevel.Hard },];
+const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
 
 export type QuestionItemProps = {
-  onSaveQuestion: (data: QuestionItemType) => void;
-  isReset: boolean;
-  questionIndex: number
+  onSaveForm: (data: QuestionItemType) => void;
+  onDeleteForm: () => void;
+  questionIndex: number;
+  data?: QuestionItemType
 };
 
-export default function FormQuestionItem({ onSaveQuestion, isReset, questionIndex }: QuestionItemProps) {
-  const [answerType, setAnswerType] = useState<string>('SingleChoice')
+export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionIndex, data }: QuestionItemProps) {
+  const [questionType, setQuestionType] = useState<QuestionType>(QuestionType.SingleChoice);
+  const [questionDif, setQuestionDif] = useState<QuestionLevel>(QuestionLevel.Easy);
+
+  // Form schema
   const answersSchema = {
     content: yup.string().required("Required field."),
   };
 
   const schema = yup.object({
     content: yup.string().required(),
-    difficulty: yup.string().required(),
+    level: yup.string().required(),
     type: yup.string().required(),
-    correctAnswer: answerType === "SingleChoice" ? yup.string().required("Required field.") : yup.array().typeError("Required field.").of(yup.string()).required("Required field.").min(1),
+    correctAnswer: questionType === "SingleChoice" ? yup.string().required("Required field.") : yup.array().typeError("Required field.").of(yup.string()).required("Required field.").min(1),
     answers: yup
       .array()
       .of(yup.object().shape(answersSchema))
@@ -37,47 +43,59 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
 
   const schemaFreeText = yup.object({
     content: yup.string().required(),
-    difficulty: yup.string().required(),
+    level: yup.string().required(),
     type: yup.string().required()
   }).required();
 
-  const { handleSubmit, control, register, setValue, formState: { errors }, reset, getValues } = useForm<QuestionItemType>({
+  // React hook form
+  const { handleSubmit, control, register, setValue, formState: { errors }, reset } = useForm<QuestionItemType>({
     defaultValues: {
       content: '',
-      difficulty: QuestionDifficulty.Easy,
+      level: QuestionLevel.Easy,
       type: QuestionType.SingleChoice,
-      answers: [{ content: '' }],
-      correctAnswer: answerType === "SingleChoice" ? "" : []
+      answers: [{ content: '' }, { content: '' }],
+      correctAnswer: questionType === "SingleChoice" ? "" : [],
+      ...data
     },
-    resolver: yupResolver(answerType === QuestionType.FreeText ? schemaFreeText : schema),
+    resolver: yupResolver(questionType === QuestionType.FreeText ? schemaFreeText : schema),
     mode: "onChange"
   });
 
+  // Answer array field
   const { fields, remove, append } = useFieldArray({
     control,
     name: "answers",
   });
 
-  const optionsDifficulty = [{ label: "Easy", value: "Easy" }, { label: "Medium", value: "Medium" }, { label: "Hard", value: "Hard" },];
-  const optionsTypeAnswer = [{ label: "Single choice", value: "SingleChoice" }, { label: "Multiple choice", value: "MultipleChoice" }, { label: "Free text", value: "FreeText" },];
   const onChangeTypeOfAnswer = (value: string) => {
-    setAnswerType(value);
+    setQuestionType(value as QuestionType);
     setValue("correctAnswer", value === "SingleChoice" ? "" : []);
   };
 
+  const onChangeQuestionLevel = (value: string) => {
+    setQuestionDif(value as QuestionLevel)
+  }
+
   useEffect(() => {
-    console.log("isReset:", isReset)
     reset()
-  }, [isReset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questionIndex]);
+
+  useEffect(() => {
+    if(data) {
+      setQuestionType(data.type);
+      setQuestionDif(data.level)
+    }
+  }, [data]);
 
   return (
-    <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
-      <form onSubmit={handleSubmit(onSaveQuestion)} className="w-full">
+    <div className="flex flex-col items-center w-[600px] mx-auto">
+      <form onSubmit={handleSubmit(onSaveForm)} className="w-full">
         <div
           style={{ filter: "drop-shadow(5px 5px 0px #983795)" }}
           className="bg-neutral-table-header border border-solid border-neutral-divider mt-4">
           <div className="px-6 py-4">
-            <p className="text-13 leading-20 font-bold">Question {questionIndex}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(getValues("difficulty"))} point)</span></p>
+            <p className="text-13 leading-20 font-bold">Question {questionIndex ? (questionIndex + 1) : 1}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(questionDif)} point)</span></p>
             <Input
               className="mt-2"
               {...register("content")}
@@ -88,8 +106,9 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
               label="Difficulty"
               options={optionsDifficulty}
               className="mt-4"
-              {...register("difficulty")}
-              error={errors.difficulty?.message}
+              {...register("level")}
+              error={errors.level?.message}
+              onClick={(value) => onChangeQuestionLevel(value)}
             />
           </div>
 
@@ -97,12 +116,12 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
             <RadioButtonGroup
               label="Type of answer"
               options={optionsTypeAnswer}
-              onClick={(value) => onChangeTypeOfAnswer(value)}
               {...register("type")}
               error={errors.type?.message}
+              onClick={(value) => onChangeTypeOfAnswer(value)}
             />
 
-            {answerType !== "FreeText" && <>
+            {questionType !== "FreeText" && <>
               <div className="mt-6 grid grid-cols-1 gap-2">
                 {fields.map((item, index) => {
                   return (
@@ -116,7 +135,7 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
                           />
                         </div>
                         <div className="flex items-center">
-                          {answerType === "SingleChoice" ? <RadioButton
+                          {questionType === "SingleChoice" ? <RadioButton
                             item={{ label: 'Correct', value: `answer-${index}` }}
                             {...register("correctAnswer")}
                             error={errors.correctAnswer?.message}
@@ -126,9 +145,9 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
                               {...register("correctAnswer")}
                               error={errors.correctAnswer?.message}
                             />}
-                          <button className="ml-2" type="button" onClick={() => remove(index)}>
+                          {fields.length > 2 && <button className="ml-2" type="button" onClick={() => remove(index)}>
                             <RenderIcon name="delete" className="!w-4 !h-4 text-error-base" />
-                          </button>
+                          </button>}
                         </div>
                       </div>
                     </div>
@@ -147,7 +166,7 @@ export default function FormQuestionItem({ onSaveQuestion, isReset, questionInde
           </div>
 
           <div className='px-6 py-4 border-t border-solid border-neutral-divider flex items-center justify-end gap-4'>
-            <button type="button" className="outline-none text-13 leading-24 text-error-base font-medium py-2 px-4">Delete</button>
+            <button onClick={() => onDeleteForm()} type="button" className="outline-none text-13 leading-24 text-error-base font-medium py-2 px-4">Delete</button>
             <button type="submit" className="outline-none bg-primary-base border border-solid border-primary-base text-neutral-text-primary text-13 leading-24 font-medium py-2 px-4">Save</button>
           </div>
         </div>

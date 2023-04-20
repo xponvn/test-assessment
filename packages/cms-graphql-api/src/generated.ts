@@ -15,6 +15,8 @@ export type Scalars = {
   Float: number;
   DateTime: any;
   JSON: any;
+  TestQuestionsDynamicZoneInput: any;
+  Time: any;
   Upload: any;
 };
 
@@ -72,6 +74,11 @@ export type ComponentQuestionChoiceQuestionAnswersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+export type ComponentQuestionQuestion = {
+  __typename?: 'ComponentQuestionQuestion';
+  id: Scalars['ID'];
+};
+
 export type ComponentQuestionTextAnswerQuestion = {
   __typename?: 'ComponentQuestionTextAnswerQuestion';
   content: Scalars['String'];
@@ -115,6 +122,12 @@ export enum Enum_Componentquestiontextanswerquestion_Level {
   Medium = 'medium'
 }
 
+export type Error = {
+  __typename?: 'Error';
+  code: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -145,7 +158,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | Position | Test | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -259,12 +272,16 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createPosition?: Maybe<PositionEntityResponse>;
+  createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deletePosition?: Maybe<PositionEntityResponse>;
+  deleteTest?: Maybe<TestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -283,6 +300,8 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateFileInfo: UploadFileEntityResponse;
+  updatePosition?: Maybe<PositionEntityResponse>;
+  updateTest?: Maybe<TestEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -297,6 +316,16 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
+};
+
+
+export type MutationCreatePositionArgs = {
+  data: PositionInput;
+};
+
+
+export type MutationCreateTestArgs = {
+  data: TestInput;
 };
 
 
@@ -317,6 +346,16 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeletePositionArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteTestArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -364,7 +403,7 @@ export type MutationMultipleUploadArgs = {
 
 
 export type MutationRegisterArgs = {
-  input: UsersPermissionsRegisterInput;
+  input: UsersPermissionsRegisterInputCustom;
 };
 
 
@@ -383,6 +422,18 @@ export type MutationResetPasswordArgs = {
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdatePositionArgs = {
+  data: PositionInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateTestArgs = {
+  data: TestInput;
+  id: Scalars['ID'];
 };
 
 
@@ -433,11 +484,72 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>;
 };
 
+export type Position = {
+  __typename?: 'Position';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  tests?: Maybe<TestRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type PositionTestsArgs = {
+  filters?: InputMaybe<TestFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type PositionEntity = {
+  __typename?: 'PositionEntity';
+  attributes?: Maybe<Position>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type PositionEntityResponse = {
+  __typename?: 'PositionEntityResponse';
+  data?: Maybe<PositionEntity>;
+};
+
+export type PositionEntityResponseCollection = {
+  __typename?: 'PositionEntityResponseCollection';
+  data: Array<PositionEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type PositionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<PositionFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<PositionFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<PositionFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  tests?: InputMaybe<TestFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type PositionInput = {
+  name?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  tests?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+};
+
+export enum PublicationState {
+  Live = 'LIVE',
+  Preview = 'PREVIEW'
+}
+
 export type Query = {
   __typename?: 'Query';
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
+  position?: Maybe<PositionEntityResponse>;
+  positions?: Maybe<PositionEntityResponseCollection>;
+  test?: Maybe<TestEntityResponse>;
+  tests?: Maybe<TestEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -457,6 +569,32 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryPositionArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryPositionsArgs = {
+  filters?: InputMaybe<PositionFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryTestArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryTestsArgs = {
+  filters?: InputMaybe<TestFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -535,6 +673,89 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type Test = {
+  __typename?: 'Test';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  passingScore: Scalars['Float'];
+  position?: Maybe<PositionEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  questions: Array<Maybe<TestQuestionsDynamicZone>>;
+  timeLimit: Scalars['Time'];
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type TestEntity = {
+  __typename?: 'TestEntity';
+  attributes?: Maybe<Test>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type TestEntityResponse = {
+  __typename?: 'TestEntityResponse';
+  data?: Maybe<TestEntity>;
+};
+
+export type TestEntityResponseCollection = {
+  __typename?: 'TestEntityResponseCollection';
+  data: Array<TestEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type TestFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<TestFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
+  passingScore?: InputMaybe<FloatFilterInput>;
+  position?: InputMaybe<PositionFiltersInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  timeLimit?: InputMaybe<TimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type TestInput = {
+  passingScore?: InputMaybe<Scalars['Float']>;
+  position?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  questions?: InputMaybe<Array<Scalars['TestQuestionsDynamicZoneInput']>>;
+  timeLimit?: InputMaybe<Scalars['Time']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type TestQuestionsDynamicZone = ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | Error;
+
+export type TestRelationResponseCollection = {
+  __typename?: 'TestRelationResponseCollection';
+  data: Array<TestEntity>;
+};
+
+export type TimeFilterInput = {
+  and?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
+  between?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
+  contains?: InputMaybe<Scalars['Time']>;
+  containsi?: InputMaybe<Scalars['Time']>;
+  endsWith?: InputMaybe<Scalars['Time']>;
+  eq?: InputMaybe<Scalars['Time']>;
+  eqi?: InputMaybe<Scalars['Time']>;
+  gt?: InputMaybe<Scalars['Time']>;
+  gte?: InputMaybe<Scalars['Time']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
+  lt?: InputMaybe<Scalars['Time']>;
+  lte?: InputMaybe<Scalars['Time']>;
+  ne?: InputMaybe<Scalars['Time']>;
+  not?: InputMaybe<TimeFilterInput>;
+  notContains?: InputMaybe<Scalars['Time']>;
+  notContainsi?: InputMaybe<Scalars['Time']>;
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
+  notNull?: InputMaybe<Scalars['Boolean']>;
+  null?: InputMaybe<Scalars['Boolean']>;
+  or?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
+  startsWith?: InputMaybe<Scalars['Time']>;
 };
 
 export type UploadFile = {
@@ -771,7 +992,8 @@ export type UsersPermissionsPermissionRelationResponseCollection = {
   data: Array<UsersPermissionsPermissionEntity>;
 };
 
-export type UsersPermissionsRegisterInput = {
+export type UsersPermissionsRegisterInputCustom = {
+  confirmPassword: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
   username: Scalars['String'];
@@ -910,12 +1132,28 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type CreateTestMutationVariables = Exact<{
+  data: TestInput;
+}>;
+
+
+export type CreateTestMutation = { __typename?: 'Mutation', createTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null } | null } | null };
+
 export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
 
+export const CreateTestDocument = gql`
+    mutation createTest($data: TestInput!) {
+  createTest(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const GetI18NLocalesDocument = gql`
     query getI18NLocales {
   i18NLocales {
@@ -937,6 +1175,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
+    },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');
     }
