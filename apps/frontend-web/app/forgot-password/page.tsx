@@ -1,6 +1,7 @@
+'use client';
 import React from 'react';
 import { UiModuleLayoutAuth } from '@test-assessment/ui-module-layout-auth';
-import { Input } from '@test-assessment/ui-components';
+import { Input, Button } from '@test-assessment/ui-components';
 
 export default function Home() {
   return (
@@ -10,8 +11,15 @@ export default function Home() {
         Please confirm your email address below then we will send you a
         verification code.
       </p>
-      <form>
-        <Input label="Email"></Input>
+      <form className="mt-20">
+        <Input label="Email" className="w-full"></Input>
+        <Button
+          className="mt-12 w-full"
+          onClick={() => console.log('submit')}
+          type="button"
+        >
+          CONTINUE
+        </Button>
       </form>
     </UiModuleLayoutAuth>
   );
