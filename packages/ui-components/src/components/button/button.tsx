@@ -6,6 +6,7 @@ interface BaseButtonProps {
   LeftIcon?: React.ComponentType<any>;
   RightIcon?: React.ComponentType<any>;
   className?: string;
+  block?: boolean;
 }
 
 interface NormalButtonProps extends BaseButtonProps {
@@ -28,7 +29,7 @@ const iconClassName = '';
 // TODO: apply design
 const buttonClassName: Record<BaseButtonProps['type'], string> = {
   button:
-    'px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6',
+    'px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 text-center',
   link: 'text-primary-base font-normal font-primary text-15 leading-6',
 };
 
@@ -58,7 +59,9 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
     <button
       // @ts-expect-error due to unknown type of ref
       ref={ref}
-      className={`${buttonClassName[type]} ${className}`}
+      className={`${buttonClassName[type]} ${className} ${
+        props.block ? 'block w-full' : 'inline-block'
+      }`}
       onClick={props.onClick}
     >
       {LeftIcon && <LeftIcon className={iconClassName} />}

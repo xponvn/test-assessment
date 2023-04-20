@@ -7,7 +7,7 @@ exports[`Button should render input successfully 1`] = `
       class="space-y-2"
     >
       <div
-        class="relative w-fit	border-[1px] p-3 pr-3 text-15 leading-6 font-normal font-primary border-neutral-border placeholder-neutral-border"
+        class="relative text-15 leading-6 font-normal font-primary border-[1px] p-3 pr-3 w-fit border-neutral-border placeholder-neutral-border"
       >
         <input
           aria-invalid="false"

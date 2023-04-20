@@ -9,11 +9,19 @@ export interface InputProps
   label?: string;
   error?: string;
   width?: number;
+  block?: boolean;
 }
 
 export const Input = React.forwardRef(
   (
-    { label, error = '', type = 'text', width = 200, ...props }: InputProps,
+    {
+      label,
+      error = '',
+      type = 'text',
+      width = 200,
+      block = false,
+      ...props
+    }: InputProps,
     ref
   ) => {
     const [currentType, setCurrentType] = React.useState(type);
@@ -30,9 +38,9 @@ export const Input = React.forwardRef(
         )}
 
         <div
-          className={`relative w-fit	border-[1px] p-3 ${
+          className={`relative text-15 leading-6 font-normal font-primary border-[1px] p-3 ${
             type === 'password' ? 'pr-12' : 'pr-3'
-          } text-15 leading-6 font-normal font-primary ${
+          } ${block ? 'w-full' : 'w-fit'} ${
             error
               ? 'border-error-border bg-error-bg'
               : 'border-neutral-border placeholder-neutral-border'
@@ -50,7 +58,7 @@ export const Input = React.forwardRef(
             className="focus:outline-none"
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${props.name}-error` : undefined}
-            style={{ ...props.style, width: width + 'px' }}
+            style={{ ...props.style, width: block ? '100%' : width + 'px' }}
           />
           {type === 'password' && (
             <button
