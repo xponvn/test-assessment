@@ -23,7 +23,7 @@ export const Icon = ({
       : { fill: 'currentColor' };
 
   return (
-    <div className={color} onClick={onClick}>
+    <div className={`inline-block ${color}`} onClick={onClick}>
       <svg
         width={width}
         height={height}

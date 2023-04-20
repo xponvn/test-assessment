@@ -104,14 +104,14 @@ export default function Page() {
                   type="link"
                   href="/forgot-password"
                   title="Forgot your password"
-                  RightIcon={() => (
+                  RightIcon={
                     <Icon
                       name="arrowRight"
                       width={24}
                       height={24}
                       color="text-primary-placeholder"
                     />
-                  )}
+                  }
                 >
                   Forgot your password
                 </Button>
