@@ -3,8 +3,8 @@ import * as React from 'react';
 interface BaseButtonProps {
   type: 'button' | 'link';
   children: React.ReactNode;
-  LeftIcon?: React.ComponentType<any>;
-  RightIcon?: React.ComponentType<any>;
+  LeftIcon?: React.ReactNode;
+  RightIcon?: React.ReactNode;
   className?: string;
   block?: boolean;
 }
@@ -24,13 +24,10 @@ interface LinkButtonProps extends BaseButtonProps {
 export type ButtonProps = NormalButtonProps | LinkButtonProps;
 
 // TODO: apply design
-const iconClassName = '';
-
-// TODO: apply design
 const buttonClassName: Record<BaseButtonProps['type'], string> = {
   button:
-    'px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 text-center',
-  link: 'text-primary-base font-normal font-primary text-15 leading-6',
+    'items-center justify-center px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 space-x-2',
+  link: 'inline-flex items-center justify-center space-x-2 text-primary-base font-normal font-primary text-15 leading-6',
 };
 
 export const Button = React.forwardRef((props: ButtonProps, ref) => {
@@ -46,11 +43,9 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
         title={props.title}
         target={props.target || '_blank'}
       >
-        {LeftIcon && <LeftIcon className={iconClassName} />}
-
-        {children}
-
-        {RightIcon && <RightIcon className={iconClassName} />}
+        {Boolean(LeftIcon) && LeftIcon}
+        <span>{children}</span>
+        {Boolean(RightIcon) && RightIcon}
       </a>
     );
   }
@@ -60,15 +55,13 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
       // @ts-expect-error due to unknown type of ref
       ref={ref}
       className={`${buttonClassName[type]} ${className} ${
-        props.block ? 'block w-full' : 'inline-block'
+        props.block ? 'w-full flex' : 'inline-flex'
       }`}
       onClick={props.onClick}
     >
-      {LeftIcon && <LeftIcon className={iconClassName} />}
-
-      {children}
-
-      {RightIcon && <RightIcon className={iconClassName} />}
+      {Boolean(LeftIcon) && LeftIcon}
+      <span>{children}</span>
+      {Boolean(RightIcon) && RightIcon}
     </button>
   );
 });
