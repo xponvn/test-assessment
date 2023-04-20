@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 "use client"
 import React, { createContext, useCallback, useState } from "react";
-import { QuestionDifficulty, QuestionItemType, QuestionType, TestItem } from "./type";
+import { QuestionLevel, QuestionItemType, QuestionType, TestItem } from "./type";
 
 export type QuestionContext = {
   test: TestItem;
   setTest: (_test: Partial<TestItem>) => void;
 
   questions: QuestionItemType[];
-  addQuestion: (_question: Partial<QuestionItemType>, _isEdit?: boolean, _index?: number) => void;
+  addQuestion: (_question: Partial<QuestionItemType>, _index?: number) => void;
   deleteQuestion: (_index: number) => void;
 };
 
@@ -17,7 +17,7 @@ const initState: QuestionContext = {
     name: '',
     position: '',
     levelPosition: '',
-    timeLimit: '',
+    timeLimit: 0,
     passingScore: '',
     questions: []
   },
@@ -26,7 +26,7 @@ const initState: QuestionContext = {
   questions: [{
     content: "Bells lean sandwich intersection decisions close meaningful ui and lot?",
     correctAnswer: "answer-0",
-    difficulty: QuestionDifficulty.Easy,
+    level: QuestionLevel.Easy,
     type: QuestionType.SingleChoice,
     answers: [
       { content: "Sop alpha shark horse assassin with options individual." },
@@ -35,11 +35,11 @@ const initState: QuestionContext = {
       { content: "Hands territories we then later looking buy-in alpha sandwich." },
     ]
   }],
-  addQuestion: (_question: Partial<QuestionItemType>, _isEdit?: boolean, _index?: number,) => { },
+  addQuestion: (_question: Partial<QuestionItemType>, _index?: number,) => { },
   deleteQuestion: (_index: number) => { }
 }
 
-const CreateContext = createContext<QuestionContext>(initState);
+const QuestionContext = createContext<QuestionContext>(initState);
 
 export type QuestionProps = {
   children: JSX.Element | React.ReactNode;
@@ -49,13 +49,15 @@ export function QuestionProvider(props: QuestionProps) {
   const [test, setTestState] = useState<TestItem>(initState.test);
   const [questions, setQuestionsState] = useState<QuestionItemType[]>([]);
 
-  const addQuestion = useCallback((newQuestion: QuestionItemType, isEdit?: boolean, index?: number) => {
+  const addQuestion = useCallback((newQuestion: QuestionItemType, index?: number) => {
     const newQuestions = [...questions];
-    if (!isEdit) newQuestions.push(newQuestion);
-    // update question at location index
-    if (index !== undefined && isEdit) {
-      newQuestions.splice(index, 1, newQuestion)
-    }
+    // if (!isEdit) newQuestions.push(newQuestion);
+    // // update question at location index
+    // if (index !== undefined && isEdit) {
+    //   newQuestions.splice(index, 1, newQuestion)
+    // }
+    if (index >= 0 && index < questions.length) newQuestions.splice(index, 1, newQuestion)
+    else newQuestions.push(newQuestion)
     setQuestionsState(newQuestions);
   }, [questions]);
 
@@ -70,7 +72,7 @@ export function QuestionProvider(props: QuestionProps) {
   }, []);
 
   return (
-    <CreateContext.Provider value={{
+    <QuestionContext.Provider value={{
       test,
       setTest,
 
@@ -79,8 +81,8 @@ export function QuestionProvider(props: QuestionProps) {
       deleteQuestion
     }}>
       {props.children}
-    </CreateContext.Provider>
+    </QuestionContext.Provider>
   );
 }
 
-export const useQuestion = () => React.useContext(CreateContext);
+export const useQuestion = () => React.useContext(QuestionContext);

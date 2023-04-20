@@ -50,7 +50,7 @@ export default function CreateTest() {
           return <div key={index}>
             {index === indexQuestionEdit ? <FormQuestionItem
               onSaveForm={(data) => {
-                addQuestion(data, true, index);
+                addQuestion(data, index);
                 setIndexQuestionEdit(-1)
               }}
               questionIndex={indexQuestionEdit}
