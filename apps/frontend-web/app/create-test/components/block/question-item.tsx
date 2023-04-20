@@ -7,10 +7,12 @@ import clsx from 'clsx';
 
 export type QuestionItemProps = {
   data: QuestionItemType;
-  id: number;
+  index: number;
   className?: string;
+  onEdit?: (index: number) => void;
+  onDelete?: (index: number) => void;
 }
-export default function QuestionItem({ data, id, className }: QuestionItemProps) {
+export default function QuestionItem({ data, index, className, onEdit, onDelete }: QuestionItemProps) {
   const { difficulty, content, answers, type, correctAnswer } = data;
 
   return (
@@ -19,13 +21,21 @@ export default function QuestionItem({ data, id, className }: QuestionItemProps)
       <div className="px-6 py-4 bg-neutral-table-header">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <p className="text-neutral-text-primary text-13 font-medium leading-24">Question {id + 1}</p>
+            <p className="text-neutral-text-primary text-13 font-medium leading-24">Question {index + 1}</p>
             <span className="text-neutral-placeholder text-13 leading-20 mx-1">({getPoint(difficulty)} point)</span>
             <DifficultyTag difficulty={difficulty} />
           </div>
           <div className="flex items-center">
-            <span className="border border-solid border-primary-base cursor-pointer text-primary-base rounded-[2px] w-6 h-6 flex items-center justify-center mr-2"><RenderIcon name="edit" /></span>
-            <span className="cursor-pointer text-error-base flex w-6 h-6 items-center justify-center"><RenderIcon name="delete" /></span>
+            <span
+              onClick={() => onEdit && onEdit(index)}
+              className="border border-solid border-primary-base cursor-pointer text-primary-base rounded-[2px] w-6 h-6 flex items-center justify-center mr-2">
+              <RenderIcon name="edit" />
+            </span>
+            <span
+              onClick={() => onDelete && onDelete(index)}
+              className="cursor-pointer text-error-base flex w-6 h-6 items-center justify-center">
+              <RenderIcon name="delete" />
+            </span>
           </div>
         </div>
         <p className="mt-2 text-15 font-medium leading-6 text-neutral-text-primary">{content}</p>
