@@ -4,7 +4,7 @@ exports[`Button should render button successfully 1`] = `
 <body>
   <div>
     <button
-      class=" "
+      class="px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 "
     >
       button
     </button>
@@ -16,7 +16,7 @@ exports[`Button should render link successfully 1`] = `
 <body>
   <div>
     <a
-      class=" "
+      class="text-primary-base font-normal font-primary text-15 leading-6 "
       href="https://github.com/"
       target="_blank"
       title="Github"

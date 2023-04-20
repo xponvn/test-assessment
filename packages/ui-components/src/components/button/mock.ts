@@ -4,7 +4,7 @@ export const mockButtonProps: Record<ButtonProps['type'], ButtonProps> = {
   button: {
     type: 'button',
     children: 'button',
-    onClick: () => console.log('hello world'),
+    onClick: () => alert('hello world'),
   },
   link: {
     type: 'link',

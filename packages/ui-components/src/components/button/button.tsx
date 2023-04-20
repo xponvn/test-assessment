@@ -27,8 +27,9 @@ const iconClassName = '';
 
 // TODO: apply design
 const buttonClassName: Record<BaseButtonProps['type'], string> = {
-  button: '',
-  link: '',
+  button:
+    'px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6',
+  link: 'text-primary-base font-normal font-primary text-15 leading-6',
 };
 
 export const Button = React.forwardRef((props: ButtonProps, ref) => {
