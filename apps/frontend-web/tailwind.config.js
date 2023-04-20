@@ -8,4 +8,12 @@ module.exports = createTWConfig({
     join(__dirname, './app/**/*.{jsx,tsx}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
+  theme: {
+    extend: {
+      fontSize: {
+        'text-40': '40px',
+        'text-15': '15px',
+      },
+    },
+  },
 });

@@ -5,7 +5,8 @@
   "scripts": {
     "build-storybook": "npx nx build-storybook frontend-web",
     "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
-    "story-ui": "npx nx storybook frontend-web"
+    "ui": "npx nx storybook frontend-web",
+    "frontend": "npx nx serve frontend-web"
   },
   "private": true,
   "dependencies": {
