@@ -2,7 +2,7 @@
 'use client';
 import React, { useState } from 'react';
 import * as yup from 'yup';
-import { Input, Button } from '@test-assessment/ui-components';
+import { Input, Button, Icon } from '@test-assessment/ui-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -97,6 +97,23 @@ export default function Page() {
                   onClick={() => handleSubmit(onSubmit)}
                 >
                   LOGIN
+                </Button>
+              </div>
+              <div className="grid mb-6 md:grid-cols-1 text-center">
+                <Button
+                  type="link"
+                  href="/forgot-password"
+                  title="Forgot your password"
+                  RightIcon={() => (
+                    <Icon
+                      name="arrowRight"
+                      width={24}
+                      height={24}
+                      color="text-primary-placeholder"
+                    />
+                  )}
+                >
+                  Forgot your password
                 </Button>
               </div>
             </form>
