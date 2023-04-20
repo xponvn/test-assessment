@@ -1,46 +1,64 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormQuestionItem from './components/block/form-question-item';
 import QuestionItem from './components/block/question-item';
 import TestInfo from './components/block/test-info';
 import { RenderIcon } from './icons';
 import './styles/style.css';
-import { TestInfoType, transformQuestion, useQuestion } from './utils';
+import { TestInfoType, getLevelPosition, transformPositions, transformQuestion, useQuestion } from './utils';
 import clsx from 'clsx';
-import { TestInput } from '@test-assessment/cms-graphql-api';
+import { Enum_Test_Level, TestInput, useApiClient } from '@test-assessment/cms-graphql-api';
+import { SelectOption } from './components/form-base/select';
 
 export default function CreateTest() {
-  const otpPositions = [{ label: "Intern", value: "Intern" }, { label: "Fresher", value: "Fresher" }, { label: "Junior", value: "Junior" }, { label: "Mid", value: "Mid" }, { label: "Senior", value: "Senior" }]
+  // const otpPositions = [{ label: "Intern", value: "Intern" }, { label: "Fresher", value: "Fresher" }, { label: "Junior", value: "Junior" }, { label: "Mid", value: "Mid" }, { label: "Senior", value: "Senior" }]
   const {
     setTest,
     questions,
     addQuestion,
     deleteQuestion
   } = useQuestion();
+  const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
   const [indexQuestionEdit, setIndexQuestionEdit] = useState<number>();
-  
-  const onSaveAsDraft = (data: TestInfoType) => {
-    if(!questions || questions.length <= 0) return alert('Question must be greater than or equal to 1.')
-    setTest({...data, questions: questions });
-    const newData = transformData(data);
+  const { apiClient } = useApiClient();
+
+  useEffect(() => {
+    getPositions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const getPositions = async () => {
+    const res = await apiClient.getPositions({ sort: ["name"] });
+    const dataTransform = transformPositions(res?.positions?.data || []);
+    setOtpPositions(dataTransform);
   }
-  
-  const transformData = (data: TestInfoType): TestInput => {
+
+  const onSaveAsDraft = async (data: TestInfoType) => {
+    if (!questions || questions.length <= 0) return alert('Question must be greater than or equal to 1.')
+    setTest({ ...data, questions: questions });
+    const dataTransform = transformDataSubmit(data);
+    const res = await apiClient.createTest({ data: dataTransform });
+    if (res.createTest) return alert("Create a test success.")
+  }
+
+  const transformDataSubmit = (data: TestInfoType): TestInput => {
     const questionsTransform = transformQuestion(questions);
     return {
-      passingScore: Number(data.passingScore),
-      position: data.position,
-      timeLimit: Number(data.timeLimit),
       title: data.name,
-      questions: questionsTransform
+      passingScore: Number(data.passingScore),
+      timeLimit: Number(data.timeLimit),
+      questions: questionsTransform,
+      position: data.position,
+      level: data.levelPosition as Enum_Test_Level
     }
   }
-  
+
   return (
     <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
       {/** TEST INFO */}
       <TestInfo
         otpPositions={otpPositions}
+        otpLevel={getLevelPosition()}
         onSaveAsDraft={onSaveAsDraft}
       />
 

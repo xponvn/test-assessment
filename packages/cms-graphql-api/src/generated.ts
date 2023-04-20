@@ -76,7 +76,9 @@ export type ComponentQuestionChoiceQuestionAnswersArgs = {
 
 export type ComponentQuestionQuestion = {
   __typename?: 'ComponentQuestionQuestion';
+  content: Scalars['String'];
   id: Scalars['ID'];
+  level: Enum_Componentquestionquestion_Level;
 };
 
 export type ComponentQuestionTextAnswerQuestion = {
@@ -116,10 +118,25 @@ export enum Enum_Componentquestionchoicequestion_Level {
   Medium = 'medium'
 }
 
+export enum Enum_Componentquestionquestion_Level {
+  Easy = 'easy',
+  Hard = 'hard',
+  Medium = 'medium'
+}
+
 export enum Enum_Componentquestiontextanswerquestion_Level {
   Easy = 'easy',
   Hard = 'hard',
   Medium = 'medium'
+}
+
+export enum Enum_Test_Level {
+  Fresher = 'Fresher',
+  Interm = 'Interm',
+  Junior = 'Junior',
+  Lead = 'Lead',
+  MidLevel = 'Mid_level',
+  Senior = 'Senior'
 }
 
 export type Error = {
@@ -678,6 +695,7 @@ export type StringFilterInput = {
 export type Test = {
   __typename?: 'Test';
   createdAt?: Maybe<Scalars['DateTime']>;
+  level?: Maybe<Enum_Test_Level>;
   passingScore: Scalars['Float'];
   position?: Maybe<PositionEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -708,6 +726,7 @@ export type TestFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  level?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<TestFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
   passingScore?: InputMaybe<FloatFilterInput>;
@@ -719,6 +738,7 @@ export type TestFiltersInput = {
 };
 
 export type TestInput = {
+  level?: InputMaybe<Enum_Test_Level>;
   passingScore?: InputMaybe<Scalars['Float']>;
   position?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
@@ -1139,6 +1159,14 @@ export type CreateTestMutationVariables = Exact<{
 
 export type CreateTestMutation = { __typename?: 'Mutation', createTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null } | null } | null };
 
+export type GetPositionsQueryVariables = Exact<{
+  filters?: InputMaybe<PositionFiltersInput>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+}>;
+
+
+export type GetPositionsQuery = { __typename?: 'Query', positions?: { __typename?: 'PositionEntityResponseCollection', data: Array<{ __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null }> } | null };
+
 export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1150,6 +1178,18 @@ export const CreateTestDocument = gql`
   createTest(data: $data) {
     data {
       id
+    }
+  }
+}
+    `;
+export const GetPositionsDocument = gql`
+    query getPositions($filters: PositionFiltersInput, $sort: [String] = []) {
+  positions(filters: $filters, sort: $sort) {
+    data {
+      id
+      attributes {
+        name
+      }
     }
   }
 }
@@ -1177,6 +1217,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
+    },
+    getPositions(variables?: GetPositionsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPositionsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetPositionsQuery>(GetPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPositions', 'query');
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');

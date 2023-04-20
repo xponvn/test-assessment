@@ -9,10 +9,12 @@ const passingOptions = [{ label: "80%", value: "80" }, { label: "70%", value: "7
 export type TestInfoProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   otpPositions: SelectOption[];
+  otpLevel: SelectOption[]
   onSaveAsDraft: (data: TestInfoType) => void;
 }
 export default function TestInfo({
   otpPositions,
+  otpLevel,
   onSaveAsDraft
 }: TestInfoProps) {
   const schema = yup.object({
@@ -28,7 +30,7 @@ export default function TestInfo({
       name: '',
       position: '',
       levelPosition: '',
-      timeLimit: 0,
+      timeLimit: 1,
       passingScore: "80",
     },
     resolver: yupResolver(schema)
@@ -52,9 +54,12 @@ export default function TestInfo({
           required
           error={errors?.position?.message}
         />
-        <Input
-          {...register("levelPosition",)}
-          label="Level position"
+        <Select
+          name="Level position"
+          {...register("levelPosition")}
+          options={otpLevel}
+          label='Position'
+          placeholder=''
           required
           error={errors?.levelPosition?.message}
         />

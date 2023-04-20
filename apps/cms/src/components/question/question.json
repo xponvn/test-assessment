@@ -4,5 +4,19 @@
     "displayName": "Question"
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "required": true
+    }
+  }
 }
