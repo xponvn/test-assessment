@@ -1,4 +1,6 @@
+import React from 'react';
 import { UiModuleLayoutAuth } from '@test-assessment/ui-module-layout-auth';
+import { Input } from '@test-assessment/ui-components';
 
 export default function Home() {
   return (
@@ -9,8 +11,7 @@ export default function Home() {
         verification code.
       </p>
       <form>
-        <input type="text" id="html" name="fav_language" value="HTML" />
-        <label for="html">HTML</label>
+        <Input label="Email"></Input>
       </form>
     </UiModuleLayoutAuth>
   );
