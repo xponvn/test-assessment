@@ -41,12 +41,12 @@
     "level": {
       "type": "enumeration",
       "enum": [
-        "Interm",
-        "Fresher",
-        "Junior",
-        "Mid-level",
-        "Senior",
-        "Lead"
+        "interm",
+        "fresher",
+        "junior",
+        "mid",
+        "senior",
+        "lead"
       ]
     },
     "timeLimit": {

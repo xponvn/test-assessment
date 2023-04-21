@@ -130,12 +130,12 @@ export enum Enum_Componentquestiontextanswerquestion_Level {
 }
 
 export enum Enum_Test_Level {
-  Fresher = 'Fresher',
-  Interm = 'Interm',
-  Junior = 'Junior',
-  Lead = 'Lead',
-  MidLevel = 'Mid_level',
-  Senior = 'Senior'
+  Fresher = 'fresher',
+  Interm = 'interm',
+  Junior = 'junior',
+  Lead = 'lead',
+  Mid = 'mid',
+  Senior = 'senior'
 }
 
 export type Error = {

@@ -106,8 +106,8 @@ export const getLevelPosition = (): SelectOption[] => {
       value: Enum_Test_Level.Junior,
     },
     {
-      label: Enum_Test_Level.MidLevel,
-      value: Enum_Test_Level.MidLevel,
+      label: Enum_Test_Level.Mid,
+      value: Enum_Test_Level.Mid,
     },
     {
       label: Enum_Test_Level.Senior,
