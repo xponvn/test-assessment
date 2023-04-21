@@ -55,7 +55,7 @@ export const Input = React.forwardRef(
             onChange={(event) => {
               if (props.onChange) props.onChange(event);
             }}
-            className={`focus:outline-none ${props.className}`}
+            className={`focus:outline-none`}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${props.name}-error` : undefined}
             style={{ ...props.style, width: block ? '100%' : width + 'px' }}
