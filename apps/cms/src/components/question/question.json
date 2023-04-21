@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_question_questions",
+  "info": {
+    "displayName": "Question"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tests",
+  "info": {
+    "singularName": "test",
+    "pluralName": "tests",
+    "displayName": "Test",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "passingScore": {
+      "type": "decimal",
+      "required": true,
+      "min": 1,
+      "max": 100,
+      "default": 80
+    },
+    "questions": {
+      "type": "dynamiczone",
+      "components": [
+        "question.question",
+        "question.choice-question"
+      ],
+      "required": true
+    },
+    "position": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::position.position",
+      "inversedBy": "tests"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "interm",
+        "fresher",
+        "junior",
+        "mid",
+        "senior",
+        "lead"
+      ]
+    },
+    "timeLimit": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
+    }
+  }
+}

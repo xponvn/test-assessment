@@ -1,5 +1,4 @@
 import { getService } from '@strapi/plugin-users-permissions/server/utils';
-import * as Strapi from '@strapi/strapi';
 import utils from '@strapi/utils';
 import { omit, pick, get } from 'lodash';
 
@@ -40,7 +39,6 @@ const validateRegisterBody = async (params: RegisterInput, settings: any) => {
     throw new ValidationError('Only email Xpon allowed');
   }
   if (!regexPassword.test(password)) {
-    console.log({ password });
     throw new ValidationError(
       'Password must to have at least 7 characters, 1 number, 1 uppercase letter, 1 lowercase letter, one special character'
     );

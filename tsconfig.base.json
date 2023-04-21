@@ -20,6 +20,10 @@
         "apps/*/src/index.ts",
         "packages/*/src/index.ts",
         "tools/*/src/index.ts"
+      ],
+      "@test-assessment/hook-form": ["packages/hook-form/src/index.ts"],
+      "@test-assessment/ui-module-layout-auth": [
+        "packages/ui-module-layout-auth/src/index.ts"
       ]
     }
   },

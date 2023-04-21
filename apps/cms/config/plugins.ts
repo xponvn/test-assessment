@@ -1,4 +1,4 @@
-export default {
+export default ({ env }) => ({
   // Step 1: Configure the redis connection
   // @see https://github.com/strapi-community/strapi-plugin-redis
   redis: {
@@ -53,4 +53,15 @@ export default {
       },
     },
   },
-};
+  email: {
+    config: {
+      provider: 'sendgrid',
+      providerOptions: {
+        apiKey: env('SENDGRID_API_KEY'),
+      },
+      settings: {
+        defaultFrom: 'xponld@gmail.com',
+      },
+    },
+  },
+});

@@ -4,7 +4,9 @@
   "license": "MIT",
   "scripts": {
     "build-storybook": "npx nx build-storybook frontend-web",
-    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
+    "ui": "npx nx storybook frontend-web",
+    "frontend": "npx nx serve frontend-web"
   },
   "private": true,
   "dependencies": {
@@ -17,11 +19,11 @@
     "@babel/core": "7.12.13",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "7.12.13",
-    "graphql-request": "5.1.0",
     "@graphql-codegen/cli": "^3.3.0",
     "@graphql-codegen/client-preset": "^2.1.1",
     "@graphql-codegen/typescript-graphql-request": "^4.5.9",
     "@graphql-codegen/typescript-operations": "^3.0.2",
+    "@hookform/resolvers": "^2.9.11",
     "@nrwl/cypress": "15.8.9",
     "@nrwl/eslint-plugin-nx": "15.8.9",
     "@nrwl/jest": "15.8.9",
@@ -55,6 +57,7 @@
     "autoprefixer": "10.4.13",
     "babel-jest": "^29.4.1",
     "babel-loader": "8.1.0",
+    "clsx": "^1.2.1",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-next": "13.1.1",
@@ -64,12 +67,14 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "graphql-request": "5.1.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
     "nx": "15.8.7",
     "postcss": "8.4.21",
     "prettier": "^2.6.2",
+    "react-hook-form": "^7.43.9",
     "react-test-renderer": "18.2.0",
     "storybook-addon-next": "^1.6.6",
     "storybook-addon-swc": "^1.1.7",
@@ -78,7 +83,8 @@
     "ts-jest": "^29.0.5",
     "ts-node": "10.9.1",
     "typescript": "~4.9.5",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "yup": "^1.0.2"
   },
   "volta": {
     "node": "16.19.1",

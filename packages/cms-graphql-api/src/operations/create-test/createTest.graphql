@@ -1,0 +1,7 @@
+mutation createTest($data: TestInput!) {
+  createTest(data: $data) {
+    data {
+      id
+    }
+  }
+}
