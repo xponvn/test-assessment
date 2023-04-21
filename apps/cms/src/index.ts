@@ -1,5 +1,5 @@
 import { typeDefs } from './customize/graphql/typeDefs';
-import { registerAuth } from './customize/graphql/mutation/auth';
+import { login, registerAuth } from './customize/graphql/mutation/auth';
 
 /**
  * Throws an ApolloError if context body contains a bad request
@@ -22,6 +22,9 @@ export default {
         Mutation: {
           register: {
             resolve: registerAuth,
+          },
+          login: {
+            resolve: login,
           },
         },
       },

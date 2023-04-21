@@ -8,4 +8,13 @@ export const typeDefs = `
         email: String!,
         confirmPassword: String!
     }
+
+    type Mutation {
+        login(input: UsersLoginInputCustom!): UsersPermissionsLoginPayload!
+    }
+    input UsersLoginInputCustom {
+        email: String!,
+        password: String!,
+        provider: String!
+    }
 `;

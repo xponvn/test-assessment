@@ -1,6 +1,6 @@
 import { getService } from '@strapi/plugin-users-permissions/server/utils';
 import utils from '@strapi/utils';
-import { omit, pick } from 'lodash';
+import { omit, pick, get } from 'lodash';
 
 const { ApplicationError, ValidationError } = utils.errors;
 const { sanitize } = utils;
@@ -10,6 +10,12 @@ type RegisterInput = {
   password?: string;
   confirmPassword?: string;
   username?: string;
+  provider: string;
+};
+
+type LoginInput = {
+  email?: string;
+  password?: string;
   provider: string;
 };
 
@@ -80,6 +86,19 @@ const validateRegisterBody = async (params: RegisterInput, settings: any) => {
   return role;
 };
 
+const validateLoginBody = async (params: LoginInput) => {
+  const { email, password } = params;
+  const regexEmail = new RegExp('^[A-Za-z0-9._%+-]+@xpon.ai$');
+
+  if (!regexEmail.test(email)) {
+    throw new ValidationError('Email is invalid');
+  }
+
+  if (!password) {
+    throw new ValidationError('Password is required');
+  }
+};
+
 export const register = async (ctx) => {
   const pluginStore = await strapi.store({
     type: 'plugin',
@@ -130,4 +149,77 @@ export const register = async (ctx) => {
     jwt,
     user: sanitizedUser,
   });
+};
+
+export const authenticate = async (ctx) => {
+  const provider = ctx.params.provider || 'local';
+  const params = ctx.request.body;
+
+  const store = strapi.store({ type: 'plugin', name: 'users-permissions' });
+  const grantSettings = await store.get({ key: 'grant' });
+
+  const grantProvider = provider === 'local' ? 'email' : provider;
+
+  if (!get(grantSettings, [grantProvider, 'enabled'])) {
+    throw new ApplicationError('This provider is disabled');
+  }
+
+  if (provider === 'local') {
+    await validateLoginBody(params);
+
+    const { email } = params;
+
+    // Check if the user exists.
+    const user = await strapi.query('plugin::users-permissions.user').findOne({
+      where: {
+        provider,
+        $or: [{ email: email.toLowerCase() }, { username: email }],
+      },
+    });
+
+    if (!user) {
+      throw new ValidationError(
+        'The email address provided is not registered. Please contact your Administrator.'
+      );
+    }
+
+    const validPassword = await getService('user').validatePassword(
+      params.password,
+      user.password
+    );
+
+    if (!validPassword) {
+      throw new ValidationError('Incorrect password');
+    }
+
+    const advancedSettings = await store.get({ key: 'advanced' });
+    const requiresConfirmation = get(advancedSettings, 'email_confirmation');
+
+    if (requiresConfirmation && user.confirmed !== true) {
+      throw new ApplicationError('Your account email is not confirmed');
+    }
+
+    if (user.blocked === true) {
+      throw new ApplicationError(
+        'Your account has been blocked by an administrator'
+      );
+    }
+
+    return ctx.send({
+      jwt: getService('jwt').issue({ id: user.id }),
+      user: await sanitizeUser(user, ctx),
+    });
+  }
+
+  // Connect the user with the third-party provider.
+  try {
+    const user = await getService('providers').connect(provider, ctx.query);
+
+    return ctx.send({
+      jwt: getService('jwt').issue({ id: user.id }),
+      user: await sanitizeUser(user, ctx),
+    });
+  } catch (error) {
+    throw new ApplicationError(error.message);
+  }
 };
