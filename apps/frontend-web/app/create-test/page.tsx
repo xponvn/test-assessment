@@ -44,7 +44,7 @@ export default function CreateTest() {
   const transformDataSubmit = (data: TestInfoType): TestInput => {
     const questionsTransform = transformQuestion(questions);
     return {
-      title: data.name,
+      name: data.name,
       passingScore: Number(data.passingScore),
       timeLimit: Number(data.timeLimit),
       questions: questionsTransform,

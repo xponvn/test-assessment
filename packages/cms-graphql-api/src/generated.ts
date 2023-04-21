@@ -16,7 +16,6 @@ export type Scalars = {
   DateTime: any;
   JSON: any;
   TestQuestionsDynamicZoneInput: any;
-  Time: any;
   Upload: any;
 };
 
@@ -696,12 +695,12 @@ export type Test = {
   __typename?: 'Test';
   createdAt?: Maybe<Scalars['DateTime']>;
   level?: Maybe<Enum_Test_Level>;
+  name: Scalars['String'];
   passingScore: Scalars['Float'];
   position?: Maybe<PositionEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   questions: Array<Maybe<TestQuestionsDynamicZone>>;
-  timeLimit: Scalars['Time'];
-  title: Scalars['String'];
+  timeLimit: Scalars['Int'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -727,24 +726,24 @@ export type TestFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   level?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<TestFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
   passingScore?: InputMaybe<FloatFilterInput>;
   position?: InputMaybe<PositionFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
-  timeLimit?: InputMaybe<TimeFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
+  timeLimit?: InputMaybe<IntFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type TestInput = {
   level?: InputMaybe<Enum_Test_Level>;
+  name?: InputMaybe<Scalars['String']>;
   passingScore?: InputMaybe<Scalars['Float']>;
   position?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   questions?: InputMaybe<Array<Scalars['TestQuestionsDynamicZoneInput']>>;
-  timeLimit?: InputMaybe<Scalars['Time']>;
-  title?: InputMaybe<Scalars['String']>;
+  timeLimit?: InputMaybe<Scalars['Int']>;
 };
 
 export type TestQuestionsDynamicZone = ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | Error;
@@ -752,30 +751,6 @@ export type TestQuestionsDynamicZone = ComponentQuestionChoiceQuestion | Compone
 export type TestRelationResponseCollection = {
   __typename?: 'TestRelationResponseCollection';
   data: Array<TestEntity>;
-};
-
-export type TimeFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-  between?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-  contains?: InputMaybe<Scalars['Time']>;
-  containsi?: InputMaybe<Scalars['Time']>;
-  endsWith?: InputMaybe<Scalars['Time']>;
-  eq?: InputMaybe<Scalars['Time']>;
-  eqi?: InputMaybe<Scalars['Time']>;
-  gt?: InputMaybe<Scalars['Time']>;
-  gte?: InputMaybe<Scalars['Time']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-  lt?: InputMaybe<Scalars['Time']>;
-  lte?: InputMaybe<Scalars['Time']>;
-  ne?: InputMaybe<Scalars['Time']>;
-  not?: InputMaybe<TimeFilterInput>;
-  notContains?: InputMaybe<Scalars['Time']>;
-  notContainsi?: InputMaybe<Scalars['Time']>;
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-  notNull?: InputMaybe<Scalars['Boolean']>;
-  null?: InputMaybe<Scalars['Boolean']>;
-  or?: InputMaybe<Array<InputMaybe<Scalars['Time']>>>;
-  startsWith?: InputMaybe<Scalars['Time']>;
 };
 
 export type UploadFile = {
