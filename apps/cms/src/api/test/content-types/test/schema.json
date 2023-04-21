@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "required": true,
       "unique": true
@@ -20,14 +20,9 @@
     "passingScore": {
       "type": "decimal",
       "required": true,
-      "min": 0,
+      "min": 1,
       "max": 100,
-      "default": 0
-    },
-    "timeLimit": {
-      "type": "time",
-      "required": true,
-      "default": "00:00"
+      "default": 80
     },
     "questions": {
       "type": "dynamiczone",
@@ -42,6 +37,23 @@
       "relation": "manyToOne",
       "target": "api::position.position",
       "inversedBy": "tests"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "interm",
+        "fresher",
+        "junior",
+        "mid",
+        "senior",
+        "lead"
+      ]
+    },
+    "timeLimit": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "default": 1
     }
   }
 }

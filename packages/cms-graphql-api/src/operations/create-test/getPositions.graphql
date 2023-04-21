@@ -1,0 +1,10 @@
+query getPositions($filters: PositionFiltersInput, $sort: [String] = []) {
+  positions(filters: $filters, sort: $sort) {
+    data {
+      id
+      attributes {
+        name
+      }
+    }
+  }
+}
