@@ -94,7 +94,7 @@ FE_WEB_PORT=3000
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
-## Generate Libraries
+## Generate Libraries:
 
 ```bash
 nx g @nrwl/next:lib my-new-lib
