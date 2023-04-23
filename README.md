@@ -114,7 +114,7 @@ Read more at: [https://nx.dev/packages/nx/documents/run-many#run-many](https://n
 
 Link: https://www.chromatic.com/start?inviteToken=1d18a11603d24be795d8862015f232b2&appId=64337ab552933871acec5f96
 
-Preview Url:[https://64337ab552933871acec5f96-fhijujeqtj.chromatic.com/](https://64337ab552933871acec5f96-fhijujeqtj.chromatic.com/).
+Preview Url:[https://64337ab552933871acec5f96-zrubuklxjo.chromatic.com/](https://64337ab552933871acec5f96-zrubuklxjo.chromatic.com/).
 
 ## Troubleshot:
 
