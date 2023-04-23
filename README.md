@@ -110,7 +110,7 @@ nx run-many --target=test
 
 Read more at: [https://nx.dev/packages/nx/documents/run-many#run-many](https://nx.dev/packages/nx/documents/run-many#run-many)
 
-## Storybook
+## Storybook:
 
 Link: https://www.chromatic.com/start?inviteToken=1d18a11603d24be795d8862015f232b2&appId=64337ab552933871acec5f96
 
