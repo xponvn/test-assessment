@@ -1,0 +1,58 @@
+# DevOps + Leads
+.github @xponvn/leads @xponvn/devops
+apps/*/Dockerfile @xponvn/leads @xponvn/devops
+docker-compose.yml @xponvn/leads @xponvn/devops
+
+# Leads
+.husky @xponvn/leads
+yarn.lock @xponvn/leads
+tsconfig.base.json @xponvn/leads
+README.md @xponvn/leads
+package.json @xponvn/leads
+nx.json @xponvn/leads
+jest.preset.js @xponvn/leads
+jest.config.ts @xponvn/leads
+CODEOWNERS @xponvn/leads
+babel.config.json @xponvn/leads
+.prettierrc @xponvn/leads
+.prettierignore @xponvn/leads
+.gitignore @xponvn/leads
+.eslintrc.json @xponvn/leads
+.eslintignore @xponvn/leads
+.editorconfig @xponvn/leads
+.db.env.example @xponvn/leads
+
+
+packages/cms-graphql-api @xponvn/leads
+packages/ui-theme @xponvn/leads
+
+packages/*/tsconfig.json @xponvn/leads
+packages/*/tsconfig.lib.json @xponvn/leads
+packages/*/tsconfig.spec.json @xponvn/leads
+packages/*/README.md @xponvn/leads
+packages/*/project.json @xponvn/leads
+packages/*/jest.config.ts @xponvn/leads
+packages/*/.eslintrc.json @xponvn/leads
+packages/*/.babelrc @xponvn/leads
+packages/*/.gitignore @xponvn/leads
+packages/*/package.json @xponvn/leads
+
+apps/*/yarn.lock @xponvn/leads
+apps/*/tsconfig.spec.json @xponvn/leads
+apps/*/tsconfig.json @xponvn/leads
+apps/*/tailwind.config.js @xponvn/leads
+apps/*/postcss.config.js @xponvn/leads
+apps/*/next.config.js @xponvn/leads
+apps/*/next-env.d.ts @xponvn/leads
+apps/*/jest.config.ts @xponvn/leads
+apps/*/index.d.ts @xponvn/leads
+apps/*/README.md @xponvn/leads
+apps/*/project.json @xponvn/leads
+apps/*/package.json @xponvn/leads
+apps/*/.gitignore @xponvn/leads
+apps/*/.eslintrc.json @xponvn/leads
+apps/*/.env.example @xponvn/leads
+apps/*/.editorconfig @xponvn/leads
+apps/cms/src/admin/tsconfig.json @xponvn/leads
+apps/cms/src/admin/webpack.config.example.js @xponvn/leads
+apps/*/.storybook @xponvn/leads
