@@ -20,7 +20,7 @@ exports[`Selection should render Selection successfully 1`] = `
         >
           <svg
             height="6"
-            style="stroke: currentColor; fill: none;"
+            style="fill: none;"
             viewBox="0 0 10 6"
             width="10"
             xmlns="http://www.w3.org/2000/svg"
