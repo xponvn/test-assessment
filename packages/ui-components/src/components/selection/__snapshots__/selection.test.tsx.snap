@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selection should render Selection successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="relative  false"
+      style="width: 400px;"
+    >
+      <div
+        class="flex justify-between relative items-center cursor-pointer border-[1px] border-neutral-border px-[12px] py-[8px]"
+      >
+        <span
+          class="text-15 text-neutral-placeholder"
+        >
+          Select...
+        </span>
+        <div
+          class="inline-block text-neutral-placeholder"
+        >
+          <svg
+            height="6"
+            style="stroke: currentColor; fill: none;"
+            viewBox="0 0 10 6"
+            width="10"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.47669 0H0.523313C0.0766778 0 -0.163913 0.52675 0.127311 0.867008L4.208 5.63477C4.62479 6.12174 5.37521 6.12174 5.792 5.63477L9.87269 0.867007C10.1639 0.526749 9.92332 0 9.47669 0Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
