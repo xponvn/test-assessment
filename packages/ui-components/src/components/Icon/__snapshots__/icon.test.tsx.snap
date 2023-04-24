@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Icon should render account icon successfully 1`] = `
+exports[`Icon should render account icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -25,11 +25,11 @@ exports[`Icon should render account icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render addItem icon successfully 1`] = `
+exports[`Icon should render addItem icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -50,11 +50,11 @@ exports[`Icon should render addItem icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render arrowDown icon successfully 1`] = `
+exports[`Icon should render arrowDown icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -76,11 +76,11 @@ exports[`Icon should render arrowDown icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render arrowLeft icon successfully 1`] = `
+exports[`Icon should render arrowLeft icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -102,11 +102,11 @@ exports[`Icon should render arrowLeft icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render arrowRight icon successfully 1`] = `
+exports[`Icon should render arrowRight icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -128,11 +128,11 @@ exports[`Icon should render arrowRight icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render arrowUp icon successfully 1`] = `
+exports[`Icon should render arrowUp icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -154,11 +154,11 @@ exports[`Icon should render arrowUp icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render atm icon successfully 1`] = `
+exports[`Icon should render atm icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -189,11 +189,11 @@ exports[`Icon should render atm icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render atmCard icon successfully 1`] = `
+exports[`Icon should render atmCard icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -218,11 +218,11 @@ exports[`Icon should render atmCard icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render attach icon successfully 1`] = `
+exports[`Icon should render attach icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -245,11 +245,11 @@ exports[`Icon should render attach icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render backToTop icon successfully 1`] = `
+exports[`Icon should render backToTop icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -270,11 +270,11 @@ exports[`Icon should render backToTop icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render bank icon successfully 1`] = `
+exports[`Icon should render bank icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -349,11 +349,11 @@ exports[`Icon should render bank icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render calculator icon successfully 1`] = `
+exports[`Icon should render calculator icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -374,11 +374,11 @@ exports[`Icon should render calculator icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render calendar icon successfully 1`] = `
+exports[`Icon should render calendar icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -399,11 +399,11 @@ exports[`Icon should render calendar icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render camera icon successfully 1`] = `
+exports[`Icon should render camera icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -439,11 +439,11 @@ exports[`Icon should render camera icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render cart icon successfully 1`] = `
+exports[`Icon should render cart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -501,11 +501,11 @@ exports[`Icon should render cart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render cash icon successfully 1`] = `
+exports[`Icon should render cash icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -532,11 +532,11 @@ exports[`Icon should render cash icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render category icon successfully 1`] = `
+exports[`Icon should render category icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -557,11 +557,11 @@ exports[`Icon should render category icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render caution icon successfully 1`] = `
+exports[`Icon should render caution icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -597,11 +597,11 @@ exports[`Icon should render caution icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render chart icon successfully 1`] = `
+exports[`Icon should render chart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -622,11 +622,11 @@ exports[`Icon should render chart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render chat icon successfully 1`] = `
+exports[`Icon should render chat icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -657,11 +657,11 @@ exports[`Icon should render chat icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render checkList icon successfully 1`] = `
+exports[`Icon should render checkList icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -682,11 +682,11 @@ exports[`Icon should render checkList icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circleBackward icon successfully 1`] = `
+exports[`Icon should render circleBackward icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -713,11 +713,11 @@ exports[`Icon should render circleBackward icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circleDown icon successfully 1`] = `
+exports[`Icon should render circleDown icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -744,11 +744,11 @@ exports[`Icon should render circleDown icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circleForward icon successfully 1`] = `
+exports[`Icon should render circleForward icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -775,11 +775,11 @@ exports[`Icon should render circleForward icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circleMinus icon successfully 1`] = `
+exports[`Icon should render circleMinus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -800,11 +800,11 @@ exports[`Icon should render circleMinus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circlePlus icon successfully 1`] = `
+exports[`Icon should render circlePlus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -825,11 +825,11 @@ exports[`Icon should render circlePlus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render circleUp icon successfully 1`] = `
+exports[`Icon should render circleUp icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -856,11 +856,11 @@ exports[`Icon should render circleUp icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render clock icon successfully 1`] = `
+exports[`Icon should render clock icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -881,11 +881,11 @@ exports[`Icon should render clock icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render close icon successfully 1`] = `
+exports[`Icon should render close icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -906,11 +906,11 @@ exports[`Icon should render close icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render coaching icon successfully 1`] = `
+exports[`Icon should render coaching icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -965,11 +965,11 @@ exports[`Icon should render coaching icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorDiscountTag icon successfully 1`] = `
+exports[`Icon should render colorDiscountTag icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1008,11 +1008,11 @@ exports[`Icon should render colorDiscountTag icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorGuaranteeChecked icon successfully 1`] = `
+exports[`Icon should render colorGuaranteeChecked icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1035,11 +1035,11 @@ exports[`Icon should render colorGuaranteeChecked icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorPayment icon successfully 1`] = `
+exports[`Icon should render colorPayment icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1087,11 +1087,11 @@ exports[`Icon should render colorPayment icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorQRCode icon successfully 1`] = `
+exports[`Icon should render colorQRCode icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1141,11 +1141,11 @@ exports[`Icon should render colorQRCode icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorShipping icon successfully 1`] = `
+exports[`Icon should render colorShipping icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1204,11 +1204,11 @@ exports[`Icon should render colorShipping icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorShoppingCart icon successfully 1`] = `
+exports[`Icon should render colorShoppingCart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1263,11 +1263,11 @@ exports[`Icon should render colorShoppingCart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render colorWallet icon successfully 1`] = `
+exports[`Icon should render colorWallet icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1302,11 +1302,11 @@ exports[`Icon should render colorWallet icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render copy icon successfully 1`] = `
+exports[`Icon should render copy icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1344,11 +1344,11 @@ exports[`Icon should render copy icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render cursor icon successfully 1`] = `
+exports[`Icon should render cursor icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1367,11 +1367,11 @@ exports[`Icon should render cursor icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render customerSupport icon successfully 1`] = `
+exports[`Icon should render customerSupport icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1392,11 +1392,11 @@ exports[`Icon should render customerSupport icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render dark icon successfully 1`] = `
+exports[`Icon should render dark icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1415,11 +1415,11 @@ exports[`Icon should render dark icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render deleteCircle icon successfully 1`] = `
+exports[`Icon should render deleteCircle icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1440,11 +1440,11 @@ exports[`Icon should render deleteCircle icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render deposit icon successfully 1`] = `
+exports[`Icon should render deposit icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1465,11 +1465,11 @@ exports[`Icon should render deposit icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render direction icon successfully 1`] = `
+exports[`Icon should render direction icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1491,11 +1491,11 @@ exports[`Icon should render direction icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render discount icon successfully 1`] = `
+exports[`Icon should render discount icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1516,11 +1516,11 @@ exports[`Icon should render discount icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render discountTag icon successfully 1`] = `
+exports[`Icon should render discountTag icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1541,11 +1541,11 @@ exports[`Icon should render discountTag icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render doubleArrow icon successfully 1`] = `
+exports[`Icon should render doubleArrow icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1566,11 +1566,11 @@ exports[`Icon should render doubleArrow icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render doubleArrowDown icon successfully 1`] = `
+exports[`Icon should render doubleArrowDown icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1591,11 +1591,11 @@ exports[`Icon should render doubleArrowDown icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render doubleArrowLeft icon successfully 1`] = `
+exports[`Icon should render doubleArrowLeft icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1616,11 +1616,11 @@ exports[`Icon should render doubleArrowLeft icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render doubleArrowRight icon successfully 1`] = `
+exports[`Icon should render doubleArrowRight icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1641,11 +1641,11 @@ exports[`Icon should render doubleArrowRight icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render doubleArrowUp icon successfully 1`] = `
+exports[`Icon should render doubleArrowUp icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1666,11 +1666,11 @@ exports[`Icon should render doubleArrowUp icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render download icon successfully 1`] = `
+exports[`Icon should render download icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1691,11 +1691,11 @@ exports[`Icon should render download icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render dragAndDrop icon successfully 1`] = `
+exports[`Icon should render dragAndDrop icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1752,11 +1752,11 @@ exports[`Icon should render dragAndDrop icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render edit icon successfully 1`] = `
+exports[`Icon should render edit icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1777,11 +1777,11 @@ exports[`Icon should render edit icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render eyeHide icon successfully 1`] = `
+exports[`Icon should render eyeHide icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1800,11 +1800,11 @@ exports[`Icon should render eyeHide icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render eyeShow icon successfully 1`] = `
+exports[`Icon should render eyeShow icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1823,11 +1823,11 @@ exports[`Icon should render eyeShow icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render faceID icon successfully 1`] = `
+exports[`Icon should render faceID icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1848,11 +1848,11 @@ exports[`Icon should render faceID icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render facebook icon successfully 1`] = `
+exports[`Icon should render facebook icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1887,11 +1887,11 @@ exports[`Icon should render facebook icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render facebookMessenger icon successfully 1`] = `
+exports[`Icon should render facebookMessenger icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1912,11 +1912,11 @@ exports[`Icon should render facebookMessenger icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render favorite icon successfully 1`] = `
+exports[`Icon should render favorite icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1937,11 +1937,11 @@ exports[`Icon should render favorite icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillAccount icon successfully 1`] = `
+exports[`Icon should render fillAccount icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1962,11 +1962,11 @@ exports[`Icon should render fillAccount icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillArrowDown icon successfully 1`] = `
+exports[`Icon should render fillArrowDown icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -1985,11 +1985,11 @@ exports[`Icon should render fillArrowDown icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillArrowLeft icon successfully 1`] = `
+exports[`Icon should render fillArrowLeft icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2008,11 +2008,11 @@ exports[`Icon should render fillArrowLeft icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillArrowRight icon successfully 1`] = `
+exports[`Icon should render fillArrowRight icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2031,11 +2031,11 @@ exports[`Icon should render fillArrowRight icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillArrowUp icon successfully 1`] = `
+exports[`Icon should render fillArrowUp icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2054,11 +2054,11 @@ exports[`Icon should render fillArrowUp icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillCalendar icon successfully 1`] = `
+exports[`Icon should render fillCalendar icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2079,11 +2079,11 @@ exports[`Icon should render fillCalendar icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillCart icon successfully 1`] = `
+exports[`Icon should render fillCart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2126,11 +2126,11 @@ exports[`Icon should render fillCart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillCategory icon successfully 1`] = `
+exports[`Icon should render fillCategory icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2151,11 +2151,11 @@ exports[`Icon should render fillCategory icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillCaution icon successfully 1`] = `
+exports[`Icon should render fillCaution icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2176,11 +2176,11 @@ exports[`Icon should render fillCaution icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillChart icon successfully 1`] = `
+exports[`Icon should render fillChart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2201,11 +2201,11 @@ exports[`Icon should render fillChart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillClock icon successfully 1`] = `
+exports[`Icon should render fillClock icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2226,11 +2226,11 @@ exports[`Icon should render fillClock icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillDeposit icon successfully 1`] = `
+exports[`Icon should render fillDeposit icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2270,11 +2270,11 @@ exports[`Icon should render fillDeposit icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillDirection icon successfully 1`] = `
+exports[`Icon should render fillDirection icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2293,11 +2293,11 @@ exports[`Icon should render fillDirection icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillDiscountTag icon successfully 1`] = `
+exports[`Icon should render fillDiscountTag icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2318,11 +2318,11 @@ exports[`Icon should render fillDiscountTag icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillEdit icon successfully 1`] = `
+exports[`Icon should render fillEdit icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2350,11 +2350,11 @@ exports[`Icon should render fillEdit icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillFavorite icon successfully 1`] = `
+exports[`Icon should render fillFavorite icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2373,11 +2373,11 @@ exports[`Icon should render fillFavorite icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillFilter icon successfully 1`] = `
+exports[`Icon should render fillFilter icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2396,11 +2396,11 @@ exports[`Icon should render fillFilter icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillGarbage icon successfully 1`] = `
+exports[`Icon should render fillGarbage icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2436,11 +2436,11 @@ exports[`Icon should render fillGarbage icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillHome icon successfully 1`] = `
+exports[`Icon should render fillHome icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2461,11 +2461,11 @@ exports[`Icon should render fillHome icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillImage icon successfully 1`] = `
+exports[`Icon should render fillImage icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2484,11 +2484,11 @@ exports[`Icon should render fillImage icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillInfo icon successfully 1`] = `
+exports[`Icon should render fillInfo icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2509,11 +2509,11 @@ exports[`Icon should render fillInfo icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillLearn icon successfully 1`] = `
+exports[`Icon should render fillLearn icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2540,11 +2540,11 @@ exports[`Icon should render fillLearn icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillLocation icon successfully 1`] = `
+exports[`Icon should render fillLocation icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2563,11 +2563,11 @@ exports[`Icon should render fillLocation icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillLogin icon successfully 1`] = `
+exports[`Icon should render fillLogin icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2606,11 +2606,11 @@ exports[`Icon should render fillLogin icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillLogout icon successfully 1`] = `
+exports[`Icon should render fillLogout icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2646,11 +2646,11 @@ exports[`Icon should render fillLogout icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillNotification icon successfully 1`] = `
+exports[`Icon should render fillNotification icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2671,11 +2671,11 @@ exports[`Icon should render fillNotification icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillOrder icon successfully 1`] = `
+exports[`Icon should render fillOrder icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2696,11 +2696,11 @@ exports[`Icon should render fillOrder icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillPhone icon successfully 1`] = `
+exports[`Icon should render fillPhone icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2766,11 +2766,11 @@ exports[`Icon should render fillPhone icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillProfile icon successfully 1`] = `
+exports[`Icon should render fillProfile icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2806,11 +2806,11 @@ exports[`Icon should render fillProfile icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillPromoVoucher icon successfully 1`] = `
+exports[`Icon should render fillPromoVoucher icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2831,11 +2831,11 @@ exports[`Icon should render fillPromoVoucher icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillRating icon successfully 1`] = `
+exports[`Icon should render fillRating icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2856,11 +2856,11 @@ exports[`Icon should render fillRating icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillSetting icon successfully 1`] = `
+exports[`Icon should render fillSetting icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2879,11 +2879,11 @@ exports[`Icon should render fillSetting icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillSuccess icon successfully 1`] = `
+exports[`Icon should render fillSuccess icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2904,11 +2904,11 @@ exports[`Icon should render fillSuccess icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillWarning icon successfully 1`] = `
+exports[`Icon should render fillWarning icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2938,11 +2938,11 @@ exports[`Icon should render fillWarning icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fillWithdraw icon successfully 1`] = `
+exports[`Icon should render fillWithdraw icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -2978,11 +2978,11 @@ exports[`Icon should render fillWithdraw icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render filter icon successfully 1`] = `
+exports[`Icon should render filter icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3006,11 +3006,11 @@ exports[`Icon should render filter icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fingerPrint icon successfully 1`] = `
+exports[`Icon should render fingerPrint icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3109,11 +3109,11 @@ exports[`Icon should render fingerPrint icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render fireFlashSale icon successfully 1`] = `
+exports[`Icon should render fireFlashSale icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3140,11 +3140,11 @@ exports[`Icon should render fireFlashSale icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flagUSA icon successfully 1`] = `
+exports[`Icon should render flagUSA icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3203,11 +3203,11 @@ exports[`Icon should render flagUSA icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flagVN icon successfully 1`] = `
+exports[`Icon should render flagVN icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3230,11 +3230,11 @@ exports[`Icon should render flagVN icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flashOff icon successfully 1`] = `
+exports[`Icon should render flashOff icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3253,11 +3253,11 @@ exports[`Icon should render flashOff icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flashOff2 icon successfully 1`] = `
+exports[`Icon should render flashOff2 icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3284,11 +3284,11 @@ exports[`Icon should render flashOff2 icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flashOn icon successfully 1`] = `
+exports[`Icon should render flashOn icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3307,11 +3307,11 @@ exports[`Icon should render flashOn icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render flashSale icon successfully 1`] = `
+exports[`Icon should render flashSale icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3332,11 +3332,11 @@ exports[`Icon should render flashSale icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render formScale icon successfully 1`] = `
+exports[`Icon should render formScale icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3357,11 +3357,11 @@ exports[`Icon should render formScale icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render freeShipping icon successfully 1`] = `
+exports[`Icon should render freeShipping icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3386,11 +3386,11 @@ exports[`Icon should render freeShipping icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render garbage icon successfully 1`] = `
+exports[`Icon should render garbage icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3419,11 +3419,11 @@ exports[`Icon should render garbage icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render gift icon successfully 1`] = `
+exports[`Icon should render gift icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3460,7 +3460,7 @@ exports[`Icon should render gift icon successfully 1`] = `
         </g>
         <defs>
           <filter
-            colorInterpolation-filters="sRGB"
+            color-interpolation-filters="sRGB"
             filterUnits="userSpaceOnUse"
             height="25.8317"
             id="filter0_d_11_5245"
@@ -3570,11 +3570,11 @@ exports[`Icon should render gift icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render global icon successfully 1`] = `
+exports[`Icon should render global icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3609,11 +3609,11 @@ exports[`Icon should render global icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render gold icon successfully 1`] = `
+exports[`Icon should render gold icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3634,11 +3634,11 @@ exports[`Icon should render gold icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render google icon successfully 1`] = `
+exports[`Icon should render google icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3657,11 +3657,11 @@ exports[`Icon should render google icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render guaranteeChecked icon successfully 1`] = `
+exports[`Icon should render guaranteeChecked icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3682,11 +3682,11 @@ exports[`Icon should render guaranteeChecked icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render hamburger icon successfully 1`] = `
+exports[`Icon should render hamburger icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3707,11 +3707,11 @@ exports[`Icon should render hamburger icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render home icon successfully 1`] = `
+exports[`Icon should render home icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3761,11 +3761,11 @@ exports[`Icon should render home icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render idCard icon successfully 1`] = `
+exports[`Icon should render idCard icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3786,11 +3786,11 @@ exports[`Icon should render idCard icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render image icon successfully 1`] = `
+exports[`Icon should render image icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3826,11 +3826,11 @@ exports[`Icon should render image icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render indicator icon successfully 1`] = `
+exports[`Icon should render indicator icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3857,11 +3857,11 @@ exports[`Icon should render indicator icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render info icon successfully 1`] = `
+exports[`Icon should render info icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3897,11 +3897,11 @@ exports[`Icon should render info icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render language icon successfully 1`] = `
+exports[`Icon should render language icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3936,11 +3936,11 @@ exports[`Icon should render language icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render laptop icon successfully 1`] = `
+exports[`Icon should render laptop icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -3961,11 +3961,11 @@ exports[`Icon should render laptop icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render learn icon successfully 1`] = `
+exports[`Icon should render learn icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4004,11 +4004,11 @@ exports[`Icon should render learn icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render light icon successfully 1`] = `
+exports[`Icon should render light icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4059,11 +4059,11 @@ exports[`Icon should render light icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render link icon successfully 1`] = `
+exports[`Icon should render link icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4086,11 +4086,11 @@ exports[`Icon should render link icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render location icon successfully 1`] = `
+exports[`Icon should render location icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4111,11 +4111,11 @@ exports[`Icon should render location icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render lock icon successfully 1`] = `
+exports[`Icon should render lock icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4136,11 +4136,11 @@ exports[`Icon should render lock icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render login icon successfully 1`] = `
+exports[`Icon should render login icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4161,11 +4161,11 @@ exports[`Icon should render login icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render logout icon successfully 1`] = `
+exports[`Icon should render logout icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4186,11 +4186,11 @@ exports[`Icon should render logout icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render mail icon successfully 1`] = `
+exports[`Icon should render mail icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4218,9 +4218,9 @@ exports[`Icon should render mail icon successfully 1`] = `
         <path
           d="M8.36346 13.5555L5.18164 16.2778"
           stroke="currentColor"
-          stroke-Miterlimit="10"
           stroke-linecap="round"
           stroke-linejoin="round"
+          stroke-miterlimit="10"
           stroke-width="1.5"
         />
         <path
@@ -4237,11 +4237,11 @@ exports[`Icon should render mail icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render markAsRead icon successfully 1`] = `
+exports[`Icon should render markAsRead icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4262,11 +4262,11 @@ exports[`Icon should render markAsRead icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render masterCard icon successfully 1`] = `
+exports[`Icon should render masterCard icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4297,11 +4297,11 @@ exports[`Icon should render masterCard icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render minus icon successfully 1`] = `
+exports[`Icon should render minus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4322,11 +4322,11 @@ exports[`Icon should render minus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render mobileBanking icon successfully 1`] = `
+exports[`Icon should render mobileBanking icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4369,11 +4369,11 @@ exports[`Icon should render mobileBanking icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render mobilePhone icon successfully 1`] = `
+exports[`Icon should render mobilePhone icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4409,11 +4409,11 @@ exports[`Icon should render mobilePhone icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render moneyTransfer icon successfully 1`] = `
+exports[`Icon should render moneyTransfer icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4434,11 +4434,11 @@ exports[`Icon should render moneyTransfer icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render moreInfo icon successfully 1`] = `
+exports[`Icon should render moreInfo icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4457,11 +4457,11 @@ exports[`Icon should render moreInfo icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render multipleUsers icon successfully 1`] = `
+exports[`Icon should render multipleUsers icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4497,11 +4497,11 @@ exports[`Icon should render multipleUsers icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render news icon successfully 1`] = `
+exports[`Icon should render news icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4588,11 +4588,11 @@ exports[`Icon should render news icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render notification icon successfully 1`] = `
+exports[`Icon should render notification icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4636,11 +4636,11 @@ exports[`Icon should render notification icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render order icon successfully 1`] = `
+exports[`Icon should render order icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4661,11 +4661,11 @@ exports[`Icon should render order icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render orderBS icon successfully 1`] = `
+exports[`Icon should render orderBS icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4694,11 +4694,11 @@ exports[`Icon should render orderBS icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render orderBuy icon successfully 1`] = `
+exports[`Icon should render orderBuy icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4723,11 +4723,11 @@ exports[`Icon should render orderBuy icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render orderSell icon successfully 1`] = `
+exports[`Icon should render orderSell icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4752,11 +4752,11 @@ exports[`Icon should render orderSell icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render payment icon successfully 1`] = `
+exports[`Icon should render payment icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4777,11 +4777,11 @@ exports[`Icon should render payment icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render phone icon successfully 1`] = `
+exports[`Icon should render phone icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4805,11 +4805,11 @@ exports[`Icon should render phone icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render play icon successfully 1`] = `
+exports[`Icon should render play icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4828,11 +4828,11 @@ exports[`Icon should render play icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render plus icon successfully 1`] = `
+exports[`Icon should render plus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4853,11 +4853,11 @@ exports[`Icon should render plus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render production icon successfully 1`] = `
+exports[`Icon should render production icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4878,11 +4878,11 @@ exports[`Icon should render production icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render profile icon successfully 1`] = `
+exports[`Icon should render profile icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4904,11 +4904,11 @@ exports[`Icon should render profile icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render promo icon successfully 1`] = `
+exports[`Icon should render promo icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4929,11 +4929,11 @@ exports[`Icon should render promo icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render promoDiscount icon successfully 1`] = `
+exports[`Icon should render promoDiscount icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4954,11 +4954,11 @@ exports[`Icon should render promoDiscount icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render promoVoucher icon successfully 1`] = `
+exports[`Icon should render promoVoucher icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -4992,11 +4992,11 @@ exports[`Icon should render promoVoucher icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render qrCodeScan icon successfully 1`] = `
+exports[`Icon should render qrCodeScan icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5017,11 +5017,11 @@ exports[`Icon should render qrCodeScan icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render questionAndAnswer icon successfully 1`] = `
+exports[`Icon should render questionAndAnswer icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5042,11 +5042,11 @@ exports[`Icon should render questionAndAnswer icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rating icon successfully 1`] = `
+exports[`Icon should render rating icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5067,11 +5067,11 @@ exports[`Icon should render rating icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rectangleMinus icon successfully 1`] = `
+exports[`Icon should render rectangleMinus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5092,11 +5092,11 @@ exports[`Icon should render rectangleMinus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rectanglePlus icon successfully 1`] = `
+exports[`Icon should render rectanglePlus icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5117,11 +5117,11 @@ exports[`Icon should render rectanglePlus icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render refresh icon successfully 1`] = `
+exports[`Icon should render refresh icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5142,11 +5142,11 @@ exports[`Icon should render refresh icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render refund icon successfully 1`] = `
+exports[`Icon should render refund icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5167,11 +5167,11 @@ exports[`Icon should render refund icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render returnItem icon successfully 1`] = `
+exports[`Icon should render returnItem icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5192,11 +5192,11 @@ exports[`Icon should render returnItem icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardBronze icon successfully 1`] = `
+exports[`Icon should render rewardBronze icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5223,11 +5223,11 @@ exports[`Icon should render rewardBronze icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardBronzeCircle icon successfully 1`] = `
+exports[`Icon should render rewardBronzeCircle icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5260,11 +5260,11 @@ exports[`Icon should render rewardBronzeCircle icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardGolden icon successfully 1`] = `
+exports[`Icon should render rewardGolden icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5291,11 +5291,11 @@ exports[`Icon should render rewardGolden icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardGoldenCircle icon successfully 1`] = `
+exports[`Icon should render rewardGoldenCircle icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5328,11 +5328,11 @@ exports[`Icon should render rewardGoldenCircle icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardPlatinum icon successfully 1`] = `
+exports[`Icon should render rewardPlatinum icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5359,11 +5359,11 @@ exports[`Icon should render rewardPlatinum icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardPlatinumCircle icon successfully 1`] = `
+exports[`Icon should render rewardPlatinumCircle icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5396,11 +5396,11 @@ exports[`Icon should render rewardPlatinumCircle icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardSilver icon successfully 1`] = `
+exports[`Icon should render rewardSilver icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5427,11 +5427,11 @@ exports[`Icon should render rewardSilver icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render rewardSilverCircle icon successfully 1`] = `
+exports[`Icon should render rewardSilverCircle icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5464,11 +5464,11 @@ exports[`Icon should render rewardSilverCircle icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render scanning icon successfully 1`] = `
+exports[`Icon should render scanning icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5489,11 +5489,11 @@ exports[`Icon should render scanning icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render search icon successfully 1`] = `
+exports[`Icon should render search icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5514,11 +5514,11 @@ exports[`Icon should render search icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render setting icon successfully 1`] = `
+exports[`Icon should render setting icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5539,11 +5539,11 @@ exports[`Icon should render setting icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render share icon successfully 1`] = `
+exports[`Icon should render share icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5564,11 +5564,11 @@ exports[`Icon should render share icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render shipping icon successfully 1`] = `
+exports[`Icon should render shipping icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5589,11 +5589,11 @@ exports[`Icon should render shipping icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render shop icon successfully 1`] = `
+exports[`Icon should render shop icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5614,11 +5614,11 @@ exports[`Icon should render shop icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render shoppingCart icon successfully 1`] = `
+exports[`Icon should render shoppingCart icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5639,11 +5639,11 @@ exports[`Icon should render shoppingCart icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render shorting icon successfully 1`] = `
+exports[`Icon should render shorting icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5664,11 +5664,11 @@ exports[`Icon should render shorting icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render showroom icon successfully 1`] = `
+exports[`Icon should render showroom icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5824,11 +5824,11 @@ exports[`Icon should render showroom icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render star icon successfully 1`] = `
+exports[`Icon should render star icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5849,11 +5849,11 @@ exports[`Icon should render star icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render store icon successfully 1`] = `
+exports[`Icon should render store icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5876,11 +5876,11 @@ exports[`Icon should render store icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render success icon successfully 1`] = `
+exports[`Icon should render success icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5901,11 +5901,11 @@ exports[`Icon should render success icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render support icon successfully 1`] = `
+exports[`Icon should render support icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5926,11 +5926,11 @@ exports[`Icon should render support icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render switch icon successfully 1`] = `
+exports[`Icon should render switch icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5951,11 +5951,11 @@ exports[`Icon should render switch icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render sync icon successfully 1`] = `
+exports[`Icon should render sync icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -5976,11 +5976,11 @@ exports[`Icon should render sync icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render theCaoDt icon successfully 1`] = `
+exports[`Icon should render theCaoDt icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6043,11 +6043,11 @@ exports[`Icon should render theCaoDt icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render tick icon successfully 1`] = `
+exports[`Icon should render tick icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6069,11 +6069,11 @@ exports[`Icon should render tick icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render transactionHistory icon successfully 1`] = `
+exports[`Icon should render transactionHistory icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6094,11 +6094,11 @@ exports[`Icon should render transactionHistory icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render undo icon successfully 1`] = `
+exports[`Icon should render undo icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6127,11 +6127,11 @@ exports[`Icon should render undo icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render unlock icon successfully 1`] = `
+exports[`Icon should render unlock icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6152,11 +6152,11 @@ exports[`Icon should render unlock icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render upload icon successfully 1`] = `
+exports[`Icon should render upload icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6177,11 +6177,11 @@ exports[`Icon should render upload icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render visa icon successfully 1`] = `
+exports[`Icon should render visa icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6200,11 +6200,11 @@ exports[`Icon should render visa icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render visaCard icon successfully 1`] = `
+exports[`Icon should render visaCard icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6227,11 +6227,11 @@ exports[`Icon should render visaCard icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render volume icon successfully 1`] = `
+exports[`Icon should render volume icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6270,11 +6270,11 @@ exports[`Icon should render volume icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render wallet icon successfully 1`] = `
+exports[`Icon should render wallet icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6295,11 +6295,11 @@ exports[`Icon should render wallet icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render warehouse icon successfully 1`] = `
+exports[`Icon should render warehouse icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6320,11 +6320,11 @@ exports[`Icon should render warehouse icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render warning icon successfully 1`] = `
+exports[`Icon should render warning icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
@@ -6355,11 +6355,11 @@ exports[`Icon should render warning icon successfully 1`] = `
 </body>
 `;
 
-exports[`Icon should render withdraw icon successfully 1`] = `
+exports[`Icon should render withdraw icon successfully. 1`] = `
 <body>
   <div>
     <div
-      class="text-neutral-placeholder"
+      class="inline-block text-neutral-placeholder"
     >
       <svg
         height="24"
