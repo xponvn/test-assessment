@@ -16,7 +16,7 @@ interface Props {
   width: number;
   height: number;
   color?: string;
-  viewBox?: string;
+  viewBox?: '0 0 24 24' | '0 0 32 24';
   onClick?: () => void;
 }
 
