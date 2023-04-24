@@ -43,3 +43,6 @@ Thumbs.db
 .next
 .db.env
 apps/frontend-web/.env
+
+.yarn
+.yarnrc
