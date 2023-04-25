@@ -1,8 +1,8 @@
 import React from 'react'
-import { IconProps } from '.'
+import { IconProps } from '..'
 import clsx from 'clsx'
 
-export default function Delete({ className, transform }: IconProps) {
+export default function Remove({ className, transform }: IconProps) {
   return (
     <svg className={clsx(className, 'w-6', 'w-6')}
       transform={transform} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

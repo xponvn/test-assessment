@@ -28,12 +28,6 @@ query getTests(
         createdAt
         updatedAt
         publishedAt
-        author {
-          id
-          lastName
-          firstName
-          email
-        }
       }
     }
   }

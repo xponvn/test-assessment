@@ -57,7 +57,7 @@ export default function TestInfo({
         name="Level position"
         {...register("levelPosition")}
         options={otpLevel}
-        label='Position'
+        label='Level position'
         placeholder=''
         required
         error={errors?.levelPosition?.message}
