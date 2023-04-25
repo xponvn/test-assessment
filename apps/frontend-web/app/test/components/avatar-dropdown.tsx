@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-import { RenderIcon } from '../icons'
+import { RenderIcon } from '@test-assessment/ui-components'
 
 export default function AvatarDropdown() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import { RenderIcon } from '../icons';
 import clsx from 'clsx';
+import { RenderIcon } from '@test-assessment/ui-components';
 
 type PagingProps = {
   rowsPerPage?: number;

@@ -7,7 +7,7 @@ import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
 import { QuestionLevel, QuestionItemType, QuestionType, getPoint } from '../../utils';
-import { RenderIcon } from '../../../icons';
+import { RenderIcon } from '@test-assessment/ui-components';
 
 // INPUT OPTION
 const optionsDifficulty = [{ label: "Easy", value: QuestionLevel.Easy }, { label: "Medium", value: QuestionLevel.Medium }, { label: "Hard", value: QuestionLevel.Hard },];

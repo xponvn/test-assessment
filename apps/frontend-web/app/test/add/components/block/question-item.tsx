@@ -3,7 +3,7 @@ import { QuestionItemType, QuestionType } from '../../utils/type'
 import { getAnswerCorrect, getPoint, getQuestionType } from '../../utils/helper';
 import DifficultyTag from './difficulty-tag';
 import clsx from 'clsx';
-import { RenderIcon } from '../../../icons';
+import { RenderIcon } from '@test-assessment/ui-components';
 
 export type QuestionItemProps = {
   data: QuestionItemType;

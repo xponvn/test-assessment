@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { RenderIcon } from '../icons';
 import clsx from 'clsx';
+import { RenderIcon } from '@test-assessment/ui-components';
 
 type InputSearchProps = {
   onSearch: (value: string) => void;

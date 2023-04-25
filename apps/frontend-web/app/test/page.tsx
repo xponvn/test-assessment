@@ -2,8 +2,7 @@
 import React, { useState } from 'react'
 import TabFilter from './components/tab-filter'
 import Select from './components/select'
-import { RenderIcon } from './icons'
-import { Table } from '@test-assessment/ui-components'
+import { RenderIcon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
@@ -12,7 +11,7 @@ const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", 
 export default function TestPage() {
   const [tabActive, setTabActive] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [rowPerPage, setRowPerPage] = useState<number>(10)
+  const [rowPerPage, setRowPerPage] = useState<number>(10);
 
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>

@@ -2,7 +2,6 @@
 import Image from "next/image"
 import { usePathname, useRouter } from 'next/navigation'
 import React, { Fragment, useState } from 'react'
-import { RenderIcon } from '../icons'
 import '../styles/style.css'
 import AvatarDropdown from './avatar-dropdown'
 import BreadCrumb from './breadcrumb'
@@ -10,6 +9,7 @@ import Button from "./button"
 import InputSearch from "./input-search"
 import { getTotalPoint, useQuestion } from "../add/utils"
 import Link from "next/link"
+import { RenderIcon } from "@test-assessment/ui-components"
 
 const breadcrumbOtp = ["Test management", "Candidate"]
 export default function LayoutTestPage({
@@ -48,7 +48,7 @@ export default function LayoutTestPage({
       <Button
         label="CREATE TEST"
         style="style_2"
-        onClick={() => router.push('/test-page/add')}
+        onClick={() => router.push('/test/add')}
         icon={<RenderIcon name="plus" />}
       />
     </div>

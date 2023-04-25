@@ -12,12 +12,14 @@ import ArrowLeft from './arrow-left';
 import ArrowRight from './arrow-right';
 import Save from './save';
 import Publish from './publish';
+import Caution from './caution';
+import EyeHide from './eye-hide';
+import EyeShow from './eye-show';
 
 export type IconProps = {
   className?: string;
   style?: CSSProperties;
   transform?: string;
-  strokeWidth?: number;
 };
 
 export type Icon = FC<IconProps>;
@@ -36,6 +38,9 @@ export type IconName =
   | 'arrow-left'
   | 'save'
   | 'publish'
+  | 'caution'
+  | 'eye-hide'
+  | 'eye-show'
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -78,6 +83,15 @@ export const Icons: IconsType = {
   },
   publish: (props: IconProps) => {
     return <Publish {...props} />;
+  },
+  caution: (props: IconProps) => {
+    return <Caution {...props} />;
+  },
+  "eye-hide": (props: IconProps) => {
+    return <EyeHide {...props} />;
+  },
+  "eye-show": (props: IconProps) => {
+    return <EyeShow {...props} />;
   },
 };
 
