@@ -11,42 +11,42 @@ exports[`Table should render successfully 1`] = `
         <thead>
           <tr>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Test name
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Test status
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Sent
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Submitted
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Author
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Job position
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Level
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
               Action
             </th>
@@ -108,42 +108,42 @@ exports[`Table should render successfully 1`] = `
       <thead>
         <tr>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Test name
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Test status
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Sent
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Submitted
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Author
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Job position
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Level
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider"
+            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
             Action
           </th>

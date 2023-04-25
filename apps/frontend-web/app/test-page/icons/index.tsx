@@ -10,6 +10,8 @@ import Refresh from './refresh';
 import Search from './search';
 import ArrowLeft from './arrow-left';
 import ArrowRight from './arrow-right';
+import Save from './save';
+import Publish from './publish';
 
 export type IconProps = {
   className?: string;
@@ -32,6 +34,8 @@ export type IconName =
   | 'search'
   | 'arrow-right'
   | 'arrow-left'
+  | 'save'
+  | 'publish'
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -68,6 +72,12 @@ export const Icons: IconsType = {
   },
   "arrow-right": (props: IconProps) => {
     return <ArrowRight {...props} />;
+  },
+  save: (props: IconProps) => {
+    return <Save {...props} />;
+  },
+  publish: (props: IconProps) => {
+    return <Publish {...props} />;
   },
 };
 
