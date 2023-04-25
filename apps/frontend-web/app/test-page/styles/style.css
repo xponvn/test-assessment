@@ -1,0 +1,17 @@
+.menu-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#avatar-dropdown:checked ~ .menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: visible;
+}
+
+#avatar-dropdown:checked ~ .avatar-view .icon-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Pie */
