@@ -9,6 +9,7 @@ import BreadCrumb from './breadcrumb'
 import Button from "./button"
 import InputSearch from "./input-search"
 import { getTotalPoint, useQuestion } from "../add/utils"
+import Link from "next/link"
 
 const breadcrumbOtp = ["Test management", "Candidate"]
 export default function LayoutTestPage({
@@ -21,7 +22,7 @@ export default function LayoutTestPage({
   const isAdd = pathname.includes('add');
   const router = useRouter();
   const { questions } = useQuestion();
-  
+
   const renderActions = () => {
     if (isAdd) {
       return <div className="flex items-center">
@@ -58,7 +59,9 @@ export default function LayoutTestPage({
         <div className="container mx-auto pt-4">
           {/** HEADER */}
           <div className="flex items-center justify-between">
-            <Image width={74.78} height={24} src='/images/logo/logo.svg' alt="logo" />
+            <Link href="/">
+              <Image width={74.78} height={24} src='/images/logo/logo.svg' alt="logo" />
+            </Link>
             <div>
               <BreadCrumb
                 options={breadcrumbOtp}
