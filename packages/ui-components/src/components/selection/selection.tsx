@@ -62,10 +62,12 @@ export const Selection = (props: SelectionProps) => {
     <div
       ref={ref}
       style={{ width: block ? '100%' : width + 'px' }}
-      className={`relative ${className} ${disable && 'bg-neutral'}`}
+      className={`relative ${className} `}
     >
       <div
-        className={`flex justify-between relative items-center cursor-pointer border-[1px] border-neutral-border ${variantClassName[size].padding}`}
+        className={`flex justify-between relative items-center cursor-pointer border-[1px] border-neutral-border hover:border-neutral-placeholder ${
+          variantClassName[size].padding
+        } ${disable ? 'bg-neutral' : 'bg-neutral-table-header'}`}
         onClick={() => !disable && setOpen(!isOpen)}
       >
         <span
@@ -93,7 +95,7 @@ export const Selection = (props: SelectionProps) => {
             <div
               key={index}
               onClick={() => handleSelect(data[index].id, data[index].text)}
-              className="flex items-center p-[8px] cursor-pointer"
+              className="flex items-center p-[8px] cursor-pointer hover:bg-neutral-bg"
             >
               {item.icon}
               <span className=" text-15 text-neutral-text-primary">

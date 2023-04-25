@@ -4,11 +4,11 @@ exports[`Selection should render Selection successfully 1`] = `
 <body>
   <div>
     <div
-      class="relative  false"
+      class="relative  "
       style="width: 400px;"
     >
       <div
-        class="flex justify-between relative items-center cursor-pointer border-[1px] border-neutral-border px-[12px] py-[8px]"
+        class="flex justify-between relative items-center cursor-pointer border-[1px] border-neutral-border hover:border-neutral-placeholder px-[12px] py-[8px] bg-neutral-table-header"
       >
         <span
           class="text-15 text-neutral-placeholder"
