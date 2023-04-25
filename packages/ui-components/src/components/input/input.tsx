@@ -1,6 +1,7 @@
-import React from 'react';
-import { InputError } from './inputError';
+import React, { useState } from 'react';
 import { InputIcon, InputIconType } from './inputIcon';
+import { InputHelpText } from './inputHelpText';
+import clsx from 'clsx';
 
 export interface InputProps
   extends Omit<
@@ -12,14 +13,11 @@ export interface InputProps
   > {
   label?: string;
   error?: string;
-  width?: number;
   block?: boolean;
   leftIcon?: InputIconType;
   rightIcon?: InputIconType;
-  placeholder?: string;
-  disabled?: boolean;
   size?: InputSize;
-  helperText?: string;
+  infoText?: string;
   successText?: string;
 }
 export enum InputType {
@@ -33,54 +31,78 @@ export enum InputSize {
   SMALL = 'sm',
 }
 
-export const Input = React.forwardRef(
+const styles = {
+  [InputSize.LARGE]: 'p-3',
+  [InputSize.MEDIUM]: 'p-2',
+  [InputSize.SMALL]: 'p-1',
+};
+
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       name,
       label,
       error = '',
       type = InputType.TEXT,
-      width = 200,
+      width = 400,
       block = false,
       size = InputSize.MEDIUM,
       rightIcon,
       leftIcon,
+      infoText,
+      successText,
+      value: rootValue,
+      onChange,
       ...props
     }: InputProps,
     ref
   ) => {
-    const [currentType, setCurrentType] = React.useState(type);
+    const [currentType, setCurrentType] = useState(type);
+    const [value, setValue] = useState(rootValue);
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event?.target?.value);
+      onChange && onChange(event);
+    };
+
+    const classNames = clsx(
+      'flex border-[1px] px-3',
+      'text-13 leading-6 font-normal font-primary',
+      'placeholder-neutral-border',
+      'hover:border-neutral-placeholder',
+      'focus-within:border-primary',
+      'hover:focus-within:border-primary',
+      !value && 'border-neutral-border',
+      error && 'border-error-border bg-error-bg',
+      successText && 'border-success-border bg-success-bg',
+      block ? 'w-full' : `w-[${width}px]`,
+      styles[size],
+      props.disabled && 'border-0 bg-neutral-disable'
+    );
+    const isHelpTextVisible = error || infoText || successText;
 
     return (
       <div className="space-y-2">
         {label && <Label htmlFor={name} label={label} />}
 
-        <div
-          className={`relative text-15 leading-6 font-normal font-primary border-[1px] p-3 ${
-            type === 'password' ? 'pr-12' : 'pr-3'
-          } ${block ? 'w-full' : 'w-fit'} ${
-            error
-              ? 'border-error-border bg-error-bg'
-              : 'border-neutral-border placeholder-neutral-border'
-          }`}
-        >
+        <div className={classNames}>
           {leftIcon && <InputIcon type={type} />}
 
           <input
             {...props}
-            // @ts-expect-error passing input ref
+            value={value}
+            onChange={handleOnChange}
             ref={ref}
             id={name}
             type={currentType}
-            className={`focus:outline-none`}
+            className={`focus:outline-none bg-transparent w-full`}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${name}-error` : undefined}
-            style={{ ...props.style, width: block ? '100%' : width + 'px' }}
           />
 
           {type === InputType.PASSWORD && (
             <button
-              className="absolute right-3 top-3"
+              className="flex pl-2"
               onClick={() => {
                 setCurrentType((type) =>
                   type === 'password' ? 'text' : 'password'
@@ -100,8 +122,12 @@ export const Input = React.forwardRef(
           {rightIcon && <InputIcon type={type} />}
         </div>
 
-        <div className={error ? 'opacity-100' : 'opacity-0'}>
-          <InputError>{error}</InputError>
+        <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
+          {error && <InputHelpText variant="error">{error}</InputHelpText>}
+          {infoText && <InputHelpText variant="info">{infoText}</InputHelpText>}
+          {successText && (
+            <InputHelpText variant="success">{successText}</InputHelpText>
+          )}
         </div>
       </div>
     );
