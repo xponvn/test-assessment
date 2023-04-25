@@ -1,8 +1,8 @@
 "use client"
 import clsx from 'clsx';
-import { RenderIcon } from '../../icons';
 import { LegacyRef } from 'react';
 import React from 'react';
+import { RenderIcon } from '../../../icons';
 
 export type CheckboxOption = { label: string, value: string }
 export type CheckboxProps = React.DetailedHTMLProps<

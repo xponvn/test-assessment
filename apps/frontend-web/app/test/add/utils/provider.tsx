@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 "use client"
 import React, { createContext, useCallback, useState } from "react";
-import { QuestionLevel, QuestionItemType, QuestionType, TestItem } from "./type";
+import { QuestionItemType, TestItem } from "./type";
 
 export type QuestionContext = {
   test: TestItem;
@@ -23,18 +23,7 @@ const initState: QuestionContext = {
   },
   setTest: (_test: Partial<TestItem>) => { },
 
-  questions: [{
-    content: "Bells lean sandwich intersection decisions close meaningful ui and lot?",
-    correctAnswer: "answer-0",
-    level: QuestionLevel.Easy,
-    type: QuestionType.SingleChoice,
-    answers: [
-      { content: "Sop alpha shark horse assassin with options individual." },
-      { content: "Invested read expectations high-level walk customer nobody strategy close." },
-      { content: "Our join domains optimize roll we've teeth container." },
-      { content: "Hands territories we then later looking buy-in alpha sandwich." },
-    ]
-  }],
+  questions: [],
   addQuestion: (_question: Partial<QuestionItemType>, _index?: number,) => { },
   deleteQuestion: (_index: number) => { }
 }
@@ -51,13 +40,8 @@ export function QuestionProvider(props: QuestionProps) {
 
   const addQuestion = useCallback((newQuestion: QuestionItemType, index?: number) => {
     const newQuestions = [...questions];
-    // if (!isEdit) newQuestions.push(newQuestion);
-    // // update question at location index
-    // if (index !== undefined && isEdit) {
-    //   newQuestions.splice(index, 1, newQuestion)
-    // }
     if (index >= 0 && index < questions.length) newQuestions.splice(index, 1, newQuestion)
-    else newQuestions.push(newQuestion)
+    else newQuestions.push(newQuestion);
     setQuestionsState(newQuestions);
   }, [questions]);
 

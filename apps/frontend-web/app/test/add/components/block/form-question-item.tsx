@@ -2,12 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as yup from "yup";
-import { RenderIcon } from '../../icons';
 import Checkbox from '../form-base/checkbox';
 import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
 import { QuestionLevel, QuestionItemType, QuestionType, getPoint } from '../../utils';
+import { RenderIcon } from '../../../icons';
 
 // INPUT OPTION
 const optionsDifficulty = [{ label: "Easy", value: QuestionLevel.Easy }, { label: "Medium", value: QuestionLevel.Medium }, { label: "Hard", value: QuestionLevel.Hard },];
@@ -89,11 +89,11 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center w-[600px] mx-auto">
+    <div className="flex flex-col items-center w-full mx-auto">
       <form onSubmit={handleSubmit(onSaveForm)} className="w-full">
         <div
           style={{ filter: "drop-shadow(5px 5px 0px #983795)" }}
-          className="bg-neutral-table-header border border-solid border-neutral-divider mt-4">
+          className="bg-neutral-table-header border border-solid border-neutral-divider">
           <div className="px-6 py-4">
             <p className="text-13 leading-20 font-bold">Question {questionIndex ? (questionIndex + 1) : 1}<span className="text-neutral-placeholder text-13 leading-20 font-normal ml-1">({getPoint(questionDif)} point)</span></p>
             <Input
