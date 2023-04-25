@@ -1,19 +1,28 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TabFilter from './components/tab-filter'
 import Select from './components/select'
-import { RenderIcon } from './icons'
-import { Table } from '@test-assessment/ui-components'
+import { Icon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
+import { GetTestsQueryVariables, useApiClient } from '@test-assessment/cms-graphql-api'
 
 const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", value: "Published" }, { label: "Draft (3)", value: "Draft" }]
 export default function TestPage() {
   const [tabActive, setTabActive] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [rowPerPage, setRowPerPage] = useState<number>(10)
+  const { apiClient } = useApiClient()
 
+  useEffect(() => {
+    fetchingListTest()
+  }, []);
+
+  const fetchingListTest = async (variants?: GetTestsQueryVariables) => {
+    const res = await apiClient.getTests(variants);
+    console.log("res:", res)
+  }
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
       <div className="container mx-auto bg-neutral-white p-6 -translate-y-[128px]">
@@ -37,7 +46,7 @@ export default function TestPage() {
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
           <div className="flex items-center w-fit cursor-pointer" onClick={() => alert("Clear filter")}>
             <p className="mr-2 font-medium text-13 leading-6 text-primary-base">Clear filter</p>
-            <RenderIcon name="refresh" className='text-primary-base' />
+            <Icon name="refresh" className='text-primary-base' />
           </div>
         </div>
 
@@ -119,8 +128,8 @@ export default function TestPage() {
             {
               title: 'Action',
               render: () => <div className="flex items-center gap-3">
-                <span className="cursor-pointer" onClick={() => alert("Edit")}><RenderIcon name="edit" className="text-[#1B1D29] gap-3" /></span>
-                <span className="cursor-pointer" onClick={() => alert("Delete")}><RenderIcon name="delete" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => alert("Edit")}><Icon name="edit" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => alert("Delete")}><Icon name="remove" className="text-[#1B1D29] gap-3" /></span>
               </div>,
             },
           ]}

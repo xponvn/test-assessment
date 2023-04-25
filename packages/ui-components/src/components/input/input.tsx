@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from '../Icon';
+import { Icon } from '../icons';
 
 export interface InputProps
   extends React.DetailedHTMLProps<
@@ -38,13 +38,11 @@ export const Input = React.forwardRef(
         )}
 
         <div
-          className={`relative text-15 leading-6 font-normal font-primary border-[1px] p-3 ${
-            type === 'password' ? 'pr-12' : 'pr-3'
-          } ${block ? 'w-full' : 'w-fit'} ${
-            error
+          className={`relative text-15 leading-6 font-normal font-primary border-[1px] p-3 ${type === 'password' ? 'pr-12' : 'pr-3'
+            } ${block ? 'w-full' : 'w-fit'} ${error
               ? 'border-error-border bg-error-bg'
               : 'border-neutral-border placeholder-neutral-border'
-          }`}
+            }`}
         >
           <input
             {...props}
@@ -70,10 +68,8 @@ export const Input = React.forwardRef(
               }}
             >
               <Icon
-                name={currentType === 'password' ? 'eyeShow' : 'eyeHide'}
-                width={24}
-                height={24}
-                color="text-neutral-placeholder"
+                name={currentType === 'password' ? 'eye-show' : 'eye-hide'}
+                className="text-neutral-placeholder !w-6 !h-6"
               />
             </button>
           )}
@@ -97,7 +93,7 @@ export const InputError = ({
 
   return (
     <div className="flex space-x-1 items-center">
-      <Icon name="caution" width={24} height={24} color="text-error" />
+      <Icon name="caution" className="text-error !w-6 !h-6" />
       <p
         id={name ? `${name}-error` : undefined}
         className="text-error text-13 font-normal leading-6 font-primary"
