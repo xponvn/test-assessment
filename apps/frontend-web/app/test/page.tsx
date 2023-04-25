@@ -6,23 +6,67 @@ import { Icon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
-import { GetTestsQueryVariables, useApiClient } from '@test-assessment/cms-graphql-api'
+import { GetTestsQueryVariables, PublicationState, TestEntity, useApiClient } from '@test-assessment/cms-graphql-api'
+import { transformListTest } from './utils/helper'
+import { getLevelPosition, transformPositions } from './add/utils'
+import { SelectOption } from './add/components/form-base/select'
 
-const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", value: "Published" }, { label: "Draft (3)", value: "Draft" }]
+const options = [{ label: "All (12)", value: PublicationState.Preview }, { label: "Published (9)", value: PublicationState.Live }, { label: "Draft (3)", value: undefined }]
 export default function TestPage() {
-  const [tabActive, setTabActive] = useState<string>("All");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [rowPerPage, setRowPerPage] = useState<number>(10)
+  const [tabActive, setTabActive] = useState<string>(PublicationState.Preview);
+  const [paging, setPaging] = useState<{ page: number, pageSize: number }>({ page: 1, pageSize: 10 });
+  const [totalItem, setTotalItem] = useState<number>(0)
+  const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
+  const [filterPosition, setFilterPosition] = useState<string>();
+  const [filterLevel, setFilterLevel] = useState<string>();
+
+
+  const [dataTable, setDataTable] = useState<{
+    name: string,
+    published: string,
+    sent: number,
+    submitted: number,
+    author: string,
+    position: string,
+    level: string,
+  }[]>([])
   const { apiClient } = useApiClient()
 
   useEffect(() => {
-    fetchingListTest()
+    fetchingListTest({
+      publicationState: tabActive as PublicationState,
+      pagination: { page: paging.page, pageSize: paging.pageSize },
+      filters: { position: { name: { eq: filterPosition }}, level: { eq: filterLevel }}
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabActive, paging, filterPosition, filterLevel]);
+
+  useEffect(() => {
+    getPositions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchingListTest = async (variants?: GetTestsQueryVariables) => {
     const res = await apiClient.getTests(variants);
-    console.log("res:", res)
+    const dataTransform = transformListTest(res.tests.data as TestEntity[]);
+    const metaData = res.tests.meta;
+    setTotalItem(metaData.pagination.total)
+    setDataTable(dataTransform)
   }
+
+  const getPositions = async () => {
+    const res = await apiClient.getPositions({ sort: ["name"] });
+    const dataTransform = transformPositions(res?.positions?.data || []);
+    setOtpPositions(dataTransform);
+  }
+
+  const onClearFilter = () => {
+    setPaging({ page: 1, pageSize: 10 });
+    setTabActive(PublicationState.Preview);
+    setFilterPosition(undefined);
+    setFilterLevel(undefined)
+  };
+
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
       <div className="container mx-auto bg-neutral-white p-6 -translate-y-[128px]">
@@ -35,16 +79,18 @@ export default function TestPage() {
           />
           <Select
             label="Job position"
-            options={options}
-            onChange={(value) => alert(value)}
+            value={!filterPosition ? "" : filterPosition}
+            options={otpPositions}
+            onChange={(value) => setFilterPosition((value.length < 0 || !value) ? undefined : value)}
           />
           <Select
             label="Level"
-            options={options}
-            onChange={(value) => alert(value)}
+            value={!filterLevel ? "" : filterLevel}
+            options={getLevelPosition()}
+            onChange={(value) => setFilterLevel((value.length < 0 || !value) ? undefined : value)}
           />
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
-          <div className="flex items-center w-fit cursor-pointer" onClick={() => alert("Clear filter")}>
+          <div className="flex items-center w-fit cursor-pointer" onClick={onClearFilter}>
             <p className="mr-2 font-medium text-13 leading-6 text-primary-base">Clear filter</p>
             <Icon name="refresh" className='text-primary-base' />
           </div>
@@ -52,44 +98,7 @@ export default function TestPage() {
 
         {/** TABLE CONTENT */}
         <Table
-          rows={[
-            {
-              name: 'Full Stack Web Developer',
-              published: new Date(),
-              sent: 1,
-              submitted: 1,
-              author: 'hien.nguyen@xpon.ai',
-              position: 'Developer',
-              level: 'Junior',
-            },
-            {
-              name: 'SM leader',
-              published: new Date(),
-              sent: 2,
-              submitted: 4,
-              author: 'tommy.nguyen@xpon.ai',
-              position: 'UI/UX',
-              level: 'Senior',
-            },
-            {
-              name: 'UI/UX designer',
-              published: undefined,
-              sent: '_ _',
-              submitted: '_ _',
-              author: 'tommy.nguyen@xpon.ai',
-              position: 'CSM',
-              level: 'Leader',
-            },
-            {
-              name: 'CSM',
-              published: new Date(),
-              sent: 3,
-              submitted: 1,
-              author: 'hien.nguyen@xpon.ai',
-              position: 'CSM',
-              level: 'Leader',
-            },
-          ]}
+          rows={dataTable}
           columns={[
             {
               title: 'Test name',
@@ -123,7 +132,7 @@ export default function TestPage() {
             },
             {
               title: 'Level',
-              render: (row) => <span className="text-neutral-text-primary text-13 leading-6">{row.level}</span>,
+              render: (row) => <span className="text-neutral-text-primary text-13 leading-6 capitalize">{row.level}</span>,
             },
             {
               title: 'Action',
@@ -137,17 +146,14 @@ export default function TestPage() {
         />
 
         <div className="mt-6 flex justify-between">
-          <span className="text-13 leading-6 text-neutral-text-primary">Total test: 12</span>
+          <span className="text-13 leading-6 text-neutral-text-primary">Total test: {totalItem}</span>
           <div>
-            <Paging 
-              currentPage={currentPage}
-              totalItem={100}
-              onChangePage={(page) => setCurrentPage(page)}
-              onChangeRowsPerPage={(row) => {
-                setRowPerPage(row)
-                setCurrentPage(1)
-              }}
-              rowsPerPage={rowPerPage}
+            <Paging
+              currentPage={paging.page}
+              totalItem={totalItem}
+              onChangePage={(page) => setPaging({ ...paging, page: page })}
+              onChangeRowsPerPage={(row) => setPaging({ ...paging, pageSize: row, page: 1 })}
+              rowsPerPage={paging.pageSize}
             />
           </div>
         </div>
