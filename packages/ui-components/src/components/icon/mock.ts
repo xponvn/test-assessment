@@ -5,7 +5,7 @@ export const mockIcons: IconProps & { name?: IconName }[] = [
   { name: "arrow-right" },
   { name: "check" },
   { name: "chevron-down" },
-  { name: "delete" },
+  { name: "remove" },
   { name: "edit" },
   { name: "notification" },
   { name: "plus" },

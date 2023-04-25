@@ -119,7 +119,7 @@ export default function TestPage() {
               title: 'Action',
               render: () => <div className="flex items-center gap-3">
                 <span className="cursor-pointer" onClick={() => alert("Edit")}><Icon name="edit" className="text-[#1B1D29] gap-3" /></span>
-                <span className="cursor-pointer" onClick={() => alert("Delete")}><Icon name="delete" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => alert("Delete")}><Icon name="remove" className="text-[#1B1D29] gap-3" /></span>
               </div>,
             },
           ]}
