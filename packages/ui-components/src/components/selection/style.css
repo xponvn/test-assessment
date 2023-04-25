@@ -1,0 +1,78 @@
+ /* Custom the checkbox*/
+.container-checkbox input:disabled ~ .checkmark{
+  border: 1px solid var(--color-neutral-divider);
+}
+.container-checkbox input:disabled:checked ~ .checkmark,
+.container-checkbox input:disabled:indeterminate ~ .checkmark {
+  background-color: var(--color-neutral-disable);
+}
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark,
+.container-checkbox input:indeterminate ~ .checkmark {
+  background-color: var(--color-primary-clicked);
+  border: none;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.container-checkbox input:indeterminate ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--color-neutral-white);
+  border-width: 0 2px 2px 0; 
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* Intermediate css */
+.container-checkbox input:indeterminate~.checkmark:after {
+  display: none;
+}
+.container-checkbox input:indeterminate~.checkmark:before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(0, -50%);
+  width: 80%;
+  height: 3px;
+  background: var(--color-neutral-white);
+}
+
+/* for radio custom */
+.container-radio .radio-input:checked + span {
+  border: 2px solid var(--color-primary-clicked);
+}
+
+.container-radio .radio-input:checked + span:after {
+  opacity: 1;
+}
+
+/* for inner filled circle */
+.container-radio .custom-radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary-clicked);
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
