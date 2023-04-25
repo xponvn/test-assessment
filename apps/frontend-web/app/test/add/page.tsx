@@ -8,7 +8,7 @@ import { TestInfoType, getLevelPosition, transformPositions, transformQuestion, 
 import clsx from 'clsx';
 import { Enum_Test_Level, TestInput, useApiClient } from '@test-assessment/cms-graphql-api';
 import { SelectOption } from './components/form-base/select';
-import { RenderIcon } from '@test-assessment/ui-components';
+import { Icon } from '@test-assessment/ui-components';
 
 export default function CreateTest() {
   const {
@@ -108,7 +108,7 @@ export default function CreateTest() {
               })}
               onClick={() => setIndexQuestionEdit(questions.length)}
             >
-              <RenderIcon name="plus" className="mr-2" />
+              <Icon name="plus" className="mr-2" />
               Add question
             </button>
           </div>

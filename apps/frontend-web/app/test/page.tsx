@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import TabFilter from './components/tab-filter'
 import Select from './components/select'
-import { RenderIcon, Table } from '@test-assessment/ui-components'
+import { Icon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
@@ -36,7 +36,7 @@ export default function TestPage() {
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
           <div className="flex items-center w-fit cursor-pointer" onClick={() => alert("Clear filter")}>
             <p className="mr-2 font-medium text-13 leading-6 text-primary-base">Clear filter</p>
-            <RenderIcon name="refresh" className='text-primary-base' />
+            <Icon name="refresh" className='text-primary-base' />
           </div>
         </div>
 
@@ -118,8 +118,8 @@ export default function TestPage() {
             {
               title: 'Action',
               render: () => <div className="flex items-center gap-3">
-                <span className="cursor-pointer" onClick={() => alert("Edit")}><RenderIcon name="edit" className="text-[#1B1D29] gap-3" /></span>
-                <span className="cursor-pointer" onClick={() => alert("Delete")}><RenderIcon name="delete" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => alert("Edit")}><Icon name="edit" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => alert("Delete")}><Icon name="delete" className="text-[#1B1D29] gap-3" /></span>
               </div>,
             },
           ]}

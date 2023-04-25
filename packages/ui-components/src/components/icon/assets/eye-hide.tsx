@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconProps } from '.'
+import { IconProps } from '..'
 import clsx from 'clsx'
 
 export default function EyeHide({ className, transform }: IconProps) {

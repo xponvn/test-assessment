@@ -9,7 +9,7 @@ import Button from "./button"
 import InputSearch from "./input-search"
 import { getTotalPoint, useQuestion } from "../add/utils"
 import Link from "next/link"
-import { RenderIcon } from "@test-assessment/ui-components"
+import { Icon } from "@test-assessment/ui-components"
 
 const breadcrumbOtp = ["Test management", "Candidate"]
 export default function LayoutTestPage({
@@ -30,13 +30,13 @@ export default function LayoutTestPage({
         <span className="border border-solid w-6 h-0 rotate-90 border-neutral-placeholder mr-6"></span>
         <label htmlFor="btn-test-info" className="outline-none text-13 leading-20 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center">
           SAVE AS DRAFT
-          <RenderIcon name="save" className="text-neutral-white ml-2" />
+          <Icon name="save" className="text-neutral-white ml-2" />
         </label>
         <Button
           label="PUBLISH"
           style="style_2"
           onClick={() => alert("Publish Test")}
-          icon={<RenderIcon name="publish" className="text-neutral-text-primary ml-2" />}
+          icon={<Icon name="publish" className="text-neutral-text-primary ml-2" />}
         />
       </div>
     }
@@ -49,7 +49,7 @@ export default function LayoutTestPage({
         label="CREATE TEST"
         style="style_2"
         onClick={() => router.push('/test/add')}
-        icon={<RenderIcon name="plus" />}
+        icon={<Icon name="plus" />}
       />
     </div>
   };
@@ -71,7 +71,7 @@ export default function LayoutTestPage({
             </div>
             <div className="flex items-center">
               <div className="relative cursor-pointer w-fit" onClick={() => alert("Notification Click.")}>
-                <RenderIcon name="notification" className="text-white" />
+                <Icon name="notification" className="text-white" />
                 <span className="absolute top-0 right-[1px] bottom-0 w-2 h-2 bg-error-base border-[2px] border-solid border-neutral-text-secondary rounded-full"></span>
               </div>
               <span className="block w-4 border-[1px] border-solid border-neutral-placeholder rotate-90 mx-4"></span>

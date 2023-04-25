@@ -1,4 +1,4 @@
-import { RenderIcon } from '../icon';
+import { Icon } from '../icon';
 import { ButtonProps } from './button';
 
 export const mockButtonProps: Record<ButtonProps['type'], ButtonProps> = {
@@ -6,9 +6,9 @@ export const mockButtonProps: Record<ButtonProps['type'], ButtonProps> = {
     type: 'button',
     children: 'button',
     onClick: () => alert('hello world'),
-    LeftIcon: <RenderIcon name="caution" className="text-error" />,
+    LeftIcon: <Icon name="caution" className="text-error" />,
     RightIcon: (
-      <RenderIcon name="caution" className="text-error" />
+      <Icon name="caution" className="text-error" />
     ),
   },
   link: {
@@ -16,9 +16,9 @@ export const mockButtonProps: Record<ButtonProps['type'], ButtonProps> = {
     children: 'link',
     href: 'https://github.com/',
     title: 'Github',
-    LeftIcon: <RenderIcon name="caution" className="text-error" />,
+    LeftIcon: <Icon name="caution" className="text-error" />,
     RightIcon: (
-      <RenderIcon name="caution" className="text-error" />
+      <Icon name="caution" className="text-error" />
     ),
   },
 };

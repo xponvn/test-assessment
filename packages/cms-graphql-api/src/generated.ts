@@ -19,6 +19,14 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Author = {
+  __typename?: 'Author';
+  email?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  lastName?: Maybe<Scalars['String']>;
+};
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -41,6 +49,140 @@ export type BooleanFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   startsWith?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type Candidate = {
+  __typename?: 'Candidate';
+  comments?: Maybe<CommentRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  level: Scalars['String'];
+  phone?: Maybe<Scalars['String']>;
+  position: Scalars['String'];
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  resume?: Maybe<UploadFileEntityResponse>;
+  tests?: Maybe<TestRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type CandidateCommentsArgs = {
+  filters?: InputMaybe<CommentFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CandidateTestsArgs = {
+  filters?: InputMaybe<TestFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CandidateEntity = {
+  __typename?: 'CandidateEntity';
+  attributes?: Maybe<Candidate>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CandidateEntityResponse = {
+  __typename?: 'CandidateEntityResponse';
+  data?: Maybe<CandidateEntity>;
+};
+
+export type CandidateEntityResponseCollection = {
+  __typename?: 'CandidateEntityResponseCollection';
+  data: Array<CandidateEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type CandidateFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<CandidateFiltersInput>>>;
+  comments?: InputMaybe<CommentFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  firstName?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  lastName?: InputMaybe<StringFilterInput>;
+  level?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<CandidateFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CandidateFiltersInput>>>;
+  phone?: InputMaybe<StringFilterInput>;
+  position?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  tests?: InputMaybe<TestFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type CandidateInput = {
+  comments?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  email?: InputMaybe<Scalars['String']>;
+  firstName?: InputMaybe<Scalars['String']>;
+  lastName?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  position?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  resume?: InputMaybe<Scalars['ID']>;
+  tests?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+};
+
+export type CandidateRelationResponseCollection = {
+  __typename?: 'CandidateRelationResponseCollection';
+  data: Array<CandidateEntity>;
+};
+
+export type Comment = {
+  __typename?: 'Comment';
+  Content?: Maybe<Scalars['String']>;
+  candidate?: Maybe<CandidateEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type CommentEntity = {
+  __typename?: 'CommentEntity';
+  attributes?: Maybe<Comment>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CommentEntityResponse = {
+  __typename?: 'CommentEntityResponse';
+  data?: Maybe<CommentEntity>;
+};
+
+export type CommentEntityResponseCollection = {
+  __typename?: 'CommentEntityResponseCollection';
+  data: Array<CommentEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type CommentFiltersInput = {
+  Content?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<CommentFiltersInput>>>;
+  candidate?: InputMaybe<CandidateFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<CommentFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<CommentFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type CommentInput = {
+  Content?: InputMaybe<Scalars['String']>;
+  candidate?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type CommentRelationResponseCollection = {
+  __typename?: 'CommentRelationResponseCollection';
+  data: Array<CommentEntity>;
 };
 
 export type ComponentAnswerChoiceAnswer = {
@@ -174,7 +316,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | Position | Test | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Candidate | Comment | ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | Position | Test | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -288,6 +430,8 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createCandidate?: Maybe<CandidateEntityResponse>;
+  createComment?: Maybe<CommentEntityResponse>;
   createPosition?: Maybe<PositionEntityResponse>;
   createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -296,6 +440,8 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteCandidate?: Maybe<CandidateEntityResponse>;
+  deleteComment?: Maybe<CommentEntityResponse>;
   deletePosition?: Maybe<PositionEntityResponse>;
   deleteTest?: Maybe<TestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -315,6 +461,8 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateCandidate?: Maybe<CandidateEntityResponse>;
+  updateComment?: Maybe<CommentEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updatePosition?: Maybe<PositionEntityResponse>;
   updateTest?: Maybe<TestEntityResponse>;
@@ -332,6 +480,16 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
+};
+
+
+export type MutationCreateCandidateArgs = {
+  data: CandidateInput;
+};
+
+
+export type MutationCreateCommentArgs = {
+  data: CommentInput;
 };
 
 
@@ -362,6 +520,16 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeleteCandidateArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteCommentArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -406,7 +574,7 @@ export type MutationForgotPasswordArgs = {
 
 
 export type MutationLoginArgs = {
-  input: UsersPermissionsLoginInput;
+  input: UsersLoginInputCustom;
 };
 
 
@@ -432,6 +600,18 @@ export type MutationResetPasswordArgs = {
   code: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
+};
+
+
+export type MutationUpdateCandidateArgs = {
+  data: CandidateInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateCommentArgs = {
+  data: CommentInput;
+  id: Scalars['ID'];
 };
 
 
@@ -559,6 +739,10 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  candidate?: Maybe<CandidateEntityResponse>;
+  candidates?: Maybe<CandidateEntityResponseCollection>;
+  comment?: Maybe<CommentEntityResponse>;
+  comments?: Maybe<CommentEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -574,6 +758,32 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryCandidateArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryCandidatesArgs = {
+  filters?: InputMaybe<CandidateFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryCommentArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryCommentsArgs = {
+  filters?: InputMaybe<CommentFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -693,6 +903,8 @@ export type StringFilterInput = {
 
 export type Test = {
   __typename?: 'Test';
+  author?: Maybe<Author>;
+  candidates?: Maybe<CandidateRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   level?: Maybe<Enum_Test_Level>;
   name: Scalars['String'];
@@ -702,6 +914,14 @@ export type Test = {
   questions: Array<Maybe<TestQuestionsDynamicZone>>;
   timeLimit: Scalars['Int'];
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type TestCandidatesArgs = {
+  filters?: InputMaybe<CandidateFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type TestEntity = {
@@ -723,6 +943,7 @@ export type TestEntityResponseCollection = {
 
 export type TestFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<TestFiltersInput>>>;
+  candidates?: InputMaybe<CandidateFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   level?: InputMaybe<StringFilterInput>;
@@ -737,6 +958,7 @@ export type TestFiltersInput = {
 };
 
 export type TestInput = {
+  candidates?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   level?: InputMaybe<Enum_Test_Level>;
   name?: InputMaybe<Scalars['String']>;
   passingScore?: InputMaybe<Scalars['Float']>;
@@ -912,6 +1134,12 @@ export type UploadFolderRelationResponseCollection = {
   data: Array<UploadFolderEntity>;
 };
 
+export type UsersLoginInputCustom = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+  provider: Scalars['String'];
+};
+
 export type UsersPermissionsCreateRolePayload = {
   __typename?: 'UsersPermissionsCreateRolePayload';
   ok: Scalars['Boolean'];
@@ -920,12 +1148,6 @@ export type UsersPermissionsCreateRolePayload = {
 export type UsersPermissionsDeleteRolePayload = {
   __typename?: 'UsersPermissionsDeleteRolePayload';
   ok: Scalars['Boolean'];
-};
-
-export type UsersPermissionsLoginInput = {
-  identifier: Scalars['String'];
-  password: Scalars['String'];
-  provider?: Scalars['String'];
 };
 
 export type UsersPermissionsLoginPayload = {

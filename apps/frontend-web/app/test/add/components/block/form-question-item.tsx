@@ -7,7 +7,7 @@ import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
 import { QuestionLevel, QuestionItemType, QuestionType, getPoint } from '../../utils';
-import { RenderIcon } from '@test-assessment/ui-components';
+import { Icon } from '@test-assessment/ui-components';
 
 // INPUT OPTION
 const optionsDifficulty = [{ label: "Easy", value: QuestionLevel.Easy }, { label: "Medium", value: QuestionLevel.Medium }, { label: "Hard", value: QuestionLevel.Hard },];
@@ -146,7 +146,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
                               error={errors.correctAnswer?.message}
                             />}
                           {fields.length > 2 && <button className="ml-2" type="button" onClick={() => remove(index)}>
-                            <RenderIcon name="delete" className="!w-4 !h-4 text-error-base" />
+                            <Icon name="delete" className="!w-4 !h-4 text-error-base" />
                           </button>}
                         </div>
                       </div>
@@ -160,7 +160,7 @@ export default function FormQuestionItem({ onSaveForm, onDeleteForm, questionInd
                 className="flex items-center text-14 leading-[22px] text-primary-clicked cursor-pointer mt-6"
                 onClick={() => append({ content: '' })}
               >
-                <RenderIcon name="plus" /> Add Answer
+                <Icon name="plus" /> Add Answer
               </button>
             </>}
           </div>

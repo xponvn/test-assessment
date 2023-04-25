@@ -1,20 +1,20 @@
 import { CSSProperties, FC } from 'react';
-import QA from './qa';
-import Delete from './delete';
-import Plus from './plus';
-import Check from './check';
-import Edit from './edit';
-import Notification from './notification';
-import ChevronDown from './chevron-down';
-import Refresh from './refresh';
-import Search from './search';
-import ArrowLeft from './arrow-left';
-import ArrowRight from './arrow-right';
-import Save from './save';
-import Publish from './publish';
-import Caution from './caution';
-import EyeHide from './eye-hide';
-import EyeShow from './eye-show';
+import QA from './assets/qa';
+import Remove from './assets/remove';
+import Plus from './assets/plus';
+import Check from './assets/check';
+import Edit from './assets/edit';
+import Notification from './assets/notification';
+import ChevronDown from './assets/chevron-down';
+import Refresh from './assets/refresh';
+import Search from './assets/search';
+import ArrowLeft from './assets/arrow-left';
+import ArrowRight from './assets/arrow-right';
+import Save from './assets/save';
+import Publish from './assets/publish';
+import Caution from './assets/caution';
+import EyeHide from './assets/eye-hide';
+import EyeShow from './assets/eye-show';
 
 export type IconProps = {
   className?: string;
@@ -26,7 +26,7 @@ export type Icon = FC<IconProps>;
 
 export type IconName =
   | 'qa'
-  | 'delete'
+  | 'remove'
   | 'plus'
   | 'check'
   | 'edit'
@@ -48,8 +48,8 @@ export const Icons: IconsType = {
   qa: (props: IconProps) => {
     return <QA {...props} />;
   },
-  delete: (props: IconProps) => {
-    return <Delete {...props} />;
+  remove: (props: IconProps) => {
+    return <Remove {...props} />;
   },
   plus: (props: IconProps) => {
     return <Plus {...props} />;
@@ -95,10 +95,10 @@ export const Icons: IconsType = {
   },
 };
 
-export const RenderIcon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
-  // if (!name) {
-  //   return null;
-  // }
-  // const Icon = Icons[name];
-  return <div>Icon</div>
+export const Icon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
+  if (!name) {
+    return null;
+  }
+  const RenderIcon = Icons[name];
+  return <RenderIcon  {...reset} />
 };

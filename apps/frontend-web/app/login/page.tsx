@@ -2,7 +2,7 @@
 'use client';
 import React from 'react';
 import * as yup from 'yup';
-import { Input, Button, RenderIcon } from '@test-assessment/ui-components';
+import { Input, Button, Icon } from '@test-assessment/ui-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UiModuleLayoutAuth } from '@test-assessment/ui-module-layout-auth';
@@ -93,7 +93,7 @@ export default function Page() {
             href="/forgot-password"
             title="Forgot your password"
             RightIcon={
-              <RenderIcon
+              <Icon
                 name="arrow-right"
                 className="text-primary-placeholder !w-6 !h-6"
               />

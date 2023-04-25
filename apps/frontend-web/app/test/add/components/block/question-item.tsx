@@ -3,7 +3,7 @@ import { QuestionItemType, QuestionType } from '../../utils/type'
 import { getAnswerCorrect, getPoint, getQuestionType } from '../../utils/helper';
 import DifficultyTag from './difficulty-tag';
 import clsx from 'clsx';
-import { RenderIcon } from '@test-assessment/ui-components';
+import { Icon } from '@test-assessment/ui-components';
 
 export type QuestionItemProps = {
   data: QuestionItemType;
@@ -29,12 +29,12 @@ export default function QuestionItem({ data, index, className, onEdit, onDelete 
             <span
               onClick={() => onEdit && onEdit(index)}
               className="border border-solid border-primary-base cursor-pointer text-primary-base rounded-[2px] w-6 h-6 flex items-center justify-center mr-2">
-              <RenderIcon name="edit" />
+              <Icon name="edit" />
             </span>
             <span
               onClick={() => onDelete && onDelete(index)}
               className="cursor-pointer text-error-base flex w-6 h-6 items-center justify-center">
-              <RenderIcon name="delete" />
+              <Icon name="delete" />
             </span>
           </div>
         </div>

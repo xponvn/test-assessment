@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RenderIcon } from '../icon';
+import { Icon } from '../icon';
 
 export interface InputProps
   extends React.DetailedHTMLProps<
@@ -67,7 +67,7 @@ export const Input = React.forwardRef(
                 );
               }}
             >
-              <RenderIcon
+              <Icon
                 name={currentType === 'password' ? 'eye-show' : 'eye-hide'}
                 className="text-neutral-placeholder !w-6 !h-6"
               />
@@ -93,7 +93,7 @@ export const InputError = ({
 
   return (
     <div className="flex space-x-1 items-center">
-      <RenderIcon name="caution" className="text-error !w-6 !h-6" />
+      <Icon name="caution" className="text-error !w-6 !h-6" />
       <p
         id={name ? `${name}-error` : undefined}
         className="text-error text-13 font-normal leading-6 font-primary"

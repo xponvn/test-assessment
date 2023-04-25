@@ -1,15 +1,15 @@
 /* eslint-disable import/no-anonymous-default-export */
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { RenderIcon, IconProps } from '.';
+import { Icon, IconProps } from '.';
 
 export default {
   title: 'Components/Icon',
-  component: RenderIcon,
-} as ComponentMeta<typeof RenderIcon>;
+  component: Icon,
+} as ComponentMeta<typeof Icon>;
 
-const Template: ComponentStory<typeof RenderIcon> = (
+const Template: ComponentStory<typeof Icon> = (
   args: IconProps
-) => <RenderIcon {...args} />;
+) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

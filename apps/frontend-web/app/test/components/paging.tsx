@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx';
-import { RenderIcon } from '@test-assessment/ui-components';
+import { Icon } from '@test-assessment/ui-components';
 
 type PagingProps = {
   rowsPerPage?: number;
@@ -29,7 +29,7 @@ export default function Paging({ rowsPerPage = 10, currentPage, totalItem, onCha
           if (currentPage === 1) return;
           onChangePage(currentPage - 1, "previous")
         }}>
-          <RenderIcon name="arrow-left" className={clsx("cursor-pointer", {
+          <Icon name="arrow-left" className={clsx("cursor-pointer", {
             "text-neutral-disable cursor-no-drop": currentPage === 1,
             "text-neutral-text-secondary": currentPage !== 1
           })} />
@@ -41,7 +41,7 @@ export default function Paging({ rowsPerPage = 10, currentPage, totalItem, onCha
           if (nextPage - 1 === totalPage) return;
           onChangePage(currentPage + 1, "previous")
         }}>
-          <RenderIcon name="arrow-right" className={clsx("cursor-pointer", {
+          <Icon name="arrow-right" className={clsx("cursor-pointer", {
             "text-neutral-disable cursor-no-drop": nextPage - 1 === totalPage,
             "text-neutral-text-secondary": nextPage !== totalPage
           })} />
