@@ -7,7 +7,8 @@
     "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "cs": "config-sync"
   },
   "devDependencies": {
     "@types/pg": "^8.6.6"
@@ -16,9 +17,10 @@
     "@strapi/plugin-graphql": "^4.8.2",
     "@strapi/plugin-i18n": "^4.8.2",
     "@strapi/plugin-users-permissions": "^4.8.2",
-    "@strapi/strapi": "^4.8.2",
     "@strapi/provider-email-sendgrid": "^4.9.1",
+    "@strapi/strapi": "^4.8.2",
     "pg": "^8.10.0",
+    "strapi-plugin-config-sync": "^1.1.1",
     "strapi-plugin-redis": "^1.0.1",
     "strapi-plugin-rest-cache": "^4.2.7",
     "strapi-provider-rest-cache-redis": "^4.2.7"

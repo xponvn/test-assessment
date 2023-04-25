@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import React, { createContext, useCallback, useState } from 'react';
 import { UIConfig } from '.';
 
@@ -78,7 +78,7 @@ export const getStyle = (uiConfig: UIConfig) => {
     };
   }
 
-  if(lineHeight) {
+  if (lineHeight) {
     configStyle = {
       ...configStyle,
       '--lineHeigh-64': lineHeight._64,
@@ -90,7 +90,7 @@ export const getStyle = (uiConfig: UIConfig) => {
       '--lineHeigh-20': lineHeight._20,
       '--lineHeigh-16': lineHeight._16,
       '--lineHeigh-12': lineHeight._12,
-    }
+    };
   }
 
   return configStyle;
