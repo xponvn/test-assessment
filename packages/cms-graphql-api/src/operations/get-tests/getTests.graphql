@@ -1,0 +1,40 @@
+query getTests(
+  $filters: TestFiltersInput
+  $pagination: PaginationArg = {}
+  $sort: [String] = []
+  $publicationState: PublicationState
+) {
+  tests(
+    filters: $filters
+    pagination: $pagination
+    sort: $sort
+    publicationState: $publicationState
+  ) {
+    data {
+      id
+      __typename
+      attributes {
+        name
+        passingScore
+        position {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+        author {
+          id
+          lastName
+          firstName
+          email
+        }
+      }
+    }
+  }
+}
