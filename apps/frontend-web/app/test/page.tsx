@@ -7,6 +7,7 @@ import { Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
+import { useApiClient } from '@test-assessment/cms-graphql-api'
 
 const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", value: "Published" }, { label: "Draft (3)", value: "Draft" }]
 export default function TestPage() {
@@ -14,6 +15,11 @@ export default function TestPage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [rowPerPage, setRowPerPage] = useState<number>(10)
 
+  const { apiClient } = useApiClient();
+
+  const fetchingListTest = async () => {
+    const res = await apiClient.getTests()
+  }
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
       <div className="container mx-auto bg-neutral-white p-6 -translate-y-[128px]">
