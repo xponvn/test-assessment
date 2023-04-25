@@ -1,4 +1,4 @@
-import { RenderIcon } from '../icons';
+import { RenderIcon } from '../icon';
 import { ButtonProps } from './button';
 
 export const mockButtonProps: Record<ButtonProps['type'], ButtonProps> = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RenderIcon } from '../icons';
+import { RenderIcon } from '../icon';
 
 export interface InputProps
   extends React.DetailedHTMLProps<

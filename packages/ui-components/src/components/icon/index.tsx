@@ -96,9 +96,9 @@ export const Icons: IconsType = {
 };
 
 export const RenderIcon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
-  if (!name) {
-    return null;
-  }
-  const Icon = Icons[name];
-  return <Icon {...reset} />;
+  // if (!name) {
+  //   return null;
+  // }
+  // const Icon = Icons[name];
+  return <div>Icon</div>
 };
