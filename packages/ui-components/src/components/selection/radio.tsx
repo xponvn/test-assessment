@@ -4,7 +4,7 @@ export interface RadioButtonProps {
   value: string;
   name: string;
   text: string;
-  onChange?: (value: string, check: string) => void;
+  onChange?: (value: string) => void;
   disable?: boolean;
   checked: boolean;
   labelClassName?: string;
@@ -26,7 +26,7 @@ export const RadioButton = (props: RadioButtonProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateInput(inputRef, checkedRef.current);
-    if (onChange) onChange(value, e.currentTarget.value);
+    if (onChange) onChange(e.currentTarget.value);
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updateInput = (ref: any, checked: boolean) => {
