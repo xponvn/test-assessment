@@ -6,15 +6,19 @@ import { RenderIcon } from './icons'
 import { Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
+import Paging from './components/paging'
 
 const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", value: "Published" }, { label: "Draft (3)", value: "Draft" }]
 export default function TestPage() {
-  const [tabActive, setTabActive] = useState<string>("All")
+  const [tabActive, setTabActive] = useState<string>("All");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [rowPerPage, setRowPerPage] = useState<number>(10)
+
   return (
-    <div className="bg-neutral-table-header" style={{ background: "#F3F0F5" }}>
+    <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
       <div className="container mx-auto bg-neutral-white p-6 -translate-y-[128px]">
         {/** HEADER */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8 flex-wrap">
           <TabFilter
             options={options}
             onChange={(value) => setTabActive(value)}
@@ -96,7 +100,7 @@ export default function TestPage() {
             {
               title: 'Submitted',
               render: (row) => <div className="flex items-start">
-                <PieChart percent={isNaN(Number(row.submitted)) ? 0 : Number(row.submitted) * 25}/>
+                <PieChart percent={isNaN(Number(row.submitted)) ? 0 : Number(row.submitted) * 25} />
                 <span className="ml-2">{row.submitted}</span>
               </div>,
             },
@@ -126,7 +130,16 @@ export default function TestPage() {
         <div className="mt-6 flex justify-between">
           <span className="text-13 leading-6 text-neutral-text-primary">Total test: 12</span>
           <div>
-
+            <Paging 
+              currentPage={currentPage}
+              totalItem={100}
+              onChangePage={(page) => setCurrentPage(page)}
+              onChangeRowsPerPage={(row) => {
+                setRowPerPage(row)
+                setCurrentPage(1)
+              }}
+              rowsPerPage={rowPerPage}
+            />
           </div>
         </div>
       </div>

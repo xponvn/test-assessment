@@ -37,50 +37,45 @@ export default function TestInfo({
   });
 
   return (
-    <form className="border border-solid border-secondary-base px-6 py-4 w-full">
+    <form className="border border-solid border-secondary-base px-6 py-4 w-full flex flex-col gap-4 bg-secondary-background">
       <Input
         label="Test name"
         required
         {...register("name")}
         error={errors?.name?.message}
       />
-      <div className="flex items-center mt-2 gap-4">
-        <Select
-          name="position"
-          {...register("position")}
-          options={otpPositions}
-          label='Position'
-          placeholder=''
-          required
-          error={errors?.position?.message}
-        />
-        <Select
-          name="Level position"
-          {...register("levelPosition")}
-          options={otpLevel}
-          label='Position'
-          placeholder=''
-          required
-          error={errors?.levelPosition?.message}
-        />
-      </div>
-
-      <div className="flex items-center mt-2 gap-4">
-        <Input
-          {...register("timeLimit")}
-          label="Set time limit (mins)"
-          required
-          error={errors?.timeLimit?.message}
-        />
-        <Select
-          {...register("passingScore")}
-          options={passingOptions}
-          placeholder=''
-          label='Passing score (Percentage %)'
-          required
-          error={errors?.passingScore?.message}
-        />
-      </div>
+      <Select
+        name="position"
+        {...register("position")}
+        options={otpPositions}
+        label='Position'
+        placeholder=''
+        required
+        error={errors?.position?.message}
+      />
+      <Select
+        name="Level position"
+        {...register("levelPosition")}
+        options={otpLevel}
+        label='Position'
+        placeholder=''
+        required
+        error={errors?.levelPosition?.message}
+      />
+      <Input
+        {...register("timeLimit")}
+        label="Set time limit (mins)"
+        required
+        error={errors?.timeLimit?.message}
+      />
+      <Select
+        {...register("passingScore")}
+        options={passingOptions}
+        placeholder=''
+        label='Passing score (Percentage %)'
+        required
+        error={errors?.passingScore?.message}
+      />
       <button hidden id="btn-test-info" onClick={handleSubmit(onSaveAsDraft)} type="submit">Submit</button>
     </form>
   )

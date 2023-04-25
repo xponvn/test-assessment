@@ -2,8 +2,8 @@ import React from 'react'
 import { QuestionItemType, QuestionType } from '../../utils/type'
 import { getAnswerCorrect, getPoint, getQuestionType } from '../../utils/helper';
 import DifficultyTag from './difficulty-tag';
-import { RenderIcon } from '../../icons';
 import clsx from 'clsx';
+import { RenderIcon } from '../../../icons';
 
 export type QuestionItemProps = {
   data: QuestionItemType;
