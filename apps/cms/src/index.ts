@@ -1,5 +1,7 @@
 import { typeDefs } from './customize/graphql/typeDefs';
 import { login, registerAuth } from './customize/graphql/mutation/auth';
+import { Strapi } from '@strapi/strapi';
+import { testExtension } from './customize/graphql/query/test';
 
 /**
  * Throws an ApolloError if context body contains a bad request
@@ -14,7 +16,7 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register({ strapi }) {
+  register({ strapi }: { strapi: Strapi }) {
     const extensionService = strapi.service('plugin::graphql.extension');
     extensionService.use(() => ({
       typeDefs: typeDefs,
@@ -29,6 +31,8 @@ export default {
         },
       },
     }));
+
+    extensionService.use(testExtension);
   },
 
   /**
