@@ -15,6 +15,7 @@ import Publish from './assets/publish';
 import Caution from './assets/caution';
 import EyeHide from './assets/eye-hide';
 import EyeShow from './assets/eye-show';
+import Success from './assets/success';
 
 export type IconProps = {
   className?: string;
@@ -42,6 +43,7 @@ export type IconName =
   | 'caution'
   | 'eye-hide'
   | 'eye-show'
+  | 'success';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -64,7 +66,7 @@ export const Icons: IconsType = {
   notification: (props: IconProps) => {
     return <Notification {...props} />;
   },
-  "chevron-down": (props: IconProps) => {
+  'chevron-down': (props: IconProps) => {
     return <ChevronDown {...props} />;
   },
   refresh: (props: IconProps) => {
@@ -73,10 +75,10 @@ export const Icons: IconsType = {
   search: (props: IconProps) => {
     return <Search {...props} />;
   },
-  "arrow-left": (props: IconProps) => {
+  'arrow-left': (props: IconProps) => {
     return <ArrowLeft {...props} />;
   },
-  "arrow-right": (props: IconProps) => {
+  'arrow-right': (props: IconProps) => {
     return <ArrowRight {...props} />;
   },
   save: (props: IconProps) => {
@@ -88,11 +90,14 @@ export const Icons: IconsType = {
   caution: (props: IconProps) => {
     return <Caution {...props} />;
   },
-  "eye-hide": (props: IconProps) => {
+  'eye-hide': (props: IconProps) => {
     return <EyeHide {...props} />;
   },
-  "eye-show": (props: IconProps) => {
+  'eye-show': (props: IconProps) => {
     return <EyeShow {...props} />;
+  },
+  success: (props: IconProps) => {
+    return <Success {...props} />;
   },
 };
 
@@ -101,5 +106,5 @@ export const Icon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
     return null;
   }
   const RenderIcon = Icons[name];
-  return <RenderIcon {...reset} />;
+  return RenderIcon ? <RenderIcon {...reset} /> : null;
 };

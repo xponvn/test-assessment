@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { Icon } from '../Icon';
 import { InputHelpText } from './inputHelpText';
+import { Icon, IconName } from '../icons';
 
 export interface InputProps
   extends Omit<
@@ -14,8 +14,8 @@ export interface InputProps
   label?: string;
   error?: string;
   fill?: boolean;
-  leftIcon?: string;
-  rightIcon?: string;
+  leftIcon?: IconName;
+  rightIcon?: IconName;
   size?: InputSize;
   infoText?: string;
   successText?: string;
@@ -81,12 +81,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className="space-y-2">
-        {label && <Label htmlFor={name} label={label} />}
+        {label && (
+          <label
+            htmlFor={name}
+            className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+          >
+            {label}
+          </label>
+        )}
 
         <div className={classNames}>
           {leftIcon && (
             <div className="pr-3 flex items-center">
-              <InputIcon type={leftIcon} />
+              <Icon name={leftIcon} />
             </div>
           )}
 
@@ -111,9 +118,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 );
               }}
             >
-              <InputIcon
-                type={
-                  currentType === InputType.PASSWORD ? 'eyeShow' : 'eyeHide'
+              <Icon
+                name={
+                  currentType === InputType.PASSWORD ? 'eye-show' : 'eye-hide'
                 }
               />
             </button>
@@ -121,7 +128,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {rightIcon && (
             <div className="flex pl-3">
-              <InputIcon type={rightIcon} />
+              <Icon name={rightIcon} />
             </div>
           )}
         </div>
@@ -136,17 +143,4 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       </div>
     );
   }
-);
-
-const Label = ({ htmlFor, label }: { htmlFor?: string; label: string }) => (
-  <label
-    htmlFor={htmlFor}
-    className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
-  >
-    {label}
-  </label>
-);
-
-const InputIcon = ({ type }: { type: string }) => (
-  <Icon name={type} width={24} height={24} color="text-neutral-placeholder" />
 );
