@@ -23,8 +23,9 @@ const variantToTextColor: Record<string, string> = {
 export const InputHelpText = ({ children, variant }: InputHelpTextProps) => {
   const iconName = variantToIconName[variant];
   const textColor = variantToTextColor[variant];
+
   return (
-    <div className="flex space-x-1 items-center h-7">
+    <div className="flex space-x-1 items-center">
       {iconName && (
         <Icon name={iconName} width={24} height={24} color={textColor} />
       )}
