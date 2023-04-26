@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../Icon';
+import { Icon, IconName } from '../icons';
 
 export interface InputHelpTextProps {
   children: React.ReactNode;
@@ -21,14 +21,12 @@ const variantToTextColor: Record<string, string> = {
 };
 
 export const InputHelpText = ({ children, variant }: InputHelpTextProps) => {
-  const iconName = variantToIconName[variant];
+  const iconName = variantToIconName[variant] as IconName;
   const textColor = variantToTextColor[variant];
 
   return (
     <div className="flex space-x-1 items-center">
-      {iconName && (
-        <Icon name={iconName} width={24} height={24} color={textColor} />
-      )}
+      {iconName && <Icon name={iconName} style={{ color: textColor }} />}
 
       <p className={`${textColor} text-13 font-normal leading-6 font-primary`}>
         {children}

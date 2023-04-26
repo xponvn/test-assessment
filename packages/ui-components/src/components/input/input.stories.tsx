@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Meta } from '@storybook/react';
 import { Input as InputComponent, InputSize } from './input';
+import { Icons } from '../icons';
 
 const Story: Meta<typeof InputComponent> = {
   title: 'Components / Input',
@@ -21,13 +22,13 @@ const Story: Meta<typeof InputComponent> = {
     leftIcon: {
       control: {
         type: 'select',
-        options: ['account', 'calendar'],
+        options: [undefined, ...Object.keys(Icons)],
       },
     },
     rightIcon: {
       control: {
         type: 'select',
-        options: ['account', 'calendar'],
+        options: [undefined, ...Object.keys(Icons)],
       },
     },
   },
