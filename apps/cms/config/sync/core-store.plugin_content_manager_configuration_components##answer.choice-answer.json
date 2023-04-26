@@ -22,7 +22,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Content",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "isCorrect": {
         "edit": {
-          "label": "isCorrect",
+          "label": "Is Correct",
           "description": "",
           "placeholder": "",
           "visible": true,

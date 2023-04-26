@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::position.position",
+  "key": "plugin_content_manager_configuration_content_types::api::comment.comment",
   "value": {
-    "uid": "api::position.position",
+    "uid": "api::comment.comment",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,33 +20,33 @@
           "sortable": true
         }
       },
-      "name": {
+      "Content": {
         "edit": {
-          "label": "Name",
+          "label": "Content",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "Content",
           "searchable": true,
           "sortable": true
         }
       },
-      "tests": {
+      "candidate": {
         "edit": {
-          "label": "tests",
+          "label": "candidate",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "name"
+          "mainField": "firstName"
         },
         "list": {
-          "label": "tests",
-          "searchable": false,
-          "sortable": false
+          "label": "candidate",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -79,19 +79,23 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "Content",
+        "candidate",
+        "createdAt"
+      ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "Content",
+            "size": 6
+          },
+          {
+            "name": "candidate",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "tests",
-        "createdAt"
       ]
     }
   },

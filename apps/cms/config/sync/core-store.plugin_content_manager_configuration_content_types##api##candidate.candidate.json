@@ -1,14 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::test.test",
+  "key": "plugin_content_manager_configuration_content_types::api::candidate.candidate",
   "value": {
-    "uid": "api::test.test",
+    "uid": "api::candidate.candidate",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "firstName",
+      "defaultSortBy": "firstName",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -20,56 +20,69 @@
           "sortable": true
         }
       },
-      "name": {
+      "firstName": {
         "edit": {
-          "label": "Name",
+          "label": "firstName",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "name",
+          "label": "firstName",
           "searchable": true,
           "sortable": true
         }
       },
-      "passingScore": {
+      "lastName": {
         "edit": {
-          "label": "Passing Score",
+          "label": "lastName",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "passingScore",
+          "label": "lastName",
           "searchable": true,
           "sortable": true
         }
       },
-      "questions": {
+      "email": {
         "edit": {
-          "label": "questions",
+          "label": "email",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "questions",
-          "searchable": false,
-          "sortable": false
+          "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "phone": {
+        "edit": {
+          "label": "phone",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "phone",
+          "searchable": true,
+          "sortable": true
         }
       },
       "position": {
         "edit": {
-          "label": "Position",
+          "label": "position",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "name"
+          "editable": true
         },
         "list": {
           "label": "position",
@@ -79,7 +92,7 @@
       },
       "level": {
         "edit": {
-          "label": "Level",
+          "label": "level",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -91,31 +104,46 @@
           "sortable": true
         }
       },
-      "timeLimit": {
+      "resume": {
         "edit": {
-          "label": "Time Limit",
+          "label": "resume",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "timeLimit",
-          "searchable": true,
-          "sortable": true
+          "label": "resume",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "candidates": {
+      "tests": {
         "edit": {
-          "label": "candidates",
+          "label": "tests",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "firstName"
+          "mainField": "name"
         },
         "list": {
-          "label": "candidates",
+          "label": "tests",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "comments": {
+        "edit": {
+          "label": "comments",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "id"
+        },
+        "list": {
+          "label": "comments",
           "searchable": false,
           "sortable": false
         }
@@ -150,43 +178,59 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "firstName",
+        "lastName",
+        "email"
+      ],
       "edit": [
         [
           {
-            "name": "name",
+            "name": "firstName",
             "size": 6
           },
+          {
+            "name": "lastName",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "email",
+            "size": 6
+          },
+          {
+            "name": "phone",
+            "size": 6
+          }
+        ],
+        [
           {
             "name": "position",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "questions",
-            "size": 12
-          }
-        ],
-        [
+          },
           {
             "name": "level",
-            "size": 4
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "resume",
+            "size": 6
           },
           {
-            "name": "timeLimit",
-            "size": 4
-          },
+            "name": "tests",
+            "size": 6
+          }
+        ],
+        [
           {
-            "name": "passingScore",
-            "size": 4
+            "name": "comments",
+            "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "name",
-        "passingScore",
-        "position"
       ]
     }
   },

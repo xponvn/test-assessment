@@ -1,0 +1,52 @@
+{
+  "name": "HR",
+  "description": "HR role",
+  "type": "hr",
+  "permissions": [
+    {
+      "action": "api::candidate.candidate.create"
+    },
+    {
+      "action": "api::candidate.candidate.delete"
+    },
+    {
+      "action": "api::candidate.candidate.find"
+    },
+    {
+      "action": "api::candidate.candidate.findOne"
+    },
+    {
+      "action": "api::candidate.candidate.update"
+    },
+    {
+      "action": "api::position.position.find"
+    },
+    {
+      "action": "api::position.position.findOne"
+    },
+    {
+      "action": "api::test.test.create"
+    },
+    {
+      "action": "api::test.test.delete"
+    },
+    {
+      "action": "api::test.test.find"
+    },
+    {
+      "action": "api::test.test.findOne"
+    },
+    {
+      "action": "api::test.test.update"
+    },
+    {
+      "action": "plugin::users-permissions.auth.changePassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.forgotPassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.resetPassword"
+    }
+  ]
+}
