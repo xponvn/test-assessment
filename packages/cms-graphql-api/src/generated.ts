@@ -19,6 +19,14 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Author = {
+  __typename?: 'Author';
+  email?: Maybe<Scalars['String']>;
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Int']>;
+  lastName?: Maybe<Scalars['String']>;
+};
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -406,7 +414,7 @@ export type MutationForgotPasswordArgs = {
 
 
 export type MutationLoginArgs = {
-  input: UsersPermissionsLoginInput;
+  input: UsersLoginInputCustom;
 };
 
 
@@ -693,6 +701,7 @@ export type StringFilterInput = {
 
 export type Test = {
   __typename?: 'Test';
+  author?: Maybe<Author>;
   createdAt?: Maybe<Scalars['DateTime']>;
   level?: Maybe<Enum_Test_Level>;
   name: Scalars['String'];
@@ -912,6 +921,12 @@ export type UploadFolderRelationResponseCollection = {
   data: Array<UploadFolderEntity>;
 };
 
+export type UsersLoginInputCustom = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+  provider: Scalars['String'];
+};
+
 export type UsersPermissionsCreateRolePayload = {
   __typename?: 'UsersPermissionsCreateRolePayload';
   ok: Scalars['Boolean'];
@@ -920,12 +935,6 @@ export type UsersPermissionsCreateRolePayload = {
 export type UsersPermissionsDeleteRolePayload = {
   __typename?: 'UsersPermissionsDeleteRolePayload';
   ok: Scalars['Boolean'];
-};
-
-export type UsersPermissionsLoginInput = {
-  identifier: Scalars['String'];
-  password: Scalars['String'];
-  provider?: Scalars['String'];
 };
 
 export type UsersPermissionsLoginPayload = {
@@ -1142,6 +1151,16 @@ export type GetPositionsQueryVariables = Exact<{
 
 export type GetPositionsQuery = { __typename?: 'Query', positions?: { __typename?: 'PositionEntityResponseCollection', data: Array<{ __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null }> } | null };
 
+export type GetTestsQueryVariables = Exact<{
+  filters?: InputMaybe<TestFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null, author?: { __typename?: 'Author', id?: number | null, lastName?: string | null, firstName?: string | null, email?: string | null } | null } | null }> } | null };
+
 export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1164,6 +1183,43 @@ export const GetPositionsDocument = gql`
       id
       attributes {
         name
+      }
+    }
+  }
+}
+    `;
+export const GetTestsDocument = gql`
+    query getTests($filters: TestFiltersInput, $pagination: PaginationArg = {}, $sort: [String] = [], $publicationState: PublicationState) {
+  tests(
+    filters: $filters
+    pagination: $pagination
+    sort: $sort
+    publicationState: $publicationState
+  ) {
+    data {
+      id
+      __typename
+      attributes {
+        name
+        passingScore
+        position {
+          data {
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+        author {
+          id
+          lastName
+          firstName
+          email
+        }
       }
     }
   }
@@ -1195,6 +1251,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getPositions(variables?: GetPositionsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPositionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPositionsQuery>(GetPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPositions', 'query');
+    },
+    getTests(variables?: GetTestsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTestsQuery>(GetTestsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTests', 'query');
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');
