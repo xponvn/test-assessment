@@ -5,6 +5,7 @@ export const transformListTest = (data: TestEntity[]) => {
     const attributes = item.attributes;
     const position = attributes.position;
     return {
+      id: item.id,
       name: attributes.name,
       published: attributes.publishedAt,
       sent: 1,

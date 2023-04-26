@@ -1374,6 +1374,13 @@ export type GetTestsQueryVariables = Exact<{
 
 export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
 
+export type DeleteTestMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteTestMutation = { __typename?: 'Mutation', deleteTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', attributes?: { __typename?: 'Test', name: string } | null } | null } | null };
+
 export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1440,6 +1447,17 @@ export const GetTestsDocument = gql`
   }
 }
     `;
+export const DeleteTestDocument = gql`
+    mutation deleteTest($id: ID!) {
+  deleteTest(id: $id) {
+    data {
+      attributes {
+        name
+      }
+    }
+  }
+}
+    `;
 export const GetI18NLocalesDocument = gql`
     query getI18NLocales {
   i18NLocales {
@@ -1469,6 +1487,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getTests(variables?: GetTestsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestsQuery>(GetTestsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTests', 'query');
+    },
+    deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');

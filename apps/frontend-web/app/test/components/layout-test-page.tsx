@@ -42,7 +42,7 @@ export default function LayoutTestPage({
     }
     return <div className="flex items-center">
       <InputSearch
-        onSearch={(value) => alert(`Search:${value}`)}
+        onSearch={(value) => alert("asdasd")}
         className="w-[448px] mr-6"
       />
       <Button
