@@ -37,6 +37,10 @@ query getTests(
         pageSize
         pageCount
       }
+      countByStatus {
+        draft
+        published
+      }
     }
   }
 }

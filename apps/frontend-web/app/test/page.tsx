@@ -6,13 +6,13 @@ import { Icon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
-import { GetTestsQueryVariables, PublicationState, TestEntity, useApiClient } from '@test-assessment/cms-graphql-api'
+import { CountByStatus, GetTestsQueryVariables, PublicationState, TestEntity, useApiClient } from '@test-assessment/cms-graphql-api'
 import { transformListTest } from './utils/helper'
 import { getLevelPosition, transformPositions } from './add/utils'
 import { SelectOption } from './add/components/form-base/select'
 import { useSearchParams } from 'next/navigation'
 
-const options = [{ label: "All (12)", value: PublicationState.Preview }, { label: "Published (9)", value: PublicationState.Live }, { label: "Draft (3)", value: "DRAFT" }]
+const options = [{ label: "All", value: PublicationState.Preview }, { label: "Published", value: PublicationState.Live }, { label: "Draft", value: "DRAFT" }]
 export default function TestPage() {
   const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
 
@@ -20,6 +20,7 @@ export default function TestPage() {
   const [totalItem, setTotalItem] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
+  const [countByStatus, setCountByStatus] = useState<CountByStatus>({draft: 0, published: 0})
   const searchKey = searchParams.get('q') || "";
 
   const [filterVariants, setFilterVariants] = useState<GetTestsQueryVariables>({
@@ -30,15 +31,15 @@ export default function TestPage() {
     },
     filters: {
       name: { contains: searchKey },
-      position: { name: { eq: undefined }},
+      position: { name: { eq: undefined } },
       level: { eq: undefined },
       publishedAt: { eq: undefined }
     }
   });
 
   useEffect(() => {
-    setFilterVariants({...filterVariants, filters: {...filterVariants.filters, name: { contains: searchKey}}})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setFilterVariants({ ...filterVariants, filters: { ...filterVariants.filters, name: { contains: searchKey } } })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey])
 
 
@@ -55,8 +56,8 @@ export default function TestPage() {
   const { apiClient } = useApiClient()
 
   useEffect(() => {
-    fetchingListTest({...filterVariants})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchingListTest({ ...filterVariants })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterVariants]);
 
   useEffect(() => {
@@ -65,20 +66,21 @@ export default function TestPage() {
   }, []);
 
   const fetchingListTest = async (variants?: GetTestsQueryVariables) => {
-    if(loading) return;
+    if (loading) return;
     setLoading(true);
     const res = await apiClient.getTests(variants);
     setLoading(false);
     const dataTransform = transformListTest(res.tests.data as TestEntity[]);
     const metaData = res.tests.meta;
-    setTotalItem(metaData.pagination.total)
+    setTotalItem(metaData.pagination.total);
+    setCountByStatus(metaData.countByStatus);
     setDataTable(dataTransform)
   }
 
   const onRemoveTestItem = async (id?: string) => {
-    if(!id) return alert("Item not found.")
+    if (!id) return alert("Item not found.")
     const res = await apiClient.deleteTest({ id });
-    if(res.deleteTest?.data?.attributes?.name) return alert("Delete item success.");
+    if (res.deleteTest?.data?.attributes?.name) return alert("Delete item success.");
   }
 
   const getPositions = async () => {
@@ -86,13 +88,6 @@ export default function TestPage() {
     const dataTransform = transformPositions(res?.positions?.data || []);
     setOtpPositions(dataTransform);
   }
-
-  // const onClearFilter = () => {
-  //   setPaging({ page: 1, pageSize: 10 });
-  //   setTabActive(PublicationState.Preview);
-  //   setFilterPosition(undefined);
-  //   setFilterLevel(undefined);
-  // };
 
   const onClearFilter = () => {
     setFilterVariants({
@@ -103,7 +98,7 @@ export default function TestPage() {
       },
       filters: {
         name: { contains: searchKey },
-        position: { name: { eq: undefined }},
+        position: { name: { eq: undefined } },
         level: { eq: undefined },
         publishedAt: { eq: undefined }
       }
@@ -112,10 +107,10 @@ export default function TestPage() {
 
   const onFilterState = (value: string) => {
     setTabActive(value)
-    if(value === "DRAFT") {
-      return setFilterVariants({...filterVariants, publicationState: PublicationState.Preview, filters: { ...filterVariants.filters, publishedAt: { eq: null }} })
+    if (value === "DRAFT") {
+      return setFilterVariants({ ...filterVariants, publicationState: PublicationState.Preview, filters: { ...filterVariants.filters, publishedAt: { eq: null } } })
     }
-    setFilterVariants({...filterVariants, publicationState: value as PublicationState })
+    setFilterVariants({ ...filterVariants, publicationState: value as PublicationState, filters: { ...filterVariants.filters, publishedAt: undefined } })
   }
 
   return (
@@ -124,6 +119,7 @@ export default function TestPage() {
         {/** HEADER */}
         <div className="flex items-center gap-8 flex-wrap">
           <TabFilter
+            countByStatus={countByStatus}
             options={options}
             onChange={onFilterState}
             active={tabActive}
@@ -132,13 +128,13 @@ export default function TestPage() {
             label="Job position"
             value={!filterVariants.filters.position.name.eq ? "" : filterVariants.filters.position.name.eq as string}
             options={otpPositions}
-            onChange={(value) => setFilterVariants({...filterVariants, filters: { ...filterVariants.filters, position: { name: { eq: (value.length < 0 || !value) ? undefined : value}}}})}
+            onChange={(value) => setFilterVariants({ ...filterVariants, filters: { ...filterVariants.filters, position: { name: { eq: (value.length < 0 || !value) ? undefined : value } } } })}
           />
           <Select
             label="Level"
             value={!filterVariants.filters.level.eq ? "" : filterVariants.filters.level.eq as string}
             options={getLevelPosition()}
-            onChange={(value) => setFilterVariants({...filterVariants, filters: {...filterVariants.filters, level: { eq: (value.length < 0 || !value) ? undefined : value}}})}
+            onChange={(value) => setFilterVariants({ ...filterVariants, filters: { ...filterVariants.filters, level: { eq: (value.length < 0 || !value) ? undefined : value } } })}
           />
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
           <div className="flex items-center w-fit cursor-pointer" onClick={onClearFilter}>

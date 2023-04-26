@@ -6,7 +6,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useState
+  useState,
 } from 'react';
 
 import { getSdk } from '../generated';

@@ -1,105 +1,176 @@
-import * as React from 'react';
-import { Icon } from '../icons';
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import { InputHelpText } from './inputHelpText';
+import { Icon, IconName } from '../icons';
 
 export interface InputProps
-  extends React.DetailedHTMLProps<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
+  extends Omit<
+    React.DetailedHTMLProps<
+      React.InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    >,
+    'size'
   > {
   label?: string;
   error?: string;
-  width?: number;
-  block?: boolean;
+  fill?: boolean;
+  leftIcon?: IconName;
+  rightIcon?: IconName;
+  size?: InputSize;
+  infoText?: string;
+  successText?: string;
+}
+export enum InputType {
+  PASSWORD = 'password',
+  TEXT = 'text',
+  SEARCH = 'search',
+}
+export enum InputSize {
+  LARGE = 'lg',
+  MEDIUM = 'md',
+  SMALL = 'sm',
 }
 
-export const Input = React.forwardRef(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      name,
       label,
-      error = '',
-      type = 'text',
-      width = 200,
-      block = false,
+      error,
+      type = InputType.TEXT,
+      width = 400,
+      fill,
+      size = InputSize.MEDIUM,
+      rightIcon,
+      leftIcon,
+      infoText,
+      successText,
+      value: rootValue,
+      onChange,
       ...props
     }: InputProps,
     ref
   ) => {
-    const [currentType, setCurrentType] = React.useState(type);
+    const [currentType, setCurrentType] = useState(type);
+    const [value, setValue] = useState(rootValue);
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event?.target?.value);
+      onChange && onChange(event);
+    };
+
+    const isHelpTextVisible = error || infoText || successText;
 
     return (
       <div className="space-y-2">
         {label && (
           <label
-            htmlFor={props.name}
+            htmlFor={name}
             className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
           >
             {label}
+            {props.required && (
+              <span className="pl-[2px] text-error-base">*</span>
+            )}
           </label>
         )}
 
         <div
-          className={`relative text-15 leading-6 font-normal font-primary border-[1px] p-3 ${type === 'password' ? 'pr-12' : 'pr-3'
-            } ${block ? 'w-full' : 'w-fit'} ${error
-              ? 'border-error-border bg-error-bg'
-              : 'border-neutral-border placeholder-neutral-border'
-            }`}
+          className={clsx(
+            'flex border-[1px]',
+            'text-13 leading-6 font-normal font-primary',
+            'placeholder-neutral-border',
+            'hover:border-neutral-placeholder',
+            'focus-within:border-primary',
+            'hover:focus-within:border-primary',
+            !value && 'border-neutral-border',
+            error && '!border-error-border bg-error-bg',
+            successText && 'border-success-border bg-success-bg',
+            type === InputType.SEARCH
+              ? 'px-0 text-neutral-white bg-neutral-text-secondary !border-0'
+              : 'px-3',
+            props.disabled &&
+              '!border-none !bg-neutral-disable !text-neutral-placeholder'
+          )}
+          style={{ width: fill ? '100%' : width }}
         >
+          {leftIcon && (
+            <div className="flex items-center text-neutral-text-secondary pr-3">
+              <Icon name={leftIcon} />
+            </div>
+          )}
+
           <input
             {...props}
-            // @ts-expect-error passing input ref
+            value={value}
+            onChange={handleOnChange}
             ref={ref}
-            id={props.name}
+            id={name}
             type={currentType}
-            onChange={(event) => {
-              if (props.onChange) props.onChange(event);
-            }}
-            className={`focus:outline-none`}
+            className={clsx(
+              'focus:outline-none bg-transparent w-full',
+              {
+                [InputSize.LARGE]: 'py-3',
+                [InputSize.MEDIUM]: 'py-2',
+                [InputSize.SMALL]: 'py-1',
+              }[size],
+              // TODO: apply background opacity
+              type === InputType.SEARCH &&
+                'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary'
+            )}
             aria-invalid={Boolean(error)}
-            aria-describedby={error ? `${props.name}-error` : undefined}
-            style={{ ...props.style, width: block ? '100%' : width + 'px' }}
+            aria-describedby={error ? `${name}-error` : undefined}
           />
-          {type === 'password' && (
+
+          {type === InputType.PASSWORD && (
             <button
-              className="absolute right-3 top-3"
+              className="flex items-center pl-2 text-neutral-text-secondary"
               onClick={() => {
                 setCurrentType((type) =>
-                  type === 'password' ? 'text' : 'password'
+                  type === 'password' ? InputType.TEXT : InputType.PASSWORD
                 );
               }}
             >
               <Icon
-                name={currentType === 'password' ? 'eye-show' : 'eye-hide'}
-                className="text-neutral-placeholder !w-6 !h-6"
+                name={
+                  currentType === InputType.PASSWORD ? 'eye-show' : 'eye-hide'
+                }
               />
             </button>
           )}
+
+          {type === InputType.SEARCH && (
+            <button
+              className={clsx(
+                'flex items-center bg-primary-base text-neutral-text-secondary',
+                {
+                  [InputSize.LARGE]: 'px-3',
+                  [InputSize.MEDIUM]: 'px-2',
+                  [InputSize.SMALL]: 'px-1',
+                }[size]
+              )}
+              // @ts-expect-error todo
+              onClick={props.onSubmit}
+            >
+              <Icon name="search" strokeWidth={40} />
+            </button>
+          )}
+
+          {rightIcon && (
+            <div className="flex items-center text-neutral-text-secondary pl-2">
+              <Icon name={rightIcon} />
+            </div>
+          )}
         </div>
 
-        <div className={error ? 'opacity-100' : 'opacity-0'}>
-          <InputError name={props.name}>{error}</InputError>
+        <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
+          {error && <InputHelpText variant="error">{error}</InputHelpText>}
+          {infoText && <InputHelpText variant="info">{infoText}</InputHelpText>}
+          {successText && (
+            <InputHelpText variant="success">{successText}</InputHelpText>
+          )}
         </div>
       </div>
     );
   }
 );
-
-export const InputError = ({
-  name,
-  children,
-}: React.PropsWithChildren<{ name?: string }>) => {
-  if (!children) {
-    return null;
-  }
-
-  return (
-    <div className="flex space-x-1 items-center">
-      <Icon name="caution" className="text-error !w-6 !h-6" />
-      <p
-        id={name ? `${name}-error` : undefined}
-        className="text-error text-13 font-normal leading-6 font-primary"
-      >
-        {children}
-      </p>
-    </div>
-  );
-};

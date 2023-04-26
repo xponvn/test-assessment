@@ -229,6 +229,12 @@ export type ComponentQuestionTextAnswerQuestion = {
   level?: Maybe<Enum_Componentquestiontextanswerquestion_Level>;
 };
 
+export type CountByStatus = {
+  __typename?: 'CountByStatus';
+  draft?: Maybe<Scalars['Int']>;
+  published?: Maybe<Scalars['Int']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -874,6 +880,7 @@ export type QueryUsersPermissionsUsersArgs = {
 
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
+  countByStatus?: Maybe<CountByStatus>;
   pagination: Pagination;
 };
 
@@ -1349,6 +1356,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type LoginMutationVariables = Exact<{
+  input: UsersLoginInputCustom;
+}>;
+
+
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, email?: string | null } } };
+
 export type CreateTestMutationVariables = Exact<{
   data: TestInput;
 }>;
@@ -1372,7 +1386,7 @@ export type GetTestsQueryVariables = Exact<{
 }>;
 
 
-export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number }, countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1387,6 +1401,17 @@ export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
 
+export const LoginDocument = gql`
+    mutation login($input: UsersLoginInputCustom!) {
+  login(input: $input) {
+    jwt
+    user {
+      id
+      email
+    }
+  }
+}
+    `;
 export const CreateTestDocument = gql`
     mutation createTest($data: TestInput!) {
   createTest(data: $data) {
@@ -1443,6 +1468,10 @@ export const GetTestsDocument = gql`
         pageSize
         pageCount
       }
+      countByStatus {
+        draft
+        published
+      }
     }
   }
 }
@@ -1479,6 +1508,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    login(variables: LoginMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LoginMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'login', 'mutation');
+    },
     createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
     },
