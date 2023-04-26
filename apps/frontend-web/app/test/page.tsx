@@ -19,9 +19,11 @@ export default function TestPage() {
   const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
   const [filterPosition, setFilterPosition] = useState<string>();
   const [filterLevel, setFilterLevel] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(false);
 
 
   const [dataTable, setDataTable] = useState<{
+    id?: string
     name: string,
     published: string,
     sent: number,
@@ -47,11 +49,20 @@ export default function TestPage() {
   }, []);
 
   const fetchingListTest = async (variants?: GetTestsQueryVariables) => {
+    if(loading) return;
+    setLoading(true);
     const res = await apiClient.getTests(variants);
+    setLoading(false);
     const dataTransform = transformListTest(res.tests.data as TestEntity[]);
     const metaData = res.tests.meta;
     setTotalItem(metaData.pagination.total)
     setDataTable(dataTransform)
+  }
+
+  const onRemoveTestItem = async (id?: string) => {
+    if(!id) return alert("Item not found.")
+    const res = await apiClient.deleteTest({ id });
+    if(res.deleteTest?.data?.attributes?.name) return alert("Delete item success.");
   }
 
   const getPositions = async () => {
@@ -136,9 +147,9 @@ export default function TestPage() {
             },
             {
               title: 'Action',
-              render: () => <div className="flex items-center gap-3">
+              render: (row) => <div className="flex items-center gap-3">
                 <span className="cursor-pointer" onClick={() => alert("Edit")}><Icon name="edit" className="text-[#1B1D29] gap-3" /></span>
-                <span className="cursor-pointer" onClick={() => alert("Delete")}><Icon name="remove" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => onRemoveTestItem(row.id)}><Icon name="remove" className="text-[#1B1D29] gap-3" /></span>
               </div>,
             },
           ]}
