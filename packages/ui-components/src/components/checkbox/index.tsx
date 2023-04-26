@@ -9,13 +9,11 @@ interface CheckBoxProps {
   disabled?: boolean;
 }
 
-export const defaultBgcolor = 'bg-primary-clicked'
-
 export type { CheckBoxProps };
 
 export const CheckBox = React.forwardRef((props: CheckBoxProps, ref) => {
 
-  const { label, bgColor = defaultBgcolor, checked = false, disabled = false, id = 'checkbox'} = props;
+  const { label, bgColor = 'bg-primary-clicked', checked = false, disabled = false, id = 'checkbox'} = props;
 
   const defaultChecked = checked ? checked : false;
 
