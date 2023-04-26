@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { InputIcon, InputIconType } from './inputIcon';
-import { InputHelpText } from './inputHelpText';
 import clsx from 'clsx';
+import { Icon } from '../Icon';
+import { InputHelpText } from './inputHelpText';
 
 export interface InputProps
   extends Omit<
@@ -13,9 +13,9 @@ export interface InputProps
   > {
   label?: string;
   error?: string;
-  block?: boolean;
-  leftIcon?: InputIconType;
-  rightIcon?: InputIconType;
+  fill?: boolean;
+  leftIcon?: string;
+  rightIcon?: string;
   size?: InputSize;
   infoText?: string;
   successText?: string;
@@ -31,21 +31,15 @@ export enum InputSize {
   SMALL = 'sm',
 }
 
-const styles = {
-  [InputSize.LARGE]: 'p-3',
-  [InputSize.MEDIUM]: 'p-2',
-  [InputSize.SMALL]: 'p-1',
-};
-
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       name,
       label,
-      error = '',
+      error,
       type = InputType.TEXT,
       width = 400,
-      block = false,
+      fill,
       size = InputSize.MEDIUM,
       rightIcon,
       leftIcon,
@@ -75,9 +69,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       !value && 'border-neutral-border',
       error && 'border-error-border bg-error-bg',
       successText && 'border-success-border bg-success-bg',
-      block ? 'w-full' : `w-[${width}px]`,
-      styles[size],
-      props.disabled && 'border-0 bg-neutral-disable'
+      fill ? 'w-full' : `w-[${width}px]`,
+      {
+        [InputSize.LARGE]: 'p-3',
+        [InputSize.MEDIUM]: 'p-2',
+        [InputSize.SMALL]: 'p-1',
+      }[size],
+      props.disabled && 'border-none bg-neutral-disable'
     );
     const isHelpTextVisible = error || infoText || successText;
 
@@ -105,15 +103,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className="flex pl-2"
               onClick={() => {
                 setCurrentType((type) =>
-                  type === 'password' ? 'text' : 'password'
+                  type === 'password' ? InputType.TEXT : InputType.PASSWORD
                 );
               }}
             >
               <InputIcon
                 type={
-                  currentType === 'password'
-                    ? InputIconType.PASSWORD_HIDDEN
-                    : InputIconType.PASSWORD_VISIBLE
+                  currentType === InputType.PASSWORD ? 'eyeShow' : 'eyeHide'
                 }
               />
             </button>
@@ -141,4 +137,8 @@ const Label = ({ htmlFor, label }: { htmlFor?: string; label: string }) => (
   >
     {label}
   </label>
+);
+
+const InputIcon = ({ type }: { type: string }) => (
+  <Icon name={type} width={24} height={24} color="text-neutral-placeholder" />
 );
