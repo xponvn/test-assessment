@@ -13,6 +13,7 @@ export default function Select({
   value,
   onChange
 }: SelectProps) {
+  
   return (
     <div className="flex items-center">
       <p className="mr-2 font-medium text-13 leading-6 text-neutral-placeholder">{label}:</p>
