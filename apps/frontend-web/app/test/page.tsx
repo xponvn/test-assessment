@@ -10,16 +10,36 @@ import { GetTestsQueryVariables, PublicationState, TestEntity, useApiClient } fr
 import { transformListTest } from './utils/helper'
 import { getLevelPosition, transformPositions } from './add/utils'
 import { SelectOption } from './add/components/form-base/select'
+import { useSearchParams } from 'next/navigation'
 
-const options = [{ label: "All (12)", value: PublicationState.Preview }, { label: "Published (9)", value: PublicationState.Live }, { label: "Draft (3)", value: undefined }]
+const options = [{ label: "All (12)", value: PublicationState.Preview }, { label: "Published (9)", value: PublicationState.Live }, { label: "Draft (3)", value: "DRAFT" }]
 export default function TestPage() {
-  const [tabActive, setTabActive] = useState<string>(PublicationState.Preview);
-  const [paging, setPaging] = useState<{ page: number, pageSize: number }>({ page: 1, pageSize: 10 });
-  const [totalItem, setTotalItem] = useState<number>(0)
   const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
-  const [filterPosition, setFilterPosition] = useState<string>();
-  const [filterLevel, setFilterLevel] = useState<string>();
+
+  const [tabActive, setTabActive] = useState<string>(PublicationState.Preview)
+  const [totalItem, setTotalItem] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(false);
+  const searchParams = useSearchParams();
+  const searchKey = searchParams.get('q') || "";
+
+  const [filterVariants, setFilterVariants] = useState<GetTestsQueryVariables>({
+    publicationState: PublicationState.Preview,
+    pagination: {
+      page: 1,
+      pageSize: 10
+    },
+    filters: {
+      name: { contains: searchKey },
+      position: { name: { eq: undefined }},
+      level: { eq: undefined },
+      publishedAt: { eq: undefined }
+    }
+  });
+
+  useEffect(() => {
+    setFilterVariants({...filterVariants, filters: {...filterVariants.filters, name: { contains: searchKey}}})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchKey])
 
 
   const [dataTable, setDataTable] = useState<{
@@ -35,13 +55,9 @@ export default function TestPage() {
   const { apiClient } = useApiClient()
 
   useEffect(() => {
-    fetchingListTest({
-      publicationState: tabActive as PublicationState,
-      pagination: { page: paging.page, pageSize: paging.pageSize },
-      filters: { position: { name: { eq: filterPosition }}, level: { eq: filterLevel }}
-    })
+    fetchingListTest({...filterVariants})
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tabActive, paging, filterPosition, filterLevel]);
+  }, [filterVariants]);
 
   useEffect(() => {
     getPositions()
@@ -71,12 +87,36 @@ export default function TestPage() {
     setOtpPositions(dataTransform);
   }
 
+  // const onClearFilter = () => {
+  //   setPaging({ page: 1, pageSize: 10 });
+  //   setTabActive(PublicationState.Preview);
+  //   setFilterPosition(undefined);
+  //   setFilterLevel(undefined);
+  // };
+
   const onClearFilter = () => {
-    setPaging({ page: 1, pageSize: 10 });
-    setTabActive(PublicationState.Preview);
-    setFilterPosition(undefined);
-    setFilterLevel(undefined)
+    setFilterVariants({
+      publicationState: PublicationState.Preview,
+      pagination: {
+        page: 1,
+        pageSize: 10
+      },
+      filters: {
+        name: { contains: searchKey },
+        position: { name: { eq: undefined }},
+        level: { eq: undefined },
+        publishedAt: { eq: undefined }
+      }
+    })
   };
+
+  const onFilterState = (value: string) => {
+    setTabActive(value)
+    if(value === "DRAFT") {
+      return setFilterVariants({...filterVariants, publicationState: PublicationState.Preview, filters: { ...filterVariants.filters, publishedAt: { eq: null }} })
+    }
+    setFilterVariants({...filterVariants, publicationState: value as PublicationState })
+  }
 
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
@@ -85,20 +125,20 @@ export default function TestPage() {
         <div className="flex items-center gap-8 flex-wrap">
           <TabFilter
             options={options}
-            onChange={(value) => setTabActive(value)}
+            onChange={onFilterState}
             active={tabActive}
           />
           <Select
             label="Job position"
-            value={!filterPosition ? "" : filterPosition}
+            value={!filterVariants.filters.position.name.eq ? "" : filterVariants.filters.position.name.eq as string}
             options={otpPositions}
-            onChange={(value) => setFilterPosition((value.length < 0 || !value) ? undefined : value)}
+            onChange={(value) => setFilterVariants({...filterVariants, filters: { ...filterVariants.filters, position: { name: { eq: (value.length < 0 || !value) ? undefined : value}}}})}
           />
           <Select
             label="Level"
-            value={!filterLevel ? "" : filterLevel}
+            value={!filterVariants.filters.level.eq ? "" : filterVariants.filters.level.eq as string}
             options={getLevelPosition()}
-            onChange={(value) => setFilterLevel((value.length < 0 || !value) ? undefined : value)}
+            onChange={(value) => setFilterVariants({...filterVariants, filters: {...filterVariants.filters, level: { eq: (value.length < 0 || !value) ? undefined : value}}})}
           />
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
           <div className="flex items-center w-fit cursor-pointer" onClick={onClearFilter}>
@@ -160,11 +200,11 @@ export default function TestPage() {
           <span className="text-13 leading-6 text-neutral-text-primary">Total test: {totalItem}</span>
           <div>
             <Paging
-              currentPage={paging.page}
+              currentPage={filterVariants.pagination.page}
               totalItem={totalItem}
-              onChangePage={(page) => setPaging({ ...paging, page: page })}
-              onChangeRowsPerPage={(row) => setPaging({ ...paging, pageSize: row, page: 1 })}
-              rowsPerPage={paging.pageSize}
+              onChangePage={(page) => setFilterVariants({ ...filterVariants, pagination: { ...filterVariants.pagination, page: page } })}
+              onChangeRowsPerPage={(row) => setFilterVariants({ ...filterVariants, pagination: { pageSize: row, page: 1 } })}
+              rowsPerPage={filterVariants.pagination.pageSize}
             />
           </div>
         </div>
