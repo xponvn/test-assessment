@@ -1,18 +1,122 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TabFilter from './components/tab-filter'
 import Select from './components/select'
-import { RenderIcon } from './icons'
-import { Table } from '@test-assessment/ui-components'
+import { Icon, Table } from '@test-assessment/ui-components'
 import clsx from 'clsx'
 import PieChart from './components/pie-chart'
 import Paging from './components/paging'
+import { GetTestsQueryVariables, PublicationState, TestEntity, useApiClient } from '@test-assessment/cms-graphql-api'
+import { transformListTest } from './utils/helper'
+import { getLevelPosition, transformPositions } from './add/utils'
+import { SelectOption } from './add/components/form-base/select'
+import { useSearchParams } from 'next/navigation'
 
-const options = [{ label: "All (12)", value: "All" }, { label: "Published (9)", value: "Published" }, { label: "Draft (3)", value: "Draft" }]
+const options = [{ label: "All (12)", value: PublicationState.Preview }, { label: "Published (9)", value: PublicationState.Live }, { label: "Draft (3)", value: "DRAFT" }]
 export default function TestPage() {
-  const [tabActive, setTabActive] = useState<string>("All");
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [rowPerPage, setRowPerPage] = useState<number>(10)
+  const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
+
+  const [tabActive, setTabActive] = useState<string>(PublicationState.Preview)
+  const [totalItem, setTotalItem] = useState<number>(0)
+  const [loading, setLoading] = useState<boolean>(false);
+  const searchParams = useSearchParams();
+  const searchKey = searchParams.get('q') || "";
+
+  const [filterVariants, setFilterVariants] = useState<GetTestsQueryVariables>({
+    publicationState: PublicationState.Preview,
+    pagination: {
+      page: 1,
+      pageSize: 10
+    },
+    filters: {
+      name: { contains: searchKey },
+      position: { name: { eq: undefined }},
+      level: { eq: undefined },
+      publishedAt: { eq: undefined }
+    }
+  });
+
+  useEffect(() => {
+    setFilterVariants({...filterVariants, filters: {...filterVariants.filters, name: { contains: searchKey}}})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchKey])
+
+
+  const [dataTable, setDataTable] = useState<{
+    id?: string
+    name: string,
+    published: string,
+    sent: number,
+    submitted: number,
+    author: string,
+    position: string,
+    level: string,
+  }[]>([])
+  const { apiClient } = useApiClient()
+
+  useEffect(() => {
+    fetchingListTest({...filterVariants})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterVariants]);
+
+  useEffect(() => {
+    getPositions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchingListTest = async (variants?: GetTestsQueryVariables) => {
+    if(loading) return;
+    setLoading(true);
+    const res = await apiClient.getTests(variants);
+    setLoading(false);
+    const dataTransform = transformListTest(res.tests.data as TestEntity[]);
+    const metaData = res.tests.meta;
+    setTotalItem(metaData.pagination.total)
+    setDataTable(dataTransform)
+  }
+
+  const onRemoveTestItem = async (id?: string) => {
+    if(!id) return alert("Item not found.")
+    const res = await apiClient.deleteTest({ id });
+    if(res.deleteTest?.data?.attributes?.name) return alert("Delete item success.");
+  }
+
+  const getPositions = async () => {
+    const res = await apiClient.getPositions({ sort: ["name"] });
+    const dataTransform = transformPositions(res?.positions?.data || []);
+    setOtpPositions(dataTransform);
+  }
+
+  // const onClearFilter = () => {
+  //   setPaging({ page: 1, pageSize: 10 });
+  //   setTabActive(PublicationState.Preview);
+  //   setFilterPosition(undefined);
+  //   setFilterLevel(undefined);
+  // };
+
+  const onClearFilter = () => {
+    setFilterVariants({
+      publicationState: PublicationState.Preview,
+      pagination: {
+        page: 1,
+        pageSize: 10
+      },
+      filters: {
+        name: { contains: searchKey },
+        position: { name: { eq: undefined }},
+        level: { eq: undefined },
+        publishedAt: { eq: undefined }
+      }
+    })
+  };
+
+  const onFilterState = (value: string) => {
+    setTabActive(value)
+    if(value === "DRAFT") {
+      return setFilterVariants({...filterVariants, publicationState: PublicationState.Preview, filters: { ...filterVariants.filters, publishedAt: { eq: null }} })
+    }
+    setFilterVariants({...filterVariants, publicationState: value as PublicationState })
+  }
 
   return (
     <div className="bg-neutral-table-header h-full" style={{ background: "#F3F0F5" }}>
@@ -21,66 +125,31 @@ export default function TestPage() {
         <div className="flex items-center gap-8 flex-wrap">
           <TabFilter
             options={options}
-            onChange={(value) => setTabActive(value)}
+            onChange={onFilterState}
             active={tabActive}
           />
           <Select
             label="Job position"
-            options={options}
-            onChange={(value) => alert(value)}
+            value={!filterVariants.filters.position.name.eq ? "" : filterVariants.filters.position.name.eq as string}
+            options={otpPositions}
+            onChange={(value) => setFilterVariants({...filterVariants, filters: { ...filterVariants.filters, position: { name: { eq: (value.length < 0 || !value) ? undefined : value}}}})}
           />
           <Select
             label="Level"
-            options={options}
-            onChange={(value) => alert(value)}
+            value={!filterVariants.filters.level.eq ? "" : filterVariants.filters.level.eq as string}
+            options={getLevelPosition()}
+            onChange={(value) => setFilterVariants({...filterVariants, filters: {...filterVariants.filters, level: { eq: (value.length < 0 || !value) ? undefined : value}}})}
           />
           <span className="w-6 h-0 border border-solid border-neutral-disable rotate-90"></span>
-          <div className="flex items-center w-fit cursor-pointer" onClick={() => alert("Clear filter")}>
+          <div className="flex items-center w-fit cursor-pointer" onClick={onClearFilter}>
             <p className="mr-2 font-medium text-13 leading-6 text-primary-base">Clear filter</p>
-            <RenderIcon name="refresh" className='text-primary-base' />
+            <Icon name="refresh" className='text-primary-base' />
           </div>
         </div>
 
         {/** TABLE CONTENT */}
         <Table
-          rows={[
-            {
-              name: 'Full Stack Web Developer',
-              published: new Date(),
-              sent: 1,
-              submitted: 1,
-              author: 'hien.nguyen@xpon.ai',
-              position: 'Developer',
-              level: 'Junior',
-            },
-            {
-              name: 'SM leader',
-              published: new Date(),
-              sent: 2,
-              submitted: 4,
-              author: 'tommy.nguyen@xpon.ai',
-              position: 'UI/UX',
-              level: 'Senior',
-            },
-            {
-              name: 'UI/UX designer',
-              published: undefined,
-              sent: '_ _',
-              submitted: '_ _',
-              author: 'tommy.nguyen@xpon.ai',
-              position: 'CSM',
-              level: 'Leader',
-            },
-            {
-              name: 'CSM',
-              published: new Date(),
-              sent: 3,
-              submitted: 1,
-              author: 'hien.nguyen@xpon.ai',
-              position: 'CSM',
-              level: 'Leader',
-            },
-          ]}
+          rows={dataTable}
           columns={[
             {
               title: 'Test name',
@@ -114,13 +183,13 @@ export default function TestPage() {
             },
             {
               title: 'Level',
-              render: (row) => <span className="text-neutral-text-primary text-13 leading-6">{row.level}</span>,
+              render: (row) => <span className="text-neutral-text-primary text-13 leading-6 capitalize">{row.level}</span>,
             },
             {
               title: 'Action',
-              render: () => <div className="flex items-center gap-3">
-                <span className="cursor-pointer" onClick={() => alert("Edit")}><RenderIcon name="edit" className="text-[#1B1D29] gap-3" /></span>
-                <span className="cursor-pointer" onClick={() => alert("Delete")}><RenderIcon name="delete" className="text-[#1B1D29] gap-3" /></span>
+              render: (row) => <div className="flex items-center gap-3">
+                <span className="cursor-pointer" onClick={() => alert("Edit")}><Icon name="edit" className="text-[#1B1D29] gap-3" /></span>
+                <span className="cursor-pointer" onClick={() => onRemoveTestItem(row.id)}><Icon name="remove" className="text-[#1B1D29] gap-3" /></span>
               </div>,
             },
           ]}
@@ -128,17 +197,14 @@ export default function TestPage() {
         />
 
         <div className="mt-6 flex justify-between">
-          <span className="text-13 leading-6 text-neutral-text-primary">Total test: 12</span>
+          <span className="text-13 leading-6 text-neutral-text-primary">Total test: {totalItem}</span>
           <div>
-            <Paging 
-              currentPage={currentPage}
-              totalItem={100}
-              onChangePage={(page) => setCurrentPage(page)}
-              onChangeRowsPerPage={(row) => {
-                setRowPerPage(row)
-                setCurrentPage(1)
-              }}
-              rowsPerPage={rowPerPage}
+            <Paging
+              currentPage={filterVariants.pagination.page}
+              totalItem={totalItem}
+              onChangePage={(page) => setFilterVariants({ ...filterVariants, pagination: { ...filterVariants.pagination, page: page } })}
+              onChangeRowsPerPage={(row) => setFilterVariants({ ...filterVariants, pagination: { pageSize: row, page: 1 } })}
+              rowsPerPage={filterVariants.pagination.pageSize}
             />
           </div>
         </div>
