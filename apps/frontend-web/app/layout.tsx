@@ -17,7 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ApiClientProvider apiUrl={process.env.GRAPHQL_API_URL}>
+        <ApiClientProvider
+          apiUrl={process.env.NEXT_PUBLIC_GRAPHQL_API_URL}
+          token={process.env.NEXT_PUBLIC_STRAPI_TOKEN}
+        >
           <AuthProvider>
             <RouteGuard>
               <UIProvider config={themeToken.variants}>{children}</UIProvider>
