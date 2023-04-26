@@ -14,6 +14,7 @@ const Story: Meta<typeof InputComponent> = {
         options: [InputSize.LARGE, InputSize.MEDIUM, InputSize.SMALL],
       },
     },
+    required: { control: 'boolean' },
     fill: { control: 'boolean' },
     error: { control: 'text' },
     successText: { control: 'text' },
@@ -34,8 +35,9 @@ const Story: Meta<typeof InputComponent> = {
   },
   args: {
     // @ts-expect-error ignore props check
-    fill: false,
+    required: true,
     disabled: false,
+    fill: false,
     size: 'md',
     error: '',
     successText: '',

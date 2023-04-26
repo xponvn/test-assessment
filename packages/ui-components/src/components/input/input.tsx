@@ -87,6 +87,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
           >
             {label}
+            {props.required && (
+              <span className="pl-[2px] text-error-base">*</span>
+            )}
           </label>
         )}
 
