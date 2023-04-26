@@ -2,7 +2,6 @@
 import { UIProvider } from '@test-assessment/ui-theme';
 import '../styles/index.css';
 import themeToken from '@test-assessment/ui-theme/theme-token/frontend-web.json';
-import RootHeader from './header';
 import { ApiClientProvider } from '@test-assessment/cms-graphql-api';
 // import getConfig from 'next/config';
 // const { publicRuntimeConfig } = getConfig() || {};
@@ -16,11 +15,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ApiClientProvider 
+        <ApiClientProvider
           apiUrl={process.env.NEXT_PUBLIC_GRAPHQL_API_URL}
+          token={process.env.NEXT_PUBLIC_STRAPI_TOKEN}
         >
           <UIProvider config={themeToken.variants}>
-            <RootHeader />
             {children}
           </UIProvider>
         </ApiClientProvider>

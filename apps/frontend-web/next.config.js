@@ -18,6 +18,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  images: {
+    domains: process.env.IMAGE_DOMAINS.split(',')
+  },
 };
 
 module.exports = withNx(nextConfig);
