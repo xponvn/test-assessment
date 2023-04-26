@@ -110,6 +110,40 @@ nx run-many --target=test
 
 Read more at: [https://nx.dev/packages/nx/documents/run-many#run-many](https://nx.dev/packages/nx/documents/run-many#run-many)
 
+## Some useful scripts for running unit tests/e2e tests/code coverage tests, lint, format ...
+
+```bash
+# this script will run unit test in frontent-web
+nx test frontend-web
+```
+
+```bash
+# this script will run unit test in ui-components package & auto generate jest snapshots if .toMatchSnapshot() is used in unit tests...
+nx test ui-components
+```
+
+```bash
+# this script will run unit test in ci environment & show code coverage results
+nx run ui-components:test:ci
+```
+
+```bash
+# this script will run all the unit tests of all packages/services in monorepo
+nx run-many target=test
+```
+
+```bash
+# this script will run linting on ui-components package
+nx lint ui-components
+```
+
+```bash
+# this script will automatically using prettier to check the format your code in ui-components package
+nx format:check --projects=ui-components
+# this script will automatically using prettier to format your code in ui-components package
+nx format:write --projects=ui-components
+```
+
 ## Storybook:
 
 Link: https://www.chromatic.com/start?inviteToken=1d18a11603d24be795d8862015f232b2&appId=64337ab552933871acec5f96
