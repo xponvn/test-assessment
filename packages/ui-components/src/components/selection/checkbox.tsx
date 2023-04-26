@@ -1,5 +1,7 @@
 import * as React from 'react';
 import './style.css';
+import clsx from 'clsx';
+
 export interface CheckboxProps {
   checked: boolean | null;
   name?: string;
@@ -37,9 +39,8 @@ export const CheckBox = (props: CheckboxProps) => {
         checkedRef.current = false;
         break;
       case false:
-        if(indeterminate)
-        checkedRef.current = null;
-        else  checkedRef.current = true;
+        if (indeterminate) checkedRef.current = null;
+        else checkedRef.current = true;
 
         break;
       default: // null
@@ -51,17 +52,24 @@ export const CheckBox = (props: CheckboxProps) => {
       onChange(checkedRef.current);
     }
   };
+  const checkmarkAfter =
+    " after:boder-t-0 after:border-r-2 after:border-b-2 after:border-l-0 after:content-[''] after:absolute after:hidden after:left-[5px] after:top-[2px] after:w-[5px] after:h-[10px] after:border-solid after:border-neutral-white after:rotate-45";
 
   return (
     <label className="container-checkbox relative">
       <input
-        className='absolute opacity-0 cursor-pointer h-0 w-0'
+        className="absolute opacity-0 cursor-pointer h-0 w-0"
         disabled={disable}
         ref={inputRef}
         type="checkbox"
         onClick={handleClick}
       />
-      <span className="checkmark absolute top-0 left-0 h-[16px] w-[16px] bg-neutral-white border-[1px] border-solid border-neutral-border"></span>
+      <span
+        className={clsx(
+          'checkmark absolute top-0 left-0 h-[16px] w-[16px] bg-neutral-white border-[1px] border-solid border-neutral-border',
+          checkmarkAfter
+        )}
+      ></span>
       {name}
     </label>
   );

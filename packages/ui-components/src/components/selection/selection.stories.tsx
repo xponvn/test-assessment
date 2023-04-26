@@ -15,7 +15,7 @@ export const Checkbox = () => (
 );
 
 export const CheckboxDisable = () => (
-  <CheckBoxComponent disable={true} name="" checked={false} />
+  <CheckBoxComponent disable={true} name="" checked={true} />
 );
 
 export const RadioButton = () => (
