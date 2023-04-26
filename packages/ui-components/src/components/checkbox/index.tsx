@@ -11,14 +11,18 @@ interface CheckBoxProps {
 
 export type { CheckBoxProps };
 
+export const defaultBgColor = 'bg-primary-clicked';
+
 export const CheckBox = React.forwardRef((props: CheckBoxProps, ref) => {
 
-  const { label, bgColor = 'bg-primary-clicked', checked = false, disabled = false, id = 'checkbox'} = props;
+  const { label, bgColor = defaultBgColor, checked = false, disabled = false, id = 'checkbox'} = props;
 
   const defaultChecked = checked ? checked : false;
 
   const [isChecked, setIsChecked] = useState(defaultChecked);
-  
+
+  const checkedClass = isChecked ? bgColor + ' border-0' : '';
+
   return (
     <div className="flex items-center">  
       <input 
@@ -30,7 +34,7 @@ export const CheckBox = React.forwardRef((props: CheckBoxProps, ref) => {
         disabled={disabled}
       />  
       <div 
-        className={`w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 peer-checked:${bgColor} peer-checked:border-0 border-neutral-border border cursor-pointer`}
+        className={`w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 ${checkedClass} border-neutral-border border cursor-pointer `}
       >  
         <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

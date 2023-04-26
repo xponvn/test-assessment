@@ -1,8 +1,8 @@
-import { CheckBoxProps } from '.';
+import { CheckBoxProps, defaultBgColor } from '.';
 
 export const mockCheckBoxProps: CheckBoxProps = {
   label: 'Developer',
-  bgColor: 'bg-primary-clicked',
+  bgColor: defaultBgColor,
   id: 'checkbox',
   checked: false,
   disabled: false,

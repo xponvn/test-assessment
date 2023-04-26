@@ -14,7 +14,7 @@ exports[`Checkbox should render successfully 1`] = `
           type="checkbox"
         />
         <div
-          class="w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 peer-checked:bg-primary-clicked peer-checked:border-0 border-neutral-border border cursor-pointer"
+          class="w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2  border-neutral-border border cursor-pointer "
         >
           <svg
             fill="none"
@@ -51,7 +51,7 @@ exports[`Checkbox should render successfully 1`] = `
         type="checkbox"
       />
       <div
-        class="w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2 peer-checked:bg-primary-clicked peer-checked:border-0 border-neutral-border border cursor-pointer"
+        class="w-4 h-4 flex flex-shrink-0 justify-center items-center mr-2  border-neutral-border border cursor-pointer "
       >
         <svg
           fill="none"
