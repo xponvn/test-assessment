@@ -13,25 +13,15 @@ const Story: Meta<typeof InputComponent> = {
         options: [InputSize.LARGE, InputSize.MEDIUM, InputSize.SMALL],
       },
     },
-    block: {
-      control: 'boolean',
-    },
-    error: {
-      control: 'text',
-    },
-    successText: {
-      control: 'text',
-    },
-    infoText: {
-      control: 'text',
-    },
-    disabled: {
-      control: 'boolean',
-    },
+    fill: { control: 'boolean' },
+    error: { control: 'text' },
+    successText: { control: 'text' },
+    infoText: { control: 'text' },
+    disabled: { control: 'boolean' },
   },
   args: {
     // @ts-expect-error ignore props check
-    block: false,
+    fill: false,
     disabled: false,
     size: 'md',
     error: '',
@@ -41,7 +31,7 @@ const Story: Meta<typeof InputComponent> = {
 };
 export default Story;
 
-export const Text = (props: typeof Story.argTypes) => (
+export const Text = (props: any) => (
   <InputComponent
     label="Label"
     {...props}
