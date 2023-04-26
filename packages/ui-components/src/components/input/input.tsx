@@ -67,7 +67,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       'focus-within:border-primary',
       'hover:focus-within:border-primary',
       !value && 'border-neutral-border',
-      error && 'border-error-border bg-error-bg',
+      error && '!border-error-border bg-error-bg',
       successText && 'border-success-border bg-success-bg',
       fill ? 'w-full' : `w-[${width}px]`,
       {
