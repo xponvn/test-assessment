@@ -1,0 +1,9 @@
+mutation login($input: UsersLoginInputCustom!) {
+  login(input: $input) {
+    jwt
+    user {
+      id
+      email
+    }
+  }
+}

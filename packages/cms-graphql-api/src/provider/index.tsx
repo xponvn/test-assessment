@@ -6,7 +6,7 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useState
+  useState,
 } from 'react';
 
 import { getSdk } from '../generated';
@@ -23,14 +23,15 @@ const getHeaders = (token?: string | null) => {
 
 export const getApiClient = (
   // eslint-disable-next-line turbo/no-undeclared-env-vars
-  apiUrl = process.env.GRAPHQL_API_URL || '/graphql',
+  apiUrl = 'http://localhost:1337/graphql',
   token?: string | null
-) =>
-  getSdk(
+) => {
+  return getSdk(
     new GraphQLClient(apiUrl, {
       headers: getHeaders(token),
     })
   );
+};
 
 export const ApiClientContext = React.createContext({
   apiClient: getApiClient(''),

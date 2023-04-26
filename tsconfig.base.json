@@ -22,6 +22,10 @@
         "tools/*/src/index.ts"
       ],
       "@test-assessment/hook-form": ["packages/hook-form/src/index.ts"],
+      "@test-assessment/mylib": ["packages/mylib/src/index.ts"],
+      "@test-assessment/ui-auth-protect": [
+        "packages/ui-auth-protect/src/index.ts"
+      ],
       "@test-assessment/ui-module-layout-auth": [
         "packages/ui-module-layout-auth/src/index.ts"
       ]
