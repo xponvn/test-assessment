@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { Input, Button, Icon } from '@test-assessment/ui-components';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UiModuleLayoutAuth } from '@test-assessment/ui-module-layout-auth';
+import { useApiClient } from '@test-assessment/cms-graphql-api';
+import { useAuth } from '@test-assessment/ui-auth-protect';
+import { useRouter } from 'next/navigation';
 
 const regexEmail = new RegExp('^[A-Za-z0-9._%+-]+@xpon.ai$');
 const regexPassword = new RegExp(
@@ -15,7 +18,12 @@ type LoginForm = {
   email: string;
   password: string;
 };
+
 export default function Page() {
+  const { apiClient } = useApiClient();
+  const { storeUser, user } = useAuth();
+  const router = useRouter();
+
   const schema = yup
     .object({
       email: yup
@@ -42,10 +50,35 @@ export default function Page() {
     mode: 'onChange',
   });
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
-    // Request API
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      const result = await apiClient.login({
+        input: {
+          email: data.email,
+          password: data.password,
+          provider: 'local',
+        },
+      });
+      if (result.login) {
+        storeUser({
+          token: result?.login.jwt,
+          user: {
+            id: result?.login.user?.id,
+            email: result?.login.user?.email,
+          },
+        });
+        router.push('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user]);
 
   return (
     <UiModuleLayoutAuth>
@@ -53,7 +86,7 @@ export default function Page() {
       <p className="text-15 font-normal text-neutral-text-secondary mb-10">
         Please sign in with your provided account and password
       </p>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <div className="grid mb-6 md:grid-cols-2">
           <div>
             <Input
@@ -82,7 +115,7 @@ export default function Page() {
           <Button
             type="button"
             className="text-neutral-text-primary font-medium px-5 py-2.5 text-center bg-primary-base"
-            onClick={() => handleSubmit(onSubmit)}
+            onClick={handleSubmit(onSubmit)}
           >
             LOGIN
           </Button>
