@@ -2005,6 +2005,266 @@
       "collectionName": "i18n_locale",
       "globalId": "I18NLocale"
     },
+    "api::candidate.candidate": {
+      "kind": "collectionType",
+      "collectionName": "candidates",
+      "info": {
+        "singularName": "candidate",
+        "pluralName": "candidates",
+        "displayName": "Candidate",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "firstName": {
+          "type": "string",
+          "required": true
+        },
+        "lastName": {
+          "type": "string",
+          "required": true
+        },
+        "email": {
+          "type": "email",
+          "required": true,
+          "unique": true
+        },
+        "phone": {
+          "type": "string",
+          "regex": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
+          "required": false
+        },
+        "position": {
+          "type": "string",
+          "required": true
+        },
+        "level": {
+          "type": "string",
+          "required": true
+        },
+        "resume": {
+          "type": "media",
+          "multiple": false,
+          "required": false,
+          "allowedTypes": [
+            "images",
+            "files",
+            "videos",
+            "audios"
+          ]
+        },
+        "tests": {
+          "type": "relation",
+          "relation": "manyToMany",
+          "target": "api::test.test",
+          "inversedBy": "candidates"
+        },
+        "comments": {
+          "type": "relation",
+          "relation": "oneToMany",
+          "target": "api::comment.comment",
+          "mappedBy": "candidate"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "candidates",
+        "info": {
+          "singularName": "candidate",
+          "pluralName": "candidates",
+          "displayName": "Candidate",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": true
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "firstName": {
+            "type": "string",
+            "required": true
+          },
+          "lastName": {
+            "type": "string",
+            "required": true
+          },
+          "email": {
+            "type": "email",
+            "required": true,
+            "unique": true
+          },
+          "phone": {
+            "type": "string",
+            "regex": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
+            "required": false
+          },
+          "position": {
+            "type": "string",
+            "required": true
+          },
+          "level": {
+            "type": "string",
+            "required": true
+          },
+          "resume": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+              "images",
+              "files",
+              "videos",
+              "audios"
+            ]
+          },
+          "tests": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::test.test",
+            "inversedBy": "candidates"
+          },
+          "comments": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment",
+            "mappedBy": "candidate"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "candidate",
+      "connection": "default",
+      "uid": "api::candidate.candidate",
+      "apiName": "candidate",
+      "globalId": "Candidate",
+      "actions": {},
+      "lifecycles": {}
+    },
+    "api::comment.comment": {
+      "kind": "collectionType",
+      "collectionName": "comments",
+      "info": {
+        "singularName": "comment",
+        "pluralName": "comments",
+        "displayName": "Comment",
+        "description": ""
+      },
+      "options": {
+        "draftAndPublish": true
+      },
+      "pluginOptions": {},
+      "attributes": {
+        "Content": {
+          "type": "text"
+        },
+        "candidate": {
+          "type": "relation",
+          "relation": "manyToOne",
+          "target": "api::candidate.candidate",
+          "inversedBy": "comments"
+        },
+        "createdAt": {
+          "type": "datetime"
+        },
+        "updatedAt": {
+          "type": "datetime"
+        },
+        "publishedAt": {
+          "type": "datetime",
+          "configurable": false,
+          "writable": true,
+          "visible": false
+        },
+        "createdBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        },
+        "updatedBy": {
+          "type": "relation",
+          "relation": "oneToOne",
+          "target": "admin::user",
+          "configurable": false,
+          "writable": false,
+          "visible": false,
+          "useJoinTable": false,
+          "private": true
+        }
+      },
+      "__schema__": {
+        "collectionName": "comments",
+        "info": {
+          "singularName": "comment",
+          "pluralName": "comments",
+          "displayName": "Comment",
+          "description": ""
+        },
+        "options": {
+          "draftAndPublish": true
+        },
+        "pluginOptions": {},
+        "attributes": {
+          "Content": {
+            "type": "text"
+          },
+          "candidate": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::candidate.candidate",
+            "inversedBy": "comments"
+          }
+        },
+        "kind": "collectionType"
+      },
+      "modelType": "contentType",
+      "modelName": "comment",
+      "connection": "default",
+      "uid": "api::comment.comment",
+      "apiName": "comment",
+      "globalId": "Comment",
+      "actions": {},
+      "lifecycles": {}
+    },
     "api::position.position": {
       "kind": "collectionType",
       "collectionName": "positions",
@@ -2154,6 +2414,12 @@
           "min": 1,
           "default": 1
         },
+        "candidates": {
+          "type": "relation",
+          "relation": "manyToMany",
+          "target": "api::candidate.candidate",
+          "mappedBy": "tests"
+        },
         "createdAt": {
           "type": "datetime"
         },
@@ -2242,6 +2508,12 @@
             "required": true,
             "min": 1,
             "default": 1
+          },
+          "candidates": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::candidate.candidate",
+            "mappedBy": "tests"
           }
         },
         "kind": "collectionType"

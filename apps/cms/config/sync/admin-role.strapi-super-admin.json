@@ -5,6 +5,117 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::candidate.candidate",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "position",
+          "level",
+          "resume",
+          "tests",
+          "comments"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::candidate.candidate",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::candidate.candidate",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::candidate.candidate",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "position",
+          "level",
+          "resume",
+          "tests",
+          "comments"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::candidate.candidate",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "position",
+          "level",
+          "resume",
+          "tests",
+          "comments"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::comment.comment",
+      "properties": {
+        "fields": [
+          "Content",
+          "candidate"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::comment.comment",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::comment.comment",
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::comment.comment",
+      "properties": {
+        "fields": [
+          "Content",
+          "candidate"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::comment.comment",
+      "properties": {
+        "fields": [
+          "Content",
+          "candidate"
+        ]
+      },
+      "conditions": []
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::position.position",
       "properties": {
         "fields": [
@@ -58,7 +169,8 @@
           "questions",
           "position",
           "level",
-          "timeLimit"
+          "timeLimit",
+          "candidates"
         ]
       },
       "conditions": []
@@ -85,7 +197,8 @@
           "questions",
           "position",
           "level",
-          "timeLimit"
+          "timeLimit",
+          "candidates"
         ]
       },
       "conditions": []
@@ -100,7 +213,8 @@
           "questions",
           "position",
           "level",
-          "timeLimit"
+          "timeLimit",
+          "candidates"
         ]
       },
       "conditions": []

@@ -22,7 +22,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Content",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "answers": {
         "edit": {
-          "label": "answers",
+          "label": "Answers",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "level": {
         "edit": {
-          "label": "level",
+          "label": "Level",
           "description": "",
           "placeholder": "",
           "visible": true,
