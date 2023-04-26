@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "candidates",
+  "info": {
+    "singularName": "candidate",
+    "pluralName": "candidates",
+    "displayName": "Candidate",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "phone": {
+      "type": "string",
+      "regex": "^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$",
+      "required": false
+    },
+    "position": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "string",
+      "required": true
+    },
+    "resume": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::test.test",
+      "inversedBy": "candidates"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "candidate"
+    }
+  }
+}

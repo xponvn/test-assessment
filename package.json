@@ -6,7 +6,8 @@
     "build-storybook": "npx nx build-storybook frontend-web",
     "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "ui": "npx nx storybook frontend-web",
-    "frontend": "npx nx serve frontend-web"
+    "frontend": "npx nx serve frontend-web",
+    "generate": "nx g @nrwl/next:lib"
   },
   "private": true,
   "dependencies": {

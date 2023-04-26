@@ -1,0 +1,196 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::test.test",
+  "value": {
+    "uid": "api::test.test",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "name",
+      "defaultSortBy": "name",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "Name",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "passingScore": {
+        "edit": {
+          "label": "Passing Score",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "passingScore",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "questions": {
+        "edit": {
+          "label": "questions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "questions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "position": {
+        "edit": {
+          "label": "Position",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "position",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "level": {
+        "edit": {
+          "label": "Level",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "level",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "timeLimit": {
+        "edit": {
+          "label": "Time Limit",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "timeLimit",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "candidates": {
+        "edit": {
+          "label": "candidates",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "firstName"
+        },
+        "list": {
+          "label": "candidates",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "name",
+            "size": 6
+          },
+          {
+            "name": "position",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "questions",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "level",
+            "size": 4
+          },
+          {
+            "name": "timeLimit",
+            "size": 4
+          },
+          {
+            "name": "passingScore",
+            "size": 4
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "name",
+        "passingScore",
+        "position"
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

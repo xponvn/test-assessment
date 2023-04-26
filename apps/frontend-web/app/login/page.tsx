@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import * as yup from 'yup';
 import { Input, Button, Icon } from '@test-assessment/ui-components';
 import { useForm } from 'react-hook-form';
@@ -94,10 +94,8 @@ export default function Page() {
             title="Forgot your password"
             RightIcon={
               <Icon
-                name="arrowRight"
-                width={24}
-                height={24}
-                color="text-primary-placeholder"
+                name="arrow-right"
+                className="text-primary-placeholder"
               />
             }
           >

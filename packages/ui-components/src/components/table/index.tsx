@@ -52,7 +52,7 @@ export const Table = <T,>(props: TableProps<T>) => {
       <thead>
         <tr>
           {props.columns.map((column, index: number) => (
-            <th className="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider" key={index}>
+            <th className="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left" key={index}>
               {column.title}
             </th>
           ))}

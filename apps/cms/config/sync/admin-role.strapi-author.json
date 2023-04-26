@@ -1,0 +1,153 @@
+{
+  "name": "Author",
+  "code": "strapi-author",
+  "description": "Authors can manage the content they have created.",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::position.position",
+      "properties": {
+        "fields": [
+          "name",
+          "tests"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::position.position",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::position.position",
+      "properties": {
+        "fields": [
+          "name",
+          "tests"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::position.position",
+      "properties": {
+        "fields": [
+          "name",
+          "tests"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::test.test",
+      "properties": {
+        "fields": [
+          "name",
+          "passingScore",
+          "questions",
+          "position",
+          "level",
+          "timeLimit"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::test.test",
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::test.test",
+      "properties": {
+        "fields": [
+          "name",
+          "passingScore",
+          "questions",
+          "position",
+          "level",
+          "timeLimit"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::test.test",
+      "properties": {
+        "fields": [
+          "name",
+          "passingScore",
+          "questions",
+          "position",
+          "level",
+          "timeLimit"
+        ]
+      },
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    },
+    {
+      "action": "plugin::upload.configure-view",
+      "subject": null,
+      "properties": {},
+      "conditions": []
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [
+        "admin::is-creator"
+      ]
+    }
+  ]
+}
