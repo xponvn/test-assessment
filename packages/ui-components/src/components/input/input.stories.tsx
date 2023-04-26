@@ -18,6 +18,18 @@ const Story: Meta<typeof InputComponent> = {
     successText: { control: 'text' },
     infoText: { control: 'text' },
     disabled: { control: 'boolean' },
+    leftIcon: {
+      control: {
+        type: 'select',
+        options: ['account', 'calendar'],
+      },
+    },
+    rightIcon: {
+      control: {
+        type: 'select',
+        options: ['account', 'calendar'],
+      },
+    },
   },
   args: {
     // @ts-expect-error ignore props check

@@ -84,7 +84,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && <Label htmlFor={name} label={label} />}
 
         <div className={classNames}>
-          {leftIcon && <InputIcon type={type} />}
+          {leftIcon && (
+            <div className="pr-3 flex items-center">
+              <InputIcon type={leftIcon} />
+            </div>
+          )}
 
           <input
             {...props}
@@ -115,7 +119,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
 
-          {rightIcon && <InputIcon type={type} />}
+          {rightIcon && (
+            <div className="flex pl-3">
+              <InputIcon type={rightIcon} />
+            </div>
+          )}
         </div>
 
         <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
