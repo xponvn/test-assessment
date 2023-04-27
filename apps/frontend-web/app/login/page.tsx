@@ -126,12 +126,7 @@ export default function Page() {
             href="/forgot-password"
             title="Forgot your password"
             RightIcon={
-              <Icon
-                name="arrowRight"
-                width={24}
-                height={24}
-                color="text-primary-placeholder"
-              />
+              <Icon name="arrow-right" className="text-primary-placeholder" />
             }
           >
             Forgot your password

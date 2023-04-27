@@ -1,8 +1,8 @@
 "use client"
+import { Icon } from '@test-assessment/ui-components';
 import clsx from 'clsx';
 import { LegacyRef } from 'react';
 import React from 'react';
-import { RenderIcon } from '../../../icons';
 
 export type CheckboxOption = { label: string, value: string }
 export type CheckboxProps = React.DetailedHTMLProps<
@@ -37,7 +37,7 @@ const Checkbox = React.forwardRef((props: CheckboxProps, ref: LegacyRef<HTMLInpu
             checked={checked}
           />
           <label htmlFor={item.value} className="checkbox-input-term border border-solid border-neutral-border w-4 h-4 flex items-center justify-center bg-success rounded-[2px]">
-            <RenderIcon name="check" className="checkbox-input-icon text-white" />
+            <Icon name="check" className="checkbox-input-icon text-white" />
           </label>
           <label className="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2" htmlFor={item.value}>{item.label}</label>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { RenderIcon } from '../icons';
 import clsx from 'clsx';
+import { Icon } from '@test-assessment/ui-components';
 
 type InputSearchProps = {
   onSearch: (value: string) => void;
@@ -19,7 +19,7 @@ export default function InputSearch({ onSearch, className }: InputSearchProps) {
         onChange={(e) => setValue(e.target.value)}
       />
       <div className="bg-primary-base absolute top-0 bottom-0 right-0 flex items-center justify-center aspect-square cursor-pointer z-[1]" onClick={() => onSearch(value)}>
-        <RenderIcon name="search" />
+        <Icon name="search" />
       </div>
     </div>
   )
