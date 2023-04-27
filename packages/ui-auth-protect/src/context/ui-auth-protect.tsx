@@ -12,9 +12,8 @@ export type LoginResult = {
 };
 
 const authContext = createContext({
-  loading: false,
   user: typeof window !== 'undefined' ? localStorage.getItem('user') : null,
-  storeUser: (data: LoginResult) => {},
+  SetUser: (data: LoginResult) => {},
 });
 
 export function AuthProvider({ children }: { children?: React.ReactNode }) {

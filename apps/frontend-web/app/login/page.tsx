@@ -9,11 +9,8 @@ import { UiModuleLayoutAuth } from '@test-assessment/ui-module-layout-auth';
 import { useApiClient } from '@test-assessment/cms-graphql-api';
 import { useAuth } from '@test-assessment/ui-auth-protect';
 import { useRouter } from 'next/navigation';
+import { validationLogin } from './validation';
 
-const regexEmail = new RegExp('^[A-Za-z0-9._%+-]+@xpon.ai$');
-const regexPassword = new RegExp(
-  '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{7,}$'
-);
 type LoginForm = {
   email: string;
   password: string;
@@ -21,21 +18,10 @@ type LoginForm = {
 
 export default function Page() {
   const { apiClient } = useApiClient();
-  const { storeUser, user } = useAuth();
+  const { SetUser, user } = useAuth();
   const router = useRouter();
 
-  const schema = yup
-    .object({
-      email: yup
-        .string()
-        .required('Please enter an email address')
-        .matches(regexEmail, 'Please enter an email address'),
-      password: yup
-        .string()
-        .required('Incorrect password')
-        .matches(regexPassword, 'Incorrect password'),
-    })
-    .required();
+  const schema = yup.object(validationLogin).required();
 
   const {
     handleSubmit,
@@ -59,12 +45,12 @@ export default function Page() {
           provider: 'local',
         },
       });
-      if (result.login) {
-        storeUser({
-          token: result?.login.jwt,
+      if (result?.login) {
+        SetUser({
+          token: result.login.jwt,
           user: {
-            id: result?.login.user?.id,
-            email: result?.login.user?.email,
+            id: result.login.user.id,
+            email: result.login.user.email,
           },
         });
         router.push('/');
