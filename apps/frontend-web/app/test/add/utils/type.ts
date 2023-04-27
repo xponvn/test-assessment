@@ -11,12 +11,14 @@ export interface TestItem extends TestInfoType  {
 }
 
 export type QuestionItemType = {
+  id?: string
   content: string;
   level: QuestionLevel;
   type: QuestionType;
-  correctAnswer: string | string[];
-  answers: {
+  answers?: {
+    id?: string
     content: string
+    isCorrect: boolean
   }[]
 }
 

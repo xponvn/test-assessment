@@ -11,7 +11,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "types": ["jest", "node"],
+    "types": [
+      "jest",
+      "node"
+    ],
     "plugins": [
       {
         "name": "next"
@@ -25,7 +28,8 @@
     "**/*.jsx",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "../../apps/frontend-web/.next/types/**/*.ts"
+    "../../apps/frontend-web/.next/types/**/*.ts",
+    "../../dist/apps/frontend-web/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
