@@ -229,6 +229,12 @@ export type ComponentQuestionTextAnswerQuestion = {
   level?: Maybe<Enum_Componentquestiontextanswerquestion_Level>;
 };
 
+export type CountByStatus = {
+  __typename?: 'CountByStatus';
+  draft?: Maybe<Scalars['Int']>;
+  published?: Maybe<Scalars['Int']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -874,6 +880,7 @@ export type QueryUsersPermissionsUsersArgs = {
 
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
+  countByStatus?: Maybe<CountByStatus>;
   pagination: Pagination;
 };
 
@@ -1379,7 +1386,7 @@ export type GetTestsQueryVariables = Exact<{
 }>;
 
 
-export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number }, countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1460,6 +1467,10 @@ export const GetTestsDocument = gql`
         page
         pageSize
         pageCount
+      }
+      countByStatus {
+        draft
+        published
       }
     }
   }

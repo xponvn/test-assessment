@@ -9,7 +9,7 @@ export default function AvatarDropdown() {
         filter: "drop-shadow(2px 2px 0px #00D4FF)",
       }}>
         <Image
-          src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=2"
+          src="/images/4.jpg"
           alt='avatar'
           width={24}
           height={24}
