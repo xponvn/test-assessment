@@ -2,6 +2,7 @@ import { typeDefs } from './customize/graphql/typeDefs';
 import { login, registerAuth } from './customize/graphql/mutation/auth';
 import { Strapi } from '@strapi/strapi';
 import { testExtension } from './customize/graphql/query/test';
+import { responseCollectionMetaExtension } from './customize/graphql/query/responseCollectionMetaExtension';
 
 /**
  * Throws an ApolloError if context body contains a bad request
@@ -33,6 +34,7 @@ export default {
     }));
 
     extensionService.use(testExtension);
+    extensionService.use(responseCollectionMetaExtension)
   },
 
   /**
