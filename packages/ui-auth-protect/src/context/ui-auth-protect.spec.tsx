@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import UiAuthProtect from './ui-auth-protect';
+import { AuthProvider } from './ui-auth-protect';
 
 describe('UiAuthProtect', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<UiAuthProtect />);
+    const { baseElement } = render(<AuthProvider />);
     expect(baseElement).toBeTruthy();
   });
 });
