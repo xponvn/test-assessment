@@ -7,12 +7,12 @@ exports[`Button should render input successfully 1`] = `
       class="space-y-2"
     >
       <div
-        class="relative text-15 leading-6 font-normal font-primary border-[1px] p-3 pr-3 w-fit border-neutral-border placeholder-neutral-border"
+        class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary px-3"
+        style="width: 300px;"
       >
         <input
           aria-invalid="false"
-          class="focus:outline-none"
-          style="width: 300px;"
+          class="focus:outline-none bg-transparent w-full py-2"
           type="text"
           value="this is value"
         />
