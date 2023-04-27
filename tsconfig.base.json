@@ -25,6 +25,9 @@
       "@test-assessment/u-mail-template": [
         "packages/u-mail-template/src/index.ts"
       ],
+      "@test-assessment/ui-auth-protect": [
+        "packages/ui-auth-protect/src/index.ts"
+      ],
       "@test-assessment/ui-mail-template": [
         "packages/ui-mail-template/src/index.ts"
       ],

@@ -1356,6 +1356,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type LoginMutationVariables = Exact<{
+  input: UsersLoginInputCustom;
+}>;
+
+
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, email?: string | null } } };
+
 export type CreateTestMutationVariables = Exact<{
   data: TestInput;
 }>;
@@ -1394,6 +1401,17 @@ export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
 
+export const LoginDocument = gql`
+    mutation login($input: UsersLoginInputCustom!) {
+  login(input: $input) {
+    jwt
+    user {
+      id
+      email
+    }
+  }
+}
+    `;
 export const CreateTestDocument = gql`
     mutation createTest($data: TestInput!) {
   createTest(data: $data) {
@@ -1490,6 +1508,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    login(variables: LoginMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LoginMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'login', 'mutation');
+    },
     createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
     },
