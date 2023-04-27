@@ -10,6 +10,6 @@ export default Story;
 
 export const Dropdown = () => (
   <DropdownComponent button={mockDropdownProps.button}>
-    {mockDropdownProps.content}
+    {mockDropdownProps.children}
   </DropdownComponent>
 );

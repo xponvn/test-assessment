@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectBox should render SelectBox successfully 1`] = `
+<body>
+  <div>
+    <div
+      class=" undefined"
+    >
+      <div
+        class="text-neutral-placeholder text-13 font-medium mb-[8px]"
+      >
+        Label
+      </div>
+      <div
+        class="relative w-full"
+      >
+        <select
+          class="
+            w-full appearance-none focus:outline-none cursor-pointer 
+            pl-[12px] pr-[48px] font-normal text-15
+            
+      py-[4px] 
+      
+      
+    
+            
+                  border hover:border-neutral-placeholder 
+                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
+                  border-neutral-border bg-neutral-background text-neutral-placeholder
+                
+          "
+        >
+          <option
+            value=""
+          >
+            Select your option
+          </option>
+          <option
+            value="1"
+          >
+            option1
+          </option>
+          <option
+            value="2"
+          >
+            option2
+          </option>
+          <option
+            value="3"
+          >
+            option3
+          </option>
+          <option
+            value="4"
+          >
+            option4
+          </option>
+          <option
+            value="5"
+          >
+            option5
+          </option>
+        </select>
+        <div
+          class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2"
+        >
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -1,4 +1,6 @@
-export const mockSelectBoxProps = {
+import { SelectBoxProps } from './types';
+
+export const mockSelectBoxProps: SelectBoxProps = {
   options: [
     { name: 'option1', value: '1' },
     { name: 'option2', value: '2' },
@@ -17,4 +19,9 @@ export const mockSelectBoxProps = {
   ),
   placeholder: 'Select your option',
   label: 'Label',
+  onChange: function (value: string): void {
+    throw new Error('Function not implemented.');
+  },
+  variant: 'verticle-label',
+  size: 'small',
 };
