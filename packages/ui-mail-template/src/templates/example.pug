@@ -1,0 +1,24 @@
+extends layout-main.pug
+
+block layout_title
+  title Draft Email
+
+block content
+  tr
+    td(style={ padding: '12px 24px' })
+      h1
+        | Welcome to XPON assessment!
+
+  tr
+    td(style={ padding: '12px 24px' })
+      p
+        | Dear {{email}},
+
+  tr
+    td(style={ padding: '12px 24px' })
+      +button({ variant: 'button', variableName: 'variableButton' })
+
+  tr
+    td(style={ padding: '12px 24px' })
+      +button({ variant: 'link', variableName: 'variableLink' })
+
