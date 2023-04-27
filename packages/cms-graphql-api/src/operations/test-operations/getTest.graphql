@@ -1,0 +1,46 @@
+# Write your query or mutation here
+query getTest($id: ID) {
+  test(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename,
+          ... on ComponentQuestionQuestion {
+            id
+            content
+            questionLevel: level
+          }
+          ... on ComponentQuestionChoiceQuestion {
+            id
+            content
+            choiceQuestionLevel: level
+            answers {
+              id
+              content
+              isCorrect
+            }
+          }
+          ... on Error {
+            code
+            message
+          }
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+      }
+    }
+  }
+}
