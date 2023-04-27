@@ -23,7 +23,7 @@ const getHeaders = (token?: string | null) => {
 
 export const getApiClient = (
   // eslint-disable-next-line turbo/no-undeclared-env-vars
-  apiUrl = 'http://localhost:1337/graphql',
+  apiUrl = process.env.GRAPHQL_API_URL || '/graphql',
   token?: string | null
 ) =>
   getSdk(

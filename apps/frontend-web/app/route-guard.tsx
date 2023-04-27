@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 export default function RouteGuard({ children }) {
   const auth = useAuth();
   const router = useRouter();
-  console.log(auth);
 
   useEffect(() => {
     if (!auth.user) {
