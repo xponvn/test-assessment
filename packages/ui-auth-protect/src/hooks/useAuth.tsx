@@ -10,7 +10,7 @@ export default function useAuthProvider() {
     typeof window !== 'undefined' ? localStorage.getItem('token') : null
   );
 
-  const SetUser = (data: LoginResult) => {
+  const handleSetUser = (data: LoginResult) => {
     setUser(JSON.stringify(data?.user));
     setToken(data.token);
     if (typeof window !== 'undefined') {
@@ -31,6 +31,6 @@ export default function useAuthProvider() {
   }, []);
   return {
     user,
-    SetUser,
+    handleSetUser,
   };
 }

@@ -18,7 +18,7 @@ type LoginForm = {
 
 export default function Page() {
   const { apiClient } = useApiClient();
-  const { SetUser, user } = useAuth();
+  const { handleSetUser, user } = useAuth();
   const router = useRouter();
 
   const schema = yup.object(validationLogin).required();
@@ -46,7 +46,7 @@ export default function Page() {
         },
       });
       if (result?.login) {
-        SetUser({
+        handleSetUser({
           token: result.login.jwt,
           user: {
             id: result.login.user.id,

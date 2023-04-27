@@ -11,6 +11,6 @@ export default function RouteGuard({ children }) {
     if (!auth.user) {
       router.push('/login');
     }
-  }, [auth]);
+  }, [auth.user]);
   return children;
 }
