@@ -32,6 +32,9 @@ const Story: Meta<typeof InputComponent> = {
         options: [undefined, ...Object.keys(Icons)],
       },
     },
+    width: {
+      control: 'number',
+    },
   },
   args: {
     // @ts-expect-error ignore props check
@@ -42,6 +45,7 @@ const Story: Meta<typeof InputComponent> = {
     error: '',
     successText: '',
     infoText: '',
+    width: 400,
   },
 };
 export default Story;
@@ -60,5 +64,13 @@ export const Password = (props: any) => (
     label="Password"
     placeholder="Enter your password"
     type="password"
+  />
+);
+
+export const Search = (props: any) => (
+  <InputComponent
+    {...props}
+    placeholder="Search by test name or author"
+    type="search"
   />
 );

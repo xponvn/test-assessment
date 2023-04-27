@@ -23,7 +23,7 @@ export interface InputProps
 export enum InputType {
   PASSWORD = 'password',
   TEXT = 'text',
-  DATETIME = 'datetime',
+  SEARCH = 'search',
 }
 export enum InputSize {
   LARGE = 'lg',
@@ -59,24 +59,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       onChange && onChange(event);
     };
 
-    const classNames = clsx(
-      'flex border-[1px] px-3',
-      'text-13 leading-6 font-normal font-primary',
-      'placeholder-neutral-border',
-      'hover:border-neutral-placeholder',
-      'focus-within:border-primary',
-      'hover:focus-within:border-primary',
-      !value && 'border-neutral-border',
-      error && '!border-error-border bg-error-bg',
-      successText && 'border-success-border bg-success-bg',
-      fill ? 'w-full' : `w-[${width}px]`,
-      {
-        [InputSize.LARGE]: 'p-3',
-        [InputSize.MEDIUM]: 'p-2',
-        [InputSize.SMALL]: 'p-1',
-      }[size],
-      props.disabled && 'border-none bg-neutral-disable'
-    );
     const isHelpTextVisible = error || infoText || successText;
 
     return (
@@ -93,9 +75,27 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
 
-        <div className={classNames}>
+        <div
+          className={clsx(
+            'flex border-[1px]',
+            'text-13 leading-6 font-normal font-primary',
+            'placeholder-neutral-border',
+            'hover:border-neutral-placeholder',
+            'focus-within:border-primary',
+            'hover:focus-within:border-primary',
+            !value && 'border-neutral-border',
+            error && '!border-error-border bg-error-bg',
+            successText && 'border-success-border bg-success-bg',
+            type === InputType.SEARCH
+              ? 'px-0 text-neutral-white bg-neutral-text-secondary !border-0'
+              : 'px-3',
+            props.disabled &&
+              '!border-none !bg-neutral-disable !text-neutral-placeholder'
+          )}
+          style={{ width: fill ? '100%' : width }}
+        >
           {leftIcon && (
-            <div className="pr-3 flex items-center">
+            <div className="flex items-center text-neutral-text-secondary pr-3">
               <Icon name={leftIcon} />
             </div>
           )}
@@ -107,14 +107,24 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             id={name}
             type={currentType}
-            className={`focus:outline-none bg-transparent w-full`}
+            className={clsx(
+              'focus:outline-none bg-transparent w-full',
+              {
+                [InputSize.LARGE]: 'py-3',
+                [InputSize.MEDIUM]: 'py-2',
+                [InputSize.SMALL]: 'py-1',
+              }[size],
+              // TODO: apply background opacity
+              type === InputType.SEARCH &&
+                'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary'
+            )}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${name}-error` : undefined}
           />
 
           {type === InputType.PASSWORD && (
             <button
-              className="flex pl-2"
+              className="flex items-center pl-2 text-neutral-text-secondary"
               onClick={() => {
                 setCurrentType((type) =>
                   type === 'password' ? InputType.TEXT : InputType.PASSWORD
@@ -129,8 +139,25 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
 
+          {type === InputType.SEARCH && (
+            <button
+              className={clsx(
+                'flex items-center bg-primary-base text-neutral-text-secondary',
+                {
+                  [InputSize.LARGE]: 'px-3',
+                  [InputSize.MEDIUM]: 'px-2',
+                  [InputSize.SMALL]: 'px-1',
+                }[size]
+              )}
+              // @ts-expect-error todo
+              onClick={props.onSubmit}
+            >
+              <Icon name="search" strokeWidth={40} />
+            </button>
+          )}
+
           {rightIcon && (
-            <div className="flex pl-3">
+            <div className="flex items-center text-neutral-text-secondary pl-2">
               <Icon name={rightIcon} />
             </div>
           )}
