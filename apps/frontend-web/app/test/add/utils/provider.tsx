@@ -10,6 +10,7 @@ export type QuestionContext = {
   questions: QuestionItemType[];
   addQuestion: (_question: Partial<QuestionItemType>, _index?: number) => void;
   deleteQuestion: (_index: number) => void;
+  setQuestions: (items: QuestionItemType[]) => void;
 };
 
 const initState: QuestionContext = {
@@ -25,7 +26,8 @@ const initState: QuestionContext = {
 
   questions: [],
   addQuestion: (_question: Partial<QuestionItemType>, _index?: number,) => { },
-  deleteQuestion: (_index: number) => { }
+  deleteQuestion: (_index: number) => { },
+  setQuestions: (items: QuestionItemType[]) => {}
 }
 
 const QuestionContext = createContext<QuestionContext>(initState);
@@ -51,6 +53,10 @@ export function QuestionProvider(props: QuestionProps) {
     setQuestionsState(newQuestions);
   }, [questions]);
 
+  const setQuestions = useCallback((items: QuestionItemType[]) => {
+    setQuestionsState(items)
+  }, [])
+
   const setTest = useCallback((newTest: Partial<TestItem>) => {
     setTestState((test) => ({ ...test, ...newTest }));
   }, []);
@@ -62,7 +68,8 @@ export function QuestionProvider(props: QuestionProps) {
 
       questions,
       addQuestion,
-      deleteQuestion
+      deleteQuestion,
+      setQuestions
     }}>
       {props.children}
     </QuestionContext.Provider>

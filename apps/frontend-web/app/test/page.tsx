@@ -38,7 +38,7 @@ export default function TestPage() {
   });
 
   useEffect(() => {
-    setFilterVariants({ ...filterVariants, filters: { ...filterVariants.filters, name: { contains: searchKey } } })
+    setFilterVariants({ ...filterVariants, filters: { ...filterVariants.filters, name: { containsi: searchKey } } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchKey])
 
@@ -56,7 +56,8 @@ export default function TestPage() {
   const { apiClient } = useApiClient()
 
   useEffect(() => {
-    fetchingListTest({ ...filterVariants })
+    fetchingListTest({ ...filterVariants });
+    fetchingCountTestByStatus({...filterVariants})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterVariants]);
 
@@ -73,8 +74,14 @@ export default function TestPage() {
     const dataTransform = transformListTest(res.tests.data as TestEntity[]);
     const metaData = res.tests.meta;
     setTotalItem(metaData.pagination.total);
-    setCountByStatus(metaData.countByStatus);
     setDataTable(dataTransform)
+  }
+
+  const fetchingCountTestByStatus = async (variants?: GetTestsQueryVariables) => {
+    const res = await apiClient.getCountTestByStatus({...variants, publicationState: PublicationState.Preview, filters: { ...variants.filters, publishedAt: {eq: undefined}}});
+    const metaData = res.tests.meta;
+    setCountByStatus(metaData.countByStatus);
+
   }
 
   const onRemoveTestItem = async (id?: string) => {

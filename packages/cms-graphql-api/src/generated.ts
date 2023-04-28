@@ -1388,6 +1388,14 @@ export type GetTestsQueryVariables = Exact<{
 
 export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number }, countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
+export type GetCountTestByStatusQueryVariables = Exact<{
+  filters?: InputMaybe<TestFiltersInput>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type GetCountTestByStatusQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
+
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -1476,6 +1484,18 @@ export const GetTestsDocument = gql`
   }
 }
     `;
+export const GetCountTestByStatusDocument = gql`
+    query getCountTestByStatus($filters: TestFiltersInput, $publicationState: PublicationState) {
+  tests(filters: $filters, publicationState: $publicationState) {
+    meta {
+      countByStatus {
+        draft
+        published
+      }
+    }
+  }
+}
+    `;
 export const DeleteTestDocument = gql`
     mutation deleteTest($id: ID!) {
   deleteTest(id: $id) {
@@ -1519,6 +1539,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getTests(variables?: GetTestsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestsQuery>(GetTestsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTests', 'query');
+    },
+    getCountTestByStatus(variables?: GetCountTestByStatusQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCountTestByStatusQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCountTestByStatusQuery>(GetCountTestByStatusDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCountTestByStatus', 'query');
     },
     deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
