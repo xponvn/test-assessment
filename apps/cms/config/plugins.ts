@@ -60,7 +60,8 @@ export default ({ env }) => ({
         apiKey: env('SENDGRID_API_KEY'),
       },
       settings: {
-        defaultFrom: 'xponld@gmail.com',
+        defaultFrom: env('SENDGRID_EMAIL_FROM'),
+        defaultReplyTo: env('SENDGRID_EMAIL_TO'),
       },
     },
   },

@@ -20,7 +20,7 @@ export const testExtension = ({ nexus }) => ({
           async resolve(root, args, ctx) {
             // when we use query, we can populate createdBy
             const query = strapi.db.query('api::test.test');
-            const article = await query.findOne({
+            const test = await query.findOne({
               where: {
                 id: root.id,
               },
@@ -28,10 +28,10 @@ export const testExtension = ({ nexus }) => ({
             });
 
             return {
-              id: article.createdBy.id,
-              firstName: article.createdBy.firstname,
-              lastName: article.createdBy.lastname,
-              email: article.createdBy.email,
+              id: test.createdBy.id,
+              firstName: test.createdBy.firstname,
+              lastName: test.createdBy.lastname,
+              email: test.createdBy.email,
             };
           },
         });

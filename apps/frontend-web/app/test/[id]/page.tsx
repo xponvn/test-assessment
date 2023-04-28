@@ -1,9 +1,56 @@
-import React from 'react'
+'use client';
 
+import { useState } from 'react';
+import Modal from './component/modal';
 
-export default function TestDetail(ctx) {
-  console.log("test id:", ctx.params)
+const Page = () => {
+  const [showModal, setShowModal] = useState(false);
   return (
-    <div>TestDetail</div>
-  )
-}
+    <>
+      <div className="banner flex justify-between p-10">
+        <div className="right">
+          <h1 className="text-2xl font-semibold">Test 1</h1>
+        </div>
+        <div className="left">
+          <button
+            className="bg-pink-500 active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            View Test
+          </button>
+          <button
+            className="bg-pink-500 active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            Delete Test
+          </button>
+          <button
+            className="bg-pink-500 active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+          >
+            Duplicate Test
+          </button>
+          <button
+            className="bg-pink-500 active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            onClick={() => setShowModal(true)}
+          >
+            Invite Candidate
+          </button>
+        </div>
+      </div>
+      <div className="candidate-table m-10 p-5 border h-64">
+        <div className="table-top flex justify-between">
+          <p className="font-semibold">List of candidates taken test</p>
+          <div className="search-candidate">
+            <input className="border" />
+            <button className="border">Search</button>
+          </div>
+        </div>
+      </div>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
+    </>
+  );
+};
+
+export default Page;
