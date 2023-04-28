@@ -79,7 +79,6 @@ export default function Page() {
               label="Email"
               type="text"
               placeholder="Enter your email"
-              block
               {...register('email')}
               error={errors.email?.message}
             />
@@ -93,7 +92,6 @@ export default function Page() {
               placeholder="Enter your password"
               {...register('password')}
               error={errors.password?.message}
-              block
             />
           </div>
         </div>
