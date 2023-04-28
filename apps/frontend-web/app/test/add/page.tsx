@@ -9,17 +9,20 @@ import clsx from 'clsx';
 import { Enum_Test_Level, TestInput, useApiClient } from '@test-assessment/cms-graphql-api';
 import { SelectOption } from './components/form-base/select';
 import { Icon } from '@test-assessment/ui-components';
+import { useRouter } from 'next/navigation';
 
 export default function CreateTest() {
   const {
     setTest,
     questions,
     addQuestion,
-    deleteQuestion
+    deleteQuestion,
+    setQuestions
   } = useQuestion();
   const [otpPositions, setOtpPositions] = useState<SelectOption[]>([]);
   const [indexQuestionEdit, setIndexQuestionEdit] = useState<number>();
   const { apiClient } = useApiClient();
+  const router = useRouter();
 
   useEffect(() => {
     getPositions()
@@ -37,7 +40,10 @@ export default function CreateTest() {
     setTest({ ...data, questions: questions });
     const dataTransform = transformDataSubmit(data);
     const res = await apiClient.createTest({ data: dataTransform });
-    if (res.createTest) return alert("Save as Draft Success.")
+    if (res.createTest) {
+      router.push('/test')
+      setQuestions([])
+    }
   }
 
   const transformDataSubmit = (data: TestInfoType): TestInput => {
