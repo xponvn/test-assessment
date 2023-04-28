@@ -47,14 +47,10 @@ query getTests(
 
 query getCountTestByStatus(
   $filters: TestFiltersInput
-  $pagination: PaginationArg = {}
-  $sort: [String] = []
   $publicationState: PublicationState
 ) {
   tests(
     filters: $filters
-    pagination: $pagination
-    sort: $sort
     publicationState: $publicationState
   ) {
     meta {

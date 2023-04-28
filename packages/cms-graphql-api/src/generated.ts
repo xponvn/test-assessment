@@ -1390,8 +1390,6 @@ export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'Test
 
 export type GetCountTestByStatusQueryVariables = Exact<{
   filters?: InputMaybe<TestFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
   publicationState?: InputMaybe<PublicationState>;
 }>;
 
@@ -1487,13 +1485,8 @@ export const GetTestsDocument = gql`
 }
     `;
 export const GetCountTestByStatusDocument = gql`
-    query getCountTestByStatus($filters: TestFiltersInput, $pagination: PaginationArg = {}, $sort: [String] = [], $publicationState: PublicationState) {
-  tests(
-    filters: $filters
-    pagination: $pagination
-    sort: $sort
-    publicationState: $publicationState
-  ) {
+    query getCountTestByStatus($filters: TestFiltersInput, $publicationState: PublicationState) {
+  tests(filters: $filters, publicationState: $publicationState) {
     meta {
       countByStatus {
         draft
