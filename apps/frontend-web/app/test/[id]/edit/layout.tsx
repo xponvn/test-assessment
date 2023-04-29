@@ -1,16 +1,14 @@
-'use client';
+'use client'
+import { useQuestion } from '../../add/utils';
+import LayoutTestPage from '../../components/layout-test-page';
 
-interface Props {
-  children: React.ReactNode;
-  params: { id: string };
-}
-
-const TestFormLayout = ({ children, params }: Props) => {
+const LayoutEditTest = ({ children }: { children: React.ReactNode }) => {
+  const { test } = useQuestion();
   return (
-    <>
+    <LayoutTestPage title={test.name} actionType="edit">
       {children}
-    </>
+    </LayoutTestPage>
   );
 };
 
-export default TestFormLayout;
+export default LayoutEditTest;
