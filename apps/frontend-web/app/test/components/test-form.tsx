@@ -15,17 +15,19 @@ const TestForm = ({ onSave }: Props) => {
   const [indexQuestionEdit, setIndexQuestionEdit] = useState<number>(-1);
 
   return (
-    <div className="flex flex-col items-center w-[600px] mx-auto pt-4">
-      <TestInfo
-        name={test.name}
-        position={test.position}
-        levelPosition={test.levelPosition}
-        timeLimit={test.timeLimit}
-        passingScore={test.passingScore}
-        onSaveAsDraft={onSave}
-      />
+    <div className="container grid grid-cols-12 gap-6 items-start mx-auto -translate-y-[128px] bg-neutral-white p-6">
+      <div className="col-span-4">
+        <TestInfo
+          name={test.name}
+          position={test.position}
+          levelPosition={test.levelPosition}
+          timeLimit={test.timeLimit}
+          passingScore={test.passingScore}
+          onSaveAsDraft={onSave}
+        />
+      </div>
 
-      <div className="flex flex-col w-full gap-4">
+      <div className="flex flex-col w-full gap-4 col-span-8">
         {questions.map((item, index) => {
           return (
             <div key={index}>
@@ -63,23 +65,23 @@ const TestForm = ({ onSave }: Props) => {
             onDeleteForm={() => setIndexQuestionEdit(-1)}
           />
         )}
-      </div>
 
-      <div className="mt-8 mb-[59px]">
-        <button
-          type="button"
-          className={clsx(
-            'flex items-center py-2 px-4 border border-solid text-15 leading-24 border-secondary-base text-secondary-base',
-            {
-              'opacity-100': indexQuestionEdit === -1,
-              'opacity-30 cursor-not-allowed': indexQuestionEdit !== -1,
-            }
-          )}
-          onClick={() => setIndexQuestionEdit(questions.length)}
-        >
-          <Icon name="plus" className="mr-2" />
-          Add question
-        </button>
+        <div className="mt-8 mb-[59px]">
+          <button
+            type="button"
+            className={clsx(
+              'flex items-center py-2 px-4 border border-solid text-15 leading-24 border-secondary-base text-secondary-base',
+              {
+                'opacity-100': indexQuestionEdit === -1,
+                'opacity-30 cursor-not-allowed': indexQuestionEdit !== -1,
+              }
+            )}
+            onClick={() => setIndexQuestionEdit(questions.length)}
+          >
+            <Icon name="plus" className="mr-2" />
+            Add question
+          </button>
+        </div>
       </div>
     </div>
   );

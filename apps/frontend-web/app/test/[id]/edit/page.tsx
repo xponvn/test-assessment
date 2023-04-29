@@ -1,7 +1,5 @@
 'use client';
 import { TestEntity, useApiClient } from '@test-assessment/cms-graphql-api';
-// import TestForm from 'apps/frontend-web/app/components/form/test-form';
-// import { transformTestData } from 'apps/frontend-web/app/utils/testUtils';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 import {
@@ -9,8 +7,8 @@ import {
   transformDataSubmit,
   useQuestion,
 } from '../../add/utils';
-import { transformTestData } from '../../utils/helper';
 import TestForm from '../../components/test-form';
+import { transformTestData } from '../../utils/helper';
 
 interface Props {
   children?: React.ReactNode;
@@ -34,20 +32,20 @@ const EditDraftTestPage = ({ params }: Props) => {
   // for display loading screen while fetching data
   useEffect(() => {
     setIsLoading(isLoading);
-  }, [isLoading]);
+  }, [isLoading, setIsLoading]);
 
   useEffect(() => {
     if (data) {
       const testData = transformTestData(data?.test?.data as TestEntity);
       setTest(testData);
     }
-  }, [data]);
+  }, [data, setTest]);
 
   useEffect(() => {
     if (test.questions) {
       setQuestions(test.questions);
     }
-  }, [test.questions]);
+  }, [setQuestions, test.questions]);
 
   const onSave = async (data: TestInfoType) => {
     if (!questions || questions.length <= 0)
