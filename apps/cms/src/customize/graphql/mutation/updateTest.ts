@@ -1,19 +1,19 @@
-export const updateTest = async (parent, args, context) => {
-  // TODO:
-  // step 1: Check the test is publish or draft
-  // if publish -> return error
-  // if not -> update test
-  const { id } = args;
+export const updateTest = async (_, args) => {
+  const { id, data } = args;
   // @ts-expect-error due to no typing
   const { toEntityResponse } = strapi.service(
     'plugin::graphql.format'
   ).returnTypes;
-  const data = await strapi.db.query('api::test.test').findOne({
-    where: { $and: [{ id }, { publishedAt: { $notNull: true } }] },
+  const entity = await strapi.db.query('api::test.test').findOne({
+    where: { $and: [{ id }, { publishedAt: { $null: true } }] },
   });
-  if (!data) {
-    throw new Error('Cannot find any published test.');
+  if (!entity) {
+    throw new Error('Cannot update a published test.');
   }
-  console.log(data);
-  return toEntityResponse(data);
+  const updatedEntity = await strapi.entityService.update(
+    'api::test.test',
+    entity.id,
+    { data }
+  );
+  return toEntityResponse(updatedEntity);
 };
