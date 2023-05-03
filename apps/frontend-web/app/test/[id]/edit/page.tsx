@@ -2,6 +2,7 @@
 import { TestEntity, useApiClient } from '@test-assessment/cms-graphql-api';
 import { useEffect } from 'react';
 import useSWR from 'swr';
+import '../../add/styles/style.css';
 import {
   TestInfoType,
   transformDataSubmit,
