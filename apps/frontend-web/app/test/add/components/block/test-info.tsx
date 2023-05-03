@@ -12,6 +12,19 @@ import {
 import Input from '../form-base/input';
 import Select, { SelectOption } from '../form-base/select';
 
+const schema = yup
+  .object({
+    name: yup.string().required('Required field.'),
+    position: yup.string().required('Required field.'),
+    levelPosition: yup.string().required('Required field.'),
+    timeLimit: yup
+      .number()
+      .typeError('Field must be number.')
+      .required('Required field.'),
+    passingScore: yup.string().required('Required field.'),
+  })
+  .required();
+
 const passingOptions = [
   { label: '80%', value: '80' },
   { label: '70%', value: '70' },
@@ -25,6 +38,7 @@ export type TestInfoProps = {
   levelPosition?: string;
   timeLimit?: number;
   passingScore?: string;
+  disableEdit?: boolean
   onSaveAsDraft: (data: TestInfoType) => void;
 };
 
@@ -34,22 +48,9 @@ export default function TestInfo({
   levelPosition = '',
   timeLimit = 1,
   passingScore = '80',
+  disableEdit,
   onSaveAsDraft,
 }: TestInfoProps) {
-  // FIXME: should be more to some where else later.
-  const schema = yup
-    .object({
-      name: yup.string().required('Required field.'),
-      position: yup.string().required('Required field.'),
-      levelPosition: yup.string().required('Required field.'),
-      timeLimit: yup
-        .number()
-        .typeError('Field must be number.')
-        .required('Required field.'),
-      passingScore: yup.string().required('Required field.'),
-    })
-    .required();
-
   const { apiClient } = useApiClient();
   const [positionOptions, setPositionOptions] = useState<SelectOption[]>([]);
   const {
@@ -78,7 +79,7 @@ export default function TestInfo({
       timeLimit,
       passingScore,
     });
-  }, [name, position, levelPosition, timeLimit, passingScore]);
+  }, [name, position, levelPosition, timeLimit, passingScore, reset]);
 
   // TODO: handle fetching error later
   const { data } = useSWR({ sort: ['name'] }, apiClient.getPositions);
@@ -95,6 +96,7 @@ export default function TestInfo({
         label="Test name"
         required
         {...register('name')}
+        disabled={disableEdit}
         error={errors?.name?.message}
       />
       <Select
@@ -102,8 +104,10 @@ export default function TestInfo({
         {...register('position')}
         options={positionOptions}
         label="Position"
+        value={position}
         placeholder=""
         required
+        disabled={disableEdit}
         error={errors?.position?.message}
       />
       <Select
@@ -113,12 +117,14 @@ export default function TestInfo({
         label="Level position"
         placeholder=""
         required
+        disabled={disableEdit}
         error={errors?.levelPosition?.message}
       />
       <Input
         {...register('timeLimit')}
         label="Set time limit (mins)"
         required
+        disabled={disableEdit}
         error={errors?.timeLimit?.message}
       />
       <Select
@@ -127,6 +133,7 @@ export default function TestInfo({
         placeholder=""
         label="Passing score (Percentage %)"
         required
+        disabled={disableEdit}
         error={errors?.passingScore?.message}
       />
       <button

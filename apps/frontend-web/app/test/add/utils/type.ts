@@ -4,6 +4,7 @@ export type TestInfoType = {
   levelPosition: string;
   timeLimit: number;
   passingScore: string;
+  publishedAt?: Date | null
 }
 
 export interface TestItem extends TestInfoType  {

@@ -23,17 +23,11 @@ const EditDraftTestPage = ({ params }: Props) => {
     test,
     questions,
     setQuestionsState: setQuestions,
-    setIsLoading,
   } = useQuestion();
   const { data, isLoading, mutate } = useSWR(
     { id: params.id },
     apiClient.getTest
   );
-
-  // for display loading screen while fetching data
-  useEffect(() => {
-    setIsLoading(isLoading);
-  }, [isLoading, setIsLoading]);
 
   useEffect(() => {
     if (data) {
@@ -57,7 +51,7 @@ const EditDraftTestPage = ({ params }: Props) => {
     mutate();
   };
 
-  return <TestForm onSave={onSave} />;
+  return <TestForm onSave={onSave} isLoading={isLoading} />;
 };
 
 export default EditDraftTestPage;

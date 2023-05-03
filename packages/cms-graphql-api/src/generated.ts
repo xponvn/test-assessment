@@ -1413,7 +1413,7 @@ export type GetTestQueryVariables = Exact<{
 }>;
 
 
-export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
 
 export type UpdateTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1577,6 +1577,7 @@ export const GetTestDocument = gql`
         timeLimit
         createdAt
         updatedAt
+        publishedAt
       }
     }
   }
