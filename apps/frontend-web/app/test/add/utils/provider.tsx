@@ -11,8 +11,6 @@ export type QuestionContext = {
   addQuestion: (_question: Partial<QuestionItemType>, _index?: number) => void;
   deleteQuestion: (_index: number) => void;
   setQuestions: (items: QuestionItemType[]) => void;
-  isLoading?: boolean;
-  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const initState: QuestionContext = {
@@ -40,7 +38,6 @@ export type QuestionProps = {
 export function QuestionProvider(props: QuestionProps) {
   const [test, setTestState] = useState<TestItem>(initState.test);
   const [questions, setQuestionsState] = useState<QuestionItemType[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const addQuestion = useCallback(
     (newQuestion: QuestionItemType, index?: number) => {
@@ -80,8 +77,6 @@ export function QuestionProvider(props: QuestionProps) {
         addQuestion,
         deleteQuestion,
         setQuestions,
-        isLoading,
-        setIsLoading,
       }}
     >
       {props.children}

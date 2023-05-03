@@ -7,6 +7,7 @@ interface BaseButtonProps {
   RightIcon?: React.ReactNode;
   className?: string;
   block?: boolean;
+  disabled?: boolean
 }
 
 interface NormalButtonProps extends BaseButtonProps {
@@ -31,7 +32,7 @@ const buttonClassName: Record<BaseButtonProps['type'], string> = {
 };
 
 export const Button = React.forwardRef((props: ButtonProps, ref) => {
-  const { children, type, className = '', LeftIcon, RightIcon } = props;
+  const { children, type, className = '', LeftIcon, RightIcon, disabled } = props;
 
   if (type === 'link') {
     return (
@@ -57,6 +58,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
       className={`${buttonClassName[type]} ${className} ${
         props.block ? 'w-full flex' : 'inline-flex'
       }`}
+      disabled={disabled}
       onClick={props.onClick}
     >
       {Boolean(LeftIcon) && LeftIcon}
