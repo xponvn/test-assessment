@@ -21,11 +21,11 @@ export default function RootLayout({
           apiUrl={process.env.NEXT_PUBLIC_GRAPHQL_API_URL}
           token={process.env.NEXT_PUBLIC_STRAPI_TOKEN}
         >
-          {/* <AuthProvider> */}
-            {/* <RouteGuard> */}
+          <AuthProvider>
+            <RouteGuard>
               <UIProvider config={themeToken.variants}>{children}</UIProvider>
-            {/* </RouteGuard> */}
-          {/* </AuthProvider> */}
+            </RouteGuard>
+          </AuthProvider>
         </ApiClientProvider>
       </body>
     </html>

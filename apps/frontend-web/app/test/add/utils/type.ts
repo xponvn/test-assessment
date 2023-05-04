@@ -1,4 +1,5 @@
 export type TestInfoType = {
+  id?: string
   name: string;
   position: string;
   levelPosition: string;

@@ -91,6 +91,7 @@ export const transformDataSubmit = (data: TestInfoType, questions: QuestionItemT
     timeLimit: Number(data.timeLimit),
     questions: questionsTransform,
     position: data.position,
-    level: data.levelPosition as Enum_Test_Level
+    level: data.levelPosition as Enum_Test_Level,
+    publishedAt: data.publishedAt
   }
 }

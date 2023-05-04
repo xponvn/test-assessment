@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useApiClient } from '@test-assessment/cms-graphql-api';
 import { useEffect, useMemo, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import useSWR from 'swr';
 import * as yup from 'yup';
 import {
@@ -38,7 +38,7 @@ export type TestInfoProps = {
   levelPosition?: string;
   timeLimit?: number;
   passingScore?: string;
-  disableEdit?: boolean
+  disableEdit?: boolean;
   onSaveAsDraft: (data: TestInfoType) => void;
 };
 
@@ -55,6 +55,7 @@ export default function TestInfo({
   const [positionOptions, setPositionOptions] = useState<SelectOption[]>([]);
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
@@ -99,17 +100,23 @@ export default function TestInfo({
         disabled={disableEdit}
         error={errors?.name?.message}
       />
-      <Select
+      <Controller
+        control={control}
         name="position"
-        {...register('position')}
-        options={positionOptions}
-        label="Position"
-        value={position}
-        placeholder=""
-        required
-        disabled={disableEdit}
-        error={errors?.position?.message}
+        render={({ field }) => (
+          <Select
+            {...field}
+            name="position"
+            options={positionOptions}
+            label="Position"
+            placeholder=""
+            required
+            disabled={disableEdit}
+            error={errors?.position?.message}
+          />
+        )}
       />
+
       <Select
         name="Level position"
         {...register('levelPosition')}

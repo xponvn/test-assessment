@@ -39,6 +39,7 @@ mutation updateTest ($id: ID!, $data: TestInput!) {
         timeLimit
         createdAt
         updatedAt
+        publishedAt
       }
     }
   }
