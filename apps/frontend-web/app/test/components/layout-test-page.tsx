@@ -1,11 +1,18 @@
 'use client';
+import { TestEntity, useApiClient } from '@test-assessment/cms-graphql-api';
 import { Button, Icon } from '@test-assessment/ui-components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { Fragment, useState } from 'react';
-import { getTotalPoint, useQuestion } from '../add/utils';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import useSWRMutation from 'swr/mutation';
+import {
+  getTotalPoint,
+  transformDataSubmit,
+  useQuestion
+} from '../add/utils';
 import '../styles/style.css';
+import { transformTestData } from '../utils/helper';
 import AvatarDropdown from './avatar-dropdown';
 import BreadCrumb from './breadcrumb';
 import InputSearch from './input-search';
@@ -26,9 +33,35 @@ const LayoutTestPage = ({
   const [breadCrumbActive, setBreadCrumbActive] = useState<string>(
     breadcrumbOtp[0]
   );
-
   const router = useRouter();
-  const { questions, test } = useQuestion();
+  const { apiClient } = useApiClient();
+  const { questions, test, setTest } = useQuestion();
+
+  const onPublishTest = useCallback(
+    async (id: string) => {
+      const formattedInput = transformDataSubmit(
+        { ...test, publishedAt: new Date() },
+        questions
+      );
+      const updatedTest = await apiClient.updateTest({
+        id,
+        data: formattedInput,
+      });
+      return updatedTest;
+    },
+    [test, questions, apiClient]
+  );
+
+  const { trigger, data, isMutating } = useSWRMutation(test.id, onPublishTest);
+
+  useEffect(() => {
+    if (data) {
+      const formattedData = transformTestData(
+        data.updateTest.data as TestEntity
+      );
+      setTest(formattedData);
+    }
+  }, [data, setTest]);
 
   const renderActions = () => {
     if (actionType === 'add' || actionType === 'edit') {
@@ -52,12 +85,16 @@ const LayoutTestPage = ({
           </label>
           <Button
             type="button"
-            onClick={() => alert('Publish Test')}
+            onClick={() => trigger()}
             className={`uppercase ${test?.publishedAt ? 'opacity-30' : ''}`}
+            // FIXME: should be loading icon
             RightIcon={
-              <Icon name="publish" className="text-neutral-text-primary ml-2" />
+              <Icon
+                name={`${isMutating ? 'refresh' : 'publish'}`}
+                className="text-neutral-text-primary ml-2"
+              />
             }
-            disabled={!!test?.publishedAt}
+            disabled={!!test?.publishedAt || isMutating}
           >
             publish
           </Button>

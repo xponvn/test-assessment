@@ -23,6 +23,7 @@ export const transformListTest = (data: TestEntity[]) => {
 
 export const transformTestData = (data: TestEntity): TestItem => {
   return {
+    id: data.id,
     ...data.attributes,
     position: data.attributes.position?.data?.id ?? '',
     levelPosition: data.attributes.level,
