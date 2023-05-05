@@ -59,7 +59,7 @@ query getCountTestByStatus(
   }
 }
 
-query getDetailTest($id: ID!) {
+query getTest($id: ID!) {
   test(id: $id) {
     data {
       id

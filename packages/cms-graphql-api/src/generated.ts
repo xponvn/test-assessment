@@ -1400,12 +1400,12 @@ export type GetCountTestByStatusQueryVariables = Exact<{
 
 export type GetCountTestByStatusQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
-export type GetDetailTestQueryVariables = Exact<{
+export type GetTestQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GetDetailTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename?: 'ComponentQuestionChoiceQuestion', id: string, content: string, level: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename?: 'ComponentQuestionQuestion', id: string, content: string, level1: Enum_Componentquestionquestion_Level } | { __typename?: 'Error' } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename?: 'ComponentQuestionChoiceQuestion', id: string, content: string, level: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename?: 'ComponentQuestionQuestion', id: string, content: string, level1: Enum_Componentquestionquestion_Level } | { __typename?: 'Error' } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
 
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1525,8 +1525,8 @@ export const GetCountTestByStatusDocument = gql`
   }
 }
     `;
-export const GetDetailTestDocument = gql`
-    query getDetailTest($id: ID!) {
+export const GetTestDocument = gql`
+    query getTest($id: ID!) {
   test(id: $id) {
     data {
       id
@@ -1604,8 +1604,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     getCountTestByStatus(variables?: GetCountTestByStatusQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCountTestByStatusQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCountTestByStatusQuery>(GetCountTestByStatusDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCountTestByStatus', 'query');
     },
-    getDetailTest(variables: GetDetailTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetDetailTestQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetDetailTestQuery>(GetDetailTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getDetailTest', 'query');
+    getTest(variables: GetTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTestQuery>(GetTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTest', 'query');
     },
     deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
