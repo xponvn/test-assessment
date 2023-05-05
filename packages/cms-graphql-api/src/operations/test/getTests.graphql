@@ -59,17 +59,18 @@ query getCountTestByStatus(
   }
 }
 
-query getTest($id: ID!) {
+query getTest($id: ID) {
   test(id: $id) {
     data {
       id
-      __typename
       attributes {
         name
         passingScore
         questions {
+          __typename
           ...ComponentQuestion
           ...ComponentChoiceQuestion
+          ...Error
         }
         position {
           data {

@@ -22,9 +22,9 @@ export default function RootLayout({
           token={process.env.NEXT_PUBLIC_STRAPI_TOKEN}
         >
           <AuthProvider>
-            <RouteGuard>
+            {/* <RouteGuard> */}
               <UIProvider config={themeToken.variants}>{children}</UIProvider>
-            </RouteGuard>
+            {/* </RouteGuard> */}
           </AuthProvider>
         </ApiClientProvider>
       </body>

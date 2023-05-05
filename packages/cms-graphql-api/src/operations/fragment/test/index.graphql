@@ -1,13 +1,13 @@
 fragment ComponentQuestion on ComponentQuestionQuestion {
   id
   content
-  level1: level
+  questionLevel: level
 }
 
 fragment ComponentChoiceQuestion on ComponentQuestionChoiceQuestion {
   id
   content
-  level
+  choiceQuestionLevel: level
   answers {
     id
     content

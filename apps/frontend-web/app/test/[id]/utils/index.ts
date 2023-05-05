@@ -28,7 +28,7 @@ export default function useTestDetail({ testId }): TestDetailUtils {
       };
       const resDuplicateTest = await apiClient.createTest({ data: newTest });
       const testDuplicateId = resDuplicateTest.createTest.data.id;
-      if (testDuplicateId) return router.push(`/test/${testId}/edit`);
+      if (testDuplicateId) return router.push(`/test/${testDuplicateId}/edit`);
       alert("Duplicate fail, pls check again.");
     } catch (err) {
       const errors = err?.response?.errors || [];

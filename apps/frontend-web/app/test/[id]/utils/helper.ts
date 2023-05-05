@@ -17,14 +17,15 @@ export const transformQuestionDuplicate = (
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return items.map((item: any) => {
+    const level = item.__typename === "ComponentQuestionQuestion" ? item?.questionLevel : item?.choiceQuestionLevel;
     return {
       content: item.content,
-      level: item.level,
+      level: level,
       answers: (item?.answers || []).map((aItem) => ({
         content: aItem.content,
         isCorrect: aItem.isCorrect,
       })),
-      __typename: 'ComponentQuestionChoiceQuestion',
+      __typename: item?.__typename,
     };
   });
 };

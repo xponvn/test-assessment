@@ -1,7 +1,11 @@
 export const typeDefs = `
     type Mutation {
         register(input: UsersPermissionsRegisterInputCustom!): UsersPermissionsLoginPayload!
+        login(input: UsersLoginInputCustom!): UsersPermissionsLoginPayload!
+        updateTest(id: ID!, data: TestInput!): TestEntityResponse
+
     }
+
     input UsersPermissionsRegisterInputCustom {
         username: String!,
         password: String!,
@@ -9,9 +13,6 @@ export const typeDefs = `
         confirmPassword: String!
     }
 
-    type Mutation {
-        login(input: UsersLoginInputCustom!): UsersPermissionsLoginPayload!
-    }
     input UsersLoginInputCustom {
         email: String!,
         password: String!,
