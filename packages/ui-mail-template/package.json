@@ -1,0 +1,7 @@
+{
+  "name": "@test-assessment/ui-mail-template",
+  "version": "0.0.1",
+  "scripts": {
+    "watch": "pug -w ./src/templates -o ./src/templates/html -P"
+  }
+}

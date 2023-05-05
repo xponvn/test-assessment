@@ -3,8 +3,9 @@ import {
   ComponentQuestionQuestion,
   Enum_Test_Level,
   PositionEntity,
+  TestInput,
 } from '@test-assessment/cms-graphql-api';
-import { QuestionLevel, QuestionItemType, QuestionType } from './type';
+import { QuestionLevel, QuestionItemType, QuestionType, TestInfoType } from './type';
 import { SelectOption } from '../components/form-base/select';
 
 export const getPoint = (level: QuestionLevel) => {
@@ -17,17 +18,6 @@ export const getQuestionType = (type: QuestionType) => {
   if (type === QuestionType.SingleChoice) return 'Single choice';
   if (type === QuestionType.MultipleChoice) return 'Multiple choice';
   return 'Free text';
-};
-
-export const getAnswerCorrect = (
-  type: QuestionType,
-  correctAnswer: string | string[]
-): number[] => {
-  if (type === QuestionType.SingleChoice) {
-    const correctIndex = (correctAnswer as string).split('-')[1];
-    return [Number(correctIndex)];
-  }
-  return (correctAnswer as string[]).map((item) => Number(item.split('-')[1]));
 };
 
 export const getTotalPoint = (questions: QuestionItemType[]) => {
@@ -43,44 +33,17 @@ export const transformQuestion = (items: QuestionItemType[]) => {
     if (item.type === QuestionType.FreeText)
       return {
         content: item.content,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         level: item.level as any,
         __typename: 'ComponentQuestionQuestion',
       } as ComponentQuestionQuestion;
-    const answers = transformAnswers(
-      item.answers,
-      item.correctAnswer,
-      item.type
-    );
 
     return {
       content: item.content,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       level: item.level as any,
-      answers: answers,
+      answers: item.answers,
       __typename: 'ComponentQuestionChoiceQuestion',
     } as ComponentQuestionChoiceQuestion;
-  });
-};
-
-const transformAnswers = (
-  answers: { content: string }[],
-  correctAnswers: string | string[],
-  questionType: QuestionType
-) => {
-  const newCorrectAnswers =
-    questionType === QuestionType.SingleChoice
-      ? [correctAnswers]
-      : [...correctAnswers];
-  const correctAnswerIndex = newCorrectAnswers.map((item: string) => {
-    const index = item.split('-')[1];
-    return index;
-  });
-  return answers.map((item, index) => {
-    return {
-      content: item.content,
-      isCorrect: correctAnswerIndex.includes(String(index)),
-    };
   });
 };
 
@@ -119,3 +82,16 @@ export const getLevelPosition = (): SelectOption[] => {
     },
   ];
 };
+
+export const transformDataSubmit = (data: TestInfoType, questions: QuestionItemType[]): TestInput => {
+  const questionsTransform = transformQuestion(questions);
+  return {
+    name: data.name,
+    passingScore: Number(data.passingScore),
+    timeLimit: Number(data.timeLimit),
+    questions: questionsTransform,
+    position: data.position,
+    level: data.levelPosition as Enum_Test_Level,
+    publishedAt: data.publishedAt
+  }
+}

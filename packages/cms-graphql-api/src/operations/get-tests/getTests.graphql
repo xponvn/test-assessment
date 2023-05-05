@@ -37,6 +37,29 @@ query getTests(
         pageSize
         pageCount
       }
+      countByStatus {
+        draft
+        published
+      }
     }
   }
 }
+
+query getCountTestByStatus(
+  $filters: TestFiltersInput
+  $publicationState: PublicationState
+) {
+  tests(
+    filters: $filters
+    publicationState: $publicationState
+  ) {
+    meta {
+      countByStatus {
+        draft
+        published
+      }
+    }
+  }
+}
+
+

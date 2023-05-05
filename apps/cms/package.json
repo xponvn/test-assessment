@@ -11,7 +11,8 @@
     "cs": "config-sync"
   },
   "devDependencies": {
-    "@types/pg": "^8.6.6"
+    "@types/pg": "^8.6.6",
+    "@types/validator": "^13.7.15"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.8.2",
@@ -23,7 +24,8 @@
     "strapi-plugin-config-sync": "^1.1.1",
     "strapi-plugin-redis": "^1.0.1",
     "strapi-plugin-rest-cache": "^4.2.7",
-    "strapi-provider-rest-cache-redis": "^4.2.7"
+    "strapi-provider-rest-cache-redis": "^4.2.7",
+    "validator": "^13.9.0"
   },
   "author": {
     "name": "A Strapi developer"

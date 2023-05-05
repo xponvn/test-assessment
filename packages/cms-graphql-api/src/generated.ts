@@ -229,6 +229,12 @@ export type ComponentQuestionTextAnswerQuestion = {
   level?: Maybe<Enum_Componentquestiontextanswerquestion_Level>;
 };
 
+export type CountByStatus = {
+  __typename?: 'CountByStatus';
+  draft?: Maybe<Scalars['Int']>;
+  published?: Maybe<Scalars['Int']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -874,6 +880,7 @@ export type QueryUsersPermissionsUsersArgs = {
 
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
+  countByStatus?: Maybe<CountByStatus>;
   pagination: Pagination;
 };
 
@@ -1349,6 +1356,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type LoginMutationVariables = Exact<{
+  input: UsersLoginInputCustom;
+}>;
+
+
+export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, email?: string | null } } };
+
 export type CreateTestMutationVariables = Exact<{
   data: TestInput;
 }>;
@@ -1372,7 +1386,15 @@ export type GetTestsQueryVariables = Exact<{
 }>;
 
 
-export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number } } } | null };
+export type GetTestsQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', data: Array<{ __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number }, countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
+
+export type GetCountTestByStatusQueryVariables = Exact<{
+  filters?: InputMaybe<TestFiltersInput>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type GetCountTestByStatusQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1386,7 +1408,33 @@ export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
+export type GetTestQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
 
+
+export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+
+export type UpdateTestMutationVariables = Exact<{
+  id: Scalars['ID'];
+  data: TestInput;
+}>;
+
+
+export type UpdateTestMutation = { __typename?: 'Mutation', updateTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+
+
+export const LoginDocument = gql`
+    mutation login($input: UsersLoginInputCustom!) {
+  login(input: $input) {
+    jwt
+    user {
+      id
+      email
+    }
+  }
+}
+    `;
 export const CreateTestDocument = gql`
     mutation createTest($data: TestInput!) {
   createTest(data: $data) {
@@ -1443,6 +1491,22 @@ export const GetTestsDocument = gql`
         pageSize
         pageCount
       }
+      countByStatus {
+        draft
+        published
+      }
+    }
+  }
+}
+    `;
+export const GetCountTestByStatusDocument = gql`
+    query getCountTestByStatus($filters: TestFiltersInput, $publicationState: PublicationState) {
+  tests(filters: $filters, publicationState: $publicationState) {
+    meta {
+      countByStatus {
+        draft
+        published
+      }
     }
   }
 }
@@ -1471,6 +1535,102 @@ export const GetI18NLocalesDocument = gql`
   }
 }
     `;
+export const GetTestDocument = gql`
+    query getTest($id: ID) {
+  test(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename
+          ... on ComponentQuestionQuestion {
+            id
+            content
+            questionLevel: level
+          }
+          ... on ComponentQuestionChoiceQuestion {
+            id
+            content
+            choiceQuestionLevel: level
+            answers {
+              id
+              content
+              isCorrect
+            }
+          }
+          ... on Error {
+            code
+            message
+          }
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
+    `;
+export const UpdateTestDocument = gql`
+    mutation updateTest($id: ID!, $data: TestInput!) {
+  updateTest(id: $id, data: $data) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename
+          ... on ComponentQuestionQuestion {
+            id
+            content
+            questionLevel: level
+          }
+          ... on ComponentQuestionChoiceQuestion {
+            id
+            content
+            choiceQuestionLevel: level
+            answers {
+              id
+              content
+              isCorrect
+            }
+          }
+          ... on Error {
+            code
+            message
+          }
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -1479,6 +1639,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    login(variables: LoginMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LoginMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'login', 'mutation');
+    },
     createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
     },
@@ -1488,11 +1651,20 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     getTests(variables?: GetTestsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestsQuery>(GetTestsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTests', 'query');
     },
+    getCountTestByStatus(variables?: GetCountTestByStatusQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCountTestByStatusQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCountTestByStatusQuery>(GetCountTestByStatusDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCountTestByStatus', 'query');
+    },
     deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');
+    },
+    getTest(variables?: GetTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTestQuery>(GetTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTest', 'query');
+    },
+    updateTest(variables: UpdateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateTestMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateTestMutation>(UpdateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateTest', 'mutation');
     }
   };
 }

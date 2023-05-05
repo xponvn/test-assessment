@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio should render input successfully 1`] = `
+<body>
+  <div>
+    <label
+      class="container-radio flex items-center "
+    >
+      <input
+        class="m-0 opacity-0 absolute radio-input"
+        name="radio"
+        type="radio"
+        value="radio"
+      />
+      <div
+        class="flex flex-shrink-0 justify-center items-center w-[16px] h-[16px] border-2 border-solid border-neutral-border rounded-[50%] border-neutral-border"
+      >
+        <div
+          class="w-[8px] h-[8px] rounded-[50%] bg-primary-clicked opacity-0"
+        />
+      </div>
+      <span
+        class=""
+      />
+    </label>
+  </div>
+</body>
+`;
+
+exports[`Switch should render input successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="w-12 h-6 flex items-center rounded-full p-1 cursor-pointer bg-primary-clicked"
+    >
+      <div
+        class="bg-white h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out transform translate-x-5"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Tag should render input successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="px-2 py-1 w-fit bg-success-bg border-[1px] border-solid border-success-base"
+    >
+      <div
+        class="text-success-border"
+      >
+        Publish
+      </div>
+    </div>
+  </div>
+</body>
+`;
