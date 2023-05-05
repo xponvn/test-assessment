@@ -18,6 +18,17 @@ export const FullWidthButton = () => (
   </ButtonComponent>
 );
 
+export const ButtonSecondary = () => (
+  <ButtonComponent {...mockButtonProps['button']} variant='secondary'>
+    button
+  </ButtonComponent>
+);
+export const ButtonDisplay = () => (
+  <ButtonComponent {...mockButtonProps['button']} variant='display'>
+    button
+  </ButtonComponent>
+);
+
 export const Link = () => (
   <ButtonComponent {...mockButtonProps['link']}>link</ButtonComponent>
 );
