@@ -1,0 +1,16 @@
+fragment ComponentQuestion on ComponentQuestionQuestion {
+  id
+  content
+  level1: level
+}
+
+fragment ComponentChoiceQuestion on ComponentQuestionChoiceQuestion {
+  id
+  content
+  level
+  answers {
+    id
+    content
+    isCorrect
+  }
+}

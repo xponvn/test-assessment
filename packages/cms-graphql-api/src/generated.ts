@@ -1378,6 +1378,10 @@ export type GetPositionsQueryVariables = Exact<{
 
 export type GetPositionsQuery = { __typename?: 'Query', positions?: { __typename?: 'PositionEntityResponseCollection', data: Array<{ __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null }> } | null };
 
+export type ComponentQuestionFragment = { __typename?: 'ComponentQuestionQuestion', id: string, content: string, level1: Enum_Componentquestionquestion_Level };
+
+export type ComponentChoiceQuestionFragment = { __typename?: 'ComponentQuestionChoiceQuestion', id: string, content: string, level: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> };
+
 export type GetTestsQueryVariables = Exact<{
   filters?: InputMaybe<TestFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -1396,6 +1400,13 @@ export type GetCountTestByStatusQueryVariables = Exact<{
 
 export type GetCountTestByStatusQuery = { __typename?: 'Query', tests?: { __typename?: 'TestEntityResponseCollection', meta: { __typename?: 'ResponseCollectionMeta', countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
 
+export type GetDetailTestQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetDetailTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename?: 'ComponentQuestionChoiceQuestion', id: string, content: string, level: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename?: 'ComponentQuestionQuestion', id: string, content: string, level1: Enum_Componentquestionquestion_Level } | { __typename?: 'Error' } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+
 export type DeleteTestMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
@@ -1408,7 +1419,25 @@ export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
-
+export const ComponentQuestionFragmentDoc = gql`
+    fragment ComponentQuestion on ComponentQuestionQuestion {
+  id
+  content
+  level1: level
+}
+    `;
+export const ComponentChoiceQuestionFragmentDoc = gql`
+    fragment ComponentChoiceQuestion on ComponentQuestionChoiceQuestion {
+  id
+  content
+  level
+  answers {
+    id
+    content
+    isCorrect
+  }
+}
+    `;
 export const LoginDocument = gql`
     mutation login($input: UsersLoginInputCustom!) {
   login(input: $input) {
@@ -1496,6 +1525,38 @@ export const GetCountTestByStatusDocument = gql`
   }
 }
     `;
+export const GetDetailTestDocument = gql`
+    query getDetailTest($id: ID!) {
+  test(id: $id) {
+    data {
+      id
+      __typename
+      attributes {
+        name
+        passingScore
+        questions {
+          ...ComponentQuestion
+          ...ComponentChoiceQuestion
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
+    ${ComponentQuestionFragmentDoc}
+${ComponentChoiceQuestionFragmentDoc}`;
 export const DeleteTestDocument = gql`
     mutation deleteTest($id: ID!) {
   deleteTest(id: $id) {
@@ -1542,6 +1603,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getCountTestByStatus(variables?: GetCountTestByStatusQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCountTestByStatusQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCountTestByStatusQuery>(GetCountTestByStatusDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCountTestByStatus', 'query');
+    },
+    getDetailTest(variables: GetDetailTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetDetailTestQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetDetailTestQuery>(GetDetailTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getDetailTest', 'query');
     },
     deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
