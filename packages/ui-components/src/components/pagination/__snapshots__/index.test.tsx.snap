@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination should render Pagination successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="flex items-center "
+    >
+      <div
+        class="flex items-center p-1"
+      >
+        <select
+          class="p-2 min-w-[60px] max-h-10 bg-transparent border border-neutral-border appearance-none bg-no-repeat focus:outline-neutral-border focus-visible:border-neutral-border bg-right"
+          id="rowperpage"
+          name="rowperpage"
+        >
+          <option
+            value="5"
+          >
+            5
+          </option>
+          <option
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="15"
+          >
+            15
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+        </select>
+        <span
+          class="pl-3"
+        >
+          rows per page
+        </span>
+      </div>
+      <span
+        class="w-6 border border-solid border-neutral-disable rotate-90 h-0"
+      />
+      <div
+        class="flex items-center justify-between"
+      >
+        <div
+          aria-disabled="false"
+          class="cursor-pointer hover:bg-neutral-bg transition ease-in   rounded-full"
+        >
+          <svg
+            class="w-6 w-6"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#clip_arrow_left)"
+            >
+              <path
+                d="M14.5 6L8.5 12L14.5 18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="clip_arrow_left"
+              >
+                <rect
+                  fill="white"
+                  height="24"
+                  width="24"
+                />
+              </clippath>
+            </defs>
+          </svg>
+        </div>
+        <div
+          class="flex items-center px-5 "
+        >
+          <input
+            class="p-2 w-10 max-h-10 text-center border border-neutral-border focus:outline-neutral-border focus-visible:border-neutral-border"
+            id="current-page"
+            name="currentpage"
+            type="text"
+            value="2"
+          />
+          <span
+            class="px-3"
+          >
+            /
+          </span>
+          <span>
+            10
+             page(s)
+          </span>
+        </div>
+        <div
+          aria-disabled="false"
+          class="cursor-pointer  hover:bg-neutral-bg transition ease-in  rounded-full "
+        >
+          <svg
+            class="w-6 w-6"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.5 18L15.5 12L9.5 6"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
