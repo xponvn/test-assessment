@@ -9,6 +9,7 @@ interface BaseButtonProps {
   block?: boolean;
   variant?: 'primary' | 'secondary' | 'display' | 'secondaryDark';
   size?: 'small' | 'medium' | 'large';
+  disabled?: boolean
 }
 
 interface NormalButtonProps extends BaseButtonProps {
@@ -54,6 +55,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
     RightIcon,
     variant = 'primary',
     size = 'medium',
+    disabled
   } = props;
 
   if (type === 'link') {
@@ -80,6 +82,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
       className={`${buttonClassName[type]} ${className} ${
         props.block ? 'w-full flex' : 'inline-flex'
       } ${variantClassName[variant]} ${sizeClassName[size]}`}
+      disabled={disabled}
       onClick={props.onClick}
     >
       {Boolean(LeftIcon) && LeftIcon}

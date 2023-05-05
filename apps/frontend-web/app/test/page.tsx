@@ -20,7 +20,7 @@ export default function TestPage() {
   const [totalItem, setTotalItem] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(false);
   const searchParams = useSearchParams();
-  const [countByStatus, setCountByStatus] = useState<CountByStatus>({draft: 0, published: 0})
+  const [countByStatus, setCountByStatus] = useState<CountByStatus>({ draft: 0, published: 0 })
   const searchKey = searchParams.get('q') || "";
 
   const [filterVariants, setFilterVariants] = useState<GetTestsQueryVariables>({
@@ -57,7 +57,7 @@ export default function TestPage() {
 
   useEffect(() => {
     fetchingListTest({ ...filterVariants });
-    fetchingCountTestByStatus({...filterVariants})
+    fetchingCountTestByStatus({ ...filterVariants })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterVariants]);
 
@@ -78,7 +78,7 @@ export default function TestPage() {
   }
 
   const fetchingCountTestByStatus = async (variants?: GetTestsQueryVariables) => {
-    const res = await apiClient.getCountTestByStatus({...variants, publicationState: PublicationState.Preview, filters: { ...variants.filters, publishedAt: {eq: undefined}}});
+    const res = await apiClient.getCountTestByStatus({ ...variants, publicationState: PublicationState.Preview, filters: { ...variants.filters, publishedAt: { eq: undefined } } });
     const metaData = res.tests.meta;
     setCountByStatus(metaData.countByStatus);
 
@@ -97,6 +97,7 @@ export default function TestPage() {
   }
 
   const onClearFilter = () => {
+    setTabActive(PublicationState.Preview)
     setFilterVariants({
       publicationState: PublicationState.Preview,
       pagination: {
