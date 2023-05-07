@@ -17,6 +17,7 @@ import {
   transformQuestion,
   useQuestion
 } from './utils';
+import Link from 'next/link';
 
 export default function CreateTest() {
   const { setTest, questions, addQuestion, deleteQuestion, setQuestions } =
@@ -51,73 +52,100 @@ export default function CreateTest() {
 
   return (
     <div
-      className="h-full bg-neutral-table-header"
+      className="h-auto bg-neutral-table-header min-h-full"
       style={{ background: '#F3F0F5' }}
     >
-      <div className="container grid grid-cols-12 gap-6 items-start mx-auto -translate-y-[128px] bg-neutral-white p-6">
-        {/** TEST INFO */}
-        <div className="col-span-4">
-          <TestInfo onSaveAsDraft={onSaveAsDraft} />
-        </div>
 
-        {/** QUESTION */}
-        <div className="col-span-8">
-          <div className="flex flex-col w-full gap-4">
-            {questions.map((item, index) => {
-              return (
-                <div key={index}>
-                  {index === indexQuestionEdit ? (
-                    <FormQuestionItem
-                      onSaveForm={(data) => {
-                        addQuestion(data, index);
-                        setIndexQuestionEdit(-1);
-                      }}
-                      questionIndex={indexQuestionEdit}
-                      onDeleteForm={() => setIndexQuestionEdit(-1)}
-                      data={item}
-                    />
-                  ) : (
-                    <QuestionItem
-                      data={item}
-                      key={index}
-                      index={index}
-                      className="first:mt-4"
-                      onDelete={deleteQuestion}
-                      onEdit={setIndexQuestionEdit}
-                    />
-                  )}
-                </div>
-              );
-            })}
-
-            {(questions.length <= 0 ||
-              indexQuestionEdit === questions.length) && (
-              <FormQuestionItem
-                onSaveForm={(data) => {
-                  addQuestion(data);
-                  setIndexQuestionEdit(-1);
-                }}
-                questionIndex={indexQuestionEdit}
-                onDeleteForm={() => setIndexQuestionEdit(-1)}
-              />
-            )}
+      <div className="container items-start mx-auto -translate-y-[128px] bg-neutral-white p-6">
+        {/** Header */}
+        <div className="flex items-center justify-between mb-6">
+          {/** Breadcrumb */}
+          <div className="flex items-center gap-1 text-12 leading-4">
+            <Link href="/test" className="text-neutral-text-secondary">
+              Test management
+            </Link>
+            <Icon name="arrow-right" className="text-neutral-border !w-4 !h-4" />
+            <p className="text-neutral-border">Create test</p>
           </div>
 
-          <div className="mt-8 mb-[59px]">
-            <button
-              type="button"
-              className={clsx(
-                'flex items-center py-2 px-4 border border-solid text-15 leading-24 border-secondary-base text-secondary-base',
-                {
-                  'opacity-100': indexQuestionEdit === -1,
-                  'opacity-30 cursor-not-allowed': indexQuestionEdit !== -1,
-                }
-              )}
-              onClick={() => setIndexQuestionEdit(questions.length)}
-            >
-              <Icon name="plus" className="mr-2" />
-              Add question
-            </button>
+          <Link href="/">
+            <div className="flex items-center text-13 leading-6 font-medium text-primary-base">
+              How to create a test
+              <Icon name="qa" className="!w-5 !h-5 ml-2" /></div>
+          </Link>
+        </div>
+
+        <div className='flex gap-6'>
+          {/** TEST INFO */}
+          <div className="w-[368px]">
+            <p className="font-bold text-18 leading-6 text-neutral-text-primary mb-4 capitalize">Test Settings</p>
+            <TestInfo onSaveAsDraft={onSaveAsDraft} />
+          </div>
+
+          {/** QUESTION */}
+          <div className="flex-1 w-full">
+            <div className="flex flex-col w-full gap-6">
+              {questions.map((item, index) => {
+                return (
+                  <div key={index}>
+                    {index === indexQuestionEdit ? (
+                      <FormQuestionItem
+                        onSaveForm={(data) => {
+                          addQuestion(data, index);
+                          setIndexQuestionEdit(-1);
+                        }}
+                        questionIndex={indexQuestionEdit}
+                        onDeleteForm={() => setIndexQuestionEdit(-1)}
+                        data={item}
+                      />
+                    ) : (
+                      <QuestionItem
+                        data={item}
+                        key={index}
+                        index={index}
+                        className="first:mt-4"
+                        onDelete={(index) => {
+                          deleteQuestion(index);
+                          if (index === 0) {
+                            setIndexQuestionEdit(undefined)
+                          }
+                        }}
+                        onEdit={setIndexQuestionEdit}
+                      />
+                    )}
+                  </div>
+                );
+              })}
+
+              {(questions.length <= 0 ||
+                indexQuestionEdit === questions.length) && (
+                  <FormQuestionItem
+                    onSaveForm={(data) => {
+                      addQuestion(data);
+                      setIndexQuestionEdit(-1);
+                    }}
+                    questionIndex={indexQuestionEdit}
+                    onDeleteForm={() => setIndexQuestionEdit(-1)}
+                  />
+                )}
+            </div>
+
+            <div className="mt-8 mb-[59px]">
+              <button
+                type="button"
+                className={clsx(
+                  'flex items-center justify-center py-3 w-full border border-dashed font-bold text-13 leading-6 text-neutral-text-primary border-secondary-base bg-secondary-background',
+                  {
+                    'opacity-100': indexQuestionEdit === -1,
+                    'opacity-30 cursor-not-allowed': indexQuestionEdit !== -1,
+                  }
+                )}
+                onClick={() => setIndexQuestionEdit(questions.length)}
+              >
+                Add question
+                <Icon name="plus-circle" className="ml-2" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

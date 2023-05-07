@@ -76,24 +76,17 @@ const LayoutTestPage = ({
           <span className="border border-solid w-6 h-0 rotate-90 border-neutral-placeholder mr-6"></span>
           <label
             htmlFor="btn-test-info"
-            className={`outline-none text-13 leading-20 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center ${
+            className={`outline-none text-13 leading-20 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border-[3px] border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center max-h-10 ${
               test.publishedAt ? 'opacity-30 pointer-events-none' : ''
             }`}
           >
             {actionType === 'add' ? 'save as draft' : 'save'}
-            <Icon name="save" className="text-neutral-white ml-2" />
           </label>
           <Button
             type="button"
             onClick={() => trigger()}
-            className={`uppercase ${test?.publishedAt ? 'opacity-30' : ''}`}
+            className={`uppercase !font-bold ${test?.publishedAt ? 'opacity-30' : ''}`}
             // FIXME: should be loading icon
-            RightIcon={
-              <Icon
-                name={`${isMutating ? 'refresh' : 'publish'}`}
-                className="text-neutral-text-primary ml-2"
-              />
-            }
             disabled={!!test?.publishedAt || isMutating}
           >
             publish
