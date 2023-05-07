@@ -98,12 +98,19 @@ export default function FormQuestionItem({
   });
 
   // Answer array field
-  const { fields, remove, append } = useFieldArray({
+  const { fields, remove, update, append } = useFieldArray({
     control,
     name: 'answers',
   });
 
   const onChangeTypeOfAnswer = (value: string) => {
+    if (value === QuestionType.SingleChoice) {
+      // NOTE: unchecked all answer
+      const newAnswers = getValues('answers').map((answer) => {
+        return { ...answer, isCorrect: false };
+      });
+      setValue('answers', newAnswers);
+    }
     setQuestionType(value as QuestionType);
   };
 
@@ -113,7 +120,7 @@ export default function FormQuestionItem({
 
   useEffect(() => {
     reset();
-  }, [questionIndex]);
+  }, [questionIndex, reset]);
 
   useEffect(() => {
     if (data) {
@@ -222,9 +229,13 @@ export default function FormQuestionItem({
                                       value: `answer-${index}`,
                                     }}
                                     value={`answers.${index}`}
-                                    onChange={(e) =>
-                                      field.onChange(e.target.checked)
-                                    }
+                                    checked={item.isCorrect}
+                                    onChange={() => {
+                                      update(index, {
+                                        ...item,
+                                        isCorrect: !item.isCorrect,
+                                      });
+                                    }}
                                   />
                                 )}
                               />
