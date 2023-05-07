@@ -14,11 +14,11 @@
   "attributes": {
     "firstName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "lastName": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "email": {
       "type": "email",
@@ -32,11 +32,11 @@
     },
     "position": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "level": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "resume": {
       "type": "media",
@@ -59,6 +59,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
+      "mappedBy": "candidate"
+    },
+    "individualTests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::individual-test.individual-test",
       "mappedBy": "candidate"
     }
   }

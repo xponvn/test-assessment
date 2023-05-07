@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "individual_tests",
+  "info": {
+    "singularName": "individual-test",
+    "pluralName": "individual-tests",
+    "displayName": "Individual Test"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "test": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::test.test",
+      "inversedBy": "individualTests"
+    },
+    "candidate": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::candidate.candidate",
+      "inversedBy": "individualTests"
+    },
+    "completedOn": {
+      "type": "datetime"
+    },
+    "score": {
+      "type": "decimal"
+    }
+  }
+}

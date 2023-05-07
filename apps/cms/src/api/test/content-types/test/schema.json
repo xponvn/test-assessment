@@ -60,6 +60,12 @@
       "relation": "manyToMany",
       "target": "api::candidate.candidate",
       "mappedBy": "tests"
+    },
+    "individualTests": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::individual-test.individual-test",
+      "mappedBy": "test"
     }
   }
 }
