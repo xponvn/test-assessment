@@ -16,6 +16,7 @@ import Caution from './assets/caution';
 import EyeHide from './assets/eye-hide';
 import EyeShow from './assets/eye-show';
 import Success from './assets/success';
+import ArrowDown from './assets/arrow_down';
 
 export type IconProps = {
   className?: string;
@@ -43,7 +44,8 @@ export type IconName =
   | 'caution'
   | 'eye-hide'
   | 'eye-show'
-  | 'success';
+  | 'success'
+  | 'arrow-down';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -98,6 +100,9 @@ export const Icons: IconsType = {
   },
   success: (props: IconProps) => {
     return <Success {...props} />;
+  },
+  'arrow-down': (props: IconProps) => {
+    return <ArrowDown {...props} />;
   },
 };
 

@@ -1,0 +1,42 @@
+query getCandidates(
+  $filters: CandidateFiltersInput
+  $pagination: PaginationArg = {}
+  $sort: [String] = []
+  $publicationState: PublicationState
+) {
+  candidates(
+    filters: $filters
+    pagination: $pagination
+    sort: $sort
+    publicationState: $publicationState
+  ) {
+    data {
+      id
+      __typename
+      attributes {
+        firstName
+        lastName
+        email
+        phone
+        position
+        level
+        createdAt
+        updatedAt
+        publishedAt
+      
+      }
+    }
+    meta {
+      pagination {
+        total
+        page
+        pageSize
+        pageCount
+      }
+      countByStatus {
+        draft
+        published
+      }
+    }
+  }
+}

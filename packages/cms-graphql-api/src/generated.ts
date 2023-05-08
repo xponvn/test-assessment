@@ -1378,6 +1378,23 @@ export type GetPositionsQueryVariables = Exact<{
 
 export type GetPositionsQuery = { __typename?: 'Query', positions?: { __typename?: 'PositionEntityResponseCollection', data: Array<{ __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null }> } | null };
 
+export type DeleteCandidateMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteCandidateMutation = { __typename?: 'Mutation', deleteCandidate?: { __typename?: 'CandidateEntityResponse', data?: { __typename?: 'CandidateEntity', attributes?: { __typename?: 'Candidate', email: string } | null } | null } | null };
+
+export type GetCandidatesQueryVariables = Exact<{
+  filters?: InputMaybe<CandidateFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
+  publicationState?: InputMaybe<PublicationState>;
+}>;
+
+
+export type GetCandidatesQuery = { __typename?: 'Query', candidates?: { __typename?: 'CandidateEntityResponseCollection', data: Array<{ __typename: 'CandidateEntity', id?: string | null, attributes?: { __typename?: 'Candidate', firstName: string, lastName: string, email: string, phone?: string | null, position: string, level: string, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number, page: number, pageSize: number, pageCount: number }, countByStatus?: { __typename?: 'CountByStatus', draft?: number | null, published?: number | null } | null } } | null };
+
 export type GetTestsQueryVariables = Exact<{
   filters?: InputMaybe<TestFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
@@ -1436,6 +1453,55 @@ export const GetPositionsDocument = gql`
       id
       attributes {
         name
+      }
+    }
+  }
+}
+    `;
+export const DeleteCandidateDocument = gql`
+    mutation deleteCandidate($id: ID!) {
+  deleteCandidate(id: $id) {
+    data {
+      attributes {
+        email
+      }
+    }
+  }
+}
+    `;
+export const GetCandidatesDocument = gql`
+    query getCandidates($filters: CandidateFiltersInput, $pagination: PaginationArg = {}, $sort: [String] = [], $publicationState: PublicationState) {
+  candidates(
+    filters: $filters
+    pagination: $pagination
+    sort: $sort
+    publicationState: $publicationState
+  ) {
+    data {
+      id
+      __typename
+      attributes {
+        firstName
+        lastName
+        email
+        phone
+        position
+        level
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+    meta {
+      pagination {
+        total
+        page
+        pageSize
+        pageCount
+      }
+      countByStatus {
+        draft
+        published
       }
     }
   }
@@ -1536,6 +1602,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getPositions(variables?: GetPositionsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPositionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPositionsQuery>(GetPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPositions', 'query');
+    },
+    deleteCandidate(variables: DeleteCandidateMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteCandidateMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteCandidateMutation>(DeleteCandidateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteCandidate', 'mutation');
+    },
+    getCandidates(variables?: GetCandidatesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCandidatesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCandidatesQuery>(GetCandidatesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCandidates', 'query');
     },
     getTests(variables?: GetTestsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestsQuery>(GetTestsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTests', 'query');
