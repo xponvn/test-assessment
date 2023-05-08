@@ -9,32 +9,64 @@ exports[`Pagination should render Pagination successfully 1`] = `
       <div
         class="flex items-center p-1"
       >
-        <select
-          class="p-2 min-w-[60px] max-h-10 bg-transparent border border-neutral-border appearance-none bg-no-repeat focus:outline-neutral-border focus-visible:border-neutral-border bg-right"
-          id="rowperpage"
-          name="rowperpage"
+        <div
+          class=" "
         >
-          <option
-            value="5"
+          <div
+            class="relative w-full"
           >
-            5
-          </option>
-          <option
-            value="10"
-          >
-            10
-          </option>
-          <option
-            value="15"
-          >
-            15
-          </option>
-          <option
-            value="20"
-          >
-            20
-          </option>
-        </select>
+            <select
+              class="
+            w-full appearance-none focus:outline-none cursor-pointer
+            pl-[12px] pr-[48px] font-normal text-15
+            
+      
+      py-[8px]
+      
+    
+            
+                  border hover:border-neutral-placeholder
+                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
+                  border-neutral-text-primary text-neutral-primary bg-neutral-white
+                
+          "
+            >
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="15"
+              >
+                15
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+            </select>
+            <div
+              class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
         <span
           class="pl-3"
         >
@@ -86,13 +118,28 @@ exports[`Pagination should render Pagination successfully 1`] = `
         <div
           class="flex items-center px-5 "
         >
-          <input
-            class="p-2 w-10 max-h-10 text-center border border-neutral-border focus:outline-neutral-border focus-visible:border-neutral-border"
-            id="current-page"
-            name="currentpage"
-            type="text"
-            value="2"
-          />
+          <div
+            class="space-y-2"
+          >
+            <div
+              class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              style="width: 40px;"
+            >
+              <input
+                aria-invalid="false"
+                class="focus:outline-none bg-transparent w-full py-2"
+                id="currentPage"
+                max="10"
+                min="1"
+                name="currentPage"
+                type="number"
+                value="2"
+              />
+            </div>
+            <div
+              class="opacity-0"
+            />
+          </div>
           <span
             class="px-3"
           >
