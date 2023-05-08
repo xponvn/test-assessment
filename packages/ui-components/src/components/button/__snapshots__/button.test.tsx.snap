@@ -4,7 +4,7 @@ exports[`Button should render button successfully 1`] = `
 <body>
   <div>
     <button
-      class="items-center justify-center px-4 py-2 bg-primary-base font-medium font-primary text-13 leading-6 space-x-2  inline-flex"
+      class="items-center justify-center px-4 py-2 font-medium font-primary text-13 leading-6 space-x-2  inline-flex bg-primary-base px-4 py-2"
     >
       <svg
         class="text-error w-6 w-6"

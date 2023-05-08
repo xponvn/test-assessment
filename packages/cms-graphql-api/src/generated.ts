@@ -1408,6 +1408,21 @@ export type GetI18NLocalesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetI18NLocalesQuery = { __typename?: 'Query', i18NLocales?: { __typename?: 'I18NLocaleEntityResponseCollection', data: Array<{ __typename?: 'I18NLocaleEntity', id?: string | null, attributes?: { __typename?: 'I18NLocale', name?: string | null, code?: string | null } | null }> } | null };
 
+export type GetTestQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+
+export type UpdateTestMutationVariables = Exact<{
+  id: Scalars['ID'];
+  data: TestInput;
+}>;
+
+
+export type UpdateTestMutation = { __typename?: 'Mutation', updateTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
+
 
 export const LoginDocument = gql`
     mutation login($input: UsersLoginInputCustom!) {
@@ -1520,6 +1535,102 @@ export const GetI18NLocalesDocument = gql`
   }
 }
     `;
+export const GetTestDocument = gql`
+    query getTest($id: ID) {
+  test(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename
+          ... on ComponentQuestionQuestion {
+            id
+            content
+            questionLevel: level
+          }
+          ... on ComponentQuestionChoiceQuestion {
+            id
+            content
+            choiceQuestionLevel: level
+            answers {
+              id
+              content
+              isCorrect
+            }
+          }
+          ... on Error {
+            code
+            message
+          }
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
+    `;
+export const UpdateTestDocument = gql`
+    mutation updateTest($id: ID!, $data: TestInput!) {
+  updateTest(id: $id, data: $data) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename
+          ... on ComponentQuestionQuestion {
+            id
+            content
+            questionLevel: level
+          }
+          ... on ComponentQuestionChoiceQuestion {
+            id
+            content
+            choiceQuestionLevel: level
+            answers {
+              id
+              content
+              isCorrect
+            }
+          }
+          ... on Error {
+            code
+            message
+          }
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -1548,6 +1659,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');
+    },
+    getTest(variables?: GetTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTestQuery>(GetTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTest', 'query');
+    },
+    updateTest(variables: UpdateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateTestMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UpdateTestMutation>(UpdateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateTest', 'mutation');
     }
   };
 }
