@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Segment should render segment successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="border border-solid border-neutral-border p-1 w-fit flex items-center max-h-[40px]"
+    >
+      <div
+        class="relative flex items-center justify-center z-20 p-1 px-3 transition ease-out delay-250 select-none cursor-pointer  min-w-[150px]
+                      text-neutral-text-primary
+                      
+                      "
+        id="all"
+      >
+        All
+         (
+        12
+        )
+      </div>
+      <div
+        class="relative flex items-center justify-center z-20 p-1 px-3 transition ease-out delay-250 select-none cursor-pointer  min-w-[150px]
+                      text-neutral-placeholder hover:bg-neutral-table-header
+                      after:content-[""] after:bg-neutral-disable after:absolute after:bottom-auto after:left-0 after:w-[1px] after:h-[calc(100%-2px)]
+      before:content-[""] before:bg-neutral-disable before:absolute before:bottom-auto before:right-0 before:w-[1px] before:h-[calc(100%-2px)]
+                      "
+        id="published"
+      >
+        Published
+         (
+        9
+        )
+      </div>
+      <div
+        class="relative flex items-center justify-center z-20 p-1 px-3 transition ease-out delay-250 select-none cursor-pointer  min-w-[150px]
+                      text-neutral-placeholder hover:bg-neutral-table-header
+                      
+                      "
+        id="draft"
+      >
+        Draft
+         (
+        3
+        )
+      </div>
+      <div
+        class="slider absolute z-10 flex min-w-[150px] h-[30px] p-1 px-3 transition ease-out delay-250 bg-neutral-disable translate-x-0"
+      />
+    </div>
+  </div>
+</body>
+`;
