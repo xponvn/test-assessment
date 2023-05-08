@@ -1,14 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from './component/modal';
 import useTestDetail from './utils';
+import { useRouter } from 'next/navigation';
 
 const Page = ({ params }) => {
   const [showModal, setShowModal] = useState(false);
   const testId = params["id"];
-  const { onDuplicateTest, loading } = useTestDetail();
+  const router = useRouter();
+  const { onDuplicateTest, loading, testDuplicateId } = useTestDetail();
 
+  useEffect(() => {
+    if (testDuplicateId) return router.push(`/test/${testDuplicateId}/edit`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [testDuplicateId]);
+  
   return (
     <>
       <div className="banner flex justify-between p-10">

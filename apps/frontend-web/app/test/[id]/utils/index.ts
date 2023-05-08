@@ -1,17 +1,17 @@
 import { TestInput, useApiClient } from "@test-assessment/cms-graphql-api";
-import { transformQuestionDuplicate } from "./helper";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { transformQuestionDuplicate } from "./helper";
 
 type TestDetailUtils = {
   onDuplicateTest: (id: string) => void;
   loading: boolean;
+  testDuplicateId?: string;
 }
 
 export default function useTestDetail(): TestDetailUtils {
   const { apiClient } = useApiClient()
-  const router = useRouter();
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
+  const [testDuplicateId, setTestDuplicateId] = useState<string>();
 
   const onDuplicateTest = async (id: string) => {
     try {
@@ -37,7 +37,7 @@ export default function useTestDetail(): TestDetailUtils {
       const resDuplicateTest = await apiClient.createTest({ data: newTest });
       setLoading(false);
       const testDuplicateId = resDuplicateTest.createTest.data.id;
-      if (testDuplicateId) return router.push(`/test/${testDuplicateId}/edit`);
+      if (testDuplicateId) return setTestDuplicateId(testDuplicateId)
       alert("Duplicate fail, pls check again.");
     } catch (err) {
       setLoading(false);
@@ -49,6 +49,7 @@ export default function useTestDetail(): TestDetailUtils {
 
   return {
     onDuplicateTest,
-    loading
+    loading,
+    testDuplicateId,
   }
 }
