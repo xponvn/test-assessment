@@ -20,6 +20,7 @@ export interface InputProps
   infoText?: string;
   successText?: string;
   onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 }
 export enum InputType {
   PASSWORD = 'password',
@@ -35,7 +36,6 @@ export enum InputSize {
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      name,
       label,
       error,
       type = InputType.TEXT,
@@ -49,6 +49,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       value: rootValue,
       onChange,
       defaultValue = '',
+      className,
       ...props
     }: InputProps,
     ref
@@ -61,13 +62,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       }
       onChange && onChange(event);
     };
+
     const isHelpTextVisible = error || infoText || successText;
 
     return (
       <div className="space-y-2">
         {label && (
           <label
-            htmlFor={name}
+            htmlFor={props.name}
             className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
           >
             {label}
@@ -85,14 +87,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'hover:border-neutral-placeholder',
             'focus-within:border-primary',
             'hover:focus-within:border-primary',
-            !value && 'border-neutral-border',
+            !props.value && 'border-neutral-border',
             error && '!border-error-border bg-error-bg',
             successText && 'border-success-border bg-success-bg',
             type === InputType.SEARCH
               ? 'px-0 text-neutral-white bg-neutral-text-secondary !border-0'
               : 'px-3',
             props.disabled &&
-              '!border-none !bg-neutral-disable !text-neutral-placeholder'
+              '!border-none !bg-neutral-disable !text-neutral-placeholder',
+            className
           )}
           style={{ width: fill ? '100%' : width }}
         >
@@ -107,7 +110,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             value={rootValue === undefined ? value : rootValue}
             onChange={handleOnChange}
             ref={ref}
-            id={name}
+            id={props.name}
             type={currentType}
             className={clsx(
               'focus:outline-none bg-transparent w-full',
@@ -122,7 +125,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               props.className
             )}
             aria-invalid={Boolean(error)}
-            aria-describedby={error ? `${name}-error` : undefined}
+            aria-describedby={error ? `${props.name}-error` : undefined}
           />
 
           {type === InputType.PASSWORD && (
