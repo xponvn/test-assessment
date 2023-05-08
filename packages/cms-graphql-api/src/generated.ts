@@ -1492,6 +1492,13 @@ export type CreateTestMutationVariables = Exact<{
 
 export type CreateTestMutation = { __typename?: 'Mutation', createTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null } | null } | null };
 
+export type DeleteTestMutationVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type DeleteTestMutation = { __typename?: 'Mutation', deleteTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null } | null } | null } | null };
+
 export type GetPositionsQueryVariables = Exact<{
   filters?: InputMaybe<PositionFiltersInput>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>> | InputMaybe<Scalars['String']>>;
@@ -1524,13 +1531,6 @@ export type GetTestQueryVariables = Exact<{
 
 
 export type GetTestQuery = { __typename?: 'Query', test?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', id?: string | null, attributes?: { __typename?: 'Test', name: string, passingScore: number, level?: Enum_Test_Level | null, timeLimit: number, createdAt?: any | null, updatedAt?: any | null, publishedAt?: any | null, questions: Array<{ __typename: 'ComponentQuestionChoiceQuestion', id: string, content: string, choiceQuestionLevel: Enum_Componentquestionchoicequestion_Level, answers: Array<{ __typename?: 'ComponentAnswerChoiceAnswer', id: string, content: string, isCorrect?: boolean | null } | null> } | { __typename: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level } | { __typename: 'Error', code: string, message?: string | null } | null>, position?: { __typename?: 'PositionEntityResponse', data?: { __typename?: 'PositionEntity', id?: string | null, attributes?: { __typename?: 'Position', name: string } | null } | null } | null } | null } | null } | null };
-
-export type DeleteTestMutationVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type DeleteTestMutation = { __typename?: 'Mutation', deleteTest?: { __typename?: 'TestEntityResponse', data?: { __typename?: 'TestEntity', attributes?: { __typename?: 'Test', name: string } | null } | null } | null };
 
 export type UpdateTestMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -1594,6 +1594,24 @@ export const CreateTestDocument = gql`
   createTest(data: $data) {
     data {
       id
+    }
+  }
+}
+    `;
+export const DeleteTestDocument = gql`
+    mutation deleteTest($id: ID!) {
+  deleteTest(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
     }
   }
 }
@@ -1699,17 +1717,6 @@ export const GetTestDocument = gql`
     ${ComponentQuestionFragmentDoc}
 ${ComponentChoiceQuestionFragmentDoc}
 ${ErrorFragmentDoc}`;
-export const DeleteTestDocument = gql`
-    mutation deleteTest($id: ID!) {
-  deleteTest(id: $id) {
-    data {
-      attributes {
-        name
-      }
-    }
-  }
-}
-    `;
 export const UpdateTestDocument = gql`
     mutation updateTest($id: ID!, $data: TestInput!) {
   updateTest(id: $id, data: $data) {
@@ -1775,6 +1782,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     createTest(variables: CreateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreateTestMutation>(CreateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createTest', 'mutation');
     },
+    deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
+    },
     getPositions(variables?: GetPositionsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPositionsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPositionsQuery>(GetPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPositions', 'query');
     },
@@ -1786,9 +1796,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getTest(variables?: GetTestQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetTestQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestQuery>(GetTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getTest', 'query');
-    },
-    deleteTest(variables: DeleteTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeleteTestMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<DeleteTestMutation>(DeleteTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deleteTest', 'mutation');
     },
     updateTest(variables: UpdateTestMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<UpdateTestMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<UpdateTestMutation>(UpdateTestDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'updateTest', 'mutation');

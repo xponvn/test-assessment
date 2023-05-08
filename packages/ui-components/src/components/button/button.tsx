@@ -10,6 +10,7 @@ interface BaseButtonProps {
   variant?: 'primary' | 'secondary' | 'display' | 'secondaryDark';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean
+  style?: React.CSSProperties
 }
 
 interface NormalButtonProps extends BaseButtonProps {
@@ -55,7 +56,8 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
     RightIcon,
     variant = 'primary',
     size = 'medium',
-    disabled
+    disabled,
+    style, // for overwrite tailwind cause cannot do that with className
   } = props;
 
   if (type === 'link') {
@@ -67,6 +69,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
         href={props.href}
         title={props.title}
         target={props.target || '_blank'}
+        style={style}
       >
         {Boolean(LeftIcon) && LeftIcon}
         <span>{children}</span>
@@ -84,6 +87,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref) => {
       } ${variantClassName[variant]} ${sizeClassName[size]}`}
       disabled={disabled}
       onClick={props.onClick}
+      style={style}
     >
       {Boolean(LeftIcon) && LeftIcon}
       <span>{children}</span>

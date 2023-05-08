@@ -54,6 +54,7 @@ const createTWConfig = ({ content = [] } = {}) => {
           'text-secondary': 'var(--color-neutral-text-secondary)',
           'text-primary': 'var(--color-neutral-text-primary)',
           black: 'var(--color-neutral-black)',
+          transparent: 'var(--color-neutral-transparent)'
         },
         pending: {
           DEFAULT: 'var(--color-pending)',
