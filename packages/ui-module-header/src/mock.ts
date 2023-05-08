@@ -1,5 +1,5 @@
 import { HeaderProps } from './types';
-import { Logo } from './images';
+import { Logo, Avatar } from './images';
 
 export const mockHeaderProps: HeaderProps = {
   headerNavigation: {
@@ -21,8 +21,26 @@ export const mockHeaderProps: HeaderProps = {
       ],
       currentPathname: '/test-management',
     },
+    profile: {
+      name: 'Username',
+      image: Avatar as unknown as string,
+    },
   },
   headerSearch: {
     title: 'Title',
+    searchPlaceholder: 'Search by test name or author',
+    score: 10,
+    primaryButton: {
+      text: 'BUTTON',
+      onClick: function (): void {
+        throw new Error('Function not implemented.');
+      },
+    },
+    secondaryButton: {
+      text: 'BUTTON',
+      onClick: function (): void {
+        throw new Error('Function not implemented.');
+      },
+    },
   },
 };

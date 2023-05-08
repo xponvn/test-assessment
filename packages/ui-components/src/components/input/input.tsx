@@ -154,7 +154,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
 
-        <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
+        <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0 hidden'}>
           {error && <InputHelpText variant="error">{error}</InputHelpText>}
           {infoText && <InputHelpText variant="info">{infoText}</InputHelpText>}
           {successText && (

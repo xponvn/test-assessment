@@ -2,21 +2,22 @@ import { Navigation } from '@test-assessment/ui-components';
 import { HeaderNavigationProps } from '../types';
 import Image from 'next/image';
 import { Notification } from '../images';
+import { Profile } from './profile';
 
 export const HeaderNavigation = (props: HeaderNavigationProps) => {
-  const { logoUrl, navigation } = props;
+  const { logoUrl, navigation, profile, className } = props;
   const styles = useStyles();
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} ${className}`}>
       <div className={`${styles.logo}`}>
         <Image src={logoUrl} alt={''} />
       </div>
       <Navigation {...navigation} />
       <div className={`${styles.profile}`}>
         <Image src={Notification} alt={''} />
-        <span>|</span>
-        Profile
+        <span className={`${styles.separate}`}>|</span>
+        <Profile {...profile} />
       </div>
     </div>
   );
@@ -24,8 +25,9 @@ export const HeaderNavigation = (props: HeaderNavigationProps) => {
 
 const useStyles = () => {
   return {
-    root: `flex justify-between bg-neutral-text-primary`,
+    root: `flex justify-between`,
     logo: `flex items-center`,
     profile: `flex items-center`,
+    separate: `mx-4 text-neutral-placeholder`,
   };
 };
