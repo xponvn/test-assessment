@@ -4,7 +4,7 @@ import {
   TestInput,
   useApiClient,
 } from '@test-assessment/cms-graphql-api';
-import { Icon } from '@test-assessment/ui-components';
+import { Button, Icon } from '@test-assessment/ui-components';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -103,7 +103,6 @@ export default function CreateTest() {
                         data={item}
                         key={index}
                         index={index}
-                        className="first:mt-4"
                         onDelete={(index) => {
                           deleteQuestion(index);
                           if (index === 0) {
@@ -131,20 +130,22 @@ export default function CreateTest() {
             </div>
 
             <div className="mt-8 mb-[59px]">
-              <button
+              <Button 
+                disabled={indexQuestionEdit !== -1}
                 type="button"
+                size="large"
+                RightIcon={<Icon name="plus-circle" className="ml-2" />}
+                onClick={() => setIndexQuestionEdit(questions.length) }
                 className={clsx(
-                  'flex items-center justify-center py-3 w-full border border-dashed font-bold text-13 leading-6 text-neutral-text-primary border-secondary-base bg-secondary-background',
+                  "border-dashed border-secondary-base border-[1px] bg-secondary-background text-neutral-text-primary w-full max-h-12",
                   {
                     'opacity-100': indexQuestionEdit === -1,
                     'opacity-30 cursor-not-allowed': indexQuestionEdit !== -1,
                   }
                 )}
-                onClick={() => setIndexQuestionEdit(questions.length)}
               >
                 Add question
-                <Icon name="plus-circle" className="ml-2" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>

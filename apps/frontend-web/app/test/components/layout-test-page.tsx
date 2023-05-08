@@ -74,13 +74,24 @@ const LayoutTestPage = ({
             </span>
           </div>
           <span className="border border-solid w-6 h-0 rotate-90 border-neutral-placeholder mr-6"></span>
+          {actionType === 'edit' && (
+            <Button
+              type="button"
+              onClick={() => alert('test is deleted')}
+              className="mr-2 uppercase max-h-10 bg-transparent text-neutral-white !font-bold hover:bg-primary-base hover:text-neutral-text-primary"
+              variant="secondary"
+            >
+              Delete
+            </Button>
+          )}
+          
           <label
             htmlFor="btn-test-info"
-            className={`outline-none text-13 leading-20 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border-[3px] border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center max-h-10 ${
+            className={`outline-none text-13 leading-6 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border-[3px] border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center max-h-10 ${
               test.publishedAt ? 'opacity-30 pointer-events-none' : ''
             }`}
           >
-            {actionType === 'add' ? 'save as draft' : 'save'}
+            save as draft
           </label>
           <Button
             type="button"
@@ -91,21 +102,6 @@ const LayoutTestPage = ({
           >
             publish
           </Button>
-          {actionType === 'edit' && (
-            <Button
-              type="button"
-              onClick={() => alert('test is deleted')}
-              className="ml-2 uppercase bg-white"
-              RightIcon={
-                <Icon
-                  name="remove"
-                  className="text-neutral-text-primary ml-2"
-                />
-              }
-            >
-              Delete
-            </Button>
-          )}
         </div>
       );
     }
