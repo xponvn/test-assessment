@@ -19,6 +19,7 @@ export interface InputProps
   size?: InputSize;
   infoText?: string;
   successText?: string;
+  onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export enum InputType {
   PASSWORD = 'password',
@@ -47,18 +48,19 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       successText,
       value: rootValue,
       onChange,
+      defaultValue = '',
       ...props
     }: InputProps,
     ref
   ) => {
     const [currentType, setCurrentType] = useState(type);
-    const [value, setValue] = useState(rootValue);
-
+    const [value, setValue] = useState(defaultValue);
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event?.target?.value);
+      if (rootValue === undefined) {
+        return setValue(event?.target?.value);
+      }
       onChange && onChange(event);
     };
-
     const isHelpTextVisible = error || infoText || successText;
 
     return (
@@ -102,7 +104,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           <input
             {...props}
-            value={value}
+            value={rootValue === undefined ? value : rootValue}
             onChange={handleOnChange}
             ref={ref}
             id={name}
@@ -116,7 +118,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               }[size],
               // TODO: apply background opacity
               type === InputType.SEARCH &&
-                'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary'
+                'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary',
+              props.className
             )}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${name}-error` : undefined}

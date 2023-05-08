@@ -13,7 +13,7 @@ const data = {
   activeTab: 'all',
 };
 
-export const SegmentDefault = () => (
+export const PaginationDefault = () => (
   <PaginationComponent
     rowsPerPage={data.rowsPerPage}
     currentPage={data.currentPage}
@@ -27,7 +27,7 @@ export const SegmentDefault = () => (
   />
 );
 
-export const SegmentFirstPage = () => (
+export const PaginationFirstPage = () => (
   <PaginationComponent
     rowsPerPage={data.rowsPerPage}
     currentPage={1}
@@ -41,7 +41,7 @@ export const SegmentFirstPage = () => (
   />
 );
 
-export const SegmentLastPage = () => (
+export const PaginationLastPage = () => (
   <PaginationComponent
     rowsPerPage={data.rowsPerPage}
     currentPage={10}
