@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation should render Navigation successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="flex bg-neutral-text-primary text-13"
+    >
+      <a
+        class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-primary-base text-neutral-white font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+        data-title="Test Management"
+        href="/test-management"
+      >
+        Test Management
+      </a>
+      <a
+        class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-none text-neutral-disable hover:text-neutral-white hover:font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+        data-title="Candidate"
+        href="/candidate"
+      >
+        Candidate
+      </a>
+      <a
+        class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-none text-neutral-disable hover:text-neutral-white hover:font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+        data-title="Candidate"
+        href="/candidate"
+      >
+        Candidate
+      </a>
+    </div>
+  </div>
+</body>
+`;
