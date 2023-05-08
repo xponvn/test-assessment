@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import InviteForm from './inviteForm';
+import InviteForm from './invite-form';
 
 export default function Modal({ showModal, setShowModal }) {
   return (
