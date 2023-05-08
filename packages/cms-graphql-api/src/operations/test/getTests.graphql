@@ -49,10 +49,7 @@ query getCountTestByStatus(
   $filters: TestFiltersInput
   $publicationState: PublicationState
 ) {
-  tests(
-    filters: $filters
-    publicationState: $publicationState
-  ) {
+  tests(filters: $filters, publicationState: $publicationState) {
     meta {
       countByStatus {
         draft
@@ -62,4 +59,33 @@ query getCountTestByStatus(
   }
 }
 
-
+query getTest($id: ID) {
+  test(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        questions {
+          __typename
+          ...ComponentQuestion
+          ...ComponentChoiceQuestion
+          ...Error
+        }
+        position {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}
