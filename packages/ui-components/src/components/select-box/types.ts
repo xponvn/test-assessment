@@ -1,6 +1,6 @@
 export interface SelectBoxProps extends React.HTMLAttributes<HTMLSelectElement> {
   options: SelectBoxOption[];
-  variant: 'verticle-label' | 'horizontal-label';
+  variant: 'vertical-label' | 'horizontal-label';
   size: 'small' | 'medium' | 'large';
   label?: string;
   defaultValue?: string;

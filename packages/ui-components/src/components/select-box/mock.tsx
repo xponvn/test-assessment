@@ -19,6 +19,6 @@ export const mockSelectBoxProps: SelectBoxProps = {
   ),
   placeholder: 'Select your option',
   label: 'Label',
-  variant: 'verticle-label',
+  variant: 'vertical-label',
   size: 'small',
 };
