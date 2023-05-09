@@ -53,7 +53,6 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
           onChange={(e) => handleChangeOption(e)}
           defaultValue={defaultValue}
           disabled={disabled}
-          value={value}
         >
           {placeholder && <option value={''}>{placeholder}</option>}
           {options?.map((option) => (

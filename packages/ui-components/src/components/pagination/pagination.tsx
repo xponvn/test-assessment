@@ -18,7 +18,7 @@ export const Pagination = ({
   const [nextStyle, setNextStyle] = React.useState('');
 
   const prevPage = () => {
-    const prevPage = Number(page) > 1 ? Number(page) - 1 : 1;
+    const prevPage = page > 1 ? page - 1 : 1;
     const isFirstPage = prevPage === page;
     if (!isFirstPage) {
       setPage(prevPage);
@@ -31,7 +31,7 @@ export const Pagination = ({
     }
   };
   const nextPage = () => {
-    const nextPage = Number(page) < totalPage ? Number(page) + 1 : totalPage;
+    const nextPage = page < totalPage ? page + 1 : totalPage;
     const isLastPage = nextPage === page;
     if (!isLastPage) {
       setPage(nextPage);
@@ -46,11 +46,7 @@ export const Pagination = ({
   const handleOnchangePage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const pageNumber = Number(event?.target?.value);
 
-    setPage(
-      Number.isNaN(pageNumber) || pageNumber === 0
-        ? 0
-        : parseInt(`${pageNumber > totalPage ? totalPage : pageNumber}`, 10)
-    );
+    setPage(pageNumber > totalPage ? totalPage : pageNumber);
     onChangePage && onChangePage(pageNumber);
   };
 

@@ -87,7 +87,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'hover:border-neutral-placeholder',
             'focus-within:border-primary',
             'hover:focus-within:border-primary',
-            !props.value && 'border-neutral-border',
+            !rootValue && 'border-neutral-border',
             error && '!border-error-border bg-error-bg',
             successText && 'border-success-border bg-success-bg',
             type === InputType.SEARCH
@@ -122,7 +122,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               // TODO: apply background opacity
               type === InputType.SEARCH &&
                 'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary',
-              props.className
+              className
             )}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${props.name}-error` : undefined}
