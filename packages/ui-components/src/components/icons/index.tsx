@@ -21,6 +21,7 @@ import PlusCircle from './assets/plus-circle';
 import ArrowUp from './assets/arrow-up';
 import ArrowBack from './assets/arrow-back';
 import Close from './assets/close';
+import File from './assets/file';
 
 export type IconProps = {
   className?: string;
@@ -53,7 +54,8 @@ export type IconName =
   | 'success'
   | 'remove-outline'
   | 'plus-circle'
-  | 'close';
+  | 'close'
+  | 'file';
 
 export type IconsType = Record<IconName, Icon>;
 
@@ -80,6 +82,7 @@ export const Icons: IconsType = {
   close: Close,
   'remove-outline': RemoveOutline,
   'plus-circle': PlusCircle,
+  file: File,
 };
 
 export const Icon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
