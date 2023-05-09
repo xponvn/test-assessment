@@ -7,7 +7,7 @@ exports[`Button should render input successfully 1`] = `
       class="space-y-2"
     >
       <div
-        class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+        class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary px-3"
         style="width: 300px;"
       >
         <input

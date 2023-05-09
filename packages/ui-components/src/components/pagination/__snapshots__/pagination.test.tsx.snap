@@ -37,6 +37,7 @@ exports[`Pagination should render Pagination successfully 1`] = `
                 5
               </option>
               <option
+                selected=""
                 value="10"
               >
                 10
@@ -122,12 +123,12 @@ exports[`Pagination should render Pagination successfully 1`] = `
             class="space-y-2"
           >
             <div
-              class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary px-3 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               style="width: 40px;"
             >
               <input
                 aria-invalid="false"
-                class="focus:outline-none bg-transparent w-full py-2"
+                class="focus:outline-none bg-transparent w-full py-2 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 id="currentPage"
                 max="10"
                 min="1"
@@ -136,9 +137,6 @@ exports[`Pagination should render Pagination successfully 1`] = `
                 value="2"
               />
             </div>
-            <div
-              class="opacity-0"
-            />
           </div>
           <span
             class="px-3"
