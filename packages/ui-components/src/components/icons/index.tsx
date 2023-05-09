@@ -6,6 +6,7 @@ import Check from './assets/check';
 import Edit from './assets/edit';
 import Notification from './assets/notification';
 import ChevronDown from './assets/chevron-down';
+import ChevronUp from './assets/chevron-up';
 import Refresh from './assets/refresh';
 import Search from './assets/search';
 import ArrowLeft from './assets/arrow-left';
@@ -16,6 +17,8 @@ import Caution from './assets/caution';
 import EyeHide from './assets/eye-hide';
 import EyeShow from './assets/eye-show';
 import Success from './assets/success';
+import UserProfile from './assets/user-profile';
+import Logout from './assets/logout';
 
 export type IconProps = {
   className?: string;
@@ -34,6 +37,9 @@ export type IconName =
   | 'edit'
   | 'notification'
   | 'chevron-down'
+  | 'chevron-up'
+  | 'user-profile'
+  | 'logout'
   | 'refresh'
   | 'search'
   | 'arrow-right'
@@ -68,6 +74,15 @@ export const Icons: IconsType = {
   },
   'chevron-down': (props: IconProps) => {
     return <ChevronDown {...props} />;
+  },
+  'chevron-up': (props: IconProps) => {
+    return <ChevronUp {...props} />;
+  },
+  'user-profile': (props: IconProps) => {
+    return <UserProfile {...props} />;
+  },
+  logout: (props: IconProps) => {
+    return <Logout {...props} />;
   },
   refresh: (props: IconProps) => {
     return <Refresh {...props} />;

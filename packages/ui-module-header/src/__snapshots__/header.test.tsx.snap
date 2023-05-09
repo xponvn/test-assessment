@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render Header successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="bg-neutral-text-primary undefined"
+    >
+      <div
+        class="flex justify-between mb-6"
+      >
+        <div
+          class="flex items-center"
+        >
+          <img
+            alt=""
+            data-nimg="1"
+            decoding="async"
+            loading="lazy"
+            src=""
+            style="color: transparent;"
+          />
+        </div>
+        <div
+          class="flex bg-neutral-text-primary text-13"
+        >
+          <a
+            class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-primary-base text-neutral-white font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+            data-title="Test Management"
+            href="/test-management"
+          >
+            Test Management
+          </a>
+          <a
+            class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-none text-neutral-disable hover:text-neutral-white hover:font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+            data-title="Candidate"
+            href="/candidate"
+          >
+            Candidate
+          </a>
+          <a
+            class="mx-[32px] py-[16px] border-b-2 text-center 
+      border-none text-neutral-disable hover:text-neutral-white hover:font-bold 
+      hover:border-b-2 hover:border-primary-1 
+      after:content-[attr(data-title)] after:block after:h-[0px] 
+      after:invisible after:font-bold after:overflow-hidden"
+            data-title="Candidate"
+            href="/candidate"
+          >
+            Candidate
+          </a>
+        </div>
+        <div
+          class="flex items-center"
+        >
+          <img
+            alt=""
+            data-nimg="1"
+            decoding="async"
+            loading="lazy"
+            src=""
+            style="color: transparent;"
+          />
+          <span
+            class="mx-4 text-neutral-placeholder"
+          >
+            |
+          </span>
+          <div
+            class="dropdown relative flex"
+          >
+            <button
+              class=""
+            >
+              <div
+                class="flex items-center"
+              >
+                <img
+                  alt=""
+                  data-nimg="1"
+                  decoding="async"
+                  loading="lazy"
+                  src=""
+                  style="color: transparent;"
+                />
+                <div
+                  class="ml-2 text-neutral-white"
+                >
+                  Username
+                </div>
+                <svg
+                  class="text-neutral-border w-6 w-6"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 25 24"
+                  width="25"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16.8101 10H7.85669C7.41005 10 7.16946 10.5267 7.46068 10.867L11.5414 15.6348C11.9582 16.1217 12.7086 16.1217 13.1254 15.6348L17.2061 10.867C17.4973 10.5267 17.2567 10 16.8101 10Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex justify-between items-center"
+      >
+        <div
+          class="text-neutral-white font-bold text-24"
+        >
+          Title
+        </div>
+        <div
+          class="flex flex-wrap items-center gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <div
+              class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-0 text-neutral-white bg-neutral-text-secondary !border-0"
+              style="width: 400px;"
+            >
+              <input
+                aria-invalid="false"
+                class="focus:outline-none bg-transparent w-full py-2 px-3 focus:border-neutral-white focus:border bg-neutral-text-primary"
+                placeholder="Search by test name or author"
+                type="search"
+              />
+              <button
+                class="flex items-center bg-primary-base text-neutral-text-secondary px-2"
+              >
+                <svg
+                  class="w-6 w-6"
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M5.5 10.5508C5.5 7.7613 7.7613 5.5 10.5507 5.5C13.3402 5.5 15.6015 7.7613 15.6015 10.5508C15.6015 11.9258 15.052 13.1725 14.1607 14.0832C14.147 14.0951 14.1336 14.1076 14.1206 14.1206C14.1075 14.1336 14.0951 14.147 14.0832 14.1607C13.1724 15.0521 11.9258 15.6015 10.5507 15.6015C7.7613 15.6015 5.5 13.3402 5.5 10.5508ZM14.6222 15.6829C13.5042 16.571 12.0894 17.1015 10.5507 17.1015C6.93286 17.1015 4 14.1686 4 10.5508C4 6.93288 6.93286 4 10.5507 4C14.1686 4 17.1015 6.93288 17.1015 10.5508C17.1015 12.0895 16.571 13.5043 15.6829 14.6222L19.7812 18.7206C20.0741 19.0135 20.0741 19.4884 19.7812 19.7813C19.4883 20.0741 19.0134 20.0741 18.7205 19.7813L14.6222 15.6829Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div
+              class="opacity-0 hidden"
+            />
+          </div>
+          <div
+            class="text-15 font-medium"
+          >
+            <span
+              class="text-neutral-border mr-2"
+            >
+              Total point:
+            </span>
+            <span
+              class="text-neutral-white"
+            >
+              10
+               point
+              s
+            </span>
+          </div>
+          <span
+            class="text-neutral-placeholder"
+          >
+            |
+          </span>
+          <button
+            class="items-center justify-center px-4 py-2 font-medium font-primary text-13 leading-6 space-x-2 text-neutral-white inline-flex border-[3px] border-solid border-primary-base px-4 py-2"
+          >
+            <span>
+              BUTTON
+            </span>
+          </button>
+          <button
+            class="items-center justify-center px-4 py-2 font-medium font-primary text-13 leading-6 space-x-2  inline-flex bg-primary-base px-4 py-2"
+          >
+            <span>
+              BUTTON
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -33,6 +33,9 @@
       ],
       "@test-assessment/ui-module-layout-auth": [
         "packages/ui-module-layout-auth/src/index.ts"
+      ],
+      "@test-assessment/ui-module-profile": [
+        "packages/ui-module-profile/src/index.ts"
       ]
     }
   },

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DropdownProps } from './types';
 
 export const Dropdown = React.forwardRef((props: DropdownProps, ref) => {
-  const { button, children } = props;
+  const { button, children, onChange } = props;
   const [open, setOpen] = React.useState(false);
   const dropdown = React.useRef<HTMLInputElement>(null);
 
@@ -14,6 +14,7 @@ export const Dropdown = React.forwardRef((props: DropdownProps, ref) => {
         !dropdown.current.contains(e.target as Node)
       ) {
         setOpen(false);
+        if (onChange) onChange(false);
       }
     };
 
@@ -24,15 +25,18 @@ export const Dropdown = React.forwardRef((props: DropdownProps, ref) => {
 
   const handleOpen = () => {
     setOpen(!open);
+    if (onChange) onChange(!open);
   };
 
   return (
-    <div className="dropdown" ref={dropdown}>
-      <button onClick={handleOpen} className="mb-[10px]">
+    <div className="dropdown relative flex" ref={dropdown}>
+      <button onClick={handleOpen} className="">
         {button}
       </button>
       {open ? (
-        <div className="bg-neutral-white shadow-md">{children}</div>
+        <div className="bg-neutral-white shadow-md absolute top-10">
+          {children}
+        </div>
       ) : null}
     </div>
   );

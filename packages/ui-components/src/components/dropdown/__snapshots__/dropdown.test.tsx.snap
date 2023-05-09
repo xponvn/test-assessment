@@ -4,10 +4,10 @@ exports[`Dropdown should render Dropdown successfully 1`] = `
 <body>
   <div>
     <div
-      class="dropdown"
+      class="dropdown relative flex"
     >
       <button
-        class="mb-[10px]"
+        class=""
       >
         <div
           class="border"
