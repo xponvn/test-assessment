@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render input successfully 1`] = `
+exports[`Input should render input successfully 1`] = `
 <body>
   <div>
     <div
@@ -13,6 +13,7 @@ exports[`Button should render input successfully 1`] = `
         <input
           aria-invalid="false"
           class="focus:outline-none bg-transparent w-full py-2"
+          readonly=""
           type="text"
           value="this is value"
         />

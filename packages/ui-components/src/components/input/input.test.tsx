@@ -8,10 +8,9 @@ describe('Input', () => {
       <Input
         type="text"
         value="this is value"
-        onChange={() => {
-          console.log('changed');
-        }}
         width={300}
+        readOnly
+        onChange={jest.fn()}
       />
     );
     expect(baseElement).toMatchSnapshot();
