@@ -20,6 +20,7 @@ import RemoveOutline from './assets/remove-outline';
 import PlusCircle from './assets/plus-circle';
 import ArrowUp from './assets/arrow-up';
 import ArrowBack from './assets/arrow-back';
+import Close from './assets/close';
 
 export type IconProps = {
   className?: string;
@@ -51,74 +52,34 @@ export type IconName =
   | 'eye-show'
   | 'success'
   | 'remove-outline'
-  | 'plus-circle';
+  | 'plus-circle'
+  | 'close';
 
 export type IconsType = Record<IconName, Icon>;
 
 export const Icons: IconsType = {
-  qa: (props: IconProps) => {
-    return <QA {...props} />;
-  },
-  remove: (props: IconProps) => {
-    return <Remove {...props} />;
-  },
-  plus: (props: IconProps) => {
-    return <Plus {...props} />;
-  },
-  check: (props: IconProps) => {
-    return <Check {...props} />;
-  },
-  edit: (props: IconProps) => {
-    return <Edit {...props} />;
-  },
-  notification: (props: IconProps) => {
-    return <Notification {...props} />;
-  },
-  'chevron-down': (props: IconProps) => {
-    return <ChevronDown {...props} />;
-  },
-  refresh: (props: IconProps) => {
-    return <Refresh {...props} />;
-  },
-  search: (props: IconProps) => {
-    return <Search {...props} />;
-  },
-  'arrow-back': (props: IconProps) => {
-    return <ArrowBack {...props} />;
-  },
-  'arrow-left': (props: IconProps) => {
-    return <ArrowLeft {...props} />;
-  },
-  'arrow-right': (props: IconProps) => {
-    return <ArrowRight {...props} />;
-  },
-  'arrow-up': (props: IconProps) => {
-    return <ArrowUp {...props} />;
-  },
-  save: (props: IconProps) => {
-    return <Save {...props} />;
-  },
-  publish: (props: IconProps) => {
-    return <Publish {...props} />;
-  },
-  caution: (props: IconProps) => {
-    return <Caution {...props} />;
-  },
-  'eye-hide': (props: IconProps) => {
-    return <EyeHide {...props} />;
-  },
-  'eye-show': (props: IconProps) => {
-    return <EyeShow {...props} />;
-  },
-  success: (props: IconProps) => {
-    return <Success {...props} />;
-  },
-  'remove-outline': (props: IconProps) => {
-    return <RemoveOutline {...props} />;
-  },
-  'plus-circle': (props: IconProps) => {
-    return <PlusCircle {...props} />;
-  },
+  qa: QA,
+  remove: Remove,
+  plus: Plus,
+  check: Check,
+  edit: Edit,
+  notification: Notification,
+  'chevron-down': ChevronDown,
+  refresh: Refresh,
+  search: Search,
+  'arrow-back': ArrowBack,
+  'arrow-left': ArrowLeft,
+  'arrow-right': ArrowRight,
+  'arrow-up': ArrowUp,
+  save: Save,
+  publish: Publish,
+  caution: Caution,
+  'eye-hide': EyeHide,
+  'eye-show': EyeShow,
+  success: Success,
+  close: Close,
+  'remove-outline': RemoveOutline,
+  'plus-circle': PlusCircle,
 };
 
 export const Icon = ({ name, ...reset }: IconProps & { name?: IconName }) => {
