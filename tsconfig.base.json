@@ -28,12 +28,19 @@
       "@test-assessment/ui-auth-protect": [
         "packages/ui-auth-protect/src/index.ts"
       ],
+      "@test-assessment/ui-candidate-profile": [
+        "packages/ui-candidate-profile/src/index.ts"
+      ],
+      "@test-assessment/ui-candidate-profile-modal": [
+        "packages/ui-candidate-profile-modal/src/index.ts"
+      ],
       "@test-assessment/ui-mail-template": [
         "packages/ui-mail-template/src/index.ts"
       ],
       "@test-assessment/ui-module-layout-auth": [
         "packages/ui-module-layout-auth/src/index.ts"
-      ]
+      ],
+      "@test-assessment/ui-components": ["packages/ui-components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

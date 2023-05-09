@@ -1,0 +1,16 @@
+{
+  "options": [
+    {
+      "name": "Junior",
+      "value": "junior"
+    },
+    {
+      "name": "Middle",
+      "value": "middle"
+    },
+    {
+      "name": "Senior",
+      "value": "senior"
+    }
+  ]
+}

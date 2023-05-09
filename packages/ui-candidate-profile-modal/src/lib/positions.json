@@ -1,0 +1,16 @@
+{
+  "options": [
+    {
+      "name": "Developer",
+      "value": "dev"
+    },
+    {
+      "name": "Quality Assurance",
+      "value": "qa"
+    },
+    {
+      "name": "Scrum Master",
+      "value": "sm"
+    }
+  ]
+}
