@@ -84,7 +84,7 @@ export const emailHtml = `<!DOCTYPE html>
 			  process for your position.
 		  </p>
 		  <div class="assignment">
-			  <a class="btn" href="http://localhost:4200/test/1" target="_blank">START ASSESSMENT</a>
+			  <a class="btn" href="<%= linkTestInvite %>" target="_blank">START ASSESSMENT</a>
 		  </div>
 		  <p>
 			  If you have any other questions about the assessment, please do not
