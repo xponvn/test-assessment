@@ -36,7 +36,7 @@ const Checkbox = React.forwardRef((props: CheckboxProps, ref: LegacyRef<HTMLInpu
             value={item.value}
             checked={checked}
           />
-          <label htmlFor={item.value} className="checkbox-input-term border border-solid border-neutral-border w-4 h-4 flex items-center justify-center bg-success rounded-[2px]">
+          <label htmlFor={item.value} className="checkbox-input-term border border-solid border-neutral-border w-4 h-4 flex items-center justify-center bg-success">
             <Icon name="check" className="checkbox-input-icon text-white" />
           </label>
           <label className="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2" htmlFor={item.value}>{item.label}</label>
