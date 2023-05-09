@@ -29,12 +29,12 @@ export const Modal = ({
   submitText = 'Save',
   closeText = 'Cancel',
   onCancel,
-  backdrop,
+  backdrop = BackDropType.INTERACTIVE,
 }: ModalProps) => {
   return (
     <div
       className={clsx(
-        'absolute top-0 w-full h-full',
+        'absolute top-0 left-0 w-screen h-screen',
         backdrop !== BackDropType.NONE && 'bg-[#373737] bg-opacity-60',
         open ? 'visible' : 'invisible'
       )}
