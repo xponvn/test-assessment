@@ -19,9 +19,6 @@ export const mockSelectBoxProps: SelectBoxProps = {
   ),
   placeholder: 'Select your option',
   label: 'Label',
-  onChange: function (value: string): void {
-    throw new Error('Function not implemented.');
-  },
-  variant: 'verticle-label',
+  variant: 'vertical-label',
   size: 'small',
 };
