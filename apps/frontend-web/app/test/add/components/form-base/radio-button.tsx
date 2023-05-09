@@ -13,11 +13,12 @@ export type RadioButtonProps = React.DetailedHTMLProps<
   className?: string;
   error?: string;
   checked?: boolean;
+  styleVariant?: "style_1" | "style_2"
 }
 
 // eslint-disable-next-line react/display-name
 const RadioButton = React.forwardRef((props: RadioButtonProps, ref: LegacyRef<HTMLInputElement>) => {
-  const { required, label, item, className, error, checked,  ...reset } = props;
+  const { required, label, item, className, error, checked, styleVariant = "style_1",  ...reset } = props;
   return (
     <div className={clsx("flex flex-col w-full", className)}>
       {label && <p
@@ -34,8 +35,14 @@ const RadioButton = React.forwardRef((props: RadioButtonProps, ref: LegacyRef<HT
           value={item.value}
           checked={checked}
         />
-        <label htmlFor={item.value} className="radio-input-temp border border-solid border-neutral-border w-4 h-4 rounded-full flex items-center justify-center">
-          <div className="radio-input-circle w-2 h-2 rounded-full"></div>
+        <label htmlFor={item.value} className={clsx("border border-neutral-border border-solid w-4 h-4 rounded-full flex items-center justify-center", {
+          "radio-input-temp": styleVariant === "style_1",
+          "radio-input-temp-2": styleVariant === "style_2",
+        })}>
+          <div className={clsx("radio-input-circle w-2 h-2 rounded-full", {
+            "radio-input-circle": styleVariant === "style_1",
+            "radio-input-circle-2": styleVariant === "style_2",
+          })}></div>
         </label>
         <label className="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2" htmlFor={item.value}>{item.label}</label>
       </div>
