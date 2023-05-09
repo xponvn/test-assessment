@@ -94,7 +94,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               ? 'px-0 text-neutral-white bg-neutral-text-secondary !border-0'
               : 'px-3',
             props.disabled &&
-              '!border-none !bg-neutral-disable !text-neutral-placeholder',
+            '!border-none !bg-neutral-disable !text-neutral-placeholder',
             className
           )}
           style={{ width: fill ? '100%' : width }}
@@ -169,13 +169,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
 
-        <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
+        {(error || infoText || successText) && <div className={isHelpTextVisible ? 'opacity-100' : 'opacity-0'}>
           {error && <InputHelpText variant="error">{error}</InputHelpText>}
           {infoText && <InputHelpText variant="info">{infoText}</InputHelpText>}
           {successText && (
             <InputHelpText variant="success">{successText}</InputHelpText>
           )}
-        </div>
+        </div>}
       </div>
     );
   }
