@@ -1,5 +1,6 @@
 import { HeaderProps } from './types';
-import { Logo, Avatar } from './images';
+import * as Logo from './images/logo.png';
+import * as Avatar from './images/avatar.png';
 
 export const mockHeaderProps: HeaderProps = {
   headerNavigation: {

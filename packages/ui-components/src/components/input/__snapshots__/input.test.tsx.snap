@@ -18,7 +18,7 @@ exports[`Button should render input successfully 1`] = `
         />
       </div>
       <div
-        class="opacity-0"
+        class="opacity-0 hidden"
       />
     </div>
   </div>
