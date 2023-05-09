@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination should render Pagination successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="flex items-center "
+    >
+      <div
+        class="flex items-center p-1"
+      >
+        <div
+          class=" "
+        >
+          <div
+            class="relative w-full"
+          >
+            <select
+              class="
+            w-full appearance-none focus:outline-none cursor-pointer
+            pl-[12px] pr-[48px] font-normal text-15
+            
+      
+      py-[8px]
+      
+    
+            
+                  border hover:border-neutral-placeholder
+                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
+                  border-neutral-text-primary text-neutral-primary bg-neutral-white
+                
+          "
+            >
+              <option
+                value="5"
+              >
+                5
+              </option>
+              <option
+                selected=""
+                value="10"
+              >
+                10
+              </option>
+              <option
+                value="15"
+              >
+                15
+              </option>
+              <option
+                value="20"
+              >
+                20
+              </option>
+            </select>
+            <div
+              class="pointer-events-none absolute right-0 top-0 bottom-0 flex items-center px-2"
+            >
+              <svg
+                class="h-4 w-4"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <span
+          class="pl-3"
+        >
+          rows per page
+        </span>
+      </div>
+      <span
+        class="w-6 border border-solid border-neutral-disable rotate-90 h-0"
+      />
+      <div
+        class="flex items-center justify-between"
+      >
+        <div
+          aria-disabled="false"
+          class="cursor-pointer hover:bg-neutral-bg transition ease-in   rounded-full"
+        >
+          <svg
+            class="w-6 w-6"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#clip_arrow_left)"
+            >
+              <path
+                d="M14.5 6L8.5 12L14.5 18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="clip_arrow_left"
+              >
+                <rect
+                  fill="white"
+                  height="24"
+                  width="24"
+                />
+              </clippath>
+            </defs>
+          </svg>
+        </div>
+        <div
+          class="flex items-center px-5 "
+        >
+          <div
+            class="space-y-2"
+          >
+            <div
+              class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary px-3 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              style="width: 40px;"
+            >
+              <input
+                aria-invalid="false"
+                class="focus:outline-none bg-transparent w-full py-2 text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                id="currentPage"
+                max="10"
+                min="1"
+                name="currentPage"
+                type="number"
+                value="2"
+              />
+            </div>
+          </div>
+          <span
+            class="px-3"
+          >
+            /
+          </span>
+          <span>
+            10
+             page(s)
+          </span>
+        </div>
+        <div
+          aria-disabled="false"
+          class="cursor-pointer  hover:bg-neutral-bg transition ease-in  rounded-full "
+        >
+          <svg
+            class="w-6 w-6"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.5 18L15.5 12L9.5 6"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -15,7 +15,7 @@ export const SelectBoxVertical = () => (
       console.log(value);
     }}
     label={mockSelectBoxProps.label}
-    variant={'verticle-label'}
+    variant={'vertical-label'}
     size={'small'}
     rightIcon={mockSelectBoxProps.rightIcon}
     placeholder={mockSelectBoxProps.placeholder}
@@ -29,7 +29,7 @@ export const SelectBoxVerticalDisable = () => (
       console.log(value);
     }}
     label={mockSelectBoxProps.label}
-    variant={'verticle-label'}
+    variant={'vertical-label'}
     size={'small'}
     rightIcon={mockSelectBoxProps.rightIcon}
     placeholder={mockSelectBoxProps.placeholder}

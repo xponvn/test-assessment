@@ -19,6 +19,7 @@ export interface InputProps
   size?: InputSize;
   infoText?: string;
   successText?: string;
+  onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
 export enum InputType {
@@ -45,12 +46,23 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       leftIcon,
       infoText,
       successText,
+      value: rootValue,
+      onChange,
+      defaultValue = '',
       className,
       ...props
     }: InputProps,
     ref
   ) => {
     const [currentType, setCurrentType] = useState(type);
+    const [value, setValue] = useState(defaultValue);
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (rootValue === undefined) {
+        return setValue(event?.target?.value);
+      }
+      onChange && onChange(event);
+    };
+
     const isHelpTextVisible = error || infoText || successText;
 
     return (
@@ -75,7 +87,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             'hover:border-neutral-placeholder',
             'focus-within:border-primary',
             'hover:focus-within:border-primary',
-            !props.value && 'border-neutral-border',
+            !rootValue && 'border-neutral-border',
             error && '!border-error-border bg-error-bg',
             successText && 'border-success-border bg-success-bg',
             type === InputType.SEARCH
@@ -95,6 +107,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           <input
             {...props}
+            value={rootValue === undefined ? value : rootValue}
+            onChange={handleOnChange}
             ref={ref}
             id={props.name}
             type={currentType}
@@ -107,7 +121,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               }[size],
               // TODO: apply background opacity
               type === InputType.SEARCH &&
-              'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary'
+                'px-3 focus:border-neutral-white focus:border bg-neutral-text-primary',
+              className
             )}
             aria-invalid={Boolean(error)}
             aria-describedby={error ? `${props.name}-error` : undefined}
