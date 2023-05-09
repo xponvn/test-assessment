@@ -74,45 +74,34 @@ const LayoutTestPage = ({
             </span>
           </div>
           <span className="border border-solid w-6 h-0 rotate-90 border-neutral-placeholder mr-6"></span>
-          <label
-            htmlFor="btn-test-info"
-            className={`outline-none text-13 leading-20 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center ${
-              test.publishedAt ? 'opacity-30 pointer-events-none' : ''
-            }`}
-          >
-            {actionType === 'add' ? 'save as draft' : 'save'}
-            <Icon name="save" className="text-neutral-white ml-2" />
-          </label>
-          <Button
-            type="button"
-            onClick={() => trigger()}
-            className={`uppercase ${test?.publishedAt ? 'opacity-30' : ''}`}
-            // FIXME: should be loading icon
-            RightIcon={
-              <Icon
-                name={`${isMutating ? 'refresh' : 'publish'}`}
-                className="text-neutral-text-primary ml-2"
-              />
-            }
-            disabled={!!test?.publishedAt || isMutating}
-          >
-            publish
-          </Button>
           {actionType === 'edit' && (
             <Button
               type="button"
               onClick={() => alert('test is deleted')}
-              className="ml-2 uppercase bg-white"
-              RightIcon={
-                <Icon
-                  name="remove"
-                  className="text-neutral-text-primary ml-2"
-                />
-              }
+              className="mr-2 uppercase max-h-10 bg-transparent text-neutral-white !font-bold hover:bg-primary-base hover:text-neutral-text-primary"
+              variant="secondary"
             >
               Delete
             </Button>
           )}
+          
+          <label
+            htmlFor="btn-test-info"
+            className={`outline-none text-13 leading-6 font-bold py-[10px] px-5 uppercase text-neutral-white border-primary-base border-[3px] border-solid hover:bg-primary-base hover:text-neutral-text-primary transition-all mr-2 cursor-pointer flex items-center max-h-10 ${
+              test.publishedAt ? 'opacity-30 pointer-events-none' : ''
+            }`}
+          >
+            save as draft
+          </label>
+          <Button
+            type="button"
+            onClick={() => trigger()}
+            className={`uppercase !font-bold ${test?.publishedAt ? 'opacity-30' : ''}`}
+            // FIXME: should be loading icon
+            disabled={!!test?.publishedAt || isMutating}
+          >
+            publish
+          </Button>
         </div>
       );
     }

@@ -9,8 +9,8 @@ import {
   getLevelPosition,
   transformPositions,
 } from '../../utils';
-import Input from '../form-base/input';
 import Select, { SelectOption } from '../form-base/select';
+import { Input } from '@test-assessment/ui-components';
 
 const schema = yup
   .object({
@@ -39,6 +39,7 @@ export type TestInfoProps = {
   timeLimit?: number;
   passingScore?: string;
   disableEdit?: boolean;
+  className?: string;
   onSaveAsDraft: (data: TestInfoType) => void;
 };
 
@@ -49,6 +50,7 @@ export default function TestInfo({
   timeLimit = 1,
   passingScore = '80',
   disableEdit,
+  className,
   onSaveAsDraft,
 }: TestInfoProps) {
   const { apiClient } = useApiClient();
@@ -92,14 +94,16 @@ export default function TestInfo({
   }, [data]);
 
   return (
-    <form className="flex flex-col w-full gap-4 px-6 py-4 border border-solid border-secondary-base bg-secondary-background">
+    <form className="flex flex-col w-full gap-3">
       <Input
         label="Test name"
         required
         {...register('name')}
         disabled={disableEdit}
         error={errors?.name?.message}
+        className="!w-full h-10"
       />
+
       <Controller
         control={control}
         name="position"
@@ -127,13 +131,16 @@ export default function TestInfo({
         disabled={disableEdit}
         error={errors?.levelPosition?.message}
       />
+
       <Input
         {...register('timeLimit')}
         label="Set time limit (mins)"
         required
         disabled={disableEdit}
         error={errors?.timeLimit?.message}
+        className="!w-full h-10"
       />
+
       <Select
         {...register('passingScore')}
         options={passingOptions}
