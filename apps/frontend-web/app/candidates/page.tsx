@@ -238,7 +238,7 @@ const Page = () => {
             },
           ]}
         />
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mt-2">
           <Pagination
             currentRowsPerPage={filterVariants.pagination.pageSize}
             currentPage={filterVariants.pagination.page}
