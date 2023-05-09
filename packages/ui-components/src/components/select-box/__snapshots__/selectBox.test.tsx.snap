@@ -4,7 +4,7 @@ exports[`SelectBox should render SelectBox successfully 1`] = `
 <body>
   <div>
     <div
-      class=" undefined"
+      class=" "
     >
       <div
         class="text-neutral-placeholder text-13 font-medium mb-[8px]"
