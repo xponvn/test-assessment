@@ -16,18 +16,13 @@ exports[`SelectBox should render SelectBox successfully 1`] = `
       >
         <select
           class="
-            w-full appearance-none focus:outline-none cursor-pointer 
-            pl-[12px] pr-[48px] font-normal text-15
+             w-full appearance-none focus:outline-none cursor-pointer pl-[12px] pr-[48px] font-normal text-15 
             
       py-[4px] 
       
       
     
-            
-                  border hover:border-neutral-placeholder 
-                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
-                  border-neutral-border bg-neutral-background text-neutral-placeholder
-                
+              border hover:border-neutral-placeholder focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary  border-neutral-text-primary text-neutral-primary bg-neutral-white 
           "
         >
           <option
