@@ -19,7 +19,7 @@ export interface InputProps
   size?: InputSize;
   infoText?: string;
   successText?: string;
-  onChange: (value: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
 export enum InputType {

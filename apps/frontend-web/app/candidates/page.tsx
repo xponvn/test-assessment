@@ -3,7 +3,6 @@
 
 import {
   CandidateEntity,
-  CandidateFiltersInput,
   GetCandidatesQueryVariables,
   PublicationState,
   useApiClient,
@@ -13,10 +12,11 @@ import {
   Button,
   Icon,
   Input,
+  Pagination,
   SelectBox,
   SelectBoxOption,
   Table,
-} from 'packages/ui-components/src/components';
+} from '@test-assessment/ui-components';
 import { useEffect, useRef, useState } from 'react';
 import {
   CandidateRowData,
@@ -238,6 +238,30 @@ const Page = () => {
             },
           ]}
         />
+        <div className="flex items-center justify-center">
+          <Pagination
+            currentRowsPerPage={filterVariants.pagination.pageSize}
+            currentPage={filterVariants.pagination.page}
+            totalPage={Math.ceil(
+              totalItem / filterVariants.pagination.pageSize
+            )}
+            onChangePage={(page) => {
+              setFilterVariants({
+                ...filterVariants,
+                pagination: { ...filterVariants.pagination, page: page },
+              });
+            }}
+            onChangeRows={(rowPerPage) => {
+              setFilterVariants({
+                ...filterVariants,
+                pagination: {
+                  ...filterVariants.pagination,
+                  pageSize: rowPerPage,
+                },
+              });
+            }}
+          />
+        </div>
       </div>
     </div>
   );
