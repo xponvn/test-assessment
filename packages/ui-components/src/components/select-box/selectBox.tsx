@@ -1,5 +1,6 @@
 import { SelectBoxProps } from './types';
 import React, { LegacyRef } from 'react';
+import { default } from '../../../../../apps/cms/config/plugins';
 
 // eslint-disable-next-line react/display-name
 export const SelectBox = React.forwardRef((props: SelectBoxProps, ref: LegacyRef<HTMLSelectElement>) => {
@@ -18,6 +19,12 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref: LegacyRef
   } = props;
   
   const [value, setValue] = React.useState(defaultValue);
+  const defaultClass = ' w-full appearance-none focus:outline-none cursor-pointer pl-[12px] pr-[48px] font-normal text-15 '
+  const disableClass = ' border border-neutral-disable bg-neutral-disable text-neutral-placeholder ';
+  const enableClass = ' border hover:border-neutral-placeholder focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary '
+  const [classes, setClasses] = React.useState('border-neutral-text-primary text-neutral-primary bg-neutral-white');
+   
+
   const styles = useStyles(props);
 
   return (
@@ -34,26 +41,18 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref: LegacyRef
           {..._props}
           ref={ref}
           className={`
-            w-full appearance-none focus:outline-none cursor-pointer 
-            pl-[12px] pr-[48px] font-normal text-15
-            ${styles.select}
-            ${
-              disabled
-                ? 'border border-neutral-disable bg-neutral-disable text-neutral-placeholder'
-                : `
-                  border hover:border-neutral-placeholder 
-                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
-                  ${
-                    value
-                      ? 'border-neutral-text-primary text-neutral-primary bg-neutral-white'
-                      : 'border-neutral-border bg-neutral-background text-neutral-placeholder'
-                  }
-                `
-            }
+            ${ defaultClass }
+            ${ styles.select }
+            ${ disabled ? disableClass : ` ${ enableClass } ${ classes } `}
           `}
           onChange = { (e) => {
             onChange?.(e);
             setValue(e.target.value) 
+            if(e.target.value ) {
+              setClasses(' border-neutral-text-primary text-neutral-primary bg-neutral-white ')
+            }else {
+              setClasses(' border-neutral-border bg-neutral-background text-neutral-placeholder ')
+            }
           }}
           defaultValue={defaultValue}
           disabled={disabled}
