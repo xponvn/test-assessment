@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Input } from './input';
 
-describe('Button', () => {
+describe('Input', () => {
   it(`should render input successfully`, () => {
     const { baseElement } = render(
       <Input
