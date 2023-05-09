@@ -1,6 +1,5 @@
 import { SelectBoxProps } from './types';
 import React, { LegacyRef } from 'react';
-import { default } from '../../../../../apps/cms/config/plugins';
 
 // eslint-disable-next-line react/display-name
 export const SelectBox = React.forwardRef((props: SelectBoxProps, ref: LegacyRef<HTMLSelectElement>) => {
