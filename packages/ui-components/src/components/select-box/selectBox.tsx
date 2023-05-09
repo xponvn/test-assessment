@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { SelectBoxProps } from './types';
+import React, { LegacyRef } from 'react';
 
-export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
+// eslint-disable-next-line react/display-name
+export const SelectBox = React.forwardRef((props: SelectBoxProps, ref: LegacyRef<HTMLSelectElement>) => {
   const {
     options,
     defaultValue,
@@ -11,18 +12,16 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
     placeholder,
     disabled,
     className,
+    size,
+    variant,
+    ..._props
   } = props;
+  
   const [value, setValue] = React.useState(defaultValue);
   const styles = useStyles(props);
 
-  const handleChangeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const valueSelected = e.target.value;
-    setValue(valueSelected);
-    onChange(valueSelected);
-  };
-
   return (
-    <div className={`${styles.root} ${className}`}>
+    <div className={`${styles.root} ${className ? className : ''}`}>
       {label && (
         <div
           className={`text-neutral-placeholder text-13 font-medium ${styles.label}`}
@@ -32,6 +31,8 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
       )}
       <div className={`relative w-full`}>
         <select
+          {..._props}
+          ref={ref}
           className={`
             w-full appearance-none focus:outline-none cursor-pointer 
             pl-[12px] pr-[48px] font-normal text-15
@@ -50,7 +51,10 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
                 `
             }
           `}
-          onChange={(e) => handleChangeOption(e)}
+          onChange = { (e) => {
+            onChange?.(e);
+            setValue(e.target.value) 
+          }}
           defaultValue={defaultValue}
           disabled={disabled}
         >

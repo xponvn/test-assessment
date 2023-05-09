@@ -1,6 +1,5 @@
-export interface SelectBoxProps {
+export interface SelectBoxProps extends React.HTMLAttributes<HTMLSelectElement> {
   options: SelectBoxOption[];
-  onChange: (value: string) => void;
   variant: 'verticle-label' | 'horizontal-label';
   size: 'small' | 'medium' | 'large';
   label?: string;
@@ -9,9 +8,11 @@ export interface SelectBoxProps {
   className?: string;
   placeholder?: string;
   disabled?: boolean;
+  
 }
 
 export interface SelectBoxOption {
   name: string;
   value: string;
 }
+
