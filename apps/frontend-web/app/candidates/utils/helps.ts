@@ -1,4 +1,6 @@
 import { CandidateEntity } from "@test-assessment/cms-graphql-api";
+
+export const searchQueryField = ["email", "firstName", "lastName"];
 export interface CandidateRowData {
     id: string;
     name: string;
