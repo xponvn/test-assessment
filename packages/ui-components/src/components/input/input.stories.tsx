@@ -55,6 +55,7 @@ export const Text = (props: any) => (
     label="Label"
     {...props}
     placeholder="Please fill in your username"
+    defaultValue={'this is username'}
   />
 );
 

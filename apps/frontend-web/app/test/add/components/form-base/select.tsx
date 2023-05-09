@@ -1,4 +1,5 @@
 'use client';
+import { Icon } from '@test-assessment/ui-components';
 import clsx from 'clsx';
 import React, { LegacyRef } from 'react';
 
@@ -26,20 +27,20 @@ const Select = React.forwardRef(
       <div className="flex flex-col w-full">
         <label
           htmlFor={reset.name}
-          className="text-neutral-text-primary text-15 leading-24 mb-1"
+          className="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
         >
-          {required && (
-            <span className="mr-1 text-error-base inline-block">*</span>
-          )}
           {label}
+          {required && (
+            <span className="pl-[2px] text-error-base inline-block">*</span>
+          )}
         </label>
         <select
           ref={ref}
           {...reset}
           className={clsx(
-            'border border-solid py-[5px] px-3 outline-none text-15 leading-24 text-neutral-text-primary min-h-[36px] capitalize',
+            'border border-solid py-[5px] px-3 outline-none text-15 leading-24 text-neutral-text-primary min-h-[40px] capitalize focus:border-primary',
             {
-              'border-error-base': error,
+              'border-error-base bg-error-bg': error,
               'border-neutral-border': !error,
             }
           )}
@@ -55,7 +56,10 @@ const Select = React.forwardRef(
             );
           })}
         </select>
-        {error && <p className="mt-1 text-error-base">{error}</p>}
+        {error && <p className="text-error text-13 font-normal leading-6 font-primary flex items-center mt-2">
+          <Icon name="caution" className="text-error mr-1" />
+          {error}
+        </p>}
       </div>
     );
   }

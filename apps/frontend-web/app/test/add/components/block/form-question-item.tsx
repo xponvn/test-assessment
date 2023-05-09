@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Icon } from '@test-assessment/ui-components';
+import { Icon, Input } from '@test-assessment/ui-components';
 import { useEffect, useState } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -7,12 +7,11 @@ import {
   QuestionItemType,
   QuestionLevel,
   QuestionType,
-  getPoint,
 } from '../../utils';
 import Checkbox from '../form-base/checkbox';
-import Input from '../form-base/input';
 import RadioButton from '../form-base/radio-button';
 import RadioButtonGroup from '../form-base/radio-button-group';
+import TextArea from '../form-base/text-area';
 
 // INPUT OPTION
 const optionsDifficulty = [
@@ -69,6 +68,7 @@ export default function FormQuestionItem({
   const [questionType, setQuestionType] = useState<QuestionType>(
     QuestionType.SingleChoice
   );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [questionDif, setQuestionDif] = useState<QuestionLevel>(
     QuestionLevel.Easy
   );
@@ -113,6 +113,7 @@ export default function FormQuestionItem({
 
   useEffect(() => {
     reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionIndex]);
 
   useEffect(() => {
@@ -137,31 +138,36 @@ export default function FormQuestionItem({
       <form onSubmit={handleSubmit(onSaveForm)} className="w-full">
         <div
           style={{ filter: 'drop-shadow(5px 5px 0px #983795)' }}
-          className="border border-solid bg-neutral-table-header border-neutral-divider"
+          className="border border-solid bg-neutral-table-header border-neutral-border px-6 py-4"
         >
-          <div className="px-6 py-4">
-            <p className="font-bold text-13 leading-20">
+
+          {/** Question info session */}
+          <div>
+            <p className="font-medium text-neutral-placeholder text-13 leading-6">
               Question {questionIndex ? questionIndex + 1 : 1}
-              <span className="ml-1 font-normal text-neutral-placeholder text-13 leading-20">
+              <span className="pl-[2px] text-error-base">*</span>
+              {/* <span className="ml-1 font-normal text-neutral-placeholder text-13 leading-20">
                 ({getPoint(questionDif)} point)
-              </span>
+              </span> */}
             </p>
-            <Input
-              className="mt-2"
+            <TextArea
+              className="mt-2 !w-full"
               {...register('content')}
+              placeholder="Enter question"
               error={errors?.content?.message}
             />
+          </div>
+
+          {/** Option session */}
+          <div className="flex gap-10 items-center mt-6">
             <RadioButtonGroup
               label="Difficulty"
               options={optionsDifficulty}
-              className="mt-4"
               {...register('level')}
               error={errors.level?.message}
               onClick={(value) => onChangeQuestionLevel(value)}
             />
-          </div>
-
-          <div className="px-6 py-4 bg-white border-t border-solid border-neutral-divider">
+            <span className="bg-neutral-disable rotate-90 min-w-[56px] h-[1px]"></span>
             <RadioButtonGroup
               label="Type of answer"
               options={optionsTypeAnswer}
@@ -169,112 +175,117 @@ export default function FormQuestionItem({
               error={errors.type?.message}
               onClick={(value) => onChangeTypeOfAnswer(value)}
             />
-
-            {questionType !== 'FreeText' && (
-              <>
-                <div className="grid grid-cols-1 gap-2 mt-6">
-                  {fields.map((item, index) => {
-                    return (
-                      <div key={item.id}>
-                        <p className="mb-2 text-neutral-text-primary text-13 leading-20">
-                          Answer {index + 1}
-                        </p>
-                        <div className="flex">
-                          <div className="w-[427px] mr-4">
-                            <Input
-                              {...register(`answers.${index}.content`)}
-                              error={
-                                errors?.['answers']?.[index]?.['content']?.[
-                                  'message'
-                                ]
-                              }
-                            />
-                          </div>
-                          <div className="flex items-center">
-                            {questionType === 'SingleChoice' ? (
-                              <Controller
-                                control={control}
-                                name={`answers.${index}.isCorrect`}
-                                render={({ field }) => (
-                                  <RadioButton
-                                    {...field}
-                                    item={{
-                                      label: 'Correct',
-                                      value: `answer-${index}`,
-                                    }}
-                                    value={`answer-${index}`} // for bypass typechecking only
-                                    checked={item.isCorrect}
-                                    onChange={(e) =>
-                                      onSelectSingleChoice(index)
-                                    }
-                                  />
-                                )}
-                              />
-                            ) : (
-                              <Controller
-                                control={control}
-                                name={`answers.${index}.isCorrect`}
-                                render={({ field }) => (
-                                  <Checkbox
-                                    {...field}
-                                    item={{
-                                      label: 'Correct',
-                                      value: `answer-${index}`,
-                                    }}
-                                    value={`answers.${index}`}
-                                    onChange={(e) =>
-                                      field.onChange(e.target.checked)
-                                    }
-                                  />
-                                )}
-                              />
-                            )}
-                            {fields.length > 2 && (
-                              <button
-                                className="ml-2"
-                                type="button"
-                                onClick={() => remove(index)}
-                              >
-                                <Icon
-                                  name="remove"
-                                  className="!w-4 !h-4 text-error-base"
-                                />
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  {errors?.answers && (
-                    <p className="mt-1 text-error-base">
-                      {errors.answers.message}
-                    </p>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  className="flex items-center text-14 leading-[22px] text-primary-clicked cursor-pointer mt-6"
-                  onClick={() => append({ content: '', isCorrect: false })}
-                >
-                  <Icon name="plus" /> Add Answer
-                </button>
-              </>
-            )}
           </div>
 
-          <div className="flex items-center justify-end gap-4 px-6 py-4 border-t border-solid border-neutral-divider">
+          {/** Answer session */}
+          {questionType !== 'FreeText' && (<div className="bg-neutral-bg border-t border-solid border-neutral-divider p-4 mt-6">
+            <div className="grid grid-cols-1 gap-2">
+              {fields.map((item, index) => {
+                return (
+                  <div key={item.id}>
+                    <p className="font-medium text-neutral-placeholder text-13 leading-6 mb-2">
+                      Answer {index + 1}
+                      <span className="pl-[2px] text-error-base">*</span>
+                    </p>
+                    <div className="flex gap-6">
+                      <div className="w-full">
+                        <Input
+                          {...register(`answers.${index}.content`)}
+                          error={
+                            errors?.['answers']?.[index]?.['content']?.[
+                            'message'
+                            ]
+                          }
+                          className="h-10 !w-full"
+                        />
+                      </div>
+                      <div className="flex items-center gap-6">
+                        {questionType === 'SingleChoice' ? (
+                          <Controller
+                            control={control}
+                            name={`answers.${index}.isCorrect`}
+                            render={({ field }) => (
+                              <RadioButton
+                                {...field}
+                                item={{
+                                  label: 'Correct',
+                                  value: `answer-${index}`,
+                                }}
+                                value={`answer-${index}`} // for bypass typechecking only
+                                checked={item.isCorrect}
+                                onChange={(e) =>
+                                  onSelectSingleChoice(index)
+                                }
+                                styleVariant="style_2"
+                              />
+                            )}
+                          />
+                        ) : (
+                          <Controller
+                            control={control}
+                            name={`answers.${index}.isCorrect`}
+                            render={({ field }) => (
+                              <Checkbox
+                                {...field}
+                                item={{
+                                  label: 'Correct',
+                                  value: `answer-${index}`,
+                                }}
+                                value={`answers.${index}`}
+                                onChange={(e) =>
+                                  field.onChange(e.target.checked)
+                                }
+                              />
+                            )}
+                          />
+                        )}
+
+                        {fields.length > 2 && (
+                          <>
+                            <span className="rotate-90 bg-neutral-disable min-w-[24px] h-[1px]"></span>
+                            <button
+                              type="button"
+                              onClick={() => remove(index)}
+                            >
+                              <Icon
+                                name="remove-outline"
+                                className="!w-6 !h-6"
+                              />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {errors?.answers && (
+                <p className="mt-1 text-error-base">
+                  {errors.answers.message}
+                </p>
+              )}
+            </div>
+            <button
+              type="button"
+              className="flex items-center text-13 leading-6 font-medium text-primary-base cursor-pointer mt-4"
+              onClick={() => append({ content: '', isCorrect: false })}
+            >
+              <Icon name="plus-circle" className="mr-2" /> Add Answer
+            </button>
+          </div>)}
+
+          {/** Action session */}
+          <div className="flex items-center justify-end gap-6 mt-6">
             <button
               onClick={() => onDeleteForm()}
               type="button"
-              className="px-4 py-2 font-medium outline-none text-13 leading-24 text-error-base"
+              className="font-medium outline-none text-13 leading-24 text-error-base"
             >
               Delete
             </button>
             <button
               type="submit"
-              className="px-4 py-2 font-medium border border-solid outline-none bg-primary-base border-primary-base text-neutral-text-primary text-13 leading-24"
+              className="px-2 py-1 font-bold border border-solid outline-none bg-primary-base border-primary-base text-neutral-text-primary text-13 leading-6 uppercase"
             >
               Save
             </button>

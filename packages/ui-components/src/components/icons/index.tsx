@@ -16,6 +16,8 @@ import Caution from './assets/caution';
 import EyeHide from './assets/eye-hide';
 import EyeShow from './assets/eye-show';
 import Success from './assets/success';
+import RemoveOutline from './assets/remove-outline';
+import PlusCircle from './assets/plus-circle';
 import ArrowDown from './assets/arrow_down';
 
 export type IconProps = {
@@ -45,6 +47,8 @@ export type IconName =
   | 'eye-hide'
   | 'eye-show'
   | 'success'
+  | 'remove-outline'
+  | 'plus-circle'
   | 'arrow-down';
 
 export type IconsType = Record<IconName, Icon>;
@@ -100,6 +104,12 @@ export const Icons: IconsType = {
   },
   success: (props: IconProps) => {
     return <Success {...props} />;
+  },
+  "remove-outline": (props: IconProps) => {
+    return <RemoveOutline {...props} />;
+  },
+  "plus-circle": (props: IconProps) => {
+    return <PlusCircle {...props} />;
   },
   'arrow-down': (props: IconProps) => {
     return <ArrowDown {...props} />;
