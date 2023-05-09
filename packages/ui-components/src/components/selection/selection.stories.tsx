@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import React from 'react';
+import * as React from 'react';
 import { RadioButton as RadioButtonComponent } from './radio';
 import { Switch as SwitchComponent } from './switch';
 import { Tag as TagComponent } from './tag';
@@ -11,21 +11,27 @@ const Story: Meta<typeof RadioButtonComponent> = {
 export default Story;
 
 export const RadioButton = () => {
+  const [selectedValue, setSelectedValue] = React.useState('option1');
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
+  };
   return (
     <div>
       <RadioButtonComponent
-        labelClassName="text-black ml-1"
+        labelclassname="text-black ml-1"
         value={'option1'}
         name={'button'}
         text={'Choose Option 1'}
-        checkedValue={'option2'}
+        checked={selectedValue === 'option1'}
+        onChange={handleChange}
       />
       <RadioButtonComponent
-        labelClassName="text-black ml-1"
+        labelclassname="text-black ml-1"
         value={'option2'}
         name={'button'}
         text={'Choose Option 2'}
-        checkedValue={'option2'}
+        checked={selectedValue === 'option2'}
+        onChange={handleChange}
       />
     </div>
   );
