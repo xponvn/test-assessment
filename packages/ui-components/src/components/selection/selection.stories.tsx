@@ -1,6 +1,8 @@
 import type { Meta } from '@storybook/react';
 import React from 'react';
 import { RadioButton as RadioButtonComponent } from './radio';
+import { RadioGroup as RadioGroupComponent } from './radio-group';
+
 import { Switch as SwitchComponent } from './switch';
 import { Tag as TagComponent } from './tag';
 
@@ -30,7 +32,30 @@ export const RadioButton = () => {
     </div>
   );
 };
-export const Switch = () => <SwitchComponent checked={true} />;
+
+export const RadioGroup = () => {
+  return (
+    <div>
+      <RadioGroupComponent
+        label="Radio Group Component"
+        options={[
+          { label: 'Easy', value: 'Easy' },
+          { label: 'Medium', value: 'Medium' },
+        ]}
+        name="radio-button"
+        defaultValue="Easy"
+        onClick={(value) => console.log(value)}
+      />
+    </div>
+  );
+};
+export const Switch = () => (
+  <SwitchComponent
+    onSwitchChange={(value) => console.log(value)}
+    defaultCheck={true}
+    label={'Change toggle'}
+  />
+);
 
 export const Tag = () => (
   <div className="flex space-x-1">

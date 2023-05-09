@@ -6,6 +6,7 @@ export * from './icons';
 export * from './select-box';
 export * from './dropdown';
 export * from './selection/radio';
+export * from './selection/radio-group'
 export * from './selection/tag';
 export * from './selection/switch';
 export * from './navigation';
