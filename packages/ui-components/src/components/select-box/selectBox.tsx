@@ -33,14 +33,14 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
       <div className={`relative w-full`}>
         <select
           className={`
-            w-full appearance-none focus:outline-none cursor-pointer 
+            w-full appearance-none focus:outline-none cursor-pointer
             pl-[12px] pr-[48px] font-normal text-15
             ${styles.select}
             ${
               disabled
                 ? 'border border-neutral-disable bg-neutral-disable text-neutral-placeholder'
                 : `
-                  border hover:border-neutral-placeholder 
+                  border hover:border-neutral-placeholder
                   focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
                   ${
                     value
@@ -76,7 +76,7 @@ const useStyles = ({ size, variant }: SelectBoxProps) => {
     root: variant === 'horizontal-label' ? 'flex items-center' : '',
     label: variant === 'horizontal-label' ? 'mr-[8px]' : 'mb-[8px]',
     select: `
-      ${size === 'small' ? 'py-[4px]' : ''} 
+      ${size === 'small' ? 'py-[4px]' : ''}
       ${size === 'medium' ? 'py-[8px]' : ''}
       ${size === 'large' ? 'py-[12px]' : ''}
     `,
