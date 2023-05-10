@@ -4,7 +4,7 @@ import UiCandidateProfileModal from './ui-candidate-profile-modal';
 
 describe('UiCandidateProfileModal', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<UiCandidateProfileModal />);
-    expect(baseElement).toBeTruthy();
+    const { baseElement } = render(<UiCandidateProfileModal open />);
+    expect(baseElement).toMatchSnapshot();
   });
 });

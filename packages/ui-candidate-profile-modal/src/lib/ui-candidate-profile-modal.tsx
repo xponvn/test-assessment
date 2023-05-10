@@ -37,6 +37,7 @@ export function UiCandidateProfileModal({
   });
 
   const onSubmit = handleSubmit((data) => {
+    // TODO: integrate API
     console.log('submitting...', data);
   });
 

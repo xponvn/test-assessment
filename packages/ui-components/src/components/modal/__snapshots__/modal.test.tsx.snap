@@ -4,7 +4,7 @@ exports[`Modal should render input successfully 1`] = `
 <body>
   <div>
     <div
-      class="absolute top-0 w-full h-full bg-[#373737] bg-opacity-60 visible"
+      class="absolute top-0 left-0 w-screen h-screen bg-[#373737] bg-opacity-60 visible"
     >
       <div
         class="w-[550px] border-1 bg-white mx-auto mt-16"
