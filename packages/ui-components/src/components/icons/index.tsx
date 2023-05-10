@@ -18,6 +18,8 @@ import EyeShow from './assets/eye-show';
 import Success from './assets/success';
 import RemoveOutline from './assets/remove-outline';
 import PlusCircle from './assets/plus-circle';
+import ArrowUp from './assets/arrow-up';
+import ArrowBack from './assets/arrow-back';
 
 export type IconProps = {
   className?: string;
@@ -38,8 +40,10 @@ export type IconName =
   | 'chevron-down'
   | 'refresh'
   | 'search'
+  | 'arrow-back'
   | 'arrow-right'
   | 'arrow-left'
+  | 'arrow-up'
   | 'save'
   | 'publish'
   | 'caution'
@@ -79,11 +83,17 @@ export const Icons: IconsType = {
   search: (props: IconProps) => {
     return <Search {...props} />;
   },
+  'arrow-back': (props: IconProps) => {
+    return <ArrowBack {...props} />;
+  },
   'arrow-left': (props: IconProps) => {
     return <ArrowLeft {...props} />;
   },
   'arrow-right': (props: IconProps) => {
     return <ArrowRight {...props} />;
+  },
+  'arrow-up': (props: IconProps) => {
+    return <ArrowUp {...props} />;
   },
   save: (props: IconProps) => {
     return <Save {...props} />;
@@ -103,10 +113,10 @@ export const Icons: IconsType = {
   success: (props: IconProps) => {
     return <Success {...props} />;
   },
-  "remove-outline": (props: IconProps) => {
+  'remove-outline': (props: IconProps) => {
     return <RemoveOutline {...props} />;
   },
-  "plus-circle": (props: IconProps) => {
+  'plus-circle': (props: IconProps) => {
     return <PlusCircle {...props} />;
   },
 };
