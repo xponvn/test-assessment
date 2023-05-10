@@ -148,7 +148,7 @@ nx format:write --projects=ui-components
 
 Link: https://www.chromatic.com/start?inviteToken=1d18a11603d24be795d8862015f232b2&appId=64337ab552933871acec5f96
 
-Preview Url:[https://64337ab552933871acec5f96-vrbgvkplyu.chromatic.com/](https://64337ab552933871acec5f96-vrbgvkplyu.chromatic.com/).
+Preview Url:[https://64337ab552933871acec5f96-aqngyvrtyz.chromatic.com/](https://64337ab552933871acec5f96-aqngyvrtyz.chromatic.com/).
 
 ## Troubleshot:
 
