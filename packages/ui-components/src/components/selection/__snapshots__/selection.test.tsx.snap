@@ -1,5 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Radio Group should render input successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="flex flex-col w-full"
+    >
+      <p
+        class="text-neutral-text-primary text-13 leading-20 mb-1"
+      >
+        Radio Group Component
+      </p>
+      <div
+        class="grid grid-cols-3 mt-[10px] gap-2"
+      >
+        <div>
+          <div
+            class="flex items-center"
+          >
+            <input
+              class="peer cursor-pointer"
+              hidden=""
+              id="Easy"
+              name="radio-button"
+              type="radio"
+              value="Easy"
+            />
+            <label
+              class="peer-checked:border-primary-clicked border-2 border-solid border-neutral-border w-4 h-4 rounded-full flex items-center justify-center after:content-[''] after:w-2 after:h-2 after:absolute after:rounded-full  after:bg-primary-clicked after:opacity-0 peer-checked:after:opacity-100"
+              for="Easy"
+            />
+            <label
+              class="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2"
+              for="Easy"
+            >
+              Easy
+            </label>
+          </div>
+        </div>
+        <div>
+          <div
+            class="flex items-center"
+          >
+            <input
+              class="peer cursor-pointer"
+              hidden=""
+              id="Medium"
+              name="radio-button"
+              type="radio"
+              value="Medium"
+            />
+            <label
+              class="peer-checked:border-primary-clicked border-2 border-solid border-neutral-border w-4 h-4 rounded-full flex items-center justify-center after:content-[''] after:w-2 after:h-2 after:absolute after:rounded-full  after:bg-primary-clicked after:opacity-0 peer-checked:after:opacity-100"
+              for="Medium"
+            />
+            <label
+              class="cursor-pointer inline-block text-neutral-text-primary text-13 leading-20 ml-2"
+              for="Medium"
+            >
+              Medium
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Radio should render input successfully 1`] = `
 <body>
   <div>
@@ -31,11 +99,23 @@ exports[`Switch should render input successfully 1`] = `
 <body>
   <div>
     <div
-      class="w-12 h-6 flex items-center rounded-full p-1 cursor-pointer bg-primary-clicked"
+      class="flex flex-col"
     >
-      <div
-        class="bg-white h-5 w-5 rounded-full shadow-md transform duration-300 ease-in-out transform translate-x-5"
-      />
+      <label
+        class="relative inline-flex items-center cursor-pointer"
+      >
+        <input
+          checked=""
+          class="sr-only peer"
+          type="checkbox"
+        />
+        <div
+          class="w-12 h-6 bg-neutral-divider peer-checked:bg-primary-clicked rounded-full peer-checked:after:translate-x-full  after:content-[''] after:absolute after:top-[2px] after:left-[4px] after:bg-white  after:rounded-full after:h-5 after:w-5 after:transition-all"
+        />
+        <span
+          class="ml-3 text-neutral-text-primary text-13 leading-20"
+        />
+      </label>
     </div>
   </div>
 </body>
