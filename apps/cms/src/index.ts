@@ -4,6 +4,7 @@ import { updateTest } from './customize/graphql/mutation/updateTest';
 import { responseCollectionMetaExtension } from './customize/graphql/query/responseCollectionMetaExtension';
 import { testExtension } from './customize/graphql/query/test';
 import { typeDefs } from './customize/graphql/typeDefs';
+import { basicTest } from './customize/graphql/query/basicTest';
 
 /**
  * Throws an ApolloError if context body contains a bad request
@@ -33,6 +34,16 @@ export default {
           updateTest: {
             resolve: updateTest,
           },
+        },
+        Query: {
+          basicTest: {
+            resolve: basicTest,
+          }
+        }
+      },
+      resolversConfig: {
+        "Query.basicTest": {
+          auth: false,
         },
       },
     }));
