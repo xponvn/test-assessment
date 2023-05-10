@@ -35,7 +35,6 @@ const Page = () => {
   const searchParams = useSearchParams();
   const searchKey = searchParams.get('q') || '';
   const [selectedPosition, setSelectedPosition] = useState(null);
-  // TODO: paging will do later
   const [totalItem, setTotalItem] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [filterVariants, setFilterVariants] =
@@ -57,7 +56,6 @@ const Page = () => {
     }
     if (searchKey) {
       // search in multiple field
-      console.log(searchQueryField);
       const candidateFilterInputs = searchQueryField.map((item) => {
         return {
           [item]: { contains: searchKey },
@@ -126,6 +124,7 @@ const Page = () => {
         </div>
         <Button
           onClick={() => {
+            // TODO:  add new function
             alert('add');
           }}
           type="button"
@@ -266,6 +265,5 @@ const Page = () => {
     </div>
   );
 };
-
 
 export default Page;
