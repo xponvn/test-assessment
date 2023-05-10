@@ -5,12 +5,10 @@ import { RadioButton } from './radio';
 import { Switch } from './switch';
 import { Tag } from './tag';
 
-
-
 describe('Radio', () => {
   it(`should render input successfully`, () => {
     const { baseElement } = render(
-      <RadioButton checkedValue='' value={'radio'} name={'radio'} text={''} />
+      <RadioButton value={'radio'} name={'radio'} text={''} />
     );
     expect(baseElement).toMatchSnapshot();
   });
@@ -18,9 +16,7 @@ describe('Radio', () => {
 
 describe('Switch', () => {
   it(`should render input successfully`, () => {
-    const { baseElement } = render(
-      <Switch checked={true} />
-    );
+    const { baseElement } = render(<Switch checked={true} />);
     expect(baseElement).toMatchSnapshot();
   });
 });
@@ -28,7 +24,7 @@ describe('Switch', () => {
 describe('Tag', () => {
   it(`should render input successfully`, () => {
     const { baseElement } = render(
-      <Tag status={'published'} text={'Publish'}  />
+      <Tag status={'published'} text={'Publish'} />
     );
     expect(baseElement).toMatchSnapshot();
   });

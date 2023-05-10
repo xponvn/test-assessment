@@ -9,6 +9,7 @@ exports[`Radio should render input successfully 1`] = `
       <input
         class="m-0 opacity-0 absolute radio-input"
         name="radio"
+        text=""
         type="radio"
         value="radio"
       />
