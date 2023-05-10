@@ -56,11 +56,12 @@ export type Candidate = {
   comments?: Maybe<CommentRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
-  firstName: Scalars['String'];
-  lastName: Scalars['String'];
-  level: Scalars['String'];
+  firstName?: Maybe<Scalars['String']>;
+  individualTests?: Maybe<IndividualTestRelationResponseCollection>;
+  lastName?: Maybe<Scalars['String']>;
+  level?: Maybe<Scalars['String']>;
   phone?: Maybe<Scalars['String']>;
-  position: Scalars['String'];
+  position?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   resume?: Maybe<UploadFileEntityResponse>;
   tests?: Maybe<TestRelationResponseCollection>;
@@ -70,6 +71,14 @@ export type Candidate = {
 
 export type CandidateCommentsArgs = {
   filters?: InputMaybe<CommentFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CandidateIndividualTestsArgs = {
+  filters?: InputMaybe<IndividualTestFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -107,6 +116,7 @@ export type CandidateFiltersInput = {
   email?: InputMaybe<StringFilterInput>;
   firstName?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  individualTests?: InputMaybe<IndividualTestFiltersInput>;
   lastName?: InputMaybe<StringFilterInput>;
   level?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CandidateFiltersInput>;
@@ -122,6 +132,7 @@ export type CandidateInput = {
   comments?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   email?: InputMaybe<Scalars['String']>;
   firstName?: InputMaybe<Scalars['String']>;
+  individualTests?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   lastName?: InputMaybe<Scalars['String']>;
   level?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
@@ -322,7 +333,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Candidate | Comment | ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | Position | Test | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Candidate | Comment | ComponentAnswerChoiceAnswer | ComponentQuestionChoiceQuestion | ComponentQuestionQuestion | ComponentQuestionTextAnswerQuestion | I18NLocale | IndividualTest | Position | Test | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -384,6 +395,61 @@ export type IdFilterInput = {
   startsWith?: InputMaybe<Scalars['ID']>;
 };
 
+export type IndividualTest = {
+  __typename?: 'IndividualTest';
+  candidate?: Maybe<CandidateEntityResponse>;
+  completedOn?: Maybe<Scalars['DateTime']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  score?: Maybe<Scalars['Float']>;
+  test?: Maybe<TestEntityResponse>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type IndividualTestEntity = {
+  __typename?: 'IndividualTestEntity';
+  attributes?: Maybe<IndividualTest>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type IndividualTestEntityResponse = {
+  __typename?: 'IndividualTestEntityResponse';
+  data?: Maybe<IndividualTestEntity>;
+};
+
+export type IndividualTestEntityResponseCollection = {
+  __typename?: 'IndividualTestEntityResponseCollection';
+  data: Array<IndividualTestEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type IndividualTestFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<IndividualTestFiltersInput>>>;
+  candidate?: InputMaybe<CandidateFiltersInput>;
+  completedOn?: InputMaybe<DateTimeFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<IndividualTestFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<IndividualTestFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  score?: InputMaybe<FloatFilterInput>;
+  test?: InputMaybe<TestFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type IndividualTestInput = {
+  candidate?: InputMaybe<Scalars['ID']>;
+  completedOn?: InputMaybe<Scalars['DateTime']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  score?: InputMaybe<Scalars['Float']>;
+  test?: InputMaybe<Scalars['ID']>;
+};
+
+export type IndividualTestRelationResponseCollection = {
+  __typename?: 'IndividualTestRelationResponseCollection';
+  data: Array<IndividualTestEntity>;
+};
+
 export type IntFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
@@ -438,6 +504,7 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createCandidate?: Maybe<CandidateEntityResponse>;
   createComment?: Maybe<CommentEntityResponse>;
+  createIndividualTest?: Maybe<IndividualTestEntityResponse>;
   createPosition?: Maybe<PositionEntityResponse>;
   createTest?: Maybe<TestEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -448,6 +515,7 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteCandidate?: Maybe<CandidateEntityResponse>;
   deleteComment?: Maybe<CommentEntityResponse>;
+  deleteIndividualTest?: Maybe<IndividualTestEntityResponse>;
   deletePosition?: Maybe<PositionEntityResponse>;
   deleteTest?: Maybe<TestEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -470,6 +538,7 @@ export type Mutation = {
   updateCandidate?: Maybe<CandidateEntityResponse>;
   updateComment?: Maybe<CommentEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateIndividualTest?: Maybe<IndividualTestEntityResponse>;
   updatePosition?: Maybe<PositionEntityResponse>;
   updateTest?: Maybe<TestEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -496,6 +565,11 @@ export type MutationCreateCandidateArgs = {
 
 export type MutationCreateCommentArgs = {
   data: CommentInput;
+};
+
+
+export type MutationCreateIndividualTestArgs = {
+  data: IndividualTestInput;
 };
 
 
@@ -535,6 +609,11 @@ export type MutationDeleteCandidateArgs = {
 
 
 export type MutationDeleteCommentArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteIndividualTestArgs = {
   id: Scalars['ID'];
 };
 
@@ -624,6 +703,12 @@ export type MutationUpdateCommentArgs = {
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateIndividualTestArgs = {
+  data: IndividualTestInput;
+  id: Scalars['ID'];
 };
 
 
@@ -751,6 +836,8 @@ export type Query = {
   comments?: Maybe<CommentEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  individualTest?: Maybe<IndividualTestEntityResponse>;
+  individualTests?: Maybe<IndividualTestEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   position?: Maybe<PositionEntityResponse>;
   positions?: Maybe<PositionEntityResponseCollection>;
@@ -801,6 +888,19 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryIndividualTestArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryIndividualTestsArgs = {
+  filters?: InputMaybe<IndividualTestFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -913,6 +1013,7 @@ export type Test = {
   author?: Maybe<Author>;
   candidates?: Maybe<CandidateRelationResponseCollection>;
   createdAt?: Maybe<Scalars['DateTime']>;
+  individualTests?: Maybe<IndividualTestRelationResponseCollection>;
   level?: Maybe<Enum_Test_Level>;
   name: Scalars['String'];
   passingScore: Scalars['Float'];
@@ -926,6 +1027,14 @@ export type Test = {
 
 export type TestCandidatesArgs = {
   filters?: InputMaybe<CandidateFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type TestIndividualTestsArgs = {
+  filters?: InputMaybe<IndividualTestFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -953,6 +1062,7 @@ export type TestFiltersInput = {
   candidates?: InputMaybe<CandidateFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  individualTests?: InputMaybe<IndividualTestFiltersInput>;
   level?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<TestFiltersInput>;
@@ -966,6 +1076,7 @@ export type TestFiltersInput = {
 
 export type TestInput = {
   candidates?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  individualTests?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   level?: InputMaybe<Enum_Test_Level>;
   name?: InputMaybe<Scalars['String']>;
   passingScore?: InputMaybe<Scalars['Float']>;

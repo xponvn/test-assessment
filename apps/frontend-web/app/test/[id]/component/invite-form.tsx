@@ -2,10 +2,10 @@ import React from 'react';
 import Select from '../../add/components/form-base/select';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Input from '../../add/components/form-base/input';
 import { InviteCandidateInput, useTestContext } from '../provider';
 import { transformCandidates } from '../utils/helper';
 import * as yup from 'yup';
+import { Input } from '@test-assessment/ui-components';
 
 const InviteForm = ({ setShowModal }) => {
   const { testId, candidates } = useTestContext();

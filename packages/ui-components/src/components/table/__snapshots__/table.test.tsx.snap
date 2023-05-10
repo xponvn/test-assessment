@@ -11,44 +11,76 @@ exports[`Table should render successfully 1`] = `
         <thead>
           <tr>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Test name
+              <span
+                class="flex"
+              >
+                Test name
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Test status
+              <span
+                class="flex"
+              >
+                Test status
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Sent
+              <span
+                class="flex"
+              >
+                Sent
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Submitted
+              <span
+                class="flex"
+              >
+                Submitted
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Author
+              <span
+                class="flex"
+              >
+                Author
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Job position
+              <span
+                class="flex"
+              >
+                Job position
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Level
+              <span
+                class="flex"
+              >
+                Level
+              </span>
             </th>
             <th
-              class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+              class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
             >
-              Action
+              <span
+                class="flex"
+              >
+                Action
+              </span>
             </th>
           </tr>
         </thead>
@@ -108,44 +140,76 @@ exports[`Table should render successfully 1`] = `
       <thead>
         <tr>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Test name
+            <span
+              class="flex"
+            >
+              Test name
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Test status
+            <span
+              class="flex"
+            >
+              Test status
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Sent
+            <span
+              class="flex"
+            >
+              Sent
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Submitted
+            <span
+              class="flex"
+            >
+              Submitted
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Author
+            <span
+              class="flex"
+            >
+              Author
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Job position
+            <span
+              class="flex"
+            >
+              Job position
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Level
+            <span
+              class="flex"
+            >
+              Level
+            </span>
           </th>
           <th
-            class="text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
+            class="undefined text-subhead-2 py-2 px-3 text-neutral-placeholder bg-neutral-divider text-left"
           >
-            Action
+            <span
+              class="flex"
+            >
+              Action
+            </span>
           </th>
         </tr>
       </thead>

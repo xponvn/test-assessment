@@ -26,10 +26,7 @@
     },
     "questions": {
       "type": "dynamiczone",
-      "components": [
-        "question.question",
-        "question.choice-question"
-      ],
+      "components": ["question.question", "question.choice-question"],
       "required": true
     },
     "position": {
@@ -40,14 +37,7 @@
     },
     "level": {
       "type": "enumeration",
-      "enum": [
-        "interm",
-        "fresher",
-        "junior",
-        "mid",
-        "senior",
-        "lead"
-      ]
+      "enum": ["interm", "fresher", "junior", "mid", "senior", "lead"]
     },
     "timeLimit": {
       "type": "integer",
