@@ -57,4 +57,5 @@ export type ColorPaletteConfig = {
   _700?: string;
   _800?: string;
   _900?: string;
+  transparent?: string;
 };

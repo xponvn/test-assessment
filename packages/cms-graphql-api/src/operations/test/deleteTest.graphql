@@ -1,0 +1,16 @@
+mutation deleteTest($id: ID!) {
+  deleteTest(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        passingScore
+        level
+        timeLimit
+        createdAt
+        updatedAt
+        publishedAt
+      }
+    }
+  }
+}

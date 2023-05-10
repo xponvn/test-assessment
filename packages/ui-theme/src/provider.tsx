@@ -35,6 +35,7 @@ export const getStyle = (uiConfig: UIConfig) => {
     '--color-neutral-text-secondary': uiConfig.colors.neutral._700,
     '--color-neutral-text-primary': uiConfig.colors.neutral._800,
     '--color-neutral-black': uiConfig.colors.neutral._900,
+    '--color-neutral-transparent': uiConfig.colors.neutral.transparent,
 
     // Pending Color
     '--color-pending': uiConfig.colors.pending.default,

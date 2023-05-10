@@ -30,7 +30,7 @@ const EditDraftTestPage = ({ params }: Props) => {
   );
 
   useEffect(() => {
-    if (data) {
+    if (data?.test?.data) {
       const testData = transformTestData(data?.test?.data as TestEntity);
       setTest(testData);
     }
