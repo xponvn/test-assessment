@@ -1,0 +1,9 @@
+mutation deleteCandidate($id: ID!) {
+  deleteCandidate(id: $id) {
+    data {
+      attributes {
+        email
+      }
+    }
+  }
+}
