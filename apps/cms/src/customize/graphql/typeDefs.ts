@@ -3,7 +3,13 @@ export const typeDefs = `
         register(input: UsersPermissionsRegisterInputCustom!): UsersPermissionsLoginPayload!
         login(input: UsersLoginInputCustom!): UsersPermissionsLoginPayload!
         updateTest(id: ID!, data: TestInput!): TestEntityResponse
+        inviteTest(testId: String!,
+            emails: [String!]): InviteTestResponse
+    }
 
+    type InviteTestResponse{
+        status: String,
+        message: String
     }
 
     input UsersPermissionsRegisterInputCustom {
