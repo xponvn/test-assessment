@@ -1,7 +1,7 @@
 export interface SelectBoxProps {
   options: SelectBoxOption[];
   onChange: (value: string) => void;
-  variant: 'verticle-label' | 'horizontal-label';
+  variant: 'vertical-label' | 'horizontal-label';
   size: 'small' | 'medium' | 'large';
   label?: string;
   defaultValue?: string;

@@ -11,8 +11,8 @@ export const mockNavigationProps: NavigationProps = {
       url: '/candidate',
     },
     {
-      title: 'Candidate',
-      url: '/candidate',
+      title: 'Stats',
+      url: '/stats',
     },
   ],
   currentPathname: '/test-management',

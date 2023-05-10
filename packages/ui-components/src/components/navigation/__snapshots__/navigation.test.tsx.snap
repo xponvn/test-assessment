@@ -34,10 +34,10 @@ exports[`Navigation should render Navigation successfully 1`] = `
       hover:border-b-2 hover:border-primary-1 
       after:content-[attr(data-title)] after:block after:h-[0px] 
       after:invisible after:font-bold after:overflow-hidden"
-        data-title="Candidate"
-        href="/candidate"
+        data-title="Stats"
+        href="/stats"
       >
-        Candidate
+        Stats
       </a>
     </div>
   </div>
