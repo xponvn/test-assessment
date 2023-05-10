@@ -18,7 +18,7 @@ export const SelectBox = React.forwardRef((props: SelectBoxProps, ref) => {
   const handleChangeOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const valueSelected = e.target.value;
     setValue(valueSelected);
-    onChange(valueSelected);
+    onChange && onChange(e);
   };
 
   return (

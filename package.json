@@ -7,6 +7,7 @@
     "chromatic": "npx chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
     "ui": "npx nx storybook frontend-web",
     "frontend": "npx nx serve frontend-web",
+    "cms": "npx nx serve cms",
     "generate": "nx g @nrwl/next:lib"
   },
   "private": true,

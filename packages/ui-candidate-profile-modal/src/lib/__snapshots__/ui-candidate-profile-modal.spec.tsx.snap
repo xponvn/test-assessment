@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UiCandidateProfileModal should render successfully 1`] = `
+<body>
+  <div>
+    <div
+      class="absolute top-0 left-0 w-screen h-screen bg-[#373737] bg-opacity-60 visible"
+    >
+      <div
+        class="w-[550px] border-1 bg-white mx-auto mt-16"
+      >
+        <div
+          class="px-6 py-4 flex items-center justify-between border border-neutral-divider"
+        >
+          <span
+            class="text-neutral-text-primary text-xl leading-6 font-medium"
+          >
+            New Candidate Profile
+          </span>
+          <div
+            class="cursor-pointer w-4 h-4"
+          >
+            <svg
+              class="w-6 w-6"
+              fill="none"
+              height="14"
+              viewBox="0 0 14 14"
+              width="14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.00005 8.40005L2.10005 13.3C1.91672 13.4834 1.68338 13.575 1.40005 13.575C1.11672 13.575 0.883382 13.4834 0.700048 13.3C0.516715 13.1167 0.425049 12.8834 0.425049 12.6C0.425049 12.3167 0.516715 12.0834 0.700048 11.9L5.60005 7.00005L0.700048 2.10005C0.516715 1.91672 0.425049 1.68338 0.425049 1.40005C0.425049 1.11672 0.516715 0.883382 0.700048 0.700048C0.883382 0.516715 1.11672 0.425049 1.40005 0.425049C1.68338 0.425049 1.91672 0.516715 2.10005 0.700048L7.00005 5.60005L11.9 0.700048C12.0834 0.516715 12.3167 0.425049 12.6 0.425049C12.8834 0.425049 13.1167 0.516715 13.3 0.700048C13.4834 0.883382 13.575 1.11672 13.575 1.40005C13.575 1.68338 13.4834 1.91672 13.3 2.10005L8.40005 7.00005L13.3 11.9C13.4834 12.0834 13.575 12.3167 13.575 12.6C13.575 12.8834 13.4834 13.1167 13.3 13.3C13.1167 13.4834 12.8834 13.575 12.6 13.575C12.3167 13.575 12.0834 13.4834 11.9 13.3L7.00005 8.40005Z"
+                fill="black"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="px-6 py-5"
+        >
+          <form>
+            <div
+              class="flex mb-4"
+            >
+              <div
+                class="flex-1 mr-1"
+              >
+                <div
+                  class="space-y-2"
+                >
+                  <label
+                    class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                    for="firstName"
+                  >
+                    First name
+                  </label>
+                  <div
+                    class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                    style="width: 100%;"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="focus:outline-none bg-transparent w-full py-2"
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex-1"
+              >
+                <div
+                  class="space-y-2"
+                >
+                  <label
+                    class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                    for="lastName"
+                  >
+                    Last name
+                  </label>
+                  <div
+                    class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                    style="width: 100%;"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="focus:outline-none bg-transparent w-full py-2"
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-4"
+            >
+              <div
+                class="space-y-2"
+              >
+                <label
+                  class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                  for="email"
+                >
+                  Email address
+                  <span
+                    class="pl-[2px] text-error-base"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                  style="width: 100%;"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="focus:outline-none bg-transparent w-full py-2"
+                    id="email"
+                    name="email"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-4"
+            >
+              <div
+                class="space-y-2"
+              >
+                <label
+                  class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                  for="phone"
+                >
+                  Phone
+                </label>
+                <div
+                  class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                  style="width: 100%;"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="focus:outline-none bg-transparent w-full py-2"
+                    id="phone"
+                    name="phone"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex mb-4"
+            >
+              <div
+                class="flex-1 mr-1"
+              >
+                <div
+                  class=" undefined"
+                >
+                  <div
+                    class="text-neutral-placeholder text-13 font-medium mb-[8px]"
+                  >
+                    Position
+                  </div>
+                  <div
+                    class="relative w-full"
+                  >
+                    <select
+                      class="
+            w-full appearance-none focus:outline-none cursor-pointer
+            pl-[12px] pr-[48px] font-normal text-15
+            
+      
+      py-[8px]
+      
+    
+            
+                  border hover:border-neutral-placeholder
+                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
+                  border-neutral-border bg-neutral-background text-neutral-placeholder
+                
+          "
+                    >
+                      <option
+                        value=""
+                      >
+                        Select
+                      </option>
+                      <option
+                        value="dev"
+                      >
+                        Developer
+                      </option>
+                      <option
+                        value="qa"
+                      >
+                        Quality Assurance
+                      </option>
+                      <option
+                        value="sm"
+                      >
+                        Scrum Master
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="flex-1"
+              >
+                <div
+                  class=" undefined"
+                >
+                  <div
+                    class="text-neutral-placeholder text-13 font-medium mb-[8px]"
+                  >
+                    Level
+                  </div>
+                  <div
+                    class="relative w-full"
+                  >
+                    <select
+                      class="
+            w-full appearance-none focus:outline-none cursor-pointer
+            pl-[12px] pr-[48px] font-normal text-15
+            
+      
+      py-[8px]
+      
+    
+            
+                  border hover:border-neutral-placeholder
+                  focus:border-primary-base focus:border-[2px] focus:bg-neutral-white focus:text-neutral-text-primary
+                  border-neutral-border bg-neutral-background text-neutral-placeholder
+                
+          "
+                    >
+                      <option
+                        value=""
+                      >
+                        Select
+                      </option>
+                      <option
+                        value="junior"
+                      >
+                        Junior
+                      </option>
+                      <option
+                        value="middle"
+                      >
+                        Middle
+                      </option>
+                      <option
+                        value="senior"
+                      >
+                        Senior
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mb-4"
+            >
+              <div
+                class="space-y-2"
+              >
+                <label
+                  class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                  for="cv"
+                >
+                  CV/Resume (pdf, doc only)
+                </label>
+                <div
+                  class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                  style="width: 100%;"
+                >
+                  <div
+                    class="flex items-center text-neutral-text-secondary pr-3"
+                  >
+                    <svg
+                      class="w-6 w-6"
+                      fill="none"
+                      height="20"
+                      viewBox="0 0 16 20"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7 17H9V12.825L10.6 14.425L12 13L8 9L4 13L5.425 14.4L7 12.825V17ZM2 20C1.45 20 0.979002 19.804 0.587002 19.412C0.195002 19.02 -0.000664969 18.5493 1.69779e-06 18V2C1.69779e-06 1.45 0.196001 0.979002 0.588001 0.587002C0.980001 0.195002 1.45067 -0.000664969 2 1.69779e-06H10L16 6V18C16 18.55 15.804 19.021 15.412 19.413C15.02 19.805 14.5493 20.0007 14 20H2ZM9 7H14L9 2V7Z"
+                        fill="black"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    aria-invalid="false"
+                    class="focus:outline-none bg-transparent w-full py-2"
+                    id="cv"
+                    name="cv"
+                    type="file"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=""
+            >
+              <div
+                class="space-y-2"
+              >
+                <label
+                  class="block text-13 leading-6 font-medium font-primary text-neutral-placeholder"
+                  for="note"
+                >
+                  Note
+                </label>
+                <div
+                  class="flex border-[1px] text-13 leading-6 font-normal font-primary placeholder-neutral-border hover:border-neutral-placeholder focus-within:border-primary hover:focus-within:border-primary border-neutral-border px-3"
+                  style="width: 100%;"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="focus:outline-none bg-transparent w-full py-2"
+                    id="note"
+                    name="note"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div
+          class="flex items-center justify-end px-6 py-5"
+        >
+          <button
+            class="items-center justify-center px-4 py-2 font-medium font-primary text-13 leading-6 space-x-2 w-[130px] inline-flex bg-primary-base px-4 py-2"
+          >
+            <span>
+              Submit
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

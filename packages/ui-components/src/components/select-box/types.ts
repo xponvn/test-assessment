@@ -1,6 +1,6 @@
-export interface SelectBoxProps {
+export interface SelectBoxProps
+  extends Omit<React.InputHTMLAttributes<HTMLSelectElement>, 'size'> {
   options: SelectBoxOption[];
-  onChange: (value: string) => void;
   variant: 'vertical-label' | 'horizontal-label';
   size: 'small' | 'medium' | 'large';
   label?: string;

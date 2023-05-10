@@ -26,6 +26,7 @@ export enum InputType {
   PASSWORD = 'password',
   TEXT = 'text',
   SEARCH = 'search',
+  FILE = 'file',
 }
 export enum InputSize {
   LARGE = 'lg',
