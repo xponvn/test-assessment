@@ -1,0 +1,7 @@
+mutation createCandidate($data: CandidateInput!) {
+  createCandidate(data: $data) {
+    data {
+      id
+    }
+  }
+}

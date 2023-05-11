@@ -6,6 +6,7 @@ import levels from './levels.json';
 import positions from './positions.json';
 import { DualColumnRow, Row } from './components';
 import { candidateSchema } from './validation';
+import { useApiClient } from '@test-assessment/cms-graphql-api';
 
 type CandidateForm = {
   firstName: string;
@@ -14,8 +15,8 @@ type CandidateForm = {
   phone: string;
   position: string;
   level: string;
-  cv: File;
-  note: string;
+  resume: string;
+  comment: string;
 };
 
 export interface UiCandidateProfileModalProps {
@@ -25,6 +26,7 @@ export interface UiCandidateProfileModalProps {
 export function UiCandidateProfileModal({
   open,
 }: UiCandidateProfileModalProps) {
+  const { apiClient } = useApiClient();
   const [isOpen, setOpen] = useState(open);
   const toggleModal = () => setOpen(!open);
   const {
@@ -36,9 +38,18 @@ export function UiCandidateProfileModal({
     mode: 'onBlur',
   });
 
-  const onSubmit = handleSubmit((data) => {
-    // TODO: integrate API
-    console.log('submitting...', data);
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      // @ts-expect-error del later
+      delete data?.resume;
+      // @ts-expect-error del later
+      delete data.comment;
+      await apiClient.createCandidate({ data });
+      alert('success');
+    } catch (e) {
+      // TODO: handle error with popup
+      console.log(e);
+    }
   });
 
   return (
@@ -113,16 +124,16 @@ export function UiCandidateProfileModal({
             type="file"
             fill
             leftIcon="file"
-            {...register('cv')}
-            error={errors.cv?.message}
+            {...register('resume')}
+            error={errors.resume?.message}
           />
         </Row>
         <Row noMargin>
           <Input
             label="Note"
             fill
-            {...register('note')}
-            error={errors.note?.message}
+            {...register('comment')}
+            error={errors.comment?.message}
           />
         </Row>
       </form>

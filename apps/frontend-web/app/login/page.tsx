@@ -10,6 +10,7 @@ import { useApiClient } from '@test-assessment/cms-graphql-api';
 import { useAuth } from '@test-assessment/ui-auth-protect';
 import { useRouter } from 'next/navigation';
 import { validationLogin } from './validation';
+import { UiCandidateProfileModal } from '@test-assessment/ui-candidate-profile-modal';
 
 type LoginForm = {
   email: string;
@@ -68,6 +69,7 @@ export default function Page() {
 
   return (
     <UiModuleLayoutAuth>
+      <UiCandidateProfileModal open />
       <p className="text-40 font-bold text-neutral-text-secondary">Login</p>
       <p className="text-15 font-normal text-neutral-text-secondary mb-10">
         Please sign in with your provided account and password
