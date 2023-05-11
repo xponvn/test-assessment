@@ -1474,6 +1474,13 @@ export type LoginMutationVariables = Exact<{
 
 export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UsersPermissionsLoginPayload', jwt?: string | null, user: { __typename?: 'UsersPermissionsMe', id: string, email?: string | null } } };
 
+export type CreateCandidateMutationVariables = Exact<{
+  data: CandidateInput;
+}>;
+
+
+export type CreateCandidateMutation = { __typename?: 'Mutation', createCandidate?: { __typename?: 'CandidateEntityResponse', data?: { __typename?: 'CandidateEntity', id?: string | null } | null } | null };
+
 export type ErrorFragment = { __typename?: 'Error', code: string, message?: string | null };
 
 export type ComponentQuestionFragment = { __typename?: 'ComponentQuestionQuestion', id: string, content: string, questionLevel: Enum_Componentquestionquestion_Level };
@@ -1572,6 +1579,15 @@ export const LoginDocument = gql`
     user {
       id
       email
+    }
+  }
+}
+    `;
+export const CreateCandidateDocument = gql`
+    mutation createCandidate($data: CandidateInput!) {
+  createCandidate(data: $data) {
+    data {
+      id
     }
   }
 }
@@ -1768,6 +1784,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     login(variables: LoginMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<LoginMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<LoginMutation>(LoginDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'login', 'mutation');
+    },
+    createCandidate(variables: CreateCandidateMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateCandidateMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateCandidateMutation>(CreateCandidateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createCandidate', 'mutation');
     },
     getI18NLocales(variables?: GetI18NLocalesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetI18NLocalesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetI18NLocalesQuery>(GetI18NLocalesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getI18NLocales', 'query');

@@ -3,7 +3,7 @@ export const typeDefs = `
         register(input: UsersPermissionsRegisterInputCustom!): UsersPermissionsLoginPayload!
         login(input: UsersLoginInputCustom!): UsersPermissionsLoginPayload!
         updateTest(id: ID!, data: TestInput!): TestEntityResponse
-
+        createCandidate(input: CandidateInput): CandidateEntityResponse
     }
 
     input UsersPermissionsRegisterInputCustom {
